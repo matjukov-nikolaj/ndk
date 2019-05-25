@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\fedia\\Desktop\\Study\\ndk\\Core\\Core\\Core.csproj",
+    "projectUniqueName": "D:\\ndk\\Core\\Core\\Core.csproj",
     "projectName": "Core",
-    "projectPath": "C:\\Users\\fedia\\Desktop\\Study\\ndk\\Core\\Core\\Core.csproj",
-    "outputPath": "C:\\Users\\fedia\\Desktop\\Study\\ndk\\Core\\Core\\obj\\",
+    "projectPath": "D:\\ndk\\Core\\Core\\Core.csproj",
+    "outputPath": "D:\\ndk\\Core\\Core\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12,10 +12,6 @@
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],
-    "sources": {
-      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-      "https://api.nuget.org/v3/index.json": {}
-    },
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {}
