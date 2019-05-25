@@ -1,0 +1,11 @@
+D:\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.deps.json
+D:\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.runtimeconfig.json
+D:\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.runtimeconfig.dev.json
+D:\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.dll
+D:\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.pdb
+D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.csprojAssemblyReference.cache
+D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.csproj.CoreCompileInputs.cache
+D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.AssemblyInfoInputs.cache
+D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.AssemblyInfo.cs
+D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.dll
+D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.pdb

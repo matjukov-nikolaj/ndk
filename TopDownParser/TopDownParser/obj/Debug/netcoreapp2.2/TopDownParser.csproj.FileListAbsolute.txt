@@ -1,0 +1,11 @@
+D:\ndk\TopDownParser\TopDownParser\bin\Debug\netcoreapp2.2\TopDownParser.deps.json
+D:\ndk\TopDownParser\TopDownParser\bin\Debug\netcoreapp2.2\TopDownParser.runtimeconfig.json
+D:\ndk\TopDownParser\TopDownParser\bin\Debug\netcoreapp2.2\TopDownParser.runtimeconfig.dev.json
+D:\ndk\TopDownParser\TopDownParser\bin\Debug\netcoreapp2.2\TopDownParser.dll
+D:\ndk\TopDownParser\TopDownParser\bin\Debug\netcoreapp2.2\TopDownParser.pdb
+D:\ndk\TopDownParser\TopDownParser\obj\Debug\netcoreapp2.2\TopDownParser.csprojAssemblyReference.cache
+D:\ndk\TopDownParser\TopDownParser\obj\Debug\netcoreapp2.2\TopDownParser.csproj.CoreCompileInputs.cache
+D:\ndk\TopDownParser\TopDownParser\obj\Debug\netcoreapp2.2\TopDownParser.AssemblyInfoInputs.cache
+D:\ndk\TopDownParser\TopDownParser\obj\Debug\netcoreapp2.2\TopDownParser.AssemblyInfo.cs
+D:\ndk\TopDownParser\TopDownParser\obj\Debug\netcoreapp2.2\TopDownParser.dll
+D:\ndk\TopDownParser\TopDownParser\obj\Debug\netcoreapp2.2\TopDownParser.pdb
