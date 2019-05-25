@@ -9,3 +9,14 @@ D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.AssemblyInfoInputs.cache
 D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.AssemblyInfo.cs
 D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.dll
 D:\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.pdb
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.deps.json
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.runtimeconfig.json
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.runtimeconfig.dev.json
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.dll
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\bin\Debug\netcoreapp2.2\Core.pdb
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.csprojAssemblyReference.cache
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.csproj.CoreCompileInputs.cache
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.AssemblyInfoInputs.cache
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.AssemblyInfo.cs
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.dll
+C:\Users\fedia\Desktop\Study\ndk\Core\Core\obj\Debug\netcoreapp2.2\Core.pdb
