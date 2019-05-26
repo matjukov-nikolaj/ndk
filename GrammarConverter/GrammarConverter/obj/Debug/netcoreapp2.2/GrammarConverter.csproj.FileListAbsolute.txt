@@ -1,0 +1,14 @@
+D:\ndk\GrammarConverter\GrammarConverter\bin\Debug\netcoreapp2.2\GrammarConverter.deps.json
+D:\ndk\GrammarConverter\GrammarConverter\bin\Debug\netcoreapp2.2\GrammarConverter.runtimeconfig.json
+D:\ndk\GrammarConverter\GrammarConverter\bin\Debug\netcoreapp2.2\GrammarConverter.runtimeconfig.dev.json
+D:\ndk\GrammarConverter\GrammarConverter\bin\Debug\netcoreapp2.2\GrammarConverter.dll
+D:\ndk\GrammarConverter\GrammarConverter\bin\Debug\netcoreapp2.2\GrammarConverter.pdb
+D:\ndk\GrammarConverter\GrammarConverter\bin\Debug\netcoreapp2.2\Core.dll
+D:\ndk\GrammarConverter\GrammarConverter\bin\Debug\netcoreapp2.2\Core.pdb
+D:\ndk\GrammarConverter\GrammarConverter\obj\Debug\netcoreapp2.2\GrammarConverter.csprojAssemblyReference.cache
+D:\ndk\GrammarConverter\GrammarConverter\obj\Debug\netcoreapp2.2\GrammarConverter.csproj.CoreCompileInputs.cache
+D:\ndk\GrammarConverter\GrammarConverter\obj\Debug\netcoreapp2.2\GrammarConverter.AssemblyInfoInputs.cache
+D:\ndk\GrammarConverter\GrammarConverter\obj\Debug\netcoreapp2.2\GrammarConverter.AssemblyInfo.cs
+D:\ndk\GrammarConverter\GrammarConverter\obj\Debug\netcoreapp2.2\GrammarConverter.csproj.CopyComplete
+D:\ndk\GrammarConverter\GrammarConverter\obj\Debug\netcoreapp2.2\GrammarConverter.dll
+D:\ndk\GrammarConverter\GrammarConverter\obj\Debug\netcoreapp2.2\GrammarConverter.pdb

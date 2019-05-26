@@ -5,61 +5,24 @@ namespace Core.model
 {
     public class NewGrammar
     {
-        public Dictionary<String,  List<String>> newGrammar;
+        public List<String> productions;
 
-        public Dictionary<String, List<String>> first;
+        public List<List<String>> first;
 
-        public Dictionary<String, List<String>> follow;
+        public List<List<String>> follow;
+        
+        public List<String> terminals;
+
+        public List<String> noTerminals;
 
         public NewGrammar()
         {
-            newGrammar = new Dictionary<string,  List<String>>();
-            first = new Dictionary<string, List<string>>();
-            follow = new Dictionary<string, List<string>>();
+            productions = new List<string>();
+            first = new List<List<String>>();
+            follow = new List<List<String>>();
+            terminals = new List<string>();
+            noTerminals = new List<string>();
         }
         
-        public void AddProduction(String noTerminal, String alternative)
-        {
-            if (newGrammar.ContainsKey(noTerminal))
-            {
-                newGrammar[noTerminal].Add(alternative);
-            }
-            else
-            {
-                List<String> alternatives = new List<string>();
-                alternatives.Add(alternative);
-                newGrammar.Add(noTerminal, alternatives);
-            }
-        }
-
-        public void AddInFirst(String noTerminal, String terminal)
-        {
-            if (first.ContainsKey(noTerminal))
-            {
-                List<String> terminals = first[noTerminal];
-                terminals.Add(terminal);
-            }
-            else
-            {
-                List<String> terminals = new List<string>();
-                terminals.Add(terminal);
-                first.Add(noTerminal, terminals);
-            }
-        }
-        
-        public void AddInFollow(String noTerminal, String terminal)
-        {
-            if (follow.ContainsKey(noTerminal))
-            {
-                List<String> terminals = first[noTerminal];
-                terminals.Add(terminal);
-            }
-            else
-            {
-                List<String> terminals = new List<string>();
-                terminals.Add(terminal);
-                follow.Add(noTerminal, terminals);
-            }
-        }
     }
 }
