@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\MarioSlim\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Core.-1775431063.00" t="ExcludeRecursive" />
+    <e p="D:\ndk\Core" t="IncludeFlat">
+      <e p="Core" t="IncludeRecursive">
+        <e p="application.properties" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Configuration.cs" t="Include" />
+        <e p="Core.csproj" t="IncludeRecursive" />
+        <e p="model" t="Include">
+          <e p="Chain.cs" t="Include" />
+          <e p="Grammar.cs" t="Include" />
+          <e p="NewGrammar.cs" t="Include" />
+          <e p="Result.cs" t="Include" />
+          <e p="TableM.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Core.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+      </e>
+      <e p="Core.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

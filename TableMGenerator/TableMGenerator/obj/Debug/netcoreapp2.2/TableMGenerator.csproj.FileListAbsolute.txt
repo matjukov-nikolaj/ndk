@@ -1,0 +1,14 @@
+D:\ndk\TableMGenerator\TableMGenerator\bin\Debug\netcoreapp2.2\TableMGenerator.deps.json
+D:\ndk\TableMGenerator\TableMGenerator\bin\Debug\netcoreapp2.2\TableMGenerator.runtimeconfig.json
+D:\ndk\TableMGenerator\TableMGenerator\bin\Debug\netcoreapp2.2\TableMGenerator.runtimeconfig.dev.json
+D:\ndk\TableMGenerator\TableMGenerator\bin\Debug\netcoreapp2.2\TableMGenerator.dll
+D:\ndk\TableMGenerator\TableMGenerator\bin\Debug\netcoreapp2.2\TableMGenerator.pdb
+D:\ndk\TableMGenerator\TableMGenerator\bin\Debug\netcoreapp2.2\Core.dll
+D:\ndk\TableMGenerator\TableMGenerator\bin\Debug\netcoreapp2.2\Core.pdb
+D:\ndk\TableMGenerator\TableMGenerator\obj\Debug\netcoreapp2.2\TableMGenerator.csprojAssemblyReference.cache
+D:\ndk\TableMGenerator\TableMGenerator\obj\Debug\netcoreapp2.2\TableMGenerator.csproj.CoreCompileInputs.cache
+D:\ndk\TableMGenerator\TableMGenerator\obj\Debug\netcoreapp2.2\TableMGenerator.AssemblyInfoInputs.cache
+D:\ndk\TableMGenerator\TableMGenerator\obj\Debug\netcoreapp2.2\TableMGenerator.AssemblyInfo.cs
+D:\ndk\TableMGenerator\TableMGenerator\obj\Debug\netcoreapp2.2\TableMGenerator.csproj.CopyComplete
+D:\ndk\TableMGenerator\TableMGenerator\obj\Debug\netcoreapp2.2\TableMGenerator.dll
+D:\ndk\TableMGenerator\TableMGenerator\obj\Debug\netcoreapp2.2\TableMGenerator.pdb

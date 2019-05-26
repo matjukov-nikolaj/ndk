@@ -1,0 +1,14 @@
+D:\ndk\GrammarProcessor\GrammarProcessor\bin\Debug\netcoreapp2.2\GrammarProcessor.deps.json
+D:\ndk\GrammarProcessor\GrammarProcessor\bin\Debug\netcoreapp2.2\GrammarProcessor.runtimeconfig.json
+D:\ndk\GrammarProcessor\GrammarProcessor\bin\Debug\netcoreapp2.2\GrammarProcessor.runtimeconfig.dev.json
+D:\ndk\GrammarProcessor\GrammarProcessor\bin\Debug\netcoreapp2.2\GrammarProcessor.dll
+D:\ndk\GrammarProcessor\GrammarProcessor\bin\Debug\netcoreapp2.2\GrammarProcessor.pdb
+D:\ndk\GrammarProcessor\GrammarProcessor\bin\Debug\netcoreapp2.2\Core.dll
+D:\ndk\GrammarProcessor\GrammarProcessor\bin\Debug\netcoreapp2.2\Core.pdb
+D:\ndk\GrammarProcessor\GrammarProcessor\obj\Debug\netcoreapp2.2\GrammarProcessor.csprojAssemblyReference.cache
+D:\ndk\GrammarProcessor\GrammarProcessor\obj\Debug\netcoreapp2.2\GrammarProcessor.csproj.CoreCompileInputs.cache
+D:\ndk\GrammarProcessor\GrammarProcessor\obj\Debug\netcoreapp2.2\GrammarProcessor.AssemblyInfoInputs.cache
+D:\ndk\GrammarProcessor\GrammarProcessor\obj\Debug\netcoreapp2.2\GrammarProcessor.AssemblyInfo.cs
+D:\ndk\GrammarProcessor\GrammarProcessor\obj\Debug\netcoreapp2.2\GrammarProcessor.csproj.CopyComplete
+D:\ndk\GrammarProcessor\GrammarProcessor\obj\Debug\netcoreapp2.2\GrammarProcessor.dll
+D:\ndk\GrammarProcessor\GrammarProcessor\obj\Debug\netcoreapp2.2\GrammarProcessor.pdb

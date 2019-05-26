@@ -3,43 +3,116 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Concurrent;
+using StackExchange.Redis;
+using System.Threading;
+using Core;
+using Core.model;
+using Newtonsoft.Json;
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] {"value1", "value2"};
-        }
+        private static Dictionary<string, string> properties = Configuration.GetParameters();
+        static readonly ConcurrentDictionary<string, string> _data = new ConcurrentDictionary<string, string>();
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("{rank}")]
+        public IActionResult Get([FromQuery] string id)
         {
-            return "value";
+            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]);
+            IDatabase grammarDb = redis.GetDatabase(Convert.ToInt32(properties["GRAMMAR_DB"]));
+            IDatabase newGrammarDb = redis.GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_DB"]));
+            IDatabase tableMDb = redis.GetDatabase(Convert.ToInt32(properties["TABLE_M_DB"]));
+
+            Result result = new Result();
+            result.id = id;
+
+            string grammar = null;
+            string newGrammar = null;
+            string table = null;
+
+            for (short i = 0; i < 5; ++i)
+            {
+                grammar = grammarDb.StringGet("GRAMMAR_" + id);
+                if (grammar == null)
+                {
+                    Thread.Sleep(200);
+                }
+                else
+                {
+                    result.grammar = grammar;
+                }
+            }
+
+            for (short i = 0; i < 5; ++i)
+            {
+                newGrammar = newGrammarDb.StringGet("NEW_GRAMMAR_" + id);
+                if (newGrammar == null)
+                {
+                    Thread.Sleep(200);
+                }
+                else
+                {
+                    result.newGrammar = newGrammar;
+                }
+            }
+
+            for (short i = 0; i < 5; ++i)
+            {
+                table = tableMDb.StringGet("TABLE_M_" + id);
+                if (table == null)
+                {
+                    Thread.Sleep(200);
+                }
+                else
+                {
+                    result.table = table;
+                }
+            }
+
+            if (!String.IsNullOrEmpty(result.grammar) && !String.IsNullOrEmpty(result.newGrammar) &&
+                !String.IsNullOrEmpty(result.table))
+            {
+                String json = JsonConvert.SerializeObject(result);
+                return Ok(json);
+            }
+
+            return new StatusCodeResult(402);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public string Post([FromBody] string value)
         {
+            var id = Guid.NewGuid().ToString();
+            try
+            {
+                string textKey = "INPUT_GRAMMAR_" + id;
+                this.SaveDataToRedis(value, textKey);
+                this.makeEvent(ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]), textKey);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return id;
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        private void SaveDataToRedis(String value, String id)
         {
+            var redisDb = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"])
+                .GetDatabase(Convert.ToInt32(properties["INPUT_GRAMMAR_DB"]));
+            redisDb.StringSet(id, value);
+            Console.WriteLine(id + ": " + value + " - saved to redis INPUT_GRAMMAR_DB");
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        private void makeEvent(ConnectionMultiplexer redis, String id)
         {
+            ISubscriber sub = redis.GetSubscriber();
+            sub.Publish("events", $"{id}");
         }
     }
 }

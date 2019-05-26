@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\fedia\\Desktop\\Study\\ndk\\Backend\\Backend\\Backend.csproj",
+    "projectUniqueName": "D:\\ndk\\Backend\\Backend\\Backend.csproj",
     "projectName": "Backend",
-    "projectPath": "C:\\Users\\fedia\\Desktop\\Study\\ndk\\Backend\\Backend\\Backend.csproj",
-    "outputPath": "C:\\Users\\fedia\\Desktop\\Study\\ndk\\Backend\\Backend\\obj\\",
+    "projectPath": "D:\\ndk\\Backend\\Backend\\Backend.csproj",
+    "outputPath": "D:\\ndk\\Backend\\Backend\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12,10 +12,6 @@
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],
-    "sources": {
-      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-      "https://api.nuget.org/v3/index.json": {}
-    },
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {}
@@ -30,17 +26,11 @@
   "frameworks": {
     "netcoreapp2.2": {
       "dependencies": {
-        "Microsoft.AspNetCore": {
+        "Microsoft.AspNetCore.All": {
+          "suppressParent": "All",
           "target": "Package",
-          "version": "[2.2.0, )"
-        },
-        "Microsoft.AspNetCore.HttpsPolicy": {
-          "target": "Package",
-          "version": "[2.2.0, )"
-        },
-        "Microsoft.AspNetCore.Mvc": {
-          "target": "Package",
-          "version": "[2.2.0, )"
+          "version": "[2.2.0, )",
+          "autoReferenced": true
         },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
