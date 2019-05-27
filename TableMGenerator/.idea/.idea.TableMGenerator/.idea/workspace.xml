@@ -2,49 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7a584d8-7962-46e7-ad36-c04ce02a64f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Backend/Backend/Controllers/SequenceController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Core/Core/model/SequenceId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/contentModel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Backend/Controllers/SequenceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/Controllers/SequenceController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.runtimeconfig.dev.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/bin/Debug/netcoreapp2.2/Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/Backend.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/Backend.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/Backend.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/Backend.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/Backend.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/Backend.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Core/.idea/.idea.Core/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/.idea/.idea.Core/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Core/.idea/.idea.Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/.idea/.idea.Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Core/Core/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/Core/bin/Debug/netcoreapp2.2/Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Core/Core/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/Core/bin/Debug/netcoreapp2.2/Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Core/Core/obj/Debug/netcoreapp2.2/Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/Core/obj/Debug/netcoreapp2.2/Core.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Core/Core/obj/Debug/netcoreapp2.2/Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/Core/obj/Debug/netcoreapp2.2/Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Core/Core/obj/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/Core/obj/Debug/netcoreapp2.2/Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/Frontend/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/Frontend/Pages/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/Frontend/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/Frontend/wwwroot/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/Frontend/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/Frontend/wwwroot/js/site.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/GrammarProcessor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/GrammarProcessor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/GrammarProcessor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/GrammarProcessor.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SequenceHandler/.idea/.idea.SequenceHandler/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SequenceHandler/.idea/.idea.SequenceHandler/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SequenceHandler/SequenceHandler/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../SequenceHandler/SequenceHandler/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SequenceHandler/SequenceHandler/obj/Debug/netcoreapp2.2/SequenceHandler.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SequenceHandler/SequenceHandler/obj/Debug/netcoreapp2.2/SequenceHandler.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TableMGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TableMGenerator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TableMGenerator/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TableMGenerator/bin/Debug/netcoreapp2.2/Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TableMGenerator/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TableMGenerator/bin/Debug/netcoreapp2.2/Core.pdb" afterDir="false" />
@@ -60,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TableMGenerator/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="53" column="71" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="71" />
+            <state relative-caret-position="255">
+              <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
               <folding>
                 <marker date="1558895722393" expanded="false" signature="6:127" ph="..." />
                 <marker date="1558895722393" expanded="true" signature="154:2482" ph="{...}" />
@@ -226,12 +212,12 @@
       <workItem from="1558890490225" duration="451000" />
       <workItem from="1558890967500" duration="84000" />
       <workItem from="1558891158049" duration="6048000" />
-      <workItem from="1558972908334" duration="2728000" />
+      <workItem from="1558972908334" duration="4164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9311000" />
+    <option name="totallyTimeSpent" value="10747000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -325,8 +311,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/TableMGenerator/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="53" column="71" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="71" />
+        <state relative-caret-position="255">
+          <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
           <folding>
             <marker date="1558895722393" expanded="false" signature="6:127" ph="..." />
             <marker date="1558895722393" expanded="true" signature="154:2482" ph="{...}" />

@@ -19,17 +19,14 @@ namespace Backend.Controllers
         
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] string value)
+        public IActionResult Post([FromBody] SequenceId value)
         {
-            // TODO получить id из запроса.
             var sequenceId = Guid.NewGuid().ToString();
             Console.WriteLine(value);
             try
             {
                 string textKey = "SEQUENCE_" + sequenceId;
-                // TODO распарсить id и последовательность из сообщения
-                SequenceId sId = new SequenceId();
-                this.SaveDataToRedis(sId, textKey);
+                this.SaveDataToRedis(value, textKey);
                 this.makeEvent(ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]), textKey);
             }
             catch (Exception e)
@@ -43,7 +40,7 @@ namespace Backend.Controllers
 
             for (short i = 0; i < 5; ++i)
             {
-                sequenceResult = sequenceDb.StringGet("SEQUENCE_RESULT_" + sequenceId);
+                sequenceResult = sequenceDb.StringGet("SEQUENCE_RESULT_" + value.id);
                 if (sequenceResult == null)
                 {
                     Thread.Sleep(200);

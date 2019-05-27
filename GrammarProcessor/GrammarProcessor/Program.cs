@@ -27,7 +27,7 @@ namespace GrammarProcessor
                         int dbNumber = Convert.ToInt32(properties["INPUT_GRAMMAR_DB"]);
                         IDatabase redisDb = redisConnection.GetDatabase(dbNumber);
                         string value = redisDb.StringGet(id);
-                        Console.WriteLine("Event: " + id + "\r\n" + value);
+                        Console.WriteLine("Event: " + id + "\n" + value);
                         HandleGrammarProcessor(id, value, sub);
                     }
                 });
@@ -43,7 +43,7 @@ namespace GrammarProcessor
         {
             try
             {
-                List<String> productions = value.Split("\r\n").ToList();
+                List<String> productions = value.Split("\n").ToList();
                 if (productions.Contains(""))
                 {
                     int index = productions.IndexOf("");

@@ -3,41 +3,45 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
+<input id="sequenceId" type="hidden" value="" />
 <div class="content mt-3">
     <div class="container ">
         <div class="row">
+            <table id="list"></table>
             <div class="form-group col-6">
                 <label for="enteredGrammar">Enter gramma:</label>
                 <textarea class="form-control" rows="5" id="enteredGrammar"></textarea>
                 <button id="grammarEnteredButton" type="button" class="btn btn-primary mt-2">Process</button>
             </div>
             <div class="col-6">
-                <div><label>Examples:</label></div>
-                <button type="button" class="btn btn-primary mt-2">Example 1</button>
-                <button type="button" class="btn btn-primary mt-2">Example 2</button>
-                <button type="button" class="btn btn-primary mt-2">Example 3</button>
+                <div>
+                    <label>Examples:</label>
+                </div>
+                <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#example1">Example 1</button>
+                <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#example2">Example 2</button>
+                <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#example3">Example 3</button>
             </div>
 
             <div class="col-6">
-                <h4>Selection of terminals and left recursion</h4>
+                <h4>Parsing the resulting grammar</h4>
+                <div>
+                    <p>Start symbol:</p>
+                    <p id="startSymbol"></p>
+                </div>
                 <div class="d-flex flex-row">
                     <div class="card mb-3 mr-3" style="max-width: 18rem;">
                         <div class="card-header">Grammar</div>
-                        <div class="card-body">
-                            <p id="GrammarText" class="card-text">Some quick example text</p>
+                        <div class="card-body" id="grammar">
                         </div>
                     </div>
                     <div class="card mb-3 mr-3" style="max-width: 18rem;">
                         <div class="card-header">Terminals</div>
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text</p>
+                        <div class="card-body" id="terminals">
                         </div>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
                         <div class="card-header">Not terminals</div>
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text</p>
+                        <div class="card-body" id="noTerminals">
                         </div>
                     </div>
                 </div>
@@ -46,29 +50,12 @@
                 <h4>Table M</h4>
                 <table class="table table-bordered">
                     <thead>
-                    <tr class="card-header">
-                        <td>Gramma</td>
-                        <td>First</td>
-                        <td>Follow</td>
+                    <tr id="mTable">
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td class="card-header">John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td class="card-header">Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                    </tr>
-                    <tr>
-                        <td class="card-header">July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                    </tr>
-                    </tbody>
                 </table>
             </div>
             <div class="col-6">
@@ -81,22 +68,11 @@
                         <td>Follow</td>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="leftRecursionDeletion">
                     <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                    </tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     </tbody>
                 </table>
             </div>
@@ -104,8 +80,8 @@
                 <h4>Input chain</h4>
                 <div class="container">
                     <div class="row">
-                        <input type="email" class="form-control col-9 mr-1" id="inputChain" placeholder="Chain"/>
-                        <button type="button" class="btn btn-primary col-2">Check</button>
+                        <input id="sequenceInput" class="form-control col-9 mr-1" id="inputChain" placeholder="Chain"/>
+                        <button id="sequenceCheckButton" type="button" class="btn btn-primary col-2">Check</button>
                     </div>
                 </div>
                 <div>
@@ -117,6 +93,80 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="example1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Example of entered data</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                S->Ty <br/>
+                T->AB <br/>
+                T->sT <br/>
+                A->aA <br/>
+                A-><span data-toggle="tooltip" title="Some tooltip text!">&</><br/>
+                B->bB <br/>
+                B->& <br/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="example2">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Example of entered data</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                A->AaB <br/>
+                A->B <br/>
+                B->BkC <br/>
+                B->C <br/>
+                C->y <br/>
+                C->xC <br/>
+                C->nDi <br/>
+                D->& <br/>
+                D->oAz <br/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="example3">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Example of entered data</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                E->TE' <br/>
+                E'->+TE' <br/>
+                E'->e <br/>
+                T->FT' <br/>
+                T'->*FT' <br/>
+                T'->e <br/>
+                F->i <br/>
+                F->(E) <br/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
         </div>
     </div>
 </div>
