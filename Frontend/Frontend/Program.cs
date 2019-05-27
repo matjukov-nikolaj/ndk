@@ -7,24 +7,18 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Core;
 
 namespace Frontend
 {
     public class Program
     {
-
-        private static Dictionary<string, string> properties = Configuration.GetParameters();
-
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .UseUrls(properties["FRONTEND_HOST"])
-                .Build();
+                .UseStartup<Startup>();
     }
 }

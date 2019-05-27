@@ -8,7 +8,6 @@ using StackExchange.Redis;
 using System.Threading;
 using Core;
 using Core.model;
-using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
 namespace Backend.Controllers
@@ -18,10 +17,22 @@ namespace Backend.Controllers
     {
         private static Dictionary<string, string> properties = Configuration.GetParameters();
         static readonly ConcurrentDictionary<string, string> _data = new ConcurrentDictionary<string, string>();
-
-        [HttpGet("{rank}")]
-        public IActionResult Get([FromQuery] string id)
+        // POST api/values
+        [HttpPost]
+        public IActionResult Post([FromBody] string value)
         {
+            var id = Guid.NewGuid().ToString();
+            Console.WriteLine(id);
+            try
+            {
+                string textKey = "INPUT_GRAMMAR_" + id;
+                this.SaveDataToRedis(value, textKey);
+                this.makeEvent(ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]), textKey);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
             ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]);
             IDatabase grammarDb = redis.GetDatabase(Convert.ToInt32(properties["GRAMMAR_DB"]));
             IDatabase newGrammarDb = redis.GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_DB"]));
@@ -44,6 +55,7 @@ namespace Backend.Controllers
                 else
                 {
                     result.grammar = grammar;
+                    break;
                 }
             }
 
@@ -57,6 +69,7 @@ namespace Backend.Controllers
                 else
                 {
                     result.newGrammar = newGrammar;
+                    break;
                 }
             }
 
@@ -70,6 +83,7 @@ namespace Backend.Controllers
                 else
                 {
                     result.table = table;
+                    break;
                 }
             }
 
@@ -77,31 +91,10 @@ namespace Backend.Controllers
                 !String.IsNullOrEmpty(result.table))
             {
                 String json = JsonConvert.SerializeObject(result);
-//                Response response = new HttpResponse().
-//                var contentStream = context.Response.Body;
                 return Ok(json);
             }
 
             return new StatusCodeResult(402);
-        }
-
-        // POST api/values
-        [HttpPost]
-        public string Post([FromBody] string value)
-        {
-            var id = Guid.NewGuid().ToString();
-            try
-            {
-                string textKey = "INPUT_GRAMMAR_" + id;
-                this.SaveDataToRedis(value, textKey);
-                this.makeEvent(ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]), textKey);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return id;
         }
 
         private void SaveDataToRedis(String value, String id)

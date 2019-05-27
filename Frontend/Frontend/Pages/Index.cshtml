@@ -4,7 +4,119 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="content mt-3">
+    <div class="container ">
+        <div class="row">
+            <div class="form-group col-6">
+                <label for="enteredGrammar">Enter gramma:</label>
+                <textarea class="form-control" rows="5" id="enteredGrammar"></textarea>
+                <button id="grammarEnteredButton" type="button" class="btn btn-primary mt-2">Process</button>
+            </div>
+            <div class="col-6">
+                <div><label>Examples:</label></div>
+                <button type="button" class="btn btn-primary mt-2">Example 1</button>
+                <button type="button" class="btn btn-primary mt-2">Example 2</button>
+                <button type="button" class="btn btn-primary mt-2">Example 3</button>
+            </div>
+
+            <div class="col-6">
+                <h4>Selection of terminals and left recursion</h4>
+                <div class="d-flex flex-row">
+                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                        <div class="card-header">Grammar</div>
+                        <div class="card-body">
+                            <p id="GrammarText" class="card-text">Some quick example text</p>
+                        </div>
+                    </div>
+                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                        <div class="card-header">Terminals</div>
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text</p>
+                        </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Not terminals</div>
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <h4>Table M</h4>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="card-header">
+                        <td>Gramma</td>
+                        <td>First</td>
+                        <td>Follow</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="card-header">John</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                    </tr>
+                    <tr>
+                        <td class="card-header">Mary</td>
+                        <td>Moe</td>
+                        <td>mary@example.com</td>
+                    </tr>
+                    <tr>
+                        <td class="card-header">July</td>
+                        <td>Dooley</td>
+                        <td>july@example.com</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <h4>Deletion of left recursion</h4>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="card-header">
+                        <td>Gramma</td>
+                        <td>First</td>
+                        <td>Follow</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>Mary</td>
+                        <td>Moe</td>
+                        <td>mary@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>July</td>
+                        <td>Dooley</td>
+                        <td>july@example.com</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <h4>Input chain</h4>
+                <div class="container">
+                    <div class="row">
+                        <input type="email" class="form-control col-9 mr-1" id="inputChain" placeholder="Chain"/>
+                        <button type="button" class="btn btn-primary col-2">Check</button>
+                    </div>
+                </div>
+                <div>
+                    <label for="comment">Algorithm</label>
+                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

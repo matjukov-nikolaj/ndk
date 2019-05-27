@@ -12,104 +12,33 @@ namespace Backend.Controllers
     public class StatisticController : Controller
     {
         private static Dictionary<string, string> properties = Configuration.GetParameters();
-        static readonly ConcurrentDictionary<string, string> _data = new ConcurrentDictionary<string, string>();
 
-        [HttpGet("{rank}")]
-        public IActionResult Get([FromQuery] string id)
+        [HttpGet("{text_statistic}")]
+        public IActionResult Get()
         {
-//            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]);
-//            IDatabase grammarDb = redis.GetDatabase(Convert.ToInt32(properties["GRAMMAR_DB"]));
-//            IDatabase newGrammarDb = redis.GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_DB"]));
-//            IDatabase tableMDb = redis.GetDatabase(Convert.ToInt32(properties["TABLE_M_DB"]));
-//
-//            Result result = new Result();
-//            result.id = id;
-//
-//            string grammar = null;
-//            string newGrammar = null;
-//            string table = null;
-//
-//            for (short i = 0; i < 5; ++i)
-//            {
-//                grammar = grammarDb.StringGet("GRAMMAR_" + id);
-//                if (grammar == null)
-//                {
-//                    Thread.Sleep(200);
-//                }
-//                else
-//                {
-//                    result.grammar = grammar;
-//                }
-//            }
-//
-//            for (short i = 0; i < 5; ++i)
-//            {
-//                newGrammar = newGrammarDb.StringGet("NEW_GRAMMAR_" + id);
-//                if (newGrammar == null)
-//                {
-//                    Thread.Sleep(200);
-//                }
-//                else
-//                {
-//                    result.newGrammar = newGrammar;
-//                }
-//            }
-//
-//            for (short i = 0; i < 5; ++i)
-//            {
-//                table = tableMDb.StringGet("TABLE_M_" + id);
-//                if (table == null)
-//                {
-//                    Thread.Sleep(200);
-//                }
-//                else
-//                {
-//                    result.table = table;
-//                }
-//            }
-//
-//            if (!String.IsNullOrEmpty(result.grammar) && !String.IsNullOrEmpty(result.newGrammar) &&
-//                !String.IsNullOrEmpty(result.table))
-//            {
-//                String json = JsonConvert.SerializeObject(result);
-////                Response response = new HttpResponse().
-////                var contentStream = context.Response.Body;
-//                return Ok(json);
-//            }
-            return Ok("lol");
+            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]);
+            IDatabase queueDb = redis.GetDatabase(Convert.ToInt32(properties["QUEUE_DB"]));
+            for (short i = 0; i < 5; ++i)
+            {
+                string statistic = queueDb.StringGet("text_statistic");
+                if (String.IsNullOrEmpty(statistic))
+                {
+                    Thread.Sleep(200);
+                }
+                else
+                {
+                    return Ok(statistic);
+                }
+            }
+
+            return new NotFoundResult();
         }
 
-        // POST api/values
+        // POST api/statistic
         [HttpPost]
         public string Post([FromBody] string value)
         {
-            var id = Guid.NewGuid().ToString();
-            try
-            {
-                string textKey = "INPUT_GRAMMAR_" + id;
-                this.SaveDataToRedis(value, textKey);
-                this.makeEvent(ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]), textKey);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return id;
-        }
-
-        private void SaveDataToRedis(String value, String id)
-        {
-            var redisDb = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"])
-                .GetDatabase(Convert.ToInt32(properties["INPUT_GRAMMAR_DB"]));
-            redisDb.StringSet(id, value);
-            Console.WriteLine(id + ": " + value + " - saved to redis INPUT_GRAMMAR_DB");
-        }
-
-        private void makeEvent(ConnectionMultiplexer redis, String id)
-        {
-            ISubscriber sub = redis.GetSubscriber();
-            sub.Publish("events", $"{id}");
+            return null;
         }
 
     }
