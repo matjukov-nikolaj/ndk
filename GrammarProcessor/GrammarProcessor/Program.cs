@@ -56,7 +56,7 @@ namespace GrammarProcessor
                 String json = JsonConvert.SerializeObject(grammar);
                 IDatabase redisDb = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"])
                     .GetDatabase(Convert.ToInt32(properties["GRAMMAR_DB"]));
-                string newId = id.Replace("TEXT_", "GRAMMAR_");
+                string newId = id.Replace("INPUT_GRAMMAR_", "GRAMMAR_");
                 redisDb.StringSet(newId, json);
                 Console.WriteLine(newId + ": " + json + " - saved to redis GRAMMAR_DB");
                 sub.Publish("events", $"{newId}");

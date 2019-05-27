@@ -8,6 +8,7 @@ using StackExchange.Redis;
 using System.Threading;
 using Core;
 using Core.model;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
 namespace Backend.Controllers
@@ -76,6 +77,8 @@ namespace Backend.Controllers
                 !String.IsNullOrEmpty(result.table))
             {
                 String json = JsonConvert.SerializeObject(result);
+//                Response response = new HttpResponse().
+//                var contentStream = context.Response.Body;
                 return Ok(json);
             }
 

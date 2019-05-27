@@ -352,3 +352,5 @@ D:\ndk\Frontend\Frontend\obj\Debug\netcoreapp2.2\Frontend.Views.pdb
 D:\ndk\Frontend\Frontend\obj\Debug\netcoreapp2.2\Frontend.csproj.CopyComplete
 D:\ndk\Frontend\Frontend\obj\Debug\netcoreapp2.2\Frontend.dll
 D:\ndk\Frontend\Frontend\obj\Debug\netcoreapp2.2\Frontend.pdb
+D:\ndk\Frontend\Frontend\obj\Debug\netcoreapp2.2\Razor\Views\Statistics\Index.g.cshtml.cs
+D:\ndk\Frontend\Frontend\obj\Debug\netcoreapp2.2\Razor\Views\Statistics\Upload.g.cshtml.cs

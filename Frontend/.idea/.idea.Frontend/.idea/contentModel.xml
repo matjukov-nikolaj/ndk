@@ -58,7 +58,9 @@
             <e p="Error.cshtml" t="Include" />
           </e>
           <e p="Statistics" t="Include">
+            <e p="Index.cshtml" t="Include" />
             <e p="TextStatistic.cshtml" t="Include" />
+            <e p="Upload.cshtml" t="Include" />
           </e>
         </e>
         <e p="wwwroot" t="Include">

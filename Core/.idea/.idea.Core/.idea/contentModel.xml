@@ -10,10 +10,10 @@
         <e p="Configuration.cs" t="Include" />
         <e p="Core.csproj" t="IncludeRecursive" />
         <e p="model" t="Include">
-          <e p="Chain.cs" t="Include" />
           <e p="Grammar.cs" t="Include" />
           <e p="NewGrammar.cs" t="Include" />
           <e p="Result.cs" t="Include" />
+          <e p="Sequence.cs" t="Include" />
           <e p="TableM.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
