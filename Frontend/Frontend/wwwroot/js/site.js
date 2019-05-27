@@ -1,10 +1,10 @@
 ﻿var ID_BUTTON = "#grammarEnteredButton";
-var ID_SEQUENCE_CHECK_BUTTON = "#sequenceCheckButton";
+var ID_SEQUENCE_CHECK_BUTTON = "#inputSequenceButton";
 var ID_TEXTAREA = 'textarea#enteredGrammar';
 var PROCESS_GRAMMAR_URL ="http://127.0.0.1:5000/api/values/";
 var PROCESS_SEQUENCE_URL ="http://127.0.0.1:5000/api/sequence/";
 var INPUT_HIDDEN_ID ="#sequenceId";
-var INPUT_SEQUENCE_ID ="#sequenceInput";
+var INPUT_SEQUENCE_ID ="#inputSequence";
 
 $(document).ready(function(){
     processGrammar();
@@ -37,7 +37,17 @@ function processSequence() {
                 cors: true,
                 data: JSON.stringify($obj),
                 success: function(data){
-                    console.log(data);
+                    
+                    var parseInputSequence = ParseEnteredGrammar(data);
+                    var sequence = parseInputSequence.sequence;
+                    var processTable = parseInputSequence.processTable;
+                    var result = parseInputSequence.result;
+                    console.log(sequence);
+                    console.log(result);
+                    CreateString(sequence, '#inputSequenceP');
+                    $('#inputSequenceP').val(sequence);
+                    ParseProcessTable(processTable);
+                    CreateString(result, '#result');
                     //TODO:: process data
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -87,6 +97,35 @@ function processGrammar() {
     });
 }
 
+function LeftRecursionDeletion(newGrammar) {
+    newGrammar = JSON.parse(newGrammar);
+    var productions = newGrammar.productions;
+    var first = newGrammar.first;
+    var follow = newGrammar.follow;
+    var terminals = newGrammar.terminals;
+    var noTerminals = newGrammar.noTerminals;
+
+    CreateNewGrammarTable(productions, first, follow, '#leftRecursionDeletion');
+}
+
+function TableM(table) {
+    table = JSON.parse(table);
+    var mTable = table.mTable;
+
+    CreateMTableTable(mTable, '#mTable');
+}
+
+function CreateMTableTable(mTable, id) {
+    var row = '';
+    for (var i in mTable) {
+        (i == 0) ? row += '<tr class="card-header">' : row += '<tr>';
+        for (var j in mTable[i]) {
+            (j == 0) ? row += '<td class="card-header">' + mTable[i][j] + '</td>' : row += '<td>' + mTable[i][j] + '</td>';
+        }
+        row += '</tr>';
+    }
+    $(id).html(row);
+}
 
 function ParseEnteredGrammar(enteredGrammar) {
     enteredGrammar = JSON.parse(enteredGrammar);
@@ -107,29 +146,16 @@ function ParseGrammar(grammar) {
     CreateEnteredGrammarTable(startSymbol, '#startSymbol');
 }
 
-function LeftRecursionDeletion(newGrammar) {
-    newGrammar = JSON.parse(newGrammar);
-    var productions = newGrammar.productions;
-    var first = newGrammar.first;
-    var follow = newGrammar.follow;
-    var terminals = newGrammar.terminals;
-    var noTerminals = newGrammar.noTerminals;
-
-    CreateNewGrammarTable(productions, first, follow, '#leftRecursionDeletion');
-}
-
-function TableM(table) {
-    table = JSON.parse(table);
-    var mTable = table.mTable;
-
-    CreateMTableTable(mTable, '#mTable');
-}
-
 function CreateEnteredGrammarTable(list, id) {
     var row = '';
     for (var i in list) {
         row += '<p>' + list[i] + '</p>';
     }
+    $(id).html(row);
+}
+
+function CreateString(list, id) {
+    var row = '<p>' + list + '</p>';
     $(id).html(row);
 }
 
@@ -141,15 +167,14 @@ function CreateNewGrammarTable(productions, first, follow, id) {
     $(id).html(row);
 }
 
-function CreateMTableTable(mTable, id) {
-    var row = '';
-    for (var i in mTable) {
-        (i == 0) ? row += '<tr class="card-header">' : row += '<tr>';
-        for (var j in mTable[i]) {
-            (j == 0) ? row += '<td class="card-header">' + mTable[i][j] + '</td>' : row += '<td>' + mTable[i][j] + '</td>';
-        }
-        row += '</tr>';
-    }
-    $(id).html(row);
+function ParseProcessTable(processTable) {
+    var state = processTable.STATE;
+    var sequence = processTable.SEQUENCE;
+    var transition = processTable.TRANSITION;
+
+    CreateEnteredGrammarTable(state, '#state');
+    CreateEnteredGrammarTable(sequence, '#sequence');
+    CreateEnteredGrammarTable(transition, '#transition');
 }
+
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\MarioSlim\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_GrammarConverter.1016436777.00" t="ExcludeRecursive" />
-    <e p="D:\ndk\GrammarConverter" t="IncludeFlat">
+    <e p="C:\Users\fedia\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\fedia\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_GrammarConverter.-616282908.00" t="ExcludeRecursive" />
+    <e p="C:\Users\fedia\Desktop\study\ndk\GrammarConverter" t="IncludeFlat">
       <e p="GrammarConverter" t="IncludeRecursive">
         <e p="application.properties" t="Include" />
         <e p="bin" t="ExcludeRecursive" />

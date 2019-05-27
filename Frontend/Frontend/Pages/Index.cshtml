@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Home page";
 }
-<input id="sequenceId" type="hidden" value="" />
+
+<input type="hidden" id="sequenceId" value=""/>
 <div class="content mt-3">
     <div class="container ">
         <div class="row">
@@ -80,16 +81,35 @@
                 <h4>Input chain</h4>
                 <div class="container">
                     <div class="row">
-                        <input id="sequenceInput" class="form-control col-9 mr-1" id="inputChain" placeholder="Chain"/>
-                        <button id="sequenceCheckButton" type="button" class="btn btn-primary col-2">Check</button>
+                        <input type="email" class="form-control col-9 mr-1" id="inputSequence" placeholder="Sequence"/>
+                        <button type="button" class="btn btn-primary col-2" id="inputSequenceButton">Check</button>
                     </div>
                 </div>
                 <div>
                     <label for="comment">Algorithm</label>
-                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text</p>
+                    <div>
+                        <p>Input sequence:</p>
+                        <p id="inputSequenceP"></p>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                            <div class="card-header">States</div>
+                            <div class="card-body" id="state">
+                            </div>
                         </div>
+                        <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                            <div class="card-header">Sequence</div>
+                            <div class="card-body" id="sequence">
+                            </div>
+                        </div>
+                        <div class="card mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Transition</div>
+                            <div class="card-body" id="transition">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p id="result"></p>
                     </div>
                 </div>
             </div>
