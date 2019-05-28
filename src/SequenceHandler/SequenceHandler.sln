@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequenceHandler", "SequenceHandler\SequenceHandler.csproj", "{EC65FB86-D181-4816-978D-B564C3FB51EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC65FB86-D181-4816-978D-B564C3FB51EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC65FB86-D181-4816-978D-B564C3FB51EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC65FB86-D181-4816-978D-B564C3FB51EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC65FB86-D181-4816-978D-B564C3FB51EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
