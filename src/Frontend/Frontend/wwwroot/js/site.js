@@ -33,22 +33,11 @@ function processSequence() {
                 },
                 url: PROCESS_SEQUENCE_URL,
                 type: "POST",
-                async: false,
+                async: true,
                 cors: true,
                 data: JSON.stringify($obj),
                 success: function(data){
-                    
-                    var parseInputSequence = ParseEnteredGrammar(data);
-                    var sequence = parseInputSequence.sequence;
-                    var processTable = parseInputSequence.processTable;
-                    var result = parseInputSequence.result;
-                    console.log(sequence);
-                    console.log(result);
-                    CreateString(sequence, '#inputSequenceP');
-                    $('#inputSequenceP').val(sequence);
-                    ParseProcessTable(processTable);
-                    CreateString(result, '#result');
-                    //TODO:: process data
+                    SequenceVisualization(data);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert(jqXHR.status);
@@ -57,9 +46,20 @@ function processSequence() {
                 },
                 dataType: "json"
             });
-            
+
         }
-    });    
+    });
+}
+
+function SequenceVisualization(data) {
+    var parseInputSequence = ParseJson(data);
+    var sequence = parseInputSequence.sequence;
+    var processTable = parseInputSequence.processTable;
+    var result = parseInputSequence.result;
+    CreateString(sequence, '#inputSequenceP');
+    $('#inputSequenceP').val(sequence);
+    ParseProcessTable(processTable);
+    CreateString(result, '#result');
 }
 
 function processGrammar() {
@@ -76,16 +76,7 @@ function processGrammar() {
             cors: true,
             data: JSON.stringify(message),
             success: function(data){
-                var enteredGrammar = ParseEnteredGrammar(data);
-                var id = enteredGrammar.id;
-                $(INPUT_HIDDEN_ID).val(id);
-                var grammar = enteredGrammar.grammar;
-                var newGrammar = enteredGrammar.newGrammar;
-                var table = enteredGrammar.table;
-                console.log(enteredGrammar);
-                ParseGrammar(grammar);
-                LeftRecursionDeletion(newGrammar);
-                TableM(table);
+                GrammarVisualization(data);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert(jqXHR.status);
@@ -97,8 +88,38 @@ function processGrammar() {
     });
 }
 
+function GrammarVisualization(data) {
+    var enteredGrammar = ParseJson(data);
+    var id = enteredGrammar.id;
+    $(INPUT_HIDDEN_ID).val(id);
+    var grammar = enteredGrammar.grammar;
+    var newGrammar = enteredGrammar.newGrammar;
+    var table = enteredGrammar.table;
+    ParseGrammar(grammar);
+    LeftRecursionDeletion(newGrammar);
+    TableM(table);
+}
+
+function ParseJson(json) {
+    json = JSON.parse(json);
+    return json;
+}
+
+function ParseGrammar(grammar) {
+    grammar = ParseJson(grammar);
+    var productions = grammar.productions;
+    var terminals = grammar.terminals;
+    var noTerminals = grammar.noTerminals;
+    var startSymbol = grammar.startSymbol;
+
+    CreateEnteredGrammarTable(productions, '#grammar');
+    CreateEnteredGrammarTable(terminals, '#terminals');
+    CreateEnteredGrammarTable(noTerminals, '#noTerminals');
+    CreateEnteredGrammarTable(startSymbol, '#startSymbol');
+}
+
 function LeftRecursionDeletion(newGrammar) {
-    newGrammar = JSON.parse(newGrammar);
+    newGrammar = ParseJson(newGrammar);
     var productions = newGrammar.productions;
     var first = newGrammar.first;
     var follow = newGrammar.follow;
@@ -108,11 +129,40 @@ function LeftRecursionDeletion(newGrammar) {
     CreateNewGrammarTable(productions, first, follow, '#leftRecursionDeletion');
 }
 
+function ParseProcessTable(processTable) {
+    var state = processTable.STATE;
+    var sequence = processTable.SEQUENCE;
+    var transition = processTable.TRANSITION;
+
+    CreateEnteredGrammarTable(state, '#state');
+    CreateEnteredGrammarTable(sequence, '#sequence');
+    CreateEnteredGrammarTable(transition, '#transition');
+}
+
 function TableM(table) {
-    table = JSON.parse(table);
+    table = ParseJson(table);
     var mTable = table.mTable;
 
     CreateMTableTable(mTable, '#mTable');
+}
+
+function CreateEnteredGrammarTable(list, id) {
+    var row = '';
+    for (var i in list) {
+        row += '<p>' + list[i] + '</p>';
+    }
+    $(id).html(row);
+}
+
+
+function CreateNewGrammarTable(productions, first, follow, id) {
+    var row = '';
+    for (var i in productions) {
+        row += '<tr><td>' +
+
+            productions[i] + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
+    }
+    $(id).html(row);
 }
 
 function CreateMTableTable(mTable, id) {
@@ -127,54 +177,7 @@ function CreateMTableTable(mTable, id) {
     $(id).html(row);
 }
 
-function ParseEnteredGrammar(enteredGrammar) {
-    enteredGrammar = JSON.parse(enteredGrammar);
-
-    return enteredGrammar;
-}
-
-function ParseGrammar(grammar) {
-    grammar = JSON.parse(grammar);
-    var productions = grammar.productions;
-    var terminals = grammar.terminals;
-    var noTerminals = grammar.noTerminals;
-    var startSymbol = grammar.startSymbol;
-
-    CreateEnteredGrammarTable(productions, '#grammar');
-    CreateEnteredGrammarTable(terminals, '#terminals');
-    CreateEnteredGrammarTable(noTerminals, '#noTerminals');
-    CreateEnteredGrammarTable(startSymbol, '#startSymbol');
-}
-
-function CreateEnteredGrammarTable(list, id) {
-    var row = '';
-    for (var i in list) {
-        row += '<p>' + list[i] + '</p>';
-    }
-    $(id).html(row);
-}
-
 function CreateString(list, id) {
     var row = '<p>' + list + '</p>';
     $(id).html(row);
 }
-
-function CreateNewGrammarTable(productions, first, follow, id) {
-    var row = '';
-    for (var i in productions) {
-        row += '<tr><td>' + productions[i] + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
-    }
-    $(id).html(row);
-}
-
-function ParseProcessTable(processTable) {
-    var state = processTable.STATE;
-    var sequence = processTable.SEQUENCE;
-    var transition = processTable.TRANSITION;
-
-    CreateEnteredGrammarTable(state, '#state');
-    CreateEnteredGrammarTable(sequence, '#sequence');
-    CreateEnteredGrammarTable(transition, '#transition');
-}
-
-
