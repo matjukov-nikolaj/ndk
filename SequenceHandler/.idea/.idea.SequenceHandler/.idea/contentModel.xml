@@ -16,6 +16,7 @@
           </e>
         </e>
         <e p="Program.cs" t="Include" />
+        <e p="SequenceHandler.cs" t="Include" />
         <e p="SequenceHandler.csproj" t="IncludeRecursive" />
       </e>
       <e p="SequenceHandler.sln" t="IncludeFlat" />

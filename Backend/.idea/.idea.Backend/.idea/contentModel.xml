@@ -11,6 +11,7 @@
         <e p="Backend.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
+          <e p="SequenceController.cs" t="Include" />
           <e p="StatisticController.cs" t="Include" />
           <e p="ValuesController.cs" t="Include" />
         </e>
