@@ -40,9 +40,7 @@ function processSequence() {
                     SequenceVisualization(data);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert(jqXHR.status);
-                    alert(textStatus);
-                    alert(errorThrown);
+                    ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
                 },
                 dataType: "json"
             });
@@ -80,9 +78,7 @@ function processGrammar() {
                 GrammarVisualization(data);
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert(jqXHR.status);
-                alert(textStatus);
-                alert(errorThrown);
+                ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
             },
             dataType: "json"
         });
@@ -176,4 +172,11 @@ function CreateMTableTable(mTable, id) {
         row += '</tr>';
     }
     $(id).html(row);
+}
+
+function ErrorVisualization(jqXHR, textStatus, errorThrown, id) {
+    $(id).on('shown.bs.modal', function () {
+        $(id).focus();
+        CreateString(jqXHR.status + ", " + textStatus + ", " + errorThrown + '<br><p>Sorry, please try again</p>', "#errorBody");
+    });
 }
