@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6d6eef8f-7556-4f53-a816-e22e9fa97096" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Backend/.idea/.idea.Backend/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/.idea/.idea.Backend/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/.idea/.idea.Backend/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/.idea/.idea.Backend/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/.idea/.idea.Backend/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/.idea/.idea.Backend/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/.idea/.idea.Backend/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend.sln.DotSettings.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/Backend.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/Controllers/SequenceController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/Controllers/StatisticController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/Controllers/ValuesController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/Startup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Debug/netcoreapp2.2/Backend.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/Backend.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/Backend.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/Backend.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/Backend.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/Backend.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/publish/Backend.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/publish/Backend.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/publish/Backend.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/publish/Backend.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/publish/Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/publish/Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/publish/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/publish/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/bin/Release/netcoreapp2.2/publish/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Backend.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Backend.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Backend.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.RazorAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.RazorAssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.RazorTargetAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Debug/netcoreapp2.2/Backend.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.RazorAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.RazorAssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.RazorTargetAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/Release/netcoreapp2.2/Backend.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend/Backend/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/.idea/.idea.Core/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/.idea/.idea.Core/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/.idea/.idea.Core/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/.idea/.idea.Core/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/.idea/.idea.Core/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/.idea/.idea.Core/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/.idea/.idea.Core/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/.idea/.idea.Core/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/.idea/.idea.Core/riderModule.iml~HEAD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core.sln.DotSettings.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/Configuration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/Core.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/bin/Debug/netcoreapp2.2/Core.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/bin/Debug/netcoreapp2.2/Core.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/bin/Debug/netcoreapp2.2/Core.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/model/Grammar.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/model/NewGrammar.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/model/Result.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/model/Sequence.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/model/SequenceId.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/model/TableM.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Core.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Core.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Core.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Debug/netcoreapp2.2/Core.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Debug/netcoreapp2.2/Core.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Debug/netcoreapp2.2/Core.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Debug/netcoreapp2.2/Core.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Debug/netcoreapp2.2/Core.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Debug/netcoreapp2.2/Core.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Debug/netcoreapp2.2/Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Core/Core/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend.dir/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend.dir/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend.dir/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend.dir/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend.dir/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/.idea/.idea.Frontend/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Frontend.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/Error.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/Error.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/Index.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/Index.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/Privacy.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/Privacy.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/Shared/_CookieConsentPartial.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/Shared/_Layout.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/Shared/_ValidationScriptsPartial.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/_ViewImports.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Pages/_ViewStart.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/Startup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/css/site.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/js/site.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery-validation/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery-validation/dist/additional-methods.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery-validation/dist/jquery.validate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery/dist/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery/dist/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/Frontend/wwwroot/lib/jquery/dist/jquery.min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/.idea/.idea.GrammarConverter/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/.idea/.idea.GrammarConverter/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/.idea/.idea.GrammarConverter/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/.idea/.idea.GrammarConverter/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/.idea/.idea.GrammarConverter/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/.idea/.idea.GrammarConverter/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/.idea/.idea.GrammarConverter/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/.idea/.idea.GrammarConverter/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter.sln.DotSettings.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/GrammarConverter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/GrammarConverter.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/GrammarConverter.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/GrammarConverter.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/GrammarConverter.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/GrammarConverter.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/bin/Debug/netcoreapp2.2/GrammarConverter.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/Debug/netcoreapp2.2/GrammarConverter.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/Debug/netcoreapp2.2/GrammarConverter.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/Debug/netcoreapp2.2/GrammarConverter.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/Debug/netcoreapp2.2/GrammarConverter.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/Debug/netcoreapp2.2/GrammarConverter.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/Debug/netcoreapp2.2/GrammarConverter.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/Debug/netcoreapp2.2/GrammarConverter.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/Debug/netcoreapp2.2/GrammarConverter.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/Debug/netcoreapp2.2/GrammarConverter.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/GrammarConverter.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/GrammarConverter.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/GrammarConverter.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarConverter/GrammarConverter/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/.idea/.idea.GrammarProcessor/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor.sln.DotSettings.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/GrammarProcessor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/GrammarProcessor.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/GrammarProcessor.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/GrammarProcessor.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/GrammarProcessor.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/GrammarProcessor.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/bin/Debug/netcoreapp2.2/GrammarProcessor.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/Debug/netcoreapp2.2/GrammarProcessor.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/GrammarProcessor.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/GrammarProcessor.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/GrammarProcessor.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GrammarProcessor/GrammarProcessor/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/.idea/.idea.SequenceHandler/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/.idea/.idea.SequenceHandler/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/.idea/.idea.SequenceHandler/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/.idea/.idea.SequenceHandler/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/.idea/.idea.SequenceHandler/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/.idea/.idea.SequenceHandler/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/.idea/.idea.SequenceHandler/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/.idea/.idea.SequenceHandler/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler.sln.DotSettings.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/SequenceHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/SequenceHandler.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/obj/Debug/netcoreapp2.2/SequenceHandler.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/obj/Debug/netcoreapp2.2/SequenceHandler.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/obj/Debug/netcoreapp2.2/SequenceHandler.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/obj/Debug/netcoreapp2.2/SequenceHandler.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/obj/SequenceHandler.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/obj/SequenceHandler.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/obj/SequenceHandler.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SequenceHandler/SequenceHandler/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/.idea/.idea.TableMGenerator/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/.idea/.idea.TableMGenerator/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/.idea/.idea.TableMGenerator/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/.idea/.idea.TableMGenerator/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/.idea/.idea.TableMGenerator/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/.idea/.idea.TableMGenerator/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/.idea/.idea.TableMGenerator/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/.idea/.idea.TableMGenerator/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator.sln.DotSettings.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/TableMGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/TableMGenerator.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/bin/Debug/netcoreapp2.2/Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/bin/Debug/netcoreapp2.2/Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/bin/Debug/netcoreapp2.2/TableMGenerator.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/bin/Debug/netcoreapp2.2/TableMGenerator.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/bin/Debug/netcoreapp2.2/TableMGenerator.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/bin/Debug/netcoreapp2.2/TableMGenerator.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/bin/Debug/netcoreapp2.2/TableMGenerator.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/Debug/netcoreapp2.2/TableMGenerator.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/Debug/netcoreapp2.2/TableMGenerator.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/Debug/netcoreapp2.2/TableMGenerator.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/Debug/netcoreapp2.2/TableMGenerator.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/Debug/netcoreapp2.2/TableMGenerator.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/Debug/netcoreapp2.2/TableMGenerator.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/Debug/netcoreapp2.2/TableMGenerator.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/Debug/netcoreapp2.2/TableMGenerator.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/Debug/netcoreapp2.2/TableMGenerator.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/TableMGenerator.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/TableMGenerator.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/TableMGenerator.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TableMGenerator/TableMGenerator/obj/project.packagespec.json" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Frontend/Pages/Index.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1642">
+              <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+              <folding>
+                <marker date="1559059830544" expanded="true" signature="24:65" ph="@..." />
+                <marker date="1559059830544" expanded="true" signature="115:4935" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="146:4928" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="179:4917" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="247:560" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="573:1091" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="609:682" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="1105:2178" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="1196:1310" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="1327:2159" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="1377:1613" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="1519:1586" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="1634:1874" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="1778:1847" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="1895:2136" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2038:2109" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2191:2562" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2260:2543" ph="&lt;table.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2317:2518" ph="&lt;thead.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2345:2489" ph="&lt;tr.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2575:3189" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2663:3170" ph="&lt;table.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2720:2946" ph="&lt;thead.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2748:2917" ph="&lt;tr.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="2967:3145" ph="&lt;tbody.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="3022:3116" ph="&lt;tr.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="3202:4902" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="3275:3622" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="3319:3599" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="3639:4883" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="3724:3855" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="3876:4763" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="3930:4179" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="4079:4148" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="4204:4458" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="4355:4427" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="4483:4736" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="4631:4705" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="4784:4860" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="4938:5779" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="4981:5772" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="5038:5761" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="5078:5282" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="5295:5587" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="5600:5745" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="5780:6615" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="5823:6608" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="5880:6597" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="5920:6124" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="6137:6423" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="6436:6581" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="6616:7432" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="6659:7425" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="6716:7414" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="6756:6960" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="6973:7240" ph="&lt;div.../&gt;" />
+                <marker date="1559059830544" expanded="true" signature="7253:7398" ph="&lt;div.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Frontend/Startup.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+              <folding>
+                <marker date="1559061550447" expanded="false" signature="6:422" ph="..." />
+                <marker date="1559061550447" expanded="true" signature="442:2004" ph="{...}" />
+                <marker date="1559061550447" expanded="true" signature="469:2002" ph="{...}" />
+                <marker date="1559061550447" expanded="true" signature="528:591" ph="{...}" />
+                <marker date="1559061550447" expanded="true" signature="814:1267" ph="{...}" />
+                <marker date="1559061550447" expanded="true" signature="887:1164" ph="{...}" />
+                <marker date="1559061550447" expanded="true" signature="1455:1996" ph="{...}" />
+                <marker date="1559061550447" expanded="true" signature="1502:1579" ph="{...}" />
+                <marker date="1559061550447" expanded="true" signature="1596:1850" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Frontend/Pages/Shared/_Layout.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="20" column="64" lean-forward="true" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+              <folding>
+                <marker date="1559060957919" expanded="true" signature="16:3817" ph="&lt;html.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="23:1054" ph="&lt;head.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="190:324" ph="&lt;environment.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="329:478" ph="&lt;environment.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="483:976" ph="&lt;environment.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="1055:3809" ph="&lt;body.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="1066:2276" ph="&lt;header.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="1083:2262" ph="&lt;nav.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="1218:1470" ph="&lt;button.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="1483:2247" ph="&lt;div.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="1553:2228" ph="&lt;ul.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="1597:1768" ph="&lt;li.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="1789:1916" ph="&lt;li.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="1937:2063" ph="&lt;li.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="2084:2206" ph="&lt;li.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="2281:2446" ph="&lt;div.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="2362:2435" ph="&lt;main.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="2452:2642" ph="&lt;footer.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="2506:2628" ph="&lt;div.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="2648:2838" ph="&lt;environment.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="2843:3671" ph="&lt;environment.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="2887:3222" ph="&lt;script.../&gt;" />
+                <marker date="1559060957919" expanded="true" signature="3231:3652" ph="&lt;script.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Frontend/Program.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <marker date="1559061716975" expanded="false" signature="6:255" ph="..." />
+                <marker date="1559061716975" expanded="true" signature="275:652" ph="{...}" />
+                <marker date="1559061716975" expanded="true" signature="302:650" ph="{...}" />
+                <marker date="1559061716975" expanded="true" signature="355:429" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>sequenceInput</find>
+      <find>sequenceCheckButton</find>
+      <find>inputSequence</find>
+      <find>processGrammar</find>
+      <find>ParseEnteredGrammar</find>
+      <find>ParseGrammar</find>
+      <find>LeftRecursionDeletion</find>
+      <find>CreateEnteredGrammarTable</find>
+      <find>CreateNewGrammarTable</find>
+      <find>sequenceId</find>
+      <find>CreateMTableTable</find>
+      <find>site.js</find>
+      <find>site.css</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Frontend/Pages/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Frontend/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Frontend/Pages/_ViewImports.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Frontend/Pages/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Frontend/Pages/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Frontend/Program.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Frontend/wwwroot/js/site.js" />
+        <option value="$PROJECT_DIR$/Frontend/Pages/Index.cshtml" />
+        <option value="$PROJECT_DIR$/Frontend/Pages/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/Frontend/Startup.cs" />
+        <option value="$PROJECT_DIR$/Frontend/Program.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Pages" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="css" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Frontend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="js" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Frontend" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Frontend/Frontend.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="Frontend" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6d6eef8f-7556-4f53-a816-e22e9fa97096" name="Default Changelist" comment="" />
+      <created>1558993038895</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558993038895</updated>
+      <workItem from="1558993040354" duration="4035000" />
+      <workItem from="1559044492554" duration="2300000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6335000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22968581" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="REST Client" order="13" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="16" weight="0.32936078" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Errors In Solution" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Frontend/Pages/_ViewImports.cshtml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/Pages/_ViewStart.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1559044429476" expanded="true" signature="0:28" ph="@..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/css/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/site.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1920">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/Pages/Shared/_Layout.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="20" column="64" lean-forward="true" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+          <folding>
+            <marker date="1559060957919" expanded="true" signature="16:3817" ph="&lt;html.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="23:1054" ph="&lt;head.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="190:324" ph="&lt;environment.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="329:478" ph="&lt;environment.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="483:976" ph="&lt;environment.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="1055:3809" ph="&lt;body.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="1066:2276" ph="&lt;header.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="1083:2262" ph="&lt;nav.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="1218:1470" ph="&lt;button.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="1483:2247" ph="&lt;div.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="1553:2228" ph="&lt;ul.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="1597:1768" ph="&lt;li.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="1789:1916" ph="&lt;li.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="1937:2063" ph="&lt;li.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="2084:2206" ph="&lt;li.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="2281:2446" ph="&lt;div.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="2362:2435" ph="&lt;main.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="2452:2642" ph="&lt;footer.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="2506:2628" ph="&lt;div.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="2648:2838" ph="&lt;environment.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="2843:3671" ph="&lt;environment.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="2887:3222" ph="&lt;script.../&gt;" />
+            <marker date="1559060957919" expanded="true" signature="3231:3652" ph="&lt;script.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/Pages/Index.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1642">
+          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding>
+            <marker date="1559059830544" expanded="true" signature="24:65" ph="@..." />
+            <marker date="1559059830544" expanded="true" signature="115:4935" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="146:4928" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="179:4917" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="247:560" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="573:1091" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="609:682" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="1105:2178" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="1196:1310" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="1327:2159" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="1377:1613" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="1519:1586" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="1634:1874" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="1778:1847" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="1895:2136" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2038:2109" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2191:2562" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2260:2543" ph="&lt;table.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2317:2518" ph="&lt;thead.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2345:2489" ph="&lt;tr.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2575:3189" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2663:3170" ph="&lt;table.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2720:2946" ph="&lt;thead.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2748:2917" ph="&lt;tr.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="2967:3145" ph="&lt;tbody.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="3022:3116" ph="&lt;tr.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="3202:4902" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="3275:3622" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="3319:3599" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="3639:4883" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="3724:3855" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="3876:4763" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="3930:4179" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="4079:4148" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="4204:4458" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="4355:4427" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="4483:4736" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="4631:4705" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="4784:4860" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="4938:5779" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="4981:5772" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="5038:5761" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="5078:5282" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="5295:5587" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="5600:5745" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="5780:6615" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="5823:6608" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="5880:6597" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="5920:6124" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="6137:6423" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="6436:6581" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="6616:7432" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="6659:7425" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="6716:7414" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="6756:6960" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="6973:7240" ph="&lt;div.../&gt;" />
+            <marker date="1559059830544" expanded="true" signature="7253:7398" ph="&lt;div.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+          <folding>
+            <marker date="1559061550447" expanded="false" signature="6:422" ph="..." />
+            <marker date="1559061550447" expanded="true" signature="442:2004" ph="{...}" />
+            <marker date="1559061550447" expanded="true" signature="469:2002" ph="{...}" />
+            <marker date="1559061550447" expanded="true" signature="528:591" ph="{...}" />
+            <marker date="1559061550447" expanded="true" signature="814:1267" ph="{...}" />
+            <marker date="1559061550447" expanded="true" signature="887:1164" ph="{...}" />
+            <marker date="1559061550447" expanded="true" signature="1455:1996" ph="{...}" />
+            <marker date="1559061550447" expanded="true" signature="1502:1579" ph="{...}" />
+            <marker date="1559061550447" expanded="true" signature="1596:1850" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <marker date="1559061716975" expanded="false" signature="6:255" ph="..." />
+            <marker date="1559061716975" expanded="true" signature="275:652" ph="{...}" />
+            <marker date="1559061716975" expanded="true" signature="302:650" ph="{...}" />
+            <marker date="1559061716975" expanded="true" signature="355:429" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
