@@ -10,5 +10,11 @@
         <PackageReference Include="Microsoft.AspNetCore.App"/>
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All"/>
     </ItemGroup>
+	
+	<ItemGroup>
+		<Reference Include="Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+		<HintPath>..\..\Core\Core\bin\Release\netcoreapp2.2\Core.dll</HintPath>
+		</Reference>
+	</ItemGroup>	
 
 </Project>

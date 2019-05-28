@@ -59,7 +59,7 @@ xcopy src\GrammarConverter\GrammarConverter\bin\Release\netcoreapp2.2\publish "B
 xcopy src\GrammarProcessor\GrammarProcessor\bin\Release\netcoreapp2.2\publish "BUILD"\GrammarProcessor\
 xcopy src\SequenceHandler\SequenceHandler\bin\Release\netcoreapp2.2\publish  "BUILD"\SequenceHandler\
 xcopy src\TableMGenerator\TableMGenerator\bin\Release\netcoreapp2.2\publish  "BUILD"\TableMGenerator\
-xcopy src\Frontend\Frontend\wwwroot "BUILD"\Frontend\wwwroot\
+xcopy /s src\Frontend\Frontend\wwwroot "BUILD"\Frontend\wwwroot\
 
 xcopy config\application.properties "BUILD"\Frontend\
 xcopy config\application.properties "BUILD"\Backend\
