@@ -5,8 +5,12 @@ var PROCESS_GRAMMAR_URL ="http://127.0.0.1:5000/api/values/";
 var PROCESS_SEQUENCE_URL ="http://127.0.0.1:5000/api/sequence/";
 var INPUT_HIDDEN_ID ="#sequenceId";
 var INPUT_SEQUENCE_ID ="#inputSequence";
+var HIDDEN_CONTENT_ID ="#hiddenContent";
+var HIDDEN_SEQUENCE_ID ="#hiddenSequenceContent";
 
 $(document).ready(function(){
+    $(HIDDEN_CONTENT_ID).hide();
+    $(HIDDEN_SEQUENCE_ID).hide();
     processGrammar();
     processSequence();
 });
@@ -38,6 +42,7 @@ function processSequence() {
                 data: JSON.stringify($obj),
                 success: function(data){
                     SequenceVisualization(data);
+                    $(HIDDEN_SEQUENCE_ID).show();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
@@ -76,6 +81,7 @@ function processGrammar() {
             data: JSON.stringify(message),
             success: function(data){
                 GrammarVisualization(data);
+                $(HIDDEN_CONTENT_ID).show();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');

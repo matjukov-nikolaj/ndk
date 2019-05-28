@@ -23,90 +23,94 @@
                 <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example3">Example 3</button>
             </div>
 
-            <div class="col-6">
-                <h4>Parsing the resulting grammar</h4>
-                <div>
-                    <p>Start symbol:</p>
-                    <p id="startSymbol"></p>
-                </div>
-                <div class="d-flex flex-row">
-                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                        <div class="card-header">Grammar</div>
-                        <div class="card-body" id="grammar">
+            <div id="hiddenContent" class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <h4>Parsing the resulting grammar</h4>
+                        <div>
+                            <p>Start symbol:</p>
+                            <p id="startSymbol"></p>
                         </div>
-                    </div>
-                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                        <div class="card-header">Terminals</div>
-                        <div class="card-body" id="terminals">
-                        </div>
-                    </div>
-                    <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Not terminals</div>
-                        <div class="card-body" id="noTerminals">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <h4>Table M</h4>
-                <table class="table table-bordered">
-                    <thead>
-                    <tr id="mTable">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="col-6">
-                <h4>Deletion of left recursion</h4>
-                <table class="table table-bordered">
-                    <thead>
-                    <tr class="card-header">
-                        <td>Gramma</td>
-                        <td>First</td>
-                        <td>Follow</td>
-                    </tr>
-                    </thead>
-                    <tbody id="leftRecursionDeletion">
-                    <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-6">
-                <h4>Input sequence</h4>
-                <div class="container">
-                    <div class="row">
-                        <input type="email" class="form-control col-9 mr-1" id="inputSequence" placeholder="Sequence"/>
-                        <button type="button" class="btn btn-dark col-2" id="inputSequenceButton">Check</button>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <p>Input sequence: <span id="inputSequenceId"></span></p>
-                    </div>
-                    <div class="d-flex flex-row">
-                        <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                            <div class="card-header">States</div>
-                            <div class="card-body" id="state">
+                        <div class="d-flex flex-row">
+                            <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                                <div class="card-header">Grammar</div>
+                                <div class="card-body" id="grammar">
+                                </div>
                             </div>
-                        </div>
-                        <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                            <div class="card-header">Sequence</div>
-                            <div class="card-body" id="sequence">
+                            <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                                <div class="card-header">Terminals</div>
+                                <div class="card-body" id="terminals">
+                                </div>
                             </div>
-                        </div>
-                        <div class="card mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Transition</div>
-                            <div class="card-body" id="transition">
+                            <div class="card mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Not terminals</div>
+                                <div class="card-body" id="noTerminals">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <p id="algorithmId"></p>
+                    <div class="col-6">
+                        <h4>Table M</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr id="mTable">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-6">
+                        <h4>Deletion of left recursion</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="card-header">
+                                <td>Gramma</td>
+                                <td>First</td>
+                                <td>Follow</td>
+                            </tr>
+                            </thead>
+                            <tbody id="leftRecursionDeletion">
+                            <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-6">
+                        <h4>Input sequence</h4>
+                        <div class="container">
+                            <div class="row">
+                                <input type="email" class="form-control col-9 mr-1" id="inputSequence" placeholder="Sequence"/>
+                                <button type="button" class="btn btn-dark col-2" id="inputSequenceButton">Check</button>
+                            </div>
+                        </div>
+                        <div id="hiddenSequenceContent">
+                            <div>
+                                <p>Input sequence: <span id="inputSequenceId"></span></p>
+                            </div>
+                            <div class="d-flex flex-row">
+                                <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                                    <div class="card-header">States</div>
+                                    <div class="card-body" id="state">
+                                    </div>
+                                </div>
+                                <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                                    <div class="card-header">Sequence</div>
+                                    <div class="card-body" id="sequence">
+                                    </div>
+                                </div>
+                                <div class="card mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Transition</div>
+                                    <div class="card-body" id="transition">
+                                    </div>
+                                </div>
+                            </div>
+                            <p id="algorithmId"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,7 +135,7 @@
                 B->&<br/>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
