@@ -56,10 +56,11 @@ function SequenceVisualization(data) {
     var sequence = parseInputSequence.sequence;
     var processTable = parseInputSequence.processTable;
     var result = parseInputSequence.result;
-    CreateString(sequence, '#inputSequenceP');
-    $('#inputSequenceP').val(sequence);
+    $('#inputSequenceId').text(sequence);
     ParseProcessTable(processTable);
-    CreateString(result, '#result');
+    var resultText = "sequence " + (result ? "accepted" : "declined");
+    var resultClass = (result ? "text-accepted" : "text-declined");
+    $('#algorithmId').text(resultText).removeClass().addClass(resultClass);
 }
 
 function processGrammar() {
@@ -174,10 +175,5 @@ function CreateMTableTable(mTable, id) {
         }
         row += '</tr>';
     }
-    $(id).html(row);
-}
-
-function CreateString(list, id) {
-    var row = '<p>' + list + '</p>';
     $(id).html(row);
 }
