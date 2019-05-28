@@ -79,6 +79,8 @@ function processGrammar() {
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
+                CreateString(jqXHR.status + ", " + textStatus + ", " + errorThrown + '<br><p>Sorry, please try again</p>', "#errorBody");
+                $('#error').modal('show');
             },
             dataType: "json"
         });
@@ -175,8 +177,11 @@ function CreateMTableTable(mTable, id) {
 }
 
 function ErrorVisualization(jqXHR, textStatus, errorThrown, id) {
-    $(id).on('shown.bs.modal', function () {
-        $(id).focus();
-        CreateString(jqXHR.status + ", " + textStatus + ", " + errorThrown + '<br><p>Sorry, please try again</p>', "#errorBody");
-    });
+    CreateString(jqXHR.status + ", " + textStatus + ", " + errorThrown + '<br><p>Sorry, please try again</p>', "#errorBody");
+    $(id).modal('show');
+}
+
+function CreateString(list, id) {
+    var row = '<p>' + list + '</p>';
+    $(id).html(row);
 }

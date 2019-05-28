@@ -12,7 +12,7 @@
             <div class="form-group col-6">
                 <label for="enteredGrammar">Enter gramma:</label>
                 <textarea class="form-control" rows="5" id="enteredGrammar"></textarea>
-                <button id="grammarEnteredButton" type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#error">Process</button>
+                <button id="grammarEnteredButton" type="button" class="btn btn-dark mt-2">Process</button>
             </div>
             <div class="col-6">
                 <div>
@@ -48,6 +48,18 @@
                 </div>
             </div>
             <div class="col-6">
+                <h4>Table M</h4>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr id="mTable">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-6">
                 <h4>Deletion of left recursion</h4>
                 <table class="table table-bordered">
                     <thead>
@@ -66,23 +78,11 @@
                 </table>
             </div>
             <div class="col-6">
-                <h4>Table M</h4>
-                <table class="table table-bordered">
-                    <thead>
-                    <tr id="mTable">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="col-6">
                 <h4>Input sequence</h4>
                 <div class="container">
                     <div class="row">
                         <input type="email" class="form-control col-9 mr-1" id="inputSequence" placeholder="Sequence"/>
-                        <button type="button" class="btn btn-dark col-2" id="inputSequenceButton" data-toggle="modal" data-target="#error">Check</button>
+                        <button type="button" class="btn btn-dark col-2" id="inputSequenceButton">Check</button>
                     </div>
                 </div>
                 <div>
@@ -183,7 +183,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="error">
+<div class="modal" id="error">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
