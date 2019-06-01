@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\study\ndk\src\Frontend" t="IncludeFlat">
+    <e p="C:\Users\fedia\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\fedia\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Frontend.-117854836.00" t="ExcludeRecursive" />
+    <e p="C:\Users\fedia\Desktop\Study\ndk\src\Frontend" t="IncludeFlat">
       <e p="Frontend" t="IncludeRecursive">
         <e p="application.properties" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
@@ -101,7 +103,5 @@
       <e p="Frontend.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
     </e>
-    <e p="C:\Users\Darya\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Darya\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Frontend.868703007.00" t="ExcludeRecursive" />
   </component>
 </project>

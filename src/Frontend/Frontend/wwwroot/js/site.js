@@ -193,12 +193,23 @@ function ParseStatistic(statistic) {
 }
 
 function ParseStatisticItems(items) {
+
+    var row = '';
     for (var item in items) {
         var key = items[item].Key;
         var value = items[item].Value;
-
-        CreateEnteredGrammarTable(key, "#grammarAccepted");
+        row += CreateStatisticTable(key, row, item);
+        $('#acceptedItems').html(row);
+        console.log("#grammarAccepted" + item);
         // CreateStatisticItemTable(value, "sequence");
+
+    }
+    for (var item in items) {
+        var key = items[item].Key;
+        var value = items[item].Value;
+        CreateStatisticGrammarTable(key, "#grammarAccepted" + item);
+        // CreateStatisticItemTable(value, "sequence");
+
     }
 }
 
@@ -211,7 +222,6 @@ function TableM(table) {
 }
 
 function CreateEnteredGrammarTable(list, id) {
-    console.log(list[0]);
     var row = '';
     for (var i in list) {
         row += '<p>' + list[i] + '</p>';
@@ -219,6 +229,31 @@ function CreateEnteredGrammarTable(list, id) {
     $(id).html(row);
 }
 
+
+function CreateStatisticGrammarTable(list, id) {
+    var row = '';
+    for (var i in list) {
+        row += '<p>' + list[i] + '</p>';
+    }
+    console.log(row);
+    $(id).html(row);
+}
+
+function CreateStatisticTable(items, row, number) {
+    row = ' <div class="card-container d-flex flex-row mt-3">\n' +
+        '                    <div class="card card-grammar">\n' +
+        '                        <div class="card-header">Grammar</div>\n' +
+            '                        <div class="card-body" id="grammarAccepted' + number + '">\n' +
+        '                        </div>\n' +
+        '                    </div>\n' +
+        '                    <div class="card card-sequence">\n' +
+        '                        <div class="card-header">Sequences</div>\n' +
+        '                        <div class="card-body" id="sequenceAccepted' + number + '">\n' +
+        '                        </div>\n' +
+        '                    </div>\n' +
+        '                </div>\n';
+    return row;
+}
 
 function CreateStatisticItemTable(items, id) {
     var row = '';
