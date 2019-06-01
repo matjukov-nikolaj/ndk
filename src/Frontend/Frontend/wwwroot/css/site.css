@@ -76,3 +76,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.text-declined
+{
+  color: #ff0000;
+}
+
+.text-accepted
+{
+  color: #008000;
+}

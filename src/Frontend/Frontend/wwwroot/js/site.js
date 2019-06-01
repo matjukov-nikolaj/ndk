@@ -5,8 +5,12 @@ var PROCESS_GRAMMAR_URL ="http://127.0.0.1:5000/api/values/";
 var PROCESS_SEQUENCE_URL ="http://127.0.0.1:5000/api/sequence/";
 var INPUT_HIDDEN_ID ="#sequenceId";
 var INPUT_SEQUENCE_ID ="#inputSequence";
+var HIDDEN_CONTENT_ID ="#hiddenContent";
+var HIDDEN_SEQUENCE_ID ="#hiddenSequenceContent";
 
 $(document).ready(function(){
+    $(HIDDEN_CONTENT_ID).hide();
+    $(HIDDEN_SEQUENCE_ID).hide();
     processGrammar();
     processSequence();
 });
@@ -33,33 +37,33 @@ function processSequence() {
                 },
                 url: PROCESS_SEQUENCE_URL,
                 type: "POST",
-                async: false,
+                async: true,
                 cors: true,
                 data: JSON.stringify($obj),
                 success: function(data){
-                    
-                    var parseInputSequence = ParseEnteredGrammar(data);
-                    var sequence = parseInputSequence.sequence;
-                    var processTable = parseInputSequence.processTable;
-                    var result = parseInputSequence.result;
-                    console.log(sequence);
-                    console.log(result);
-                    CreateString(sequence, '#inputSequenceP');
-                    $('#inputSequenceP').val(sequence);
-                    ParseProcessTable(processTable);
-                    CreateString(result, '#result');
-                    //TODO:: process data
+                    SequenceVisualization(data);
+                    $(HIDDEN_SEQUENCE_ID).show();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert(jqXHR.status);
-                    alert(textStatus);
-                    alert(errorThrown);
+                    ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
                 },
                 dataType: "json"
             });
-            
+
         }
-    });    
+    });
+}
+
+function SequenceVisualization(data) {
+    var parseInputSequence = ParseJson(data);
+    var sequence = parseInputSequence.sequence;
+    var processTable = parseInputSequence.processTable;
+    var result = parseInputSequence.result;
+    $('#inputSequenceId').text(sequence);
+    ParseProcessTable(processTable);
+    var resultText = "sequence " + (result ? "accepted" : "declined");
+    var resultClass = (result ? "text-accepted" : "text-declined");
+    $('#algorithmId').text(resultText).removeClass().addClass(resultClass);
 }
 
 function processGrammar() {
@@ -76,29 +80,51 @@ function processGrammar() {
             cors: true,
             data: JSON.stringify(message),
             success: function(data){
-                var enteredGrammar = ParseEnteredGrammar(data);
-                var id = enteredGrammar.id;
-                $(INPUT_HIDDEN_ID).val(id);
-                var grammar = enteredGrammar.grammar;
-                var newGrammar = enteredGrammar.newGrammar;
-                var table = enteredGrammar.table;
-                console.log(enteredGrammar);
-                ParseGrammar(grammar);
-                LeftRecursionDeletion(newGrammar);
-                TableM(table);
+                GrammarVisualization(data);
+                $(HIDDEN_CONTENT_ID).show();
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert(jqXHR.status);
-                alert(textStatus);
-                alert(errorThrown);
+                ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
+                CreateString(jqXHR.status + ", " + textStatus + ", " + errorThrown + '<br><p>Sorry, please try again</p>', "#errorBody");
+                $('#error').modal('show');
             },
             dataType: "json"
         });
     });
 }
 
+function GrammarVisualization(data) {
+    var enteredGrammar = ParseJson(data);
+    var id = enteredGrammar.id;
+    $(INPUT_HIDDEN_ID).val(id);
+    var grammar = enteredGrammar.grammar;
+    var newGrammar = enteredGrammar.newGrammar;
+    var table = enteredGrammar.table;
+    ParseGrammar(grammar);
+    LeftRecursionDeletion(newGrammar);
+    TableM(table);
+}
+
+function ParseJson(json) {
+    json = JSON.parse(json);
+    return json;
+}
+
+function ParseGrammar(grammar) {
+    grammar = ParseJson(grammar);
+    var productions = grammar.productions;
+    var terminals = grammar.terminals;
+    var noTerminals = grammar.noTerminals;
+    var startSymbol = grammar.startSymbol;
+
+    CreateEnteredGrammarTable(productions, '#grammar');
+    CreateEnteredGrammarTable(terminals, '#terminals');
+    CreateEnteredGrammarTable(noTerminals, '#noTerminals');
+    CreateEnteredGrammarTable(startSymbol, '#startSymbol');
+}
+
 function LeftRecursionDeletion(newGrammar) {
-    newGrammar = JSON.parse(newGrammar);
+    newGrammar = ParseJson(newGrammar);
     var productions = newGrammar.productions;
     var first = newGrammar.first;
     var follow = newGrammar.follow;
@@ -108,11 +134,40 @@ function LeftRecursionDeletion(newGrammar) {
     CreateNewGrammarTable(productions, first, follow, '#leftRecursionDeletion');
 }
 
+function ParseProcessTable(processTable) {
+    var state = processTable.STATE;
+    var sequence = processTable.SEQUENCE;
+    var transition = processTable.TRANSITION;
+
+    CreateEnteredGrammarTable(state, '#state');
+    CreateEnteredGrammarTable(sequence, '#sequence');
+    CreateEnteredGrammarTable(transition, '#transition');
+}
+
 function TableM(table) {
-    table = JSON.parse(table);
+    table = ParseJson(table);
     var mTable = table.mTable;
 
     CreateMTableTable(mTable, '#mTable');
+}
+
+function CreateEnteredGrammarTable(list, id) {
+    var row = '';
+    for (var i in list) {
+        row += '<p>' + list[i] + '</p>';
+    }
+    $(id).html(row);
+}
+
+
+function CreateNewGrammarTable(productions, first, follow, id) {
+    var row = '';
+    for (var i in productions) {
+        row += '<tr><td>' +
+
+            productions[i] + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
+    }
+    $(id).html(row);
 }
 
 function CreateMTableTable(mTable, id) {
@@ -127,54 +182,12 @@ function CreateMTableTable(mTable, id) {
     $(id).html(row);
 }
 
-function ParseEnteredGrammar(enteredGrammar) {
-    enteredGrammar = JSON.parse(enteredGrammar);
-
-    return enteredGrammar;
-}
-
-function ParseGrammar(grammar) {
-    grammar = JSON.parse(grammar);
-    var productions = grammar.productions;
-    var terminals = grammar.terminals;
-    var noTerminals = grammar.noTerminals;
-    var startSymbol = grammar.startSymbol;
-
-    CreateEnteredGrammarTable(productions, '#grammar');
-    CreateEnteredGrammarTable(terminals, '#terminals');
-    CreateEnteredGrammarTable(noTerminals, '#noTerminals');
-    CreateEnteredGrammarTable(startSymbol, '#startSymbol');
-}
-
-function CreateEnteredGrammarTable(list, id) {
-    var row = '';
-    for (var i in list) {
-        row += '<p>' + list[i] + '</p>';
-    }
-    $(id).html(row);
+function ErrorVisualization(jqXHR, textStatus, errorThrown, id) {
+    CreateString(jqXHR.status + ", " + textStatus + ", " + errorThrown + '<br><p>Sorry, please try again</p>', "#errorBody");
+    $(id).modal('show');
 }
 
 function CreateString(list, id) {
     var row = '<p>' + list + '</p>';
     $(id).html(row);
 }
-
-function CreateNewGrammarTable(productions, first, follow, id) {
-    var row = '';
-    for (var i in productions) {
-        row += '<tr><td>' + productions[i] + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
-    }
-    $(id).html(row);
-}
-
-function ParseProcessTable(processTable) {
-    var state = processTable.STATE;
-    var sequence = processTable.SEQUENCE;
-    var transition = processTable.TRANSITION;
-
-    CreateEnteredGrammarTable(state, '#state');
-    CreateEnteredGrammarTable(sequence, '#sequence');
-    CreateEnteredGrammarTable(transition, '#transition');
-}
-
-
