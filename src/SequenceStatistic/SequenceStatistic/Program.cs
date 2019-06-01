@@ -37,7 +37,7 @@ namespace SequenceStatistic
                             redisConnection.GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_DB"]));
 
                         int statisticDbNumber = Convert.ToInt32(properties["STATISTIC_DB"]);
-                        IDatabase statisticDb = redisConnection.GetDatabase(dbNumber);
+                        IDatabase statisticDb = redisConnection.GetDatabase(statisticDbNumber);
                         if (sequence.result)
                         {
                             SetStatistic(statisticDb, sequence, sequence.grammarId, ACCEPTED);
@@ -72,8 +72,17 @@ namespace SequenceStatistic
                 JsonSerializerSettings settings = new JsonSerializerSettings();
                 settings.ContractResolver = new DictionaryAsArrayResolver();
                 Statistic statistic = JsonConvert.DeserializeObject<Statistic>(statElement, settings);
-                
-                statistic.statistic[grammar].Add(sequence.sequence);
+                if (statistic.statistic.ContainsKey(grammar))
+                {
+                    statistic.statistic[grammar].Add(sequence.sequence);
+                }
+                else
+                {
+                    List<String> sequences = new List<string>();
+                    sequences.Add(sequence.sequence);
+                    statistic.statistic.Add(grammar, sequences);
+                }
+
                 SetInDatabase(key, statistic, statisticDb);
             }
         }
@@ -86,12 +95,16 @@ namespace SequenceStatistic
             if (key == ACCEPTED)
             {
                 statisticDb.StringSet(ACCEPTED, json);
+                Console.WriteLine("SAVE: ");
                 Console.WriteLine(ACCEPTED + " " + json);
+                Console.WriteLine("");
             }
             else
             {
                 statisticDb.StringSet(DECLINE, json);
+                Console.WriteLine("SAVE: ");
                 Console.WriteLine(DECLINE + " " + json);
+                Console.WriteLine("");
             }
         }
     }

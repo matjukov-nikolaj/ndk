@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\MarioSlim\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_SequenceStatistic.-723527228.00" t="ExcludeRecursive" />
-    <e p="D:\dpndk\ndk\src\SequenceStatistic" t="IncludeFlat">
+    <e p="C:\study\ndk\src\SequenceStatistic" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="SequenceStatistic" t="IncludeRecursive">
         <e p="application.properties" t="Include" />
@@ -21,5 +19,7 @@
       </e>
       <e p="SequenceStatistic.sln" t="IncludeFlat" />
     </e>
+    <e p="C:\Users\Darya\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Darya\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_SequenceStatistic.-1546611899.00" t="ExcludeRecursive" />
   </component>
 </project>

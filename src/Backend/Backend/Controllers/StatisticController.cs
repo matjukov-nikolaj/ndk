@@ -27,6 +27,10 @@ namespace Backend.Controllers
                 accepted = statDb.StringGet("accepted");
                 declined = statDb.StringGet("declined");
                 StatisticResult statRes = new StatisticResult();
+                
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.ContractResolver = new DictionaryAsArrayResolver();
+                
                 if (accepted == null)
                 {
                     Dictionary<List<String>, List<String>> empty = new Dictionary<List<string>, List<string>>();
@@ -41,7 +45,7 @@ namespace Backend.Controllers
 
                 if (!String.IsNullOrEmpty(accepted))
                 {
-                    Statistic stat = JsonConvert.DeserializeObject<Statistic>(accepted);
+                    Statistic stat = JsonConvert.DeserializeObject<Statistic>(accepted, settings);
                     List<string> keyList = new List<string>(stat.statistic.Keys);
                     IDatabase newGrammarDb = redis.GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_DB"]));
                     Dictionary<List<String>, List<String>> result = new Dictionary<List<string>, List<string>>();
@@ -57,7 +61,7 @@ namespace Backend.Controllers
 
                 if (!String.IsNullOrEmpty(accepted))
                 {
-                    Statistic stat = JsonConvert.DeserializeObject<Statistic>(declined);
+                    Statistic stat = JsonConvert.DeserializeObject<Statistic>(declined, settings);
                     List<string> keyList = new List<string>(stat.statistic.Keys);
                     IDatabase newGrammarDb = redis.GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_DB"]));
                     Dictionary<List<String>, List<String>> result = new Dictionary<List<string>, List<string>>();
@@ -71,8 +75,6 @@ namespace Backend.Controllers
                     statRes.result.Add("declined", result);
                 }
 
-                JsonSerializerSettings settings = new JsonSerializerSettings();
-                settings.ContractResolver = new DictionaryAsArrayResolver();
                 string json = JsonConvert.SerializeObject(statRes, settings);
                 
                 return Ok(json);

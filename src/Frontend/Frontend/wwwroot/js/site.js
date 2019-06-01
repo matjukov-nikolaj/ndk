@@ -1,33 +1,70 @@
 ﻿var ID_BUTTON = "#grammarEnteredButton";
+var ID_STATISTIC_BUTTON = "#statistic";
 var ID_SEQUENCE_CHECK_BUTTON = "#inputSequenceButton";
 var ID_TEXTAREA = 'textarea#enteredGrammar';
-var PROCESS_GRAMMAR_URL ="http://127.0.0.1:5000/api/values/";
-var PROCESS_SEQUENCE_URL ="http://127.0.0.1:5000/api/sequence/";
-var INPUT_HIDDEN_ID ="#sequenceId";
-var INPUT_SEQUENCE_ID ="#inputSequence";
-var HIDDEN_CONTENT_ID ="#hiddenContent";
-var HIDDEN_SEQUENCE_ID ="#hiddenSequenceContent";
+var PROCESS_GRAMMAR_URL = "http://127.0.0.1:5000/api/values/";
+var PROCESS_SEQUENCE_URL = "http://127.0.0.1:5000/api/sequence/";
+var STATISTIC_URL = "http://127.0.0.1:5000/api/statistic/statistic";
+var INPUT_HIDDEN_ID = "#sequenceId";
+var INPUT_SEQUENCE_ID = "#inputSequence";
+var HIDDEN_CONTENT_ID = "#hiddenContent";
+var HIDDEN_SEQUENCE_ID = "#hiddenSequenceContent";
+var SYNTACTICAL_ANALYZER_CONTENT_ID = "#syntacticalAnalyzer";
+var STATISTIC_CONTENT_ID = "#statisticContent";
 
-$(document).ready(function(){
+$(document).ready(function () {
     $(HIDDEN_CONTENT_ID).hide();
     $(HIDDEN_SEQUENCE_ID).hide();
+    $(SYNTACTICAL_ANALYZER_CONTENT_ID).hide();
+    // $(STATISTIC_CONTENT_ID).hide(); 
     processGrammar();
     processSequence();
+    processStatistic();
 });
 
+
+function processStatistic() {
+    $(ID_STATISTIC_BUTTON).on("click", function (event) {
+        event.preventDefault();
+        // $(SYNTACTICAL_ANALYZER_CONTENT_ID).hide();
+        // $(STATISTIC_CONTENT_ID).show();
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: STATISTIC_URL,
+            type: "GET",
+            async: true,
+            cors: true,
+            success: function (data) {
+                StatisticVisualization(data);
+                $(HIDDEN_SEQUENCE_ID).show();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
+            },
+            dataType: "json"
+        });
+    });
+}
+
+function StatisticVisualization(data) {
+    var statistic = ParseJson(data);
+    var result = statistic.result;
+    ParseStatistic(result);
+}
+
 function processSequence() {
-    $(ID_SEQUENCE_CHECK_BUTTON).on("click", function() {
+    $(ID_SEQUENCE_CHECK_BUTTON).on("click", function () {
         $id = $(INPUT_HIDDEN_ID).val();
-        if ($id == null)
-        {
+        if ($id == null) {
             console.log('check sequence id is here');
-        }
-        else
-        {
+        } else {
             $sequence = $(INPUT_SEQUENCE_ID).val();
             $obj = {
-                "id" : $id,
-                "sequence" : $sequence
+                "id": $id,
+                "sequence": $sequence
             };
 
             $.ajax({
@@ -40,11 +77,11 @@ function processSequence() {
                 async: true,
                 cors: true,
                 data: JSON.stringify($obj),
-                success: function(data){
+                success: function (data) {
                     SequenceVisualization(data);
                     $(HIDDEN_SEQUENCE_ID).show();
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown) {
                     ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
                 },
                 dataType: "json"
@@ -53,6 +90,7 @@ function processSequence() {
         }
     });
 }
+
 
 function SequenceVisualization(data) {
     var parseInputSequence = ParseJson(data);
@@ -67,7 +105,7 @@ function SequenceVisualization(data) {
 }
 
 function processGrammar() {
-    $(ID_BUTTON).on("click", function(){
+    $(ID_BUTTON).on("click", function () {
         var message = $(ID_TEXTAREA).val();
         $.ajax({
             headers: {
@@ -79,11 +117,11 @@ function processGrammar() {
             async: false,
             cors: true,
             data: JSON.stringify(message),
-            success: function(data){
+            success: function (data) {
                 GrammarVisualization(data);
                 $(HIDDEN_CONTENT_ID).show();
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
                 CreateString(jqXHR.status + ", " + textStatus + ", " + errorThrown + '<br><p>Sorry, please try again</p>', "#errorBody");
                 $('#error').modal('show');
@@ -144,6 +182,27 @@ function ParseProcessTable(processTable) {
     CreateEnteredGrammarTable(transition, '#transition');
 }
 
+
+function ParseStatistic(statistic) {
+    var accepted = statistic[0];
+    var declined = statistic[1];
+
+    var value = accepted.Value;
+    console.log(value);
+    ParseStatisticItems(value);
+}
+
+function ParseStatisticItems(items) {
+    for (var item in items) {
+        var key = items[item].Key;
+        var value = items[item].Value;
+
+        CreateEnteredGrammarTable(key, "grammarAccepted");
+        // CreateStatisticItemTable(value, "sequence");
+    }
+}
+
+
 function TableM(table) {
     table = ParseJson(table);
     var mTable = table.mTable;
@@ -152,6 +211,7 @@ function TableM(table) {
 }
 
 function CreateEnteredGrammarTable(list, id) {
+    console.log(list[0]);
     var row = '';
     for (var i in list) {
         row += '<p>' + list[i] + '</p>';
@@ -159,6 +219,14 @@ function CreateEnteredGrammarTable(list, id) {
     $(id).html(row);
 }
 
+
+function CreateStatisticItemTable(items, id) {
+    var row = '';
+    for (var i in items) {
+        row += '<tr><td>' + items[i] + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
+    }
+    $(id).html(row);
+}
 
 function CreateNewGrammarTable(productions, first, follow, id) {
     var row = '';

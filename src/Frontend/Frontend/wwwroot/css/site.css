@@ -86,3 +86,31 @@ body {
 {
   color: #008000;
 }
+
+.card-body
+{
+  overflow: auto;
+  max-height: 300px;
+}
+.card
+{
+  width: 100%;
+}
+
+.card-container
+{
+  width: 100%;
+}
+
+.card-grammar
+{
+  width: 30%;
+  margin-right: -2px;
+  border-radius: 0;
+}
+
+.card-sequence
+{
+  width: 70%;
+  border-radius: 0;
+}
