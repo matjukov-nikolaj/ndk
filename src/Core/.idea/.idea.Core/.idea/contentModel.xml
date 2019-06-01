@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\MarioSlim\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Core.-1775431063.00" t="ExcludeRecursive" />
-    <e p="D:\ndk\Core" t="IncludeFlat">
+    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Core.191984510.00" t="ExcludeRecursive" />
+    <e p="D:\dpndk\ndk\src\Core" t="IncludeFlat">
       <e p="Core" t="IncludeRecursive">
         <e p="application.properties" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
@@ -15,10 +15,12 @@
           <e p="Result.cs" t="Include" />
           <e p="Sequence.cs" t="Include" />
           <e p="SequenceId.cs" t="Include" />
+          <e p="Statistic.cs" t="Include" />
+          <e p="StatisticResult.cs" t="Include" />
           <e p="TableM.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="netcoreapp2.2" t="Include">
               <e p="Core.AssemblyInfo.cs" t="Include" />
             </e>

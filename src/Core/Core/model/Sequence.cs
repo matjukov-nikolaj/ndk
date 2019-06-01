@@ -5,6 +5,8 @@ namespace Core.model
 {
     public class Sequence
     {
+        public String grammarId;
+        
         public String sequence;
 
         public Dictionary<String, List<String>> processTable;
@@ -19,6 +21,7 @@ namespace Core.model
             processTable.Add("TRANSITION", new List<string>());
             sequence = "";
             result = false;
+            grammarId = "";
         }
 
     }

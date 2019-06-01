@@ -3,7 +3,9 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 using Core;
+using Core.model;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 
 namespace Backend.Controllers
@@ -13,25 +15,73 @@ namespace Backend.Controllers
     {
         private static Dictionary<string, string> properties = Configuration.GetParameters();
 
-        [HttpGet("{text_statistic}")]
+        [HttpGet("{statistic}")]
         public IActionResult Get()
         {
-            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]);
-            IDatabase queueDb = redis.GetDatabase(Convert.ToInt32(properties["QUEUE_DB"]));
-            for (short i = 0; i < 5; ++i)
+            try
             {
-                string statistic = queueDb.StringGet("text_statistic");
-                if (String.IsNullOrEmpty(statistic))
+                ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]);
+                IDatabase statDb = redis.GetDatabase(Convert.ToInt32(properties["STATISTIC_DB"]));
+                String accepted = "";
+                String declined = "";
+                accepted = statDb.StringGet("accepted");
+                declined = statDb.StringGet("declined");
+                StatisticResult statRes = new StatisticResult();
+                if (accepted == null)
                 {
-                    Thread.Sleep(200);
+                    Dictionary<List<String>, List<String>> empty = new Dictionary<List<string>, List<string>>();
+                    statRes.result.Add("accepted", empty);
                 }
-                else
-                {
-                    return Ok(statistic);
-                }
-            }
 
-            return new NotFoundResult();
+                if (declined == null)
+                {
+                    Dictionary<List<String>, List<String>> empty = new Dictionary<List<string>, List<string>>();
+                    statRes.result.Add("declined", empty);
+                }
+
+                if (!String.IsNullOrEmpty(accepted))
+                {
+                    Statistic stat = JsonConvert.DeserializeObject<Statistic>(accepted);
+                    List<string> keyList = new List<string>(stat.statistic.Keys);
+                    IDatabase newGrammarDb = redis.GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_DB"]));
+                    Dictionary<List<String>, List<String>> result = new Dictionary<List<string>, List<string>>();
+                    foreach (var grammarId in keyList)
+                    {
+                        string value = newGrammarDb.StringGet(grammarId);
+                        NewGrammar newGrammar = JsonConvert.DeserializeObject<NewGrammar>(value);
+                        List<String> production = newGrammar.productions;
+                        result.Add(production, stat.statistic[grammarId]);
+                    }
+                    statRes.result.Add("accepted", result);
+                }
+
+                if (!String.IsNullOrEmpty(accepted))
+                {
+                    Statistic stat = JsonConvert.DeserializeObject<Statistic>(declined);
+                    List<string> keyList = new List<string>(stat.statistic.Keys);
+                    IDatabase newGrammarDb = redis.GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_DB"]));
+                    Dictionary<List<String>, List<String>> result = new Dictionary<List<string>, List<string>>();
+                    foreach (var grammarId in keyList)
+                    {
+                        string value = newGrammarDb.StringGet(grammarId);
+                        NewGrammar newGrammar = JsonConvert.DeserializeObject<NewGrammar>(value);
+                        List<String> production = newGrammar.productions;
+                        result.Add(production, stat.statistic[grammarId]);
+                    }
+                    statRes.result.Add("declined", result);
+                }
+
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.ContractResolver = new DictionaryAsArrayResolver();
+                string json = JsonConvert.SerializeObject(statRes, settings);
+                
+                return Ok(json);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return new NotFoundResult();
+            }
         }
 
         // POST api/statistic

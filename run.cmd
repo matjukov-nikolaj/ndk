@@ -11,3 +11,5 @@ start "GrammarProcessor" /d GrammarProcessor\ dotnet GrammarProcessor.dll
 start "SequenceHandler" /d SequenceHandler\ dotnet SequenceHandler.dll
 
 start "TableMGenerator" /d TableMGenerator\ dotnet TableMGenerator.dll
+
+start "SequenceStatistic" /d SequenceStatistic\ dotnet SequenceStatistic.dll
