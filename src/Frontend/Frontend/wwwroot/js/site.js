@@ -197,7 +197,7 @@ function ParseStatisticItems(items) {
         var key = items[item].Key;
         var value = items[item].Value;
 
-        CreateEnteredGrammarTable(key, "grammarAccepted");
+        CreateEnteredGrammarTable(key, "#grammarAccepted");
         // CreateStatisticItemTable(value, "sequence");
     }
 }
