@@ -1,5 +1,6 @@
 ﻿var ID_BUTTON = "#grammarEnteredButton";
-var ID_STATISTIC_BUTTON = "#statistic";
+var ID_STATISTIC_BUTTON = "#statisticMenu";
+var ID_SYNTACTICAL_ANALYZER_BUTTON = "#syntacticalAnalyzerMenu";
 var ID_SEQUENCE_CHECK_BUTTON = "#inputSequenceButton";
 var ID_TEXTAREA = 'textarea#enteredGrammar';
 var PROCESS_GRAMMAR_URL = "http://127.0.0.1:5000/api/values/";
@@ -15,8 +16,11 @@ var STATISTIC_CONTENT_ID = "#statisticContent";
 $(document).ready(function () {
     $(HIDDEN_CONTENT_ID).hide();
     $(HIDDEN_SEQUENCE_ID).hide();
-    $(SYNTACTICAL_ANALYZER_CONTENT_ID).hide();
-    // $(STATISTIC_CONTENT_ID).hide(); 
+    $(STATISTIC_CONTENT_ID).hide();
+    $(ID_SYNTACTICAL_ANALYZER_BUTTON).on("click", function () {
+        $(STATISTIC_CONTENT_ID).hide();
+        $(SYNTACTICAL_ANALYZER_CONTENT_ID).show();
+    });
     processGrammar();
     processSequence();
     processStatistic();
@@ -26,8 +30,8 @@ $(document).ready(function () {
 function processStatistic() {
     $(ID_STATISTIC_BUTTON).on("click", function (event) {
         event.preventDefault();
-        // $(SYNTACTICAL_ANALYZER_CONTENT_ID).hide();
-        // $(STATISTIC_CONTENT_ID).show();
+        $(SYNTACTICAL_ANALYZER_CONTENT_ID).hide();
+        $(STATISTIC_CONTENT_ID).show();
         $.ajax({
             headers: {
                 'Accept': 'application/json',
@@ -187,29 +191,26 @@ function ParseStatistic(statistic) {
     var accepted = statistic[0];
     var declined = statistic[1];
 
-    var value = accepted.Value;
-    console.log(value);
-    ParseStatisticItems(value);
+    var valueAccepted = accepted.Value;
+    var valueDeclined = declined.Value;
+    ParseStatisticItems(valueAccepted, "#acceptedItems", "grammarAccepted", "sequenceAccepted");
+    ParseStatisticItems(valueDeclined, "#declinedItems", "grammarDeclined", "sequenceDeclined");
 }
 
-function ParseStatisticItems(items) {
-
+function ParseStatisticItems(items, idItems, idGrammar, idSequence) {
     var row = '';
     for (var item in items) {
         var key = items[item].Key;
         var value = items[item].Value;
-        row += CreateStatisticTable(key, row, item);
-        $('#acceptedItems').html(row);
-        console.log("#grammarAccepted" + item);
-        // CreateStatisticItemTable(value, "sequence");
+        row += CreateAcceptedStatisticTable(key, row, item, idGrammar, idSequence);
+        $(idItems).html(row);
 
     }
     for (var item in items) {
         var key = items[item].Key;
         var value = items[item].Value;
-        CreateStatisticGrammarTable(key, "#grammarAccepted" + item);
-        // CreateStatisticItemTable(value, "sequence");
-
+        CreateStatisticGrammarTable(key, idGrammar + item);
+        CreateStatisticSequenceTable(value, idSequence + item);
     }
 }
 
@@ -235,32 +236,33 @@ function CreateStatisticGrammarTable(list, id) {
     for (var i in list) {
         row += '<p>' + list[i] + '</p>';
     }
-    console.log(row);
-    $(id).html(row);
+    console.log(id);
+    $("#" + id).html(row);
 }
 
-function CreateStatisticTable(items, row, number) {
+function CreateAcceptedStatisticTable(items, row, number, idGrammarItem, idSequenceItem) {
     row = ' <div class="card-container d-flex flex-row mt-3">\n' +
         '                    <div class="card card-grammar">\n' +
         '                        <div class="card-header">Grammar</div>\n' +
-            '                        <div class="card-body" id="grammarAccepted' + number + '">\n' +
+            '                        <div class="card-body scrollbar-near-moon" id="' + idGrammarItem + number + '">\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <div class="card card-sequence">\n' +
         '                        <div class="card-header">Sequences</div>\n' +
-        '                        <div class="card-body" id="sequenceAccepted' + number + '">\n' +
+        '                        <div class="card-body scrollbar-near-moon" id="' + idSequenceItem + number + '">\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                </div>\n';
     return row;
 }
 
-function CreateStatisticItemTable(items, id) {
+function CreateStatisticSequenceTable(items, id) {
     var row = '';
     for (var i in items) {
-        row += '<tr><td>' + items[i] + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
+        row += '<p>' + items[i] + '</p><hr/>';
     }
-    $(id).html(row);
+    console.log(row);
+    $("#" + id).html(row);
 }
 
 function CreateNewGrammarTable(productions, first, follow, id) {
