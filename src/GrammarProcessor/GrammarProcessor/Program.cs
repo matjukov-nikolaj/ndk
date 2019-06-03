@@ -12,6 +12,9 @@ namespace GrammarProcessor
     {
         private static Dictionary<string, string> properties = Configuration.GetParameters();
 
+        const string PROCESSOR_CHANNEL = "processor";
+        const string PROCESSOR_QUEUE_NAME = "processor_queue";
+
         static void Main(string[] args)
         {
             Console.WriteLine("Grammar processor is running.");
@@ -59,7 +62,18 @@ namespace GrammarProcessor
                 string newId = id.Replace("INPUT_GRAMMAR_", "GRAMMAR_");
                 redisDb.StringSet(newId, json);
                 Console.WriteLine(newId + ": " + json + " - saved to redis GRAMMAR_DB");
-                sub.Publish("events", $"{newId}");
+                
+                
+                
+                // Queue
+                IDatabase processorQueueDb = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"])
+                    .GetDatabase(Convert.ToInt32(properties["PROCESSOR_QUEUE_DB"]));
+                // put message to queue
+                processorQueueDb.ListLeftPush(PROCESSOR_QUEUE_NAME, newId, flags: CommandFlags.FireAndForget);
+                // and notify consumers
+                processorQueueDb.Multiplexer.GetSubscriber().Publish(PROCESSOR_CHANNEL, "");
+                
+                
                 grammarProcessor.Clear();
             }
             catch (Exception e)

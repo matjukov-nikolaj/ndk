@@ -11,6 +11,12 @@ namespace GrammarConverter
     {
         private static Dictionary<string, string> properties = Configuration.GetParameters();
 
+        const string PROCESSOR_CHANNEL = "processor";
+        const string PROCESSOR_QUEUE_NAME = "processor_queue";
+
+        const string NEW_GRAMMAR_CHANNEL = "new_grammar";
+        const string NEW_GRAMMAR_QUEUE_NAME = "new_grammar_queue";
+
         static void Main(string[] args)
         {
             Console.WriteLine("Grammar converter is running.");
@@ -18,16 +24,21 @@ namespace GrammarConverter
             {
                 ConnectionMultiplexer redisConnection = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]);
                 ISubscriber sub = redisConnection.GetSubscriber();
-                sub.Subscribe("events", (channel, message) =>
+
+                sub.Subscribe(PROCESSOR_CHANNEL, delegate
                 {
-                    string id = message.ToString();
-                    if (id.Contains("GRAMMAR_"))
+                    IDatabase queueDb = redisConnection.GetDatabase(Convert.ToInt32(properties["PROCESSOR_QUEUE_DB"]));
+                    string msg = queueDb.ListRightPop(PROCESSOR_QUEUE_NAME);
+
+                    while (msg != null && msg != "")
                     {
+                        string id = msg.ToString();
                         int dbNumber = Convert.ToInt32(properties["GRAMMAR_DB"]);
                         IDatabase redisDb = redisConnection.GetDatabase(dbNumber);
                         string value = redisDb.StringGet(id);
-                        Console.WriteLine("Event: " + id + "-" + value);
+                        Console.WriteLine("Get from processor queue: " + id + "-" + value);
                         HandleGrammarConverter(id, value, sub);
+                        msg = queueDb.ListRightPop(PROCESSOR_QUEUE_NAME);
                     }
                 });
                 Console.ReadKey();
@@ -47,13 +58,13 @@ namespace GrammarConverter
                 grammarConverter.DeleteLeftRecursion();
                 grammarConverter.Factorization();
                 grammarConverter.SortGrammar();
-                            
+
                 grammarConverter.SetNoTerminals(grammarConverter.GetNoTerminals(grammarConverter.GetProductions()));
-                            
+
                 grammarConverter.First();
-                            
+
                 grammarConverter.Follow();
-                            
+
                 NewGrammar newGrammar = new NewGrammar();
 
                 newGrammar.productions = grammarConverter.GetProductions();
@@ -67,13 +78,23 @@ namespace GrammarConverter
                 newGrammar.noTerminals = grammarConverter.GetNoTerminals();
 
                 String json = JsonConvert.SerializeObject(newGrammar);
-                            
+
                 IDatabase redisDb = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"])
                     .GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_DB"]));
                 string newId = id.Replace("GRAMMAR_", "NEW_GRAMMAR_");
                 redisDb.StringSet(newId, json);
                 Console.WriteLine(newId + ": " + json + " - saved to redis NEW_GRAMMAR_DB");
-                sub.Publish("events", $"{newId}");
+                
+                
+                // Queue
+                IDatabase newGrammarQueueDb = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"])
+                    .GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_QUEUE_DB"]));
+                // put message to queue
+                newGrammarQueueDb.ListLeftPush(NEW_GRAMMAR_QUEUE_NAME, newId, flags: CommandFlags.FireAndForget);
+                // and notify consumers
+                newGrammarQueueDb.Multiplexer.GetSubscriber().Publish(NEW_GRAMMAR_CHANNEL, "");
+                
+                
                 grammarConverter.Clear();
             }
             catch (Exception e)

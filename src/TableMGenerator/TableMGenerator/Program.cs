@@ -11,6 +11,9 @@ namespace TableMGenerator
     {
         private static Dictionary<string, string> properties = Configuration.GetParameters();
 
+        const string NEW_GRAMMAR_CHANNEL = "new_grammar";
+        const string NEW_GRAMMAR_QUEUE_NAME = "new_grammar_queue";
+
         static void Main(string[] args)
         {
             Console.WriteLine("Table M Generator is running.");
@@ -18,17 +21,20 @@ namespace TableMGenerator
             {
                 ConnectionMultiplexer redisConnection = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]);
                 ISubscriber sub = redisConnection.GetSubscriber();
-                sub.Subscribe("events", (channel, message) =>
+                sub.Subscribe(NEW_GRAMMAR_CHANNEL, delegate
                 {
-                    string id = message.ToString();
-                    if (id.Contains("NEW_GRAMMAR_"))
+                    IDatabase newGrammarQueueDb = redisConnection.GetDatabase(Convert.ToInt32(properties["NEW_GRAMMAR_QUEUE_DB"]));
+                    string msg = newGrammarQueueDb.ListRightPop(NEW_GRAMMAR_QUEUE_NAME);
+                    while (msg != null && msg != "")
                     {
+                        string id = msg.ToString();
                         int dbNumber = Convert.ToInt32(properties["NEW_GRAMMAR_DB"]);
                         IDatabase redisDb = redisConnection.GetDatabase(dbNumber);
                         string value = redisDb.StringGet(id);
                         Console.WriteLine("Event: " + id + "\r\n" + value);
-                        
+
                         GenerateTable(id, value, sub);
+                        msg = newGrammarQueueDb.ListRightPop(NEW_GRAMMAR_QUEUE_NAME);
                     }
                 });
                 Console.ReadKey();
@@ -49,7 +55,7 @@ namespace TableMGenerator
                 MTable table = new MTable();
                 table.mTable = generator.GetTable();
                 String json = JsonConvert.SerializeObject(table);
-                            
+
                 IDatabase redisDb = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"])
                     .GetDatabase(Convert.ToInt32(properties["TABLE_M_DB"]));
                 string newId = id.Replace("NEW_GRAMMAR_", "TABLE_M_");

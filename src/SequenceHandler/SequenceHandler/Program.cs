@@ -66,15 +66,27 @@ namespace SequenceHandler
                 
                 IDatabase redisDb = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"])
                     .GetDatabase(Convert.ToInt32(properties["SEQUENCE_DB"]));
-                string json = JsonConvert.SerializeObject(sequenceHandler.GetSequence());
+
+                Sequence sequence = sequenceHandler.GetSequence();
+                sequence.grammarId = "NEW_GRAMMAR_" + sId.id;
+                string json = JsonConvert.SerializeObject(sequence);
                 String newId = "SEQUENCE_RESULT_" + sId.id;
                 redisDb.StringSet(newId, json);
                 Console.WriteLine(newId + ": " + json + " - saved to redis SEQUENCE_DB");
+
+                MakeStatisticEvent(newId);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        private static void MakeStatisticEvent(String newId)
+        {
+            ConnectionMultiplexer redisConnection = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"]);
+            ISubscriber sub = redisConnection.GetSubscriber();
+            sub.Publish("events", $"{newId}");
         }
     }
 }
