@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\fedia\.Rider2019.1\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\fedia\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_TableMGenerator.652549748.00" t="ExcludeRecursive" />
-    <e p="C:\Users\fedia\Desktop\study\ndk\TableMGenerator" t="IncludeFlat">
+    <e p="C:\Users\MarioSlim\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_TableMGenerator.-1611419058.01" t="ExcludeRecursive" />
+    <e p="D:\dpndk\ndk\src\TableMGenerator" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="TableMGenerator" t="IncludeRecursive">
         <e p="application.properties" t="Include" />
