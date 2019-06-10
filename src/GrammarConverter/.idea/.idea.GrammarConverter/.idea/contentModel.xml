@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\study\ndk\src\GrammarConverter" t="IncludeFlat">
+    <e p="C:\Users\MarioSlim\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_GrammarConverter.1258113598.00" t="ExcludeRecursive" />
+    <e p="D:\dpndk\ndk\src\GrammarConverter" t="IncludeFlat">
       <e p="GrammarConverter" t="IncludeRecursive">
         <e p="application.properties" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
@@ -20,7 +22,5 @@
       <e p="GrammarConverter.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
     </e>
-    <e p="C:\Users\Darya\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Darya\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_GrammarConverter.1444966399.00" t="ExcludeRecursive" />
   </component>
 </project>
