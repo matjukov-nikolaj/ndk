@@ -217,6 +217,17 @@ namespace GrammarConverter
         public void First()
         {
             FillFirst();
+            //функця, которая возвращает список всех не терминалов, которые будут пустые.
+            //пока результат(список) не равен списку текущего прогона, если они одинаковые, значит мы нашли тот список
+            //
+            List<string> result = new List<string>();
+            List<string> current = new List<string>();
+
+            do
+            {
+                result.AddRange(GetEmptyNotTerminals(current)); 
+            } while (current != result);
+            
             for (int i = 0; i < productions.Count; i++)
             {
                 String production = productions[i];
@@ -309,6 +320,28 @@ namespace GrammarConverter
                     }
                 }
             }
+        }
+
+        private List<string> GetEmptyNotTerminals(String production, List<string> current)
+        {
+            List<string> result = new List<string>();
+
+            for (int i = 0; i < noTerminals.Count; i++)
+            {
+                String noTerminal = noTerminals[i];
+                if (noTerminal.Length == 1)
+                {
+                    for (int j = 0; j < productions.Count; j++)
+                    {
+                        if (productions[j] == "&" || (current.Contains(productions[j])))
+                        {
+                            result.Add(noTerminals[i]);
+                        }
+                    }
+                }
+            }
+
+            return result;
         }
 
         private List<string> GetLineOfFirstSet(String production, IsEmpty isEmpty)
