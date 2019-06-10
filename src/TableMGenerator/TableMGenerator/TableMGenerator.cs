@@ -41,34 +41,60 @@ namespace TableMGenerator
             {
                 String production = productions[i];
                 String noTerminal = "";
-                String alternative = "";
+                String alt = "";
+                List<String> alternative = new List<String>();
                 if (IsApostrophe(production))
                 {
                     noTerminal = production.Substring(0, 2);
-                    alternative = production.Substring(4, 1);
-                    if (IsApostrophe(alternative))
-                    {
-                        alternative += "'";
-                    }
+                    alt = production.Substring(4, production.Length - 4);
+                    alternative = GetNoTerminalAndTerminals(alt);
                 }
                 else
                 {
                     noTerminal = production.Substring(0, 1);
-                    alternative = production.Substring(3, 1);
-                    if (production.Length > 4)
-                    {
-                        if (IsApostrophe(alternative))
-                        {
-                            alternative += "'";
-                        }
-                    }
+                    alt = production.Substring(3, production.Length - 3);
+                    alternative = GetNoTerminalAndTerminals(alt);
                 }
 
-                GenerateFromFirstAndFollow(alternative, noTerminal, production);
+                for (int j = 0; j < alternative.Count; j++)
+                {
+                    GenerateFromFirstAndFollow(alternative[j], noTerminal, production);
+                }
 
             }
         }
+        
+        private List<string> GetNoTerminalAndTerminals(string prod)
+        {
+            List<string> result = new List<string>();
+            char ch = ' ';
 
+            char nextCh = ' ';
+            for (int i = 0; i < prod.Length; i++)
+            {
+                if (i != prod.Length - 1)
+                {
+                    nextCh = prod[i + 1];
+                }
+
+                ch = prod[i];
+                if (Char.IsUpper(ch) && nextCh == '\'')
+                {
+                    result.Add((ch + nextCh).ToString());
+                }
+                else if (Char.IsUpper(ch))
+                {
+                    result.Add(ch.ToString());
+                }
+                else
+                {
+                    result.Add(ch.ToString());
+                }
+            }
+
+            return result;
+        }
+        
         public void Clear()
         {
             mTable = new List<List<string>>();

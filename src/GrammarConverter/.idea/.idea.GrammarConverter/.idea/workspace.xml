@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1aade4dd-c7d3-4e53-ba7d-30fe6b7f043a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrammarConverter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrammarConverter/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrammarConverter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrammarConverter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TableMGenerator/TableMGenerator/TableMGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TableMGenerator/TableMGenerator/TableMGenerator.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GrammarConverter/GrammarConverter.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-45">
-              <caret line="282" column="16" selection-start-line="282" selection-start-column="16" selection-end-line="282" selection-end-column="16" />
+            <state relative-caret-position="-90">
+              <caret line="405" selection-start-line="405" selection-end-line="434" selection-end-column="9" />
               <folding>
                 <marker date="1560194904756" expanded="false" signature="6:84" ph="..." />
                 <marker date="1560194904756" expanded="true" signature="153:35665" ph="{...}" />
@@ -326,7 +326,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
-    <option name="width" value="1236" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -424,12 +424,12 @@
       <workItem from="1559673381949" duration="15442000" />
       <workItem from="1559727549929" duration="3349000" />
       <workItem from="1560184758657" duration="1913000" />
-      <workItem from="1560188136267" duration="7509000" />
+      <workItem from="1560188136267" duration="8212000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52815000" />
+    <option name="totallyTimeSpent" value="53518000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -451,7 +451,7 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19609967" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.19609967" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45503792" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -589,8 +589,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GrammarConverter/GrammarConverter.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-45">
-          <caret line="282" column="16" selection-start-line="282" selection-start-column="16" selection-end-line="282" selection-end-column="16" />
+        <state relative-caret-position="-90">
+          <caret line="405" selection-start-line="405" selection-end-line="434" selection-end-column="9" />
           <folding>
             <marker date="1560194904756" expanded="false" signature="6:84" ph="..." />
             <marker date="1560194904756" expanded="true" signature="153:35665" ph="{...}" />
