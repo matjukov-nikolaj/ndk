@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Core.model;
 
 namespace GrammarConverter
@@ -44,12 +45,12 @@ namespace GrammarConverter
         {
             this.noTerminals = newNoTerminals;
         }
-        
+
         public List<String> GetTerminals()
         {
             return terminals;
         }
-        
+
         public List<String> GetNoTerminals()
         {
             return noTerminals;
@@ -60,10 +61,10 @@ namespace GrammarConverter
             terminals = new List<string>();
             noTerminals = new List<string>();
             startSymbol = null;
-            
+
             productions = new List<string>();
             newProductions = new List<string>();
-            
+
             first = new List<List<string>>();
             follow = new List<List<string>>();
         }
@@ -95,7 +96,6 @@ namespace GrammarConverter
                             newGrammar.Add(production);
                         }
                     }
-
                 }
             }
 
@@ -117,9 +117,9 @@ namespace GrammarConverter
                 if (IsLeftRecursion(production))
                 {
                     String alternative = production[3] + "'" + "->" + production.Substring(4, production.Length - 4) +
-                                  production[3] + "'";
+                                         production[3] + "'";
                     productions[i] = alternative;
-                    
+
                     SetStateNoTerminal(production[0].ToString());
                 }
             }
@@ -127,9 +127,8 @@ namespace GrammarConverter
             ManageLeftRecursion();
             DeleteRecStates();
             productions.AddRange(newProductions);
-
         }
-        
+
         public List<String> GetNoTerminals(List<String> inputGrammar)
         {
             List<String> result = new List<string>();
@@ -174,7 +173,6 @@ namespace GrammarConverter
                             newProductions.Add(alternative);
                             count++;
                         }
-
                     }
 
                     if (count == 0)
@@ -225,11 +223,73 @@ namespace GrammarConverter
                 List<String> firstTemp = new List<string>();
                 if (IsApostrophe(production))
                 {
-                    firstTemp.AddRange(GetLineOfFirstSet(production.Substring(4, production.Length - 4)));
+                    String alternative = production.Substring(4, production.Length - 4);
+                    int altLength = alternative.Length;
+                    String alt = alternative;
+                    IsEmpty isEmpty = new IsEmpty();
+                    for (int j = 0; j < altLength; j++)
+                    {
+                        if (!isEmpty.getIs())
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            isEmpty.setIs(false);
+                        }
+
+                        if (j == altLength - 1)
+                        {
+                            alternative = alt.Substring(j, 1);
+                        }
+                        else
+                        {
+                            alternative = alt.Substring(j, altLength - j);
+                        }
+
+                        firstTemp.AddRange(GetLineOfFirstSet(alternative, isEmpty));
+                    }
                 }
                 else
                 {
-                    firstTemp.AddRange(GetLineOfFirstSet(production.Substring(3, production.Length - 3)));
+                    String alternative = production.Substring(3, production.Length - 3);
+                    IsEmpty isEmpty = new IsEmpty();
+                    int altLength = alternative.Length;
+                    String alt = alternative;
+                    for (int j = 0; j < altLength; j++)
+                    {
+                        if (!isEmpty.getIs())
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            isEmpty.setIs(false);
+                        }
+
+                        if (j == altLength - 1)
+                        {
+                            alternative = alt.Substring(j, 1);
+                        }
+                        else
+                        {
+                            alternative = alt.Substring(j, altLength - j);
+                        }
+
+                        firstTemp.AddRange(GetLineOfFirstSet(alternative, isEmpty));
+                    }
+                }
+
+                firstTemp = firstTemp.Distinct().ToList();
+                for (int j = 0; j < firstTemp.Count; j++)
+                {
+                    String item = firstTemp[j];
+                    if (item.Equals("&"))
+                    {
+                        firstTemp.RemoveAt(j);
+                        firstTemp.Add("&");
+                        break;
+                    }
                 }
 
                 String noTerminal = production.Substring(0, 2);
@@ -249,7 +309,103 @@ namespace GrammarConverter
                     }
                 }
             }
+        }
 
+        private List<string> GetLineOfFirstSet(String production, IsEmpty isEmpty)
+        {
+            List<string> result = new List<string>();
+
+            if (production.Equals("\'"))
+            {
+                return result;
+            }
+
+            if (production.Length == 1 && production[0].Equals('&'))
+            {
+                isEmpty.setIs(true);
+            }
+
+            if (!Char.IsUpper(production[0]))
+            {
+                result.Add(production[0].ToString());
+            }
+            else
+            {
+                List<string> temp = new List<string>();
+                List<string> firstSet = new List<string>();
+                if (IsApostrophe(production))
+                {
+                    temp = GetProductionsForFirst(production[0].ToString(), true);
+                    for (int i = 0; i < temp.Count; i++)
+                    {
+                        String alternative = temp[i];
+                        int altLength = alternative.Length;
+                        IsEmpty isEmptyNew = new IsEmpty();
+                        String alt = alternative;
+                        for (int j = 0; j < altLength; j++)
+                        {
+                            if (!isEmptyNew.getIs())
+                            {
+                                isEmpty.setIs(true);
+                                break;
+                            }
+                            else
+                            {
+                                isEmptyNew.setIs(false);
+                            }
+
+                            if (j == altLength - 1)
+                            {
+                                alternative = alt.Substring(j, 1);
+                            }
+                            else
+                            {
+                                alternative = alt.Substring(j, altLength - j);
+                            }
+
+                            firstSet.AddRange(GetLineOfFirstSet(alternative, isEmptyNew));
+                        }
+                    }
+                }
+                else
+                {
+                    temp = GetProductionsForFirst(production[0].ToString(), false);
+                    for (int i = 0; i < temp.Count; i++)
+                    {
+                        String alternative = temp[i];
+                        int altLength = alternative.Length;
+                        IsEmpty isEmptyNew = new IsEmpty();
+                        String alt = alternative;
+                        for (int j = 0; j < altLength; j++)
+                        {
+                            if (!isEmptyNew.getIs())
+                            {
+                                isEmpty.setIs(true);
+                                break;
+                            }
+                            else
+                            {
+                                isEmptyNew.setIs(false);
+                            }
+
+                            if (j == altLength - 1)
+                            {
+                                alternative = alt.Substring(j, 1);
+                            }
+                            else
+                            {
+                                alternative = alt.Substring(j, altLength - j);
+                            }
+
+                            firstSet.AddRange(GetLineOfFirstSet(alternative, isEmptyNew));
+                        }
+                    }
+                }
+
+                result.AddRange(firstSet);
+            }
+
+            return result;
         }
 
         public List<List<String>> GetFirst()
@@ -279,14 +435,18 @@ namespace GrammarConverter
                 }
 
                 List<string> noTerminalsSet = GetNoTerminalsSet(prod, startProd);
-                if (noTerminalsSet.Count == 0) {
-                } else {
+                if (noTerminalsSet.Count == 0)
+                {
+                }
+                else
+                {
                     for (int j = 0; j < noTerminalsSet.Count; j++)
                     {
                         String alternative = prod.Substring(startProd, prod.Length - startProd);
-                        
+
                         followSet.AddRange(Rotate(noTerminalsSet[j], alternative, noTerminal));
                     }
+
                     followSetTemp.AddRange(followSet);
                     AddNewElementToFollowSet(followSet);
                 }
@@ -332,7 +492,8 @@ namespace GrammarConverter
                             nt2 = temp[2].ToString();
                         }
                     }
-                    int posBefore= GetPosition(noTerminals, nt1);
+
+                    int posBefore = GetPosition(noTerminals, nt1);
                     int posAfter = GetPosition(noTerminals, nt2);
 
                     SetPositionBeforeAndAfter(posBefore, posAfter);
@@ -382,7 +543,6 @@ namespace GrammarConverter
             }
 
             return result;
-
         }
 
         private void AddNewElementToFollowSet(List<String> newElements)
@@ -459,7 +619,7 @@ namespace GrammarConverter
             String symbol = noTerminal[0].ToString();
             int posBefore = 0;
             int posAfter = 0;
-            
+
             for (int i = 0; i < prod.Length; i++)
             {
                 if (prod[i].Equals(noTerminal[0]))
@@ -493,7 +653,6 @@ namespace GrammarConverter
             }
 
             return result;
-
         }
 
         private List<String> GetNoTerminalsSet(String prod, int start)
@@ -535,41 +694,9 @@ namespace GrammarConverter
                 {
                     temp.Add("$");
                 }
+
                 follow.Add(temp);
             }
-        }
-
-        private List<string> GetLineOfFirstSet(String production)
-        {
-            List<string> result = new List<string>();
-            if (!Char.IsUpper(production[0]))
-            {
-                result.Add(production[0].ToString());
-            }
-            else
-            {
-                List<string> temp = new List<string>();
-                List<string> firstSet = new List<string>();
-                if (IsApostrophe(production))
-                {
-                    temp = GetProductionsForFirst(production[0].ToString(), true);
-                    for (int i = 0; i < temp.Count; i++)
-                    {
-                        firstSet.AddRange(GetLineOfFirstSet(temp[i]));
-                    }
-                }
-                else
-                {
-                    temp = GetProductionsForFirst(production[0].ToString(), false);
-                    for (int i = 0; i < temp.Count; i++)
-                    {
-                        firstSet.AddRange(GetLineOfFirstSet(temp[i]));
-                    }
-                }
-                result.AddRange(firstSet);
-            }
-
-            return result;
         }
 
         private List<String> GetProductionsForFirst(String noTerminal, bool isApostrophe)
@@ -675,7 +802,6 @@ namespace GrammarConverter
             }
 
             return result.Substring(0, result.Length - end);
-
         }
 
         private List<String> LeaveAppearence(List<String> productions, String ch)
@@ -761,7 +887,6 @@ namespace GrammarConverter
                         {
                             count++;
                         }
-
                     }
                 }
             }
@@ -782,6 +907,5 @@ namespace GrammarConverter
         {
             return production[0] == production[3] ? true : false;
         }
-
     }
 }

@@ -2,22 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d6eef8f-7556-4f53-a816-e22e9fa97096" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../config/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../config/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../run.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../../run.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/IsEmpty.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/.idea/.idea.GrammarProcessor/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/GrammarConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/GrammarConverter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SequenceHandler/SequenceHandler/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SequenceHandler/SequenceHandler/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SequenceStatistic/SequenceStatistic/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SequenceStatistic/SequenceStatistic/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TableMGenerator/TableMGenerator/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TableMGenerator/TableMGenerator/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TableMGenerator/TableMGenerator/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../TableMGenerator/TableMGenerator/application.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -160,8 +156,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Frontend/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="105">
+              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
               <folding>
                 <marker date="1559583251747" expanded="false" signature="6:255" ph="..." />
                 <marker date="1559583251747" expanded="true" signature="275:653" ph="{...}" />
@@ -235,10 +231,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="1236" />
-    <option name="height" value="1047" />
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -246,11 +241,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="AssemblyExplorer" />
-      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -258,7 +253,7 @@
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Backend/Backend.sln" />
+    <property name="last_opened_file_path" value="D:/1/ndk/src/Frontend/Frontend.sln" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -303,12 +298,15 @@
       <workItem from="1559410149119" duration="1610000" />
       <workItem from="1559414412779" duration="8502000" />
       <workItem from="1559583190364" duration="516000" />
-      <workItem from="1559583719596" duration="459000" />
+      <workItem from="1559583719596" duration="742000" />
+      <workItem from="1559673299222" duration="1796000" />
+      <workItem from="1559727538276" duration="616000" />
+      <workItem from="1559754203905" duration="144000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24906000" />
+    <option name="totallyTimeSpent" value="27745000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -320,16 +318,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1936" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26705757" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2750533" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3109426" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3109426" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39965397" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -517,7 +516,6 @@
           <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
           <folding>
             <marker date="1559578966176" expanded="false" signature="6:197" ph="..." />
-            <marker date="1559578966176" expanded="true" signature="223:612" ph="{...}" />
             <marker date="1559578966176" expanded="true" signature="354:610" ph="{...}" />
             <marker date="1559578966176" expanded="true" signature="507:604" ph="{...}" />
           </folding>
@@ -541,7 +539,6 @@
         <state relative-caret-position="495">
           <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
           <folding>
-            <marker date="1559578966176" expanded="true" signature="16:3628" ph="&lt;html.../&gt;" />
             <marker date="1559578966176" expanded="true" signature="23:1025" ph="&lt;head.../&gt;" />
             <marker date="1559578966176" expanded="true" signature="188:321" ph="&lt;environment.../&gt;" />
             <marker date="1559578966176" expanded="true" signature="326:474" ph="&lt;environment.../&gt;" />
@@ -585,7 +582,6 @@
           <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
           <folding>
             <marker date="1559578966176" expanded="false" signature="6:422" ph="..." />
-            <marker date="1559578966176" expanded="true" signature="442:2004" ph="{...}" />
             <marker date="1559578966176" expanded="true" signature="469:2002" ph="{...}" />
             <marker date="1559578966176" expanded="true" signature="528:591" ph="{...}" />
             <marker date="1559578966176" expanded="true" signature="814:1267" ph="{...}" />
@@ -599,8 +595,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="105">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
           <folding>
             <marker date="1559583251747" expanded="false" signature="6:255" ph="..." />
             <marker date="1559583251747" expanded="true" signature="275:653" ph="{...}" />

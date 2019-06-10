@@ -1,0 +1,43 @@
+T->S
+S->ABC
+A->aA
+A->&
+B->bB
+B->&
+C->cC
+C->&
+
+Z->S
+S->&
+S->aS
+S->bA
+A->cAd
+A->&
+
+                        for (int k = 0; k < alternative.Length; k++)
+                        {
+                            List<String> featureProd = GetProductionsForFirst(alternative[k].ToString(), false);
+                            bool hue = false;
+                            List<bool> lolKek = new List<bool>();
+                            for (int p = 0; p < lolKek.Count; p++)
+                            {
+                                if (!lolKek[p])
+                                {
+                                    hue = true;
+                                }
+                            }
+
+                            if (!hue)
+                            {
+                                for (int y = 0; y < featureProd.Count; y++)
+                                {
+                                    if (!featureProd[y].Contains("&"))
+                                    {
+                                        lolKek.Add(true);
+                                    }
+                                }
+                            }else
+                            {
+                                isEmptyNew.setIs(true);
+                            }
+                        }
