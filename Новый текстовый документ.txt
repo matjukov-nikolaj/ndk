@@ -7,6 +7,19 @@ B->&
 C->cC
 C->&
 
+
+A -> B A'
+A' -> a B A'
+A' -> ''
+B -> C B'
+B' -> k C B'
+B' -> ''
+C -> y
+C -> x C
+C -> n D i
+D -> ''
+D -> o A z
+
 Z->S
 S->&
 S->aS

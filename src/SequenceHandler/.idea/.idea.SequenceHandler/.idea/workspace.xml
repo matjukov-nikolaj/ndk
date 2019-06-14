@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="551f2677-8f1b-4c03-84a8-ee0c45c353c4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TableMGenerator/TableMGenerator/TableMGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TableMGenerator/TableMGenerator/TableMGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Core/Core/model/NewGrammar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/Core/model/NewGrammar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SequenceHandler/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SequenceHandler/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SlrParser/.idea/.idea.SlrParser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SlrParser/.idea/.idea.SlrParser/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Новый текстовый документ.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Новый текстовый документ.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SequenceHandler/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-20">
-              <caret line="39" column="71" selection-start-line="39" selection-start-column="71" selection-end-line="39" selection-end-column="71" />
+            <state relative-caret-position="300">
+              <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
               <folding>
                 <marker date="1559578966285" expanded="false" signature="6:127" ph="..." />
                 <marker date="1559578966285" expanded="true" signature="154:3958" ph="{...}" />
@@ -34,6 +34,15 @@
                 <marker date="1559578966285" expanded="true" signature="3563:3637" ph="{...}" />
                 <marker date="1559578966285" expanded="true" signature="3709:3950" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04841913-E4A7-4822-90D0-DB1F8B1E1311/d4/3931d2cf/MessageCompletable.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -59,8 +68,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SequenceHandler/SequenceHandler.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-140">
-              <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+            <state relative-caret-position="322">
+              <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
               <folding>
                 <marker date="1559578966285" expanded="false" signature="6:65" ph="..." />
                 <marker date="1559578966285" expanded="true" signature="92:9863" ph="{...}" />
@@ -125,6 +134,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/SequenceHandler/SequenceHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04841913-E4A7-4822-90D0-DB1F8B1E1311/d4/3931d2cf/MessageCompletable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C3B63374-76E9-443A-BBC4-D0F246AF4E9E/4/JsonConvert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SequenceHandler/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C3B63374-76E9-443A-BBC4-D0F246AF4E9E/11/JsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -148,18 +158,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
       <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Frontend/Frontend.sln" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GrammarConverter/GrammarConverter.sln" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -214,11 +224,12 @@
       <workItem from="1558973699939" duration="17260000" />
       <workItem from="1559405044901" duration="3414000" />
       <workItem from="1560198140385" duration="215000" />
+      <workItem from="1560530785190" duration="2567000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21672000" />
+    <option name="totallyTimeSpent" value="24239000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -233,15 +244,15 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23880596" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24147122" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3066089" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38678223" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3066089" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.45720476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -277,32 +288,6 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/SequenceHandler/Program.cs</url>
-          <line>66</line>
-          <properties documentPath="$PROJECT_DIR$/SequenceHandler/Program.cs" initialLine="69">
-            <startOffsets>
-              <option value="2921" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3076" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SequenceHandler/Program.cs</url>
-          <line>63</line>
-          <properties documentPath="$PROJECT_DIR$/SequenceHandler/Program.cs" initialLine="66">
-            <startOffsets>
-              <option value="2696" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2832" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SequenceHandler/Program.cs</url>
           <line>21</line>
           <properties documentPath="$PROJECT_DIR$/SequenceHandler/Program.cs" initialLine="21">
             <startOffsets>
@@ -327,6 +312,19 @@
           </properties>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SequenceHandler/SequenceHandler.cs</url>
+          <line>33</line>
+          <properties documentPath="$PROJECT_DIR$/SequenceHandler/SequenceHandler.cs" initialLine="33">
+            <startOffsets>
+              <option value="888" />
+            </startOffsets>
+            <endOffsets>
+              <option value="919" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -340,27 +338,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="11" selection-start-line="8" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SequenceHandler/Program.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="39" column="71" selection-start-line="39" selection-start-column="71" selection-end-line="39" selection-end-column="71" />
-          <folding>
-            <marker date="1559578966285" expanded="false" signature="6:127" ph="..." />
-            <marker date="1559578966285" expanded="true" signature="154:3958" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="174:3956" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="314:1375" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="403:1259" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="661:1208" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="781:1190" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="1291:1365" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="1472:3647" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="1498:3531" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="3563:3637" ph="{...}" />
-            <marker date="1559578966285" expanded="true" signature="3709:3950" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -378,10 +355,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04841913-E4A7-4822-90D0-DB1F8B1E1311/d4/3931d2cf/MessageCompletable.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SequenceHandler/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+          <folding>
+            <marker date="1559578966285" expanded="false" signature="6:127" ph="..." />
+            <marker date="1559578966285" expanded="true" signature="154:3958" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="174:3956" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="314:1375" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="403:1259" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="661:1208" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="781:1190" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="1291:1365" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="1472:3647" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="1498:3531" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="3563:3637" ph="{...}" />
+            <marker date="1559578966285" expanded="true" signature="3709:3950" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SequenceHandler/SequenceHandler.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+        <state relative-caret-position="322">
+          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
           <folding>
             <marker date="1559578966285" expanded="false" signature="6:65" ph="..." />
             <marker date="1559578966285" expanded="true" signature="92:9863" ph="{...}" />

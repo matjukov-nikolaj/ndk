@@ -14,6 +14,8 @@ namespace Core.model
         public List<String> terminals;
 
         public List<String> noTerminals;
+        
+        public List<String> emptyNoTerminals;
 
         public NewGrammar()
         {
@@ -22,6 +24,7 @@ namespace Core.model
             follow = new List<List<String>>();
             terminals = new List<string>();
             noTerminals = new List<string>();
+            emptyNoTerminals = new List<string>();
         }
         
     }

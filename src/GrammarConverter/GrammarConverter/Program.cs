@@ -77,6 +77,8 @@ namespace GrammarConverter
 
                 newGrammar.noTerminals = grammarConverter.GetNoTerminals();
 
+                newGrammar.emptyNoTerminals = grammarConverter.GetEmptyNoTerminals();
+
                 String json = JsonConvert.SerializeObject(newGrammar);
 
                 IDatabase redisDb = ConnectionMultiplexer.Connect(properties["REDIS_SERVER"])
