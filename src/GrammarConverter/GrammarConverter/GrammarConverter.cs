@@ -419,7 +419,7 @@ namespace GrammarConverter
                 ch = prod[i];
                 if (Char.IsUpper(ch) && nextCh == '\'')
                 {
-                    result.Add((ch + nextCh).ToString());
+                    result.Add(ch.ToString() + "'");
                 }
                 else if (Char.IsUpper(ch))
                 {
