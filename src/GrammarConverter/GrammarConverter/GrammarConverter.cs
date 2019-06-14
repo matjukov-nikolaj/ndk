@@ -60,6 +60,11 @@ namespace GrammarConverter
             return noTerminals;
         }
 
+        public List<String> GetEmptyNoTerminals()
+        {
+            return emptyNoTerminals;
+        }
+
         public void Clear()
         {
             terminals = new List<string>();
@@ -402,37 +407,6 @@ namespace GrammarConverter
 
             return false;
         }
-        
-        private List<string> GetNoTerminalAndTerminals(string prod)
-        {
-            List<string> result = new List<string>();
-            char ch = ' ';
-
-            char nextCh = ' ';
-            for (int i = 0; i < prod.Length; i++)
-            {
-                if (i != prod.Length - 1)
-                {
-                    nextCh = prod[i + 1];
-                }
-
-                ch = prod[i];
-                if (Char.IsUpper(ch) && nextCh == '\'')
-                {
-                    result.Add(ch.ToString() + "'");
-                }
-                else if (Char.IsUpper(ch))
-                {
-                    result.Add(ch.ToString());
-                }
-                else
-                {
-                    result.Add(ch.ToString());
-                }
-            }
-
-            return result;
-        }
 
         private List<string> GetAllEmptyNoTerminals()
         {
@@ -632,6 +606,13 @@ namespace GrammarConverter
 
             PassageFollowSet(followSetTemp);
             PassageFollowSet(followSetTemp);
+
+            for (int i = 0; i < follow.Count; i++)
+            {
+                List<String> row = follow[i];
+                row.Remove("$");
+                row.Add("$");
+            }
         }
 
         private void PassageFollowSet(List<String> followSetTemp)
@@ -756,32 +737,65 @@ namespace GrammarConverter
                 }
                 else
                 {
-                    String nt = right[0].ToString();
-                    if (right.Length > 1)
+                    List<String> listRight = GetNoTerminalAndTerminals(right);
+                    for (int k = 0; k < listRight.Count; k++)
                     {
-                        if (right[1].Equals('\''))
-                        {
-                            nt += "'";
-                        }
-                    }
+                        String nt = listRight[k];
 
-                    for (int i = 0; i < noTerminals.Count; i++)
-                    {
-                        if (nt.Equals(first[i][0]))
+                        for (int i = 0; i < noTerminals.Count; i++)
                         {
-                            for (int j = 1; j < first[i].Count; j++)
+                            if (nt.Equals(first[i][0]))
                             {
-                                if (first[i][j].Equals("&"))
+                                for (int j = 1; j < first[i].Count; j++)
                                 {
-                                    result.Add("º" + noTerminalSetEl + noTerminal);
-                                }
-                                else
-                                {
-                                    result.Add(noTerminalSetEl + " " + first[i][j]);
+                                    if (first[i][j].Equals("&"))
+                                    {
+                                        result.Add("º" + noTerminalSetEl + noTerminal);
+                                    }
+                                    else
+                                    {
+                                        result.Add(noTerminalSetEl + " " + first[i][j]);
+                                    }
                                 }
                             }
                         }
+
+                        if (!emptyNoTerminals.Contains(nt))
+                        {
+                            break;
+                        }
                     }
+                }
+            }
+
+            return result;
+        }
+        
+        private List<string> GetNoTerminalAndTerminals(string prod)
+        {
+            List<string> result = new List<string>();
+            char ch = ' ';
+
+            char nextCh = ' ';
+            for (int i = 0; i < prod.Length; i++)
+            {
+                if (i != prod.Length - 1)
+                {
+                    nextCh = prod[i + 1];
+                }
+
+                ch = prod[i];
+                if (Char.IsUpper(ch) && nextCh == '\'')
+                {
+                    result.Add(ch.ToString() + "'");
+                }
+                else if (Char.IsUpper(ch))
+                {
+                    result.Add(ch.ToString());
+                }
+                else
+                {
+                    result.Add(ch.ToString());
                 }
             }
 

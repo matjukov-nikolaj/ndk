@@ -16,6 +16,7 @@ namespace TableMGenerator
 
         private List<String> terminals;
         private List<String> noTerminals;
+        private List<String> emptyNoTerminals;
         
 
         public TableMGenerator(NewGrammar convertedGrammar)
@@ -26,6 +27,7 @@ namespace TableMGenerator
             follow = convertedGrammar.follow;
             terminals = convertedGrammar.terminals;
             noTerminals = convertedGrammar.noTerminals;
+            emptyNoTerminals = convertedGrammar.emptyNoTerminals;
         }
 
         public List<List<String>> GetTable()
@@ -59,6 +61,15 @@ namespace TableMGenerator
                 for (int j = 0; j < alternative.Count; j++)
                 {
                     GenerateFromFirstAndFollow(alternative[j], noTerminal, production);
+                        if (!emptyNoTerminals.Contains(alternative[j]))
+                        {
+                            break;
+                        }
+                }
+
+                if (alt == "&")
+                {
+                    GenerateFromFirstAndFollow(alt, noTerminal, production);
                 }
 
             }
@@ -80,13 +91,13 @@ namespace TableMGenerator
                 ch = prod[i];
                 if (Char.IsUpper(ch) && nextCh == '\'')
                 {
-                    result.Add((ch + nextCh).ToString());
+                    result.Add(ch + "'");
                 }
                 else if (Char.IsUpper(ch))
                 {
                     result.Add(ch.ToString());
                 }
-                else
+                else if (Char.IsLower(ch))
                 {
                     result.Add(ch.ToString());
                 }
