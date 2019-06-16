@@ -1,6 +1,7 @@
 ﻿var ID_BUTTON = "#grammarEnteredButton";
 var ID_BUTTON_SLR = "#grammarEnteredButtonSlr";
 var ID_STATISTIC_BUTTON = "#statisticMenu";
+var ID_SHOW_PROCESS_BUTTON = "#showProcess";
 var ID_SYNTACTICAL_ANALYZER_BUTTON = "#syntacticalAnalyzerMenu";
 var ID_SEQUENCE_CHECK_BUTTON = "#inputSequenceButton";
 var ID_TEXTAREA = 'textarea#enteredGrammar';
@@ -13,11 +14,13 @@ var HIDDEN_CONTENT_ID = "#hiddenContent";
 var HIDDEN_SEQUENCE_ID = "#hiddenSequenceContent";
 var SYNTACTICAL_ANALYZER_CONTENT_ID = "#syntacticalAnalyzer";
 var STATISTIC_CONTENT_ID = "#statisticContent";
+var SHOW_PROCESS_CONTENT_ID = "#showProcessContent";
 
 $(document).ready(function () {
     $(HIDDEN_CONTENT_ID).hide();
     $(HIDDEN_SEQUENCE_ID).hide();
     $(STATISTIC_CONTENT_ID).hide();
+    $(SHOW_PROCESS_CONTENT_ID).hide();
     $(ID_SYNTACTICAL_ANALYZER_BUTTON).on("click", function () {
         $(STATISTIC_CONTENT_ID).hide();
         $(SYNTACTICAL_ANALYZER_CONTENT_ID).show();
@@ -32,21 +35,93 @@ function processSlrGrammar() {
     $(ID_BUTTON_SLR).on("click", function () {
         var message = $(ID_TEXTAREA).val();
         // var grammar = new Grammar(message);
-        var grammar = new Grammar("A -> A a B\n" +
+        // var grammar = new Grammar("A -> A a B\n" +
+        //     "A -> B\n" +
+        //     "B -> B k C\n" +
+        //     "B -> C\n" +
+        //     "C -> y\n" +
+        //     "C -> x C\n" +
+        //     "C -> n D i\n" +
+        //     "D -> ''\n" +
+        //     "D -> o A z");
+        var grammar = new Grammar("S -> a A\n" +
+            "A -> B , A\n" +
             "A -> B\n" +
-            "B -> B k C\n" +
-            "B -> C\n" +
-            "C -> y\n" +
-            "C -> x C\n" +
-            "C -> n D i\n" +
-            "D -> ''\n" +
-            "D -> o A z");
+            "B -> b\n" + 
+            "B -> c\n" +
+            "B -> d");
+        var lrClosureTable = new LRClosureTable(grammar);
+        var lrTable = new LRTable(lrClosureTable);
         console.log(grammar);
         GrammarSlrVisualization(grammar);
+        ShowProcess(lrClosureTable);
     });
 
 }
 
+
+function ShowProcess(lrClosureTable) {
+    $(ID_SHOW_PROCESS_BUTTON).on("click", function () {
+        $(SHOW_PROCESS_CONTENT_ID).show();
+        var states = [];
+        var transitions = [];
+        var curPoses = [];
+        var lastPoses = [];
+        states.push(0);
+        transitions.push([]);
+        var chtoto = Object.values(lrClosureTable.kernels[0].gotos).items;
+        var tmpStr2 = "";
+        chtoto.forEach(function (kernel) {
+            tmpStr2 += kernel.rule.pattern + " -> " + kernel.rule.development + "    ";
+        });
+        curPoses.push(tmpStr2);
+        lrClosureTable.kernels.forEach(function(elem) {
+            
+            Object.values(elem.gotos).forEach(function (gotos) {
+                var tmpStr2 = "";
+                lrClosureTable.kernels[gotos.toString()].items.forEach(function (kernel) {
+                    tmpStr2 += kernel.rule.pattern + " -> " + kernel.rule.development + "    ";
+                });
+                curPoses.push(tmpStr2);
+            });
+            
+            if (elem.keys.length !== 0) {
+                elem.keys.forEach(function (key) {
+                    var str = elem.index + ": " + key.toString();
+                    transitions.push(str);
+                });
+                Object.values(elem.gotos).forEach(function (gotos) {                    
+                    var str = gotos.toString();
+                    states.push(str);
+                });
+            }
+
+            // var tmpStr2 = "";
+            // elem.items.forEach(function (kernel) {
+                // Object.values(kernel.rule).forEach(function(rule2) {
+                //     if (typeof kernel.rule.pattern != "undefined") {
+                //         tmpStr2 += kernel.rule.pattern + " -> " + kernel.rule.development + "    ";
+                //     }
+                // });
+            // });
+
+            // curPoses.push(tmpStr2);
+            
+            var tmpStr = "";
+            elem.closure.forEach(function (rule) {
+                // CreateSlrList(rules);
+                Object.values(rule).forEach(function(rule2) {
+                    if (typeof rule2.pattern != "undefined") {
+                        tmpStr += rule2.pattern + " -> " + rule2.development + "    ";
+                    }
+                });
+                // transitions.push(str);
+            });
+            lastPoses.push(tmpStr);
+        });
+        CreateShowProcessTable(states, transitions, curPoses, lastPoses, "#showProcessTable");
+    });
+}
 
 function GrammarSlrVisualization(grammar) {
 
@@ -324,6 +399,16 @@ function CreateNewGrammarTable(productions, first, follow, id) {
         row += '<tr><td>' +
 
             productions[i] + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
+    }
+    $(id).html(row);
+}
+
+function CreateShowProcessTable(states, transitions, curPoses, lastPoses, id) {
+    var row = '';
+    for (var i in states) {
+        row += '<tr><td>' +
+
+            states[i] + '</td><td>' + transitions[i] + '</td><td>' + curPoses[i] + '</td><td>' + lastPoses[i] + '</td></tr>';
     }
     $(id).html(row);
 }
