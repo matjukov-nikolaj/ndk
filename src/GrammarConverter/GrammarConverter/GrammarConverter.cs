@@ -215,7 +215,7 @@ namespace GrammarConverter
                             {
                                 ChangePosition(subLine);
                                 String alternative = noTerminal + "->" + subLine + noTerminal + "'";
-                                productions.Add(alternative);
+                                this.productions.Add(alternative);
                             }
                         }
                     }
@@ -296,6 +296,7 @@ namespace GrammarConverter
                         break;
                     }
                 }
+                
 
                 String noTerminal = production.Substring(0, 2);
                 String lol = production.Substring(1, 1);
@@ -310,6 +311,17 @@ namespace GrammarConverter
                     {
                         List<String> temp = first[j];
                         temp.AddRange(firstTemp);
+                        temp = temp.Distinct().ToList();
+                        for (int k = 0; k < temp.Count; k++)
+                        {
+                            String item = temp[k];
+                            if (item.Equals("&"))
+                            {
+                                temp.RemoveAt(k);
+                                temp.Add("&");
+                                break;
+                            }
+                        }
                         first[j] = temp;
                     }
                 }
@@ -654,7 +666,10 @@ namespace GrammarConverter
 
                     int posBefore = GetPosition(noTerminals, nt1);
                     int posAfter = GetPosition(noTerminals, nt2);
-                    SetPositionBeforeAndAfter(posBefore, posAfter);
+                    if (posBefore != -1 && posAfter != -1)
+                    {
+                        SetPositionBeforeAndAfter(posBefore, posAfter);
+                    }
                 }
             }
         }
@@ -935,7 +950,7 @@ namespace GrammarConverter
                 String noTerminal = production[0].ToString();
                 if (production.Length >= 3 + line.Length)
                 {
-                    String next = production.Substring(3, production.Length - 3 + line.Length);
+                    String next = production.Substring(3, line.Length);
                     if (next.Equals(line))
                     {
                         String alternative = null;
@@ -946,7 +961,7 @@ namespace GrammarConverter
                         }
                         else
                         {
-                            String right = production.Substring(line.Length + 3, production.Length - line.Length + 3);
+                            String right = production.Substring(line.Length + 3,(production.Length - (line.Length + 3)));
                             alternative = noTerminal + "'->" + right;
                             productions[i] = alternative;
                         }
@@ -998,7 +1013,7 @@ namespace GrammarConverter
             int count = 0;
             for (int i = 0; i < productions.Count; i++)
             {
-                if (ch.Equals(productions[i][0]))
+                if (ch.Equals(productions[i][0].ToString()))
                 {
                     result.Add(productions[i]);
                     count++;

@@ -7,6 +7,14 @@ B->&
 C->cC
 C->&
 
+A->abC
+A->ad
+A->aB
+A->aC
+A->a&
+B->l
+C->&
+
 
 A -> B A'
 A' -> a B A'
@@ -20,12 +28,29 @@ C -> n D i
 D -> ''
 D -> o A z
 
+
+<A> -> <A> a <B>
+<A> -> <B>
+<B> -> <B> k <C>
+<B> -> <C>
+<C> -> y
+<C> -> x <C>
+<C> -> n <D> i
+<D> -> &
+<D> -> o <A> z
+
+A->abC
+A->abd
+A->aB
+A->aC
+
 Z->S
 S->&
 S->aS
 S->bA
 A->cAd
 A->&
+
 
                         for (int k = 0; k < alternative.Length; k++)
                         {
