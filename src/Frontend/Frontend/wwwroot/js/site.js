@@ -2,6 +2,7 @@
 var ID_BUTTON_SLR = "#grammarEnteredButtonSlr";
 var ID_STATISTIC_BUTTON = "#statisticMenu";
 var ID_SHOW_PROCESS_BUTTON = "#showProcess";
+var ID_PROCESS_SEQUENCE_BUTTON = "#slrInputSequenceButton";
 var ID_SYNTACTICAL_ANALYZER_BUTTON = "#syntacticalAnalyzerMenu";
 var ID_SEQUENCE_CHECK_BUTTON = "#inputSequenceButton";
 var ID_TEXTAREA = 'textarea#enteredGrammar';
@@ -28,26 +29,17 @@ $(document).ready(function () {
     processSlrGrammar();
     processGrammar();
     processSequence();
-    processStatistic();    
+    processStatistic();
 });
 
 function processSlrGrammar() {
     $(ID_BUTTON_SLR).on("click", function () {
         var message = $(ID_TEXTAREA).val();
         // var grammar = new Grammar(message);
-        // var grammar = new Grammar("A -> A a B\n" +
-        //     "A -> B\n" +
-        //     "B -> B k C\n" +
-        //     "B -> C\n" +
-        //     "C -> y\n" +
-        //     "C -> x C\n" +
-        //     "C -> n D i\n" +
-        //     "D -> ''\n" +
-        //     "D -> o A z");
         var grammar = new Grammar("S -> a A\n" +
             "A -> B , A\n" +
             "A -> B\n" +
-            "B -> b\n" + 
+            "B -> b\n" +
             "B -> c\n" +
             "B -> d");
         var lrClosureTable = new LRClosureTable(grammar);
@@ -55,72 +47,155 @@ function processSlrGrammar() {
         console.log(grammar);
         GrammarSlrVisualization(grammar);
         ShowProcess(lrClosureTable);
+        ProcessSlrTable(lrTable);
+        ProcessSequence(lrTable);
     });
 
 }
 
+function ProcessSequence(lrTable) {
+    $(ID_PROCESS_SEQUENCE_BUTTON).on("click", function () {
+        parseInput(lrTable);
+    });
+}
+
+
+function parseInput(lrTable) {
+    var stack = [0];
+
+    function stateIndex() {
+        return stack[2 * ((stack.length - 1) >> 1)];
+    }
+
+    var tokens = ($element('slrInputSequence').value.trim() + ' $').split(' ');
+    // var maximumStepCount = parseInt($element('slrInputSequence').value);
+    var tokenIndex = 0;
+    var token = tokens[tokenIndex];
+    var state = lrTable.states[stateIndex()];
+    var action = state[token];
+    var actionElement = chooseActionElement(state, token);
+    // var rows = "<tr><td>1</td><td>" + formatStack(stack) + "</td><td>" + tokens.slice(tokenIndex).join(' ') + "</td><td>" + formatAction(state, token, false) + "</td><td id=\"tree\" style=\"vertical-align: top;\"></td></tr>\n";
+    var i = 2;
+
+    while (action != undefined && actionElement != 'r0') {
+        if (actionElement.actionType == 's') {
+            stack.push(tokens[tokenIndex++]);
+            stack.push(parseInt(actionElement.actionValue));
+        } else if (actionElement.actionType == 'r') {
+            var ruleIndex = actionElement.actionValue;
+            var rule = lrTable.grammar.rules[ruleIndex];
+            var removeCount = isElement(EPSILON, rule.development) ? 0 : rule.development.length * 2;
+            var removedElements = stack.splice(stack.length - removeCount, removeCount);
+            var node = new Tree(rule.nonterminal, []);
+
+            for (var j = 0; j < removedElements.length; j += 2) {
+                node.children.push(removedElements[j]);
+            }
+
+            stack.push(node);
+        } else {
+            stack.push(parseInt(actionElement));
+        }
+
+        var state = lrTable.states[stateIndex()];
+        var token = stack.length % 2 == 0 ? stack[stack.length - 1] : tokens[tokenIndex];
+        action = state[token];
+        actionElement = chooseActionElement(state, token);
+
+        // rows += "<tr><td>" + i + "</td><td>" + formatStack(stack) + "</td><td>" + tokens.slice(tokenIndex).join(' ') + "</td><td>" + formatAction(state, token, false) + "</td></tr>\n";
+
+        // console.log(stack);
+        console.log(token);
+        ++i;
+        
+    }
+
+}
+
+function ProcessSlrTable(lrTable) {
+    var grammar = lrTable.grammar.alphabet;
+    var row = '';
+    row += '<tr class="card-header">';
+    row += '<td></td>';
+    for (var i in grammar) {
+        for (var j in grammar[i]) {
+            (j == 0) ? row += '<td class="card-header">' + grammar[i][j] + '</td>' : row += '<td>' + grammar[i][j] + '</td>';
+        }
+    }
+    row += '<td class="card-header">$</td>';
+    row += '</tr>';
+
+    var grammar = lrTable.grammar.alphabet;
+    grammar.push("$");
+    lrTable.states.forEach(function (state) {
+        row += '<tr>';
+        row += '<td class="card-header">' + state.index + '</td>';
+        var i = 0;
+        grammar.forEach(function (elem) {
+            if (state[elem] !== undefined) {
+                row += '<td>' + ((state[elem][0].actionType == "r") ? "r" : "") + state[elem][0].actionValue + '</td>';
+            } else {
+                row += '<td>' + '</td>';
+            }
+            ++i;
+        });
+    });
+    $("#slrTable").html(row);
+}
 
 function ShowProcess(lrClosureTable) {
     $(ID_SHOW_PROCESS_BUTTON).on("click", function () {
-        $(SHOW_PROCESS_CONTENT_ID).show();
-        var states = [];
-        var transitions = [];
-        var curPoses = [];
-        var lastPoses = [];
-        states.push(0);
-        transitions.push([]);
-        var chtoto = Object.values(lrClosureTable.kernels[0].gotos).items;
-        var tmpStr2 = "";
-        chtoto.forEach(function (kernel) {
-            tmpStr2 += kernel.rule.pattern + " -> " + kernel.rule.development + "    ";
-        });
-        curPoses.push(tmpStr2);
-        lrClosureTable.kernels.forEach(function(elem) {
-            
-            Object.values(elem.gotos).forEach(function (gotos) {
-                var tmpStr2 = "";
-                lrClosureTable.kernels[gotos.toString()].items.forEach(function (kernel) {
-                    tmpStr2 += kernel.rule.pattern + " -> " + kernel.rule.development + "    ";
-                });
-                curPoses.push(tmpStr2);
-            });
-            
-            if (elem.keys.length !== 0) {
-                elem.keys.forEach(function (key) {
-                    var str = elem.index + ": " + key.toString();
-                    transitions.push(str);
-                });
-                Object.values(elem.gotos).forEach(function (gotos) {                    
-                    var str = gotos.toString();
-                    states.push(str);
-                });
-            }
-
-            // var tmpStr2 = "";
-            // elem.items.forEach(function (kernel) {
-                // Object.values(kernel.rule).forEach(function(rule2) {
-                //     if (typeof kernel.rule.pattern != "undefined") {
-                //         tmpStr2 += kernel.rule.pattern + " -> " + kernel.rule.development + "    ";
-                //     }
-                // });
-            // });
-
-            // curPoses.push(tmpStr2);
-            
-            var tmpStr = "";
-            elem.closure.forEach(function (rule) {
-                // CreateSlrList(rules);
-                Object.values(rule).forEach(function(rule2) {
-                    if (typeof rule2.pattern != "undefined") {
-                        tmpStr += rule2.pattern + " -> " + rule2.development + "    ";
-                    }
-                });
-                // transitions.push(str);
-            });
-            lastPoses.push(tmpStr);
-        });
-        CreateShowProcessTable(states, transitions, curPoses, lastPoses, "#showProcessTable");
+        ($(SHOW_PROCESS_CONTENT_ID).css('display') == 'none') ? $(SHOW_PROCESS_CONTENT_ID).show() : $(SHOW_PROCESS_CONTENT_ID).hide();
+        GetDataForShowProcessTable(lrClosureTable);
     });
+}
+
+function GetDataForShowProcessTable(lrClosureTable) {
+    var states = [];
+    var transitions = [];
+    var curPoses = [];
+    var lastPoses = [];
+    states.push(0);
+    transitions.push([]);
+    var items = lrClosureTable.kernels[0].items;
+    var tmpStr2 = "";
+    items.forEach(function (kernel) {
+        tmpStr2 += kernel.rule.pattern + " -> " + kernel.rule.development + "    ";
+    });
+    curPoses.push(tmpStr2);
+    lrClosureTable.kernels.forEach(function (elem) {
+
+        Object.values(elem.gotos).forEach(function (gotos) {
+            var tmpStr2 = "";
+            lrClosureTable.kernels[gotos.toString()].items.forEach(function (kernel) {
+                tmpStr2 += kernel.rule.pattern + " -> " + kernel.rule.development + "    ";
+            });
+            curPoses.push(tmpStr2);
+        });
+
+        if (elem.keys.length !== 0) {
+            elem.keys.forEach(function (key) {
+                var str = elem.index + ": " + key.toString();
+                transitions.push(str);
+            });
+            Object.values(elem.gotos).forEach(function (gotos) {
+                var str = gotos.toString();
+                states.push(str);
+            });
+        }
+
+        var tmpStr = "";
+        elem.closure.forEach(function (rule) {
+            Object.values(rule).forEach(function (rule2) {
+                if (typeof rule2.pattern != "undefined") {
+                    tmpStr += rule2.pattern + " -> " + rule2.development + "    ";
+                }
+            });
+        });
+        lastPoses.push(tmpStr);
+    });
+
+    CreateShowProcessTable(states, transitions, curPoses, lastPoses, "#showProcessTable");
 }
 
 function GrammarSlrVisualization(grammar) {
@@ -141,17 +216,17 @@ function CreateSlrFirstFollowTable(first, follow, id) {
 
             i + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
     }
-    
+
     $(id).html(row);
 }
 
 function CreateSlrList(rules) {
     var list = [];
-    rules.forEach(function(rule) {
+    rules.forEach(function (rule) {
         var str = rule.pattern[0] + " -> " + rule.development[0];
         list.push(str);
     });
-    
+
     return list;
 }
 
@@ -372,7 +447,7 @@ function CreateAcceptedStatisticTable(items, row, number, idGrammarItem, idSeque
     row = ' <div class="card-container d-flex flex-row mt-3">\n' +
         '                    <div class="card card-grammar">\n' +
         '                        <div class="card-header">Grammar</div>\n' +
-            '                        <div class="card-body scrollbar-near-moon" id="' + idGrammarItem + number + '">\n' +
+        '                        <div class="card-body scrollbar-near-moon" id="' + idGrammarItem + number + '">\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <div class="card card-sequence">\n' +
