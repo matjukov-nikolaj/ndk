@@ -36,7 +36,7 @@ $(document).ready(function () {
     processStatistic();
 });
 
-function processSlrGrammar() {
+function processSlrGrammar() {    
     $(ID_BUTTON_SLR).on("click", function () {
         $(HIDDEN_SLR_CONTENT_ID).show();
         $(HIDDEN_CONTENT_ID).hide();
@@ -44,13 +44,11 @@ function processSlrGrammar() {
         var grammar = new Grammar(message);
         var lrClosureTable = new LRClosureTable(grammar);
         var lrTable = new LRTable(lrClosureTable);
-        console.log(grammar);
         GrammarSlrVisualization(grammar);
         ShowProcess(lrClosureTable);
         ProcessSlrTable(lrTable);
         ProcessSequence(lrTable);
     });
-
 }
 
 function ProcessSequence(lrTable) {
@@ -166,11 +164,11 @@ function ProcessSlrTable(lrTable) {
 }
 
 function ShowProcess(lrClosureTable) {
-    $(ID_SHOW_PROCESS_BUTTON).on("click", function () {
+    document.getElementById('showProcess').onclick = function () {
         toggleText(ID_SHOW_PROCESS_BUTTON);
         ($(SHOW_PROCESS_CONTENT_ID).css('display') == 'none') ? $(SHOW_PROCESS_CONTENT_ID).show() : $(SHOW_PROCESS_CONTENT_ID).hide();
-        GetDataForShowProcessTable(lrClosureTable);
-    });
+        GetDataForShowProcessTable(lrClosureTable); 
+    }
 }
 
 function GetDataForShowProcessTable(lrClosureTable) {
@@ -224,6 +222,7 @@ function GetDataForShowProcessTable(lrClosureTable) {
 function GrammarSlrVisualization(grammar) {
 
     $("#startSymbolSlr").html(grammar.axiom);
+    console.log(grammar.rules);
     CreateEnteredGrammarTable(CreateSlrList(grammar.rules), "#grammarSlr");
     CreateEnteredGrammarTable(grammar.terminals, "#terminalsSlr");
     CreateEnteredGrammarTable(grammar.nonterminals, "#noTerminalsSlr");
@@ -246,7 +245,11 @@ function CreateSlrFirstFollowTable(first, follow, id) {
 function CreateSlrList(rules) {
     var list = [];
     rules.forEach(function (rule) {
-        var str = rule.pattern[0] + " -> " + rule.development[0];
+        var str = rule.pattern[0] + " -> ";
+        for (var i in rule.development)
+        {
+            str += rule.development[i] + " ";
+        }
         list.push(str);
     });
 

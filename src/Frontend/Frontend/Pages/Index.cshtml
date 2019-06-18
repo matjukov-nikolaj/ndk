@@ -28,6 +28,10 @@
         <label>Examples SLR:</label>
     </div>
     <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example6">example 1</button>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example7">example 2</button>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example8">example 3</button>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example9">example 4</button>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example10">example 5</button>
 </div>
 <div id="hiddenContent" class="container">
     <div class="row">
@@ -39,17 +43,17 @@
             <div class="d-flex flex-row">
                 <div class="card mb-3 mr-3" style="max-width: 18rem;">
                     <div class="card-header">Grammar</div>
-                    <div class="card-body" id="grammar">
+                    <div class="card-body scrollbar-near-moon" id="grammar">
                     </div>
                 </div>
                 <div class="card mb-3 mr-3" style="max-width: 18rem;">
                     <div class="card-header">Terminals</div>
-                    <div class="card-body" id="terminals">
+                    <div class="card-body scrollbar-near-moon" id="terminals">
                     </div>
                 </div>
                 <div class="card mb-3" style="max-width: 18rem;">
                     <div class="card-header">Not terminals</div>
-                    <div class="card-body" id="noTerminals">
+                    <div class="card-body scrollbar-near-moon" id="noTerminals">
                     </div>
                 </div>
             </div>
@@ -96,17 +100,17 @@
                 <div class="d-flex flex-row">
                     <div class="card mb-3 mr-3" style="max-width: 18rem;">
                         <div class="card-header">States</div>
-                        <div class="card-body" id="state">
+                        <div class="card-body scrollbar-near-moon" id="state">
                         </div>
                     </div>
                     <div class="card mb-3 mr-3" style="max-width: 18rem;">
                         <div class="card-header">Sequence</div>
-                        <div class="card-body" id="sequence">
+                        <div class="card-body scrollbar-near-moon" id="sequence">
                         </div>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
                         <div class="card-header">Transition</div>
-                        <div class="card-body" id="transition">
+                        <div class="card-body scrollbar-near-moon" id="transition">
                         </div>
                     </div>
                 </div>
@@ -125,17 +129,17 @@
             <div class="d-flex flex-row">
                 <div class="card mb-3 mr-3" style="max-width: 18rem;">
                     <div class="card-header">Grammar</div>
-                    <div class="card-body" id="grammarSlr">
+                    <div class="card-body scrollbar-near-moon" id="grammarSlr">
                     </div>
                 </div>
                 <div class="card mb-3 mr-3" style="max-width: 18rem;">
                     <div class="card-header">Terminals</div>
-                    <div class="card-body" id="terminalsSlr">
+                    <div class="card-body scrollbar-near-moon" id="terminalsSlr">
                     </div>
                 </div>
                 <div class="card mb-3" style="max-width: 18rem;">
                     <div class="card-header">Not terminals</div>
-                    <div class="card-body" id="noTerminalsSlr">
+                    <div class="card-body scrollbar-near-moon" id="noTerminalsSlr">
                     </div>
                 </div>
             </div>
@@ -182,17 +186,17 @@
                 <div class="d-flex flex-row">
                     <div class="card mb-3 mr-3" style="max-width: 18rem;">
                         <div class="card-header">States</div>
-                        <div class="card-body" id="slrState">
+                        <div class="card-body scrollbar-near-moon" id="slrState">
                         </div>
                     </div>
                     <div class="card mb-3 mr-3" style="max-width: 18rem;">
                         <div class="card-header">Sequence</div>
-                        <div class="card-body" id="slrSequence">
+                        <div class="card-body scrollbar-near-moon" id="slrSequence">
                         </div>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
                         <div class="card-header">Transition</div>
-                        <div class="card-body" id="slrTransition">
+                        <div class="card-body scrollbar-near-moon" id="slrTransition">
                         </div>
                     </div>
                 </div>
@@ -370,6 +374,102 @@
                 B -> b<br/>
                 B -> c<br/>
                 B -> d
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="example7">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Example of entered data</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                A -> A a B<br/>
+                A -> B <br/>
+                B -> B k C<br/>
+                B -> C<br/>
+                C -> y<br/>
+                C -> x C<br/>
+                C -> n D i<br/>
+                D -> &<br/>
+                D -> o A z<br/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="example8">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Example of entered data</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                E -> T E'<br/>
+                E' -> + T E'<br/>
+                E' -> e<br/>
+                T -> F T'<br/>
+                T' -> * F T'<br/>
+                T' -> &<br/>
+                F -> i<br/>
+                F -> ( E )<br/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="example4">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Example of entered data</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                T -> S<br/>
+                S -> A B C<br/>
+                A -> a A<br/>
+                A -> &<br/>
+                B -> b B<br/>
+                B -> &<br/>
+                C -> c C<br/>
+                C -> &<br/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="example5">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Example of entered data</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                T->S<br/>
+                S->AB<br/>
+                F->DB<br/>
+                A->KD<br/>
+                C->Ca<br/>
+                C->&<br/>
+                D->dD<br/>
+                D->&<br/>
+                B->bB<br/>
+                B->&<br/>
+                K->k<br/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
