@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e5afe93b-ee15-445b-9b57-a532760cc8ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/model/NewGrammar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/model/NewGrammar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SlrParser/.idea/.idea.SlrParser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SlrParser/.idea/.idea.SlrParser/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Новый текстовый документ.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Новый текстовый документ.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/GrammarProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarProcessor/GrammarProcessor/GrammarProcessor.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Core/model/Grammar.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+            <state relative-caret-position="165">
+              <caret line="12" column="40" lean-forward="true" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
               <folding>
                 <marker date="1559578966160" expanded="false" signature="6:47" ph="..." />
                 <marker date="1559578966160" expanded="true" signature="69:483" ph="{...}" />
@@ -136,7 +134,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Core/model/NewGrammar.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -201,7 +199,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
-    <option name="width" value="974" />
+    <option name="width" value="1014" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -281,7 +279,7 @@
       <workItem from="1559404826264" duration="2016000" />
       <workItem from="1559410321841" duration="1783000" />
       <workItem from="1559412842409" duration="986000" />
-      <workItem from="1560535995907" duration="525000" />
+      <workItem from="1560535995907" duration="1245000" />
     </task>
     <task id="LOCAL-00001" summary="added models for communication between frontend and backend">
       <created>1558794557585</created>
@@ -294,7 +292,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17966000" />
+    <option name="totallyTimeSpent" value="18686000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,19 +422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Core/model/Grammar.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-          <folding>
-            <marker date="1559578966160" expanded="false" signature="6:47" ph="..." />
-            <marker date="1559578966160" expanded="true" signature="69:483" ph="{...}" />
-            <marker date="1559578966160" expanded="true" signature="96:481" ph="{...}" />
-            <marker date="1559578966160" expanded="true" signature="288:474" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Core/model/Result.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -484,6 +469,19 @@
             <marker date="1560536035861" expanded="true" signature="69:722" ph="{...}" />
             <marker date="1560536035861" expanded="true" signature="99:720" ph="{...}" />
             <marker date="1560536035861" expanded="true" signature="405:705" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/model/Grammar.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="40" lean-forward="true" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+          <folding>
+            <marker date="1559578966160" expanded="false" signature="6:47" ph="..." />
+            <marker date="1559578966160" expanded="true" signature="69:483" ph="{...}" />
+            <marker date="1559578966160" expanded="true" signature="96:481" ph="{...}" />
+            <marker date="1559578966160" expanded="true" signature="288:474" ph="{...}" />
           </folding>
         </state>
       </provider>
