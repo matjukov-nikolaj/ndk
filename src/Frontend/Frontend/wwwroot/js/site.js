@@ -12,7 +12,9 @@ var STATISTIC_URL = "http://127.0.0.1:5000/api/statistic/statistic";
 var INPUT_HIDDEN_ID = "#sequenceId";
 var INPUT_SEQUENCE_ID = "#inputSequence";
 var HIDDEN_CONTENT_ID = "#hiddenContent";
+var HIDDEN_SLR_CONTENT_ID = "#hiddenSlrContent";
 var HIDDEN_SEQUENCE_ID = "#hiddenSequenceContent";
+var HIDDEN_SLR_SEQUENCE_ID = "#slrHiddenSequenceContent";
 var SYNTACTICAL_ANALYZER_CONTENT_ID = "#syntacticalAnalyzer";
 var STATISTIC_CONTENT_ID = "#statisticContent";
 var SHOW_PROCESS_CONTENT_ID = "#showProcessContent";
@@ -20,8 +22,10 @@ var SHOW_PROCESS_CONTENT_ID = "#showProcessContent";
 $(document).ready(function () {
     $(HIDDEN_CONTENT_ID).hide();
     $(HIDDEN_SEQUENCE_ID).hide();
+    $(HIDDEN_SLR_SEQUENCE_ID).hide();
     $(STATISTIC_CONTENT_ID).hide();
     $(SHOW_PROCESS_CONTENT_ID).hide();
+    $(HIDDEN_SLR_CONTENT_ID).hide();
     $(ID_SYNTACTICAL_ANALYZER_BUTTON).on("click", function () {
         $(STATISTIC_CONTENT_ID).hide();
         $(SYNTACTICAL_ANALYZER_CONTENT_ID).show();
@@ -34,14 +38,10 @@ $(document).ready(function () {
 
 function processSlrGrammar() {
     $(ID_BUTTON_SLR).on("click", function () {
+        $(HIDDEN_SLR_CONTENT_ID).show();
+        $(HIDDEN_CONTENT_ID).hide();
         var message = $(ID_TEXTAREA).val();
-        // var grammar = new Grammar(message);
-        var grammar = new Grammar("S -> a A\n" +
-            "A -> B , A\n" +
-            "A -> B\n" +
-            "B -> b\n" +
-            "B -> c\n" +
-            "B -> d");
+        var grammar = new Grammar(message);
         var lrClosureTable = new LRClosureTable(grammar);
         var lrTable = new LRTable(lrClosureTable);
         console.log(grammar);
@@ -56,6 +56,7 @@ function processSlrGrammar() {
 function ProcessSequence(lrTable) {
     $(ID_PROCESS_SEQUENCE_BUTTON).on("click", function () {
         parseInput(lrTable);
+        $(HIDDEN_SLR_SEQUENCE_ID).show();
     });
 }
 
@@ -68,14 +69,19 @@ function parseInput(lrTable) {
     }
 
     var tokens = ($element('slrInputSequence').value.trim() + ' $').split(' ');
-    // var maximumStepCount = parseInt($element('slrInputSequence').value);
     var tokenIndex = 0;
     var token = tokens[tokenIndex];
     var state = lrTable.states[stateIndex()];
     var action = state[token];
     var actionElement = chooseActionElement(state, token);
-    // var rows = "<tr><td>1</td><td>" + formatStack(stack) + "</td><td>" + tokens.slice(tokenIndex).join(' ') + "</td><td>" + formatAction(state, token, false) + "</td><td id=\"tree\" style=\"vertical-align: top;\"></td></tr>\n";
-    var i = 2;
+    var stackHtml = [];
+    var sequenceHtml = [];
+    var transitionHtml = [];
+    
+    stackHtml.push(getCurrentStackValue(stack));
+    sequenceHtml.push(tokens.slice(tokenIndex).join(' '));
+    transitionHtml.push(getCurrentTransitionValue(state, token));
+    var isAccepted = false;
 
     while (action != undefined && actionElement != 'r0') {
         if (actionElement.actionType == 's') {
@@ -101,15 +107,24 @@ function parseInput(lrTable) {
         var token = stack.length % 2 == 0 ? stack[stack.length - 1] : tokens[tokenIndex];
         action = state[token];
         actionElement = chooseActionElement(state, token);
-
-        // rows += "<tr><td>" + i + "</td><td>" + formatStack(stack) + "</td><td>" + tokens.slice(tokenIndex).join(' ') + "</td><td>" + formatAction(state, token, false) + "</td></tr>\n";
-
-        // console.log(stack);
-        console.log(token);
-        ++i;
-        
+        stackHtml.push(getCurrentStackValue(stack));
+        sequenceHtml.push(tokens.slice(tokenIndex).join(' '));
+        var transition = getCurrentTransitionValue(state, token);
+        if (transition.indexOf("OK") !== -1) 
+        {
+            isAccepted = true;
+        }
+        transitionHtml.push(transition);        
     }
 
+
+    var resultText = "sequence " + (isAccepted ? "accepted" : "declined");
+    var resultClass = (isAccepted ? "text-accepted" : "text-declined");
+    $('#slrAlgorithmId').text(resultText).removeClass().addClass(resultClass);
+    
+    CreateEnteredGrammarTable(stackHtml, "#slrState");
+    CreateEnteredGrammarTable(sequenceHtml, "#slrSequence");
+    CreateEnteredGrammarTable(transitionHtml, "#slrTransition");
 }
 
 function ProcessSlrTable(lrTable) {
@@ -133,7 +148,14 @@ function ProcessSlrTable(lrTable) {
         var i = 0;
         grammar.forEach(function (elem) {
             if (state[elem] !== undefined) {
-                row += '<td>' + ((state[elem][0].actionType == "r") ? "r" : "") + state[elem][0].actionValue + '</td>';
+                if ((state[elem][0].actionType == "r") && (state[elem][0].actionValue == 0))
+                {
+                    row += '<td>' + "<span style=\"color: green;\">OK</span>" + '</td>';
+                }
+                else
+                {
+                    row += '<td>' + ((state[elem][0].actionType == "r") ? "r" : "") + state[elem][0].actionValue + '</td>';   
+                }
             } else {
                 row += '<td>' + '</td>';
             }
@@ -145,6 +167,7 @@ function ProcessSlrTable(lrTable) {
 
 function ShowProcess(lrClosureTable) {
     $(ID_SHOW_PROCESS_BUTTON).on("click", function () {
+        toggleText(ID_SHOW_PROCESS_BUTTON);
         ($(SHOW_PROCESS_CONTENT_ID).css('display') == 'none') ? $(SHOW_PROCESS_CONTENT_ID).show() : $(SHOW_PROCESS_CONTENT_ID).hide();
         GetDataForShowProcessTable(lrClosureTable);
     });
@@ -313,6 +336,7 @@ function SequenceVisualization(data) {
 
 function processGrammar() {
     $(ID_BUTTON).on("click", function () {
+        $(HIDDEN_SLR_CONTENT_ID).hide();
         var message = $(ID_TEXTAREA).val();
         $.ajax({
             headers: {
@@ -326,7 +350,7 @@ function processGrammar() {
             data: JSON.stringify(message),
             success: function (data) {
                 GrammarVisualization(data);
-                $(HIDDEN_CONTENT_ID).show();
+                $(HIDDEN_CONTENT_ID).show();                
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
@@ -481,9 +505,10 @@ function CreateNewGrammarTable(productions, first, follow, id) {
 function CreateShowProcessTable(states, transitions, curPoses, lastPoses, id) {
     var row = '';
     for (var i in states) {
+        var lastPos = (lastPoses[i] != undefined) ? lastPoses[i] : "";
         row += '<tr><td>' +
 
-            states[i] + '</td><td>' + transitions[i] + '</td><td>' + curPoses[i] + '</td><td>' + lastPoses[i] + '</td></tr>';
+            states[i] + '</td><td>' + transitions[i] + '</td><td>' + curPoses[i] + '</td><td>' + lastPos + '</td></tr>';
     }
     $(id).html(row);
 }
@@ -508,4 +533,9 @@ function ErrorVisualization(jqXHR, textStatus, errorThrown, id) {
 function CreateString(list, id) {
     var row = '<p>' + list + '</p>';
     $(id).html(row);
+}
+
+function toggleText(button_id)  {
+    var text = $(button_id).text();
+    $(button_id).text(text == "Show Process" ? "Hide Process" : "Show Process");
 }

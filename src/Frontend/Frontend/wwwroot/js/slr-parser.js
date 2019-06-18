@@ -848,3 +848,44 @@ function Tree(value, children) {
         return this.value.toString();
     }
 }
+
+
+function getCurrentStackValue(stack) {
+    var result = stack.slice(0);
+
+    for (var i = 0; i < result.length; i += 2) {
+        result[i] = "<strong>" + result[i] + "</strong>";
+    }
+
+    return result.join(' ');
+}
+
+function getCurrentTransitionValue(state, token) {
+    var action = state[token];
+
+    if (action == undefined) {
+        return "&nbsp;";
+    }
+
+    var formattedActionElements = [];
+
+    
+    formattedActionElements.push(getCurrentTransitionValueElement(chooseActionElement(state, token)));
+    
+
+    var result = formattedActionElements.join(" / ");
+
+    if (1 < action.length) {
+        result = "<span style=\"background-color: pink;\">" + result + "</span>";
+    }
+
+    return result;
+}
+
+function getCurrentTransitionValueElement(actionElement) {
+    return actionElement.toString()
+        .replace("r0", "<span style=\"color: green;\">OK</span>")
+        .replace(/(s|\b)([0-9]+)/g, "$1<span style=\"color: blue;\">$2</span>")
+        .replace(/r([0-9]+)/g, "r<sub style=\"color: green;\">$1</sub>")
+        .replace("s", "");
+}

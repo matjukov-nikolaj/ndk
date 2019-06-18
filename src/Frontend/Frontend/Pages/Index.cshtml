@@ -6,233 +6,235 @@
 
 <input type="hidden" id="sequenceId" value=""/>
 <div class="content mt-3">
-    <div class="container ">
-        <div id="syntacticalAnalyzer" class="row">
-            @* <table id="list"></table> *@
-            <div class="form-group col-6">
-                <label for="enteredGrammar">Enter gramma:</label>
-                <textarea class="form-control" rows="5" id="enteredGrammar"></textarea>
-                <button id="grammarEnteredButton" type="button" class="btn btn-dark mt-2">Process LL</button>
-                <button id="grammarEnteredButtonSlr" type="button" class="btn btn-dark mt-2">Process SLR</button>
+<div class="container ">
+<div id="syntacticalAnalyzer" class="row">
+@* <table id="list"></table> *@
+<div class="form-group col-6">
+    <label for="enteredGrammar">Enter gramma:</label>
+    <textarea class="form-control" rows="5" id="enteredGrammar"></textarea>
+    <button id="grammarEnteredButton" type="button" class="btn btn-dark mt-2">Process LL</button>
+    <button id="grammarEnteredButtonSlr" type="button" class="btn btn-dark mt-2">Process SLR</button>
+</div>
+<div class="col-6">
+    <div>
+        <label>Examples LL:</label>
+    </div>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example1">ex. LL 1</button>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example2">ex. LL 2</button>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example3">ex. LL 3</button>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example4">ex. LL 4</button>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example5">ex. LL 5</button>
+    <div class="mt-2">
+        <label>Examples SLR:</label>
+    </div>
+    <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example6">ex. SLR 1</button>
+</div>
+<div id="hiddenContent" class="container">
+    <div class="row">
+        <div class="col-6">
+            <h4>Parsing the resulting grammar</h4>
+            <div>
+                <p>Start symbol:   <span id="startSymbol"></span></p>
             </div>
-            <div class="col-6">
-                <div>
-                    <label>Examples:</label>
-                </div>
-                <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example1">Example 1</button>
-                <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example2">Example 2</button>
-                <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example3">Example 3</button>
-                <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example4">Example 4</button>
-                <button type="button" class="btn btn-dark mt-2" data-toggle="modal" data-target="#example5">Example 5</button>
-            </div>
-            <div id="hiddenContent" class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <h4>Parsing the resulting grammar</h4>
-                        <div>
-                            <p>Start symbol:</p>
-                            <p id="startSymbol"></p>
-                        </div>
-                        <div class="d-flex flex-row">
-                            <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                                <div class="card-header">Grammar</div>
-                                <div class="card-body" id="grammar">
-                                </div>
-                            </div>
-                            <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                                <div class="card-header">Terminals</div>
-                                <div class="card-body" id="terminals">
-                                </div>
-                            </div>
-                            <div class="card mb-3" style="max-width: 18rem;">
-                                <div class="card-header">Not terminals</div>
-                                <div class="card-body" id="noTerminals">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <h4>Table M</h4>
-                        <table class="table table-bordered" style="border: none">
-                            <thead>
-                            <tr id="mTable">
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="col-6">
-                        <h4>Deletion of left recursion</h4>
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr class="card-header">
-                                <td>Gramma</td>
-                                <td>First</td>
-                                <td>Follow</td>
-                            </tr>
-                            </thead>
-                            <tbody id="leftRecursionDeletion">
-                            <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-6">
-                        <h4>Input sequence</h4>
-                        <div class="container">
-                            <div class="row">
-                                <input type="email" class="form-control col-9 mr-1" id="inputSequence" placeholder="Sequence"/>
-                                <button type="button" class="btn btn-dark col-2" id="inputSequenceButton">Check</button>
-                            </div>
-                        </div>
-                        <div id="hiddenSequenceContent">
-                            <div>
-                                <p>Input sequence: <span id="inputSequenceId"></span></p>
-                            </div>
-                            <div class="d-flex flex-row">
-                                <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                                    <div class="card-header">States</div>
-                                    <div class="card-body" id="state">
-                                    </div>
-                                </div>
-                                <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                                    <div class="card-header">Sequence</div>
-                                    <div class="card-body" id="sequence">
-                                    </div>
-                                </div>
-                                <div class="card mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Transition</div>
-                                    <div class="card-body" id="transition">
-                                    </div>
-                                </div>
-                            </div>
-                            <p id="algorithmId"></p>
-                        </div>
+            <div class="d-flex flex-row">
+                <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                    <div class="card-header">Grammar</div>
+                    <div class="card-body" id="grammar">
                     </div>
                 </div>
-            </div>
-            <div id="hiddenSlrContent" class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <h4>Parsing the resulting grammar</h4>
-                        <div>
-                            <p>Start symbol:</p>
-                            <p id="startSymbolSlr"></p>
-                        </div>
-                        <div class="d-flex flex-row">
-                            <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                                <div class="card-header">Grammar</div>
-                                <div class="card-body" id="grammarSlr">
-                                </div>
-                            </div>
-                            <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                                <div class="card-header">Terminals</div>
-                                <div class="card-body" id="terminalsSlr">
-                                </div>
-                            </div>
-                            <div class="card mb-3" style="max-width: 18rem;">
-                                <div class="card-header">Not terminals</div>
-                                <div class="card-body" id="noTerminalsSlr">
-                                </div>
-                            </div>
-                        </div>
+                <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                    <div class="card-header">Terminals</div>
+                    <div class="card-body" id="terminals">
                     </div>
-                    <div class="col-6">
-                        <h4>SLR table</h4>
-                        <table class="table table-bordered" style="border: none">
-                            <thead>
-                            <tr id="slrTable">
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="col-6">
-                        <h4>Selecting First and Follow</h4>
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr class="card-header">
-                                <td>Not terminals</td>
-                                <td>First</td>
-                                <td>Follow</td>
-                            </tr>
-                            </thead>
-                            <tbody id="slrFirstFollow">
-                            <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-6">
-                        <h4>Input sequence</h4>
-                        <div class="container">
-                            <div class="row">
-                                <input type="email" class="form-control col-9 mr-1" id="slrInputSequence" placeholder="Sequence"/>
-                                <button type="button" class="btn btn-dark col-2" id="slrInputSequenceButton">Check</button>
-                            </div>
-                        </div>
-                        <div id="hiddenSequenceContent">
-                            <div>
-                                <p>Input sequence: <span id="inputSequenceId"></span></p>
-                            </div>
-                            <div class="d-flex flex-row">
-                                <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                                    <div class="card-header">States</div>
-                                    <div class="card-body" id="state">
-                                    </div>
-                                </div>
-                                <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                                    <div class="card-header">Sequence</div>
-                                    <div class="card-body" id="sequence">
-                                    </div>
-                                </div>
-                                <div class="card mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Transition</div>
-                                    <div class="card-body" id="transition">
-                                    </div>
-                                </div>
-                            </div>
-                            <p id="algorithmId"></p>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button type="button" class="btn btn-dark mt-2 mb-3" data-toggle="modal" id="showProcess">Show Process</button>
-                        <div id="showProcessContent">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr class="card-header">
-                                    <td>State</td>
-                                    <td>Transitions</td>
-                                    <td>Current Position</td>
-                                    <td>Last Position</td>
-                                </tr>
-                                </thead>
-                                <tbody id="showProcessTable">
-                                <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                </tbody>
-                            </table>
-                        </div>
+                </div>
+                <div class="card mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Not terminals</div>
+                    <div class="card-body" id="noTerminals">
                     </div>
                 </div>
             </div>
         </div>
-        <div id="statisticContent" class="row">
-            <div class="col-6">
-                <h3>accepted</h3>
-                <div id="acceptedItems"></div>
+        <div class="col-6">
+            <h4>Table M</h4>
+            <table class="table table-bordered" style="border: none">
+                <thead>
+                <tr id="mTable">
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="col-6">
+            <h4>Deletion of left recursion</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr class="card-header">
+                    <td>Gramma</td>
+                    <td>First</td>
+                    <td>Follow</td>
+                </tr>
+                </thead>
+                <tbody id="leftRecursionDeletion">
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h4>Input sequence</h4>
+            <div class="container">
+                <div class="row">
+                    <input type="email" class="form-control col-9 mr-1" id="inputSequence" placeholder="Sequence"/>
+                    <button type="button" class="btn btn-dark col-2" id="inputSequenceButton">Check</button>
+                </div>
             </div>
-            <div class="col-6">
-                <h3>declined</h3>
-                <div id="declinedItems"></div>
+            <div id="hiddenSequenceContent">
+                <div>
+                    <p>Input sequence: <span id="inputSequenceId"></span></p>
+                </div>
+                <div class="d-flex flex-row">
+                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                        <div class="card-header">States</div>
+                        <div class="card-body" id="state">
+                        </div>
+                    </div>
+                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                        <div class="card-header">Sequence</div>
+                        <div class="card-body" id="sequence">
+                        </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Transition</div>
+                        <div class="card-body" id="transition">
+                        </div>
+                    </div>
+                </div>
+                <p id="algorithmId"></p>
             </div>
         </div>
     </div>
+</div>
+<div id="hiddenSlrContent" class="container">
+    <div class="row">
+        <div class="col-6">
+            <h4>Parsing the resulting grammar</h4>
+            <div>
+                <p>Start symbol:   <span id="startSymbolSlr"></span></p>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                    <div class="card-header">Grammar</div>
+                    <div class="card-body" id="grammarSlr">
+                    </div>
+                </div>
+                <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                    <div class="card-header">Terminals</div>
+                    <div class="card-body" id="terminalsSlr">
+                    </div>
+                </div>
+                <div class="card mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Not terminals</div>
+                    <div class="card-body" id="noTerminalsSlr">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h4>SLR table</h4>
+            <table class="table table-bordered" style="border: none">
+                <thead>
+                <tr id="slrTable">
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="col-6">
+            <h4>Selecting First and Follow</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr class="card-header">
+                    <td>Not terminals</td>
+                    <td>First</td>
+                    <td>Follow</td>
+                </tr>
+                </thead>
+                <tbody id="slrFirstFollow">
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h4>Input sequence</h4>
+            <div class="container">
+                <div class="row">
+                    <input type="email" class="form-control col-9 mr-1" id="slrInputSequence" placeholder="Sequence"/>
+                    <button type="button" class="btn btn-dark col-2" id="slrInputSequenceButton">Check</button>
+                </div>
+            </div>
+            <div id="slrHiddenSequenceContent">
+                <div>
+                    <p>Input sequence: <span id="inputSequenceId"></span></p>
+                </div>
+                <div class="d-flex flex-row">
+                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                        <div class="card-header">States</div>
+                        <div class="card-body" id="slrState">
+                        </div>
+                    </div>
+                    <div class="card mb-3 mr-3" style="max-width: 18rem;">
+                        <div class="card-header">Sequence</div>
+                        <div class="card-body" id="slrSequence">
+                        </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Transition</div>
+                        <div class="card-body" id="slrTransition">
+                        </div>
+                    </div>
+                </div>
+                <p id="slrAlgorithmId"></p>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="button" class="btn btn-dark mt-2 mb-3" data-toggle="modal" id="showProcess">Show Process</button>
+            <div id="showProcessContent">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="card-header">
+                        <td>State</td>
+                        <td>Transitions</td>
+                        <td>Current Position</td>
+                        <td>Last Position</td>
+                    </tr>
+                    </thead>
+                    <tbody id="showProcessTable">
+                    <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div id="statisticContent" class="row">
+    <div class="col-6">
+        <h3>accepted</h3>
+        <div id="acceptedItems"></div>
+    </div>
+    <div class="col-6">
+        <h3>declined</h3>
+        <div id="declinedItems"></div>
+    </div>
+</div>
+</div>
 </div>
 
 
@@ -347,6 +349,27 @@
                 B->bB<br/>
                 B->&<br/>
                 K->k<br/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="example6">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Example of entered data</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                S -> a A<br/>
+                A -> B , A<br/>
+                A -> B<br/>
+                B -> b<br/>
+                B -> c<br/>
+                B -> d
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
