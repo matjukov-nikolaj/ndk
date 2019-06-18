@@ -884,8 +884,8 @@ function getCurrentTransitionValue(state, token) {
 
 function getCurrentTransitionValueElement(actionElement) {
     return actionElement.toString()
-        .replace("r0", "<span style=\"color: green;\">OK</span>")
-        .replace(/(s|\b)([0-9]+)/g, "$1<span style=\"color: blue;\">$2</span>")
-        .replace(/r([0-9]+)/g, "r<sub style=\"color: green;\">$1</sub>")
+        .replace("r0", "<span>OK</span>")
+        .replace(/(s|\b)([0-9]+)/g, "$1<span>$2</span>")
+        .replace(/r([0-9]+)/g, "r<sub>$1</sub>")
         .replace("s", "");
 }
