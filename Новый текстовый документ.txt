@@ -15,6 +15,13 @@ A->a&
 B->l
 C->&
 
+<A> -> a b <C>
+<A> -> a d
+<A> -> a <B>
+<A> -> a <C>
+<B> -> l
+<C> -> &
+
 
 A -> B A'
 A' -> a B A'
@@ -50,6 +57,14 @@ S->aS
 S->bA
 A->cAd
 A->&
+
+
+S -> real <idList>
+<idList> -> <id>, <idlist>
+<idlist> -> <id>
+<id> -> identifier1
+<id> -> identifier2
+<id> -> identifier3
 
 
                         for (int k = 0; k < alternative.Length; k++)

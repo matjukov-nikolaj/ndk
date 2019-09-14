@@ -131,9 +131,11 @@ function ProcessSlrTable(lrTable) {
     row += '<tr class="card-header">';
     row += '<td></td>';
     for (var i in grammar) {
-        for (var j in grammar[i]) {
-            (j == 0) ? row += '<td class="card-header">' + grammar[i][j] + '</td>' : row += '<td>' + grammar[i][j] + '</td>';
-        }
+        // for (var j in grammar[i]) {
+        //     (j == 0) ? 
+                // row += '<td class="card-header">' + grammar[i][j] + '</td>' : row += '<td>' + grammar[i][j] + '</td>';
+        row += '<td class="card-header">' + escapeHtml(grammar[i])+ '</td>'
+        // }
     }
     row += '<td class="card-header">$</td>';
     row += '</tr>';
@@ -236,7 +238,7 @@ function CreateSlrFirstFollowTable(first, follow, id) {
     for (var i in first) {
         row += '<tr><td>' +
 
-            i + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
+            escapeHtml(i) + '</td><td>' + escapeHtml(first[i]) + '</td><td>' + escapeHtml(follow[i]) + '</td></tr>';
     }
 
     $(id).html(row);
@@ -455,9 +457,26 @@ function TableM(table) {
 function CreateEnteredGrammarTable(list, id) {
     var row = '';
     for (var i in list) {
-        row += '<p>' + list[i] + '</p>';
+        row += '<p>' + escapeHtml(list[i]) + '</p>';
     }
     $(id).html(row);
+}
+
+var entityMap = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+    '/': '&#x2F;',
+    '`': '&#x60;',
+    '=': '&#x3D;'
+};
+
+function escapeHtml (string) {
+    return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+        return entityMap[s];
+    });
 }
 
 

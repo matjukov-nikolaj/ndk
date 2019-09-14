@@ -241,7 +241,6 @@ namespace GrammarConverter
                     List<String> altSymbols = new List<String>();
                     for (int j = 0; j < alternativeSymbols.Count; j++)
                     {
-
                         if (j == alternativeSymbols.Count - 1)
                         {
                             altSymbols = alternativeSymbols.GetRange(j, 1);
@@ -267,7 +266,6 @@ namespace GrammarConverter
                     List<String> altSymbols = new List<String>();
                     for (int j = 0; j < alternativeSymbols.Count; j++)
                     {
-
                         if (j == alternativeSymbols.Count - 1)
                         {
                             altSymbols = alternativeSymbols.GetRange(j, 1);
@@ -296,7 +294,7 @@ namespace GrammarConverter
                         break;
                     }
                 }
-                
+
 
                 String noTerminal = production.Substring(0, 2);
                 String lol = production.Substring(1, 1);
@@ -322,12 +320,13 @@ namespace GrammarConverter
                                 break;
                             }
                         }
+
                         first[j] = temp;
                     }
                 }
             }
         }
-        
+
         private List<string> GetLineOfFirstSet(List<String> production)
         {
             List<string> result = new List<string>();
@@ -343,7 +342,7 @@ namespace GrammarConverter
             else
             {
                 List<string> temp = new List<string>();
-                
+
                 List<string> firstSet = new List<string>();
                 if (IsApostropheInList(production))
                 {
@@ -356,7 +355,6 @@ namespace GrammarConverter
                         List<String> altSymbols = new List<String>();
                         for (int j = 0; j < alternativeSymbols.Count; j++)
                         {
-
                             if (j == alternativeSymbols.Count - 1)
                             {
                                 altSymbols = alternativeSymbols.GetRange(j, 1);
@@ -385,7 +383,6 @@ namespace GrammarConverter
                         List<String> altSymbols = new List<String>();
                         for (int j = 0; j < alternativeSymbols.Count; j++)
                         {
-
                             if (j == alternativeSymbols.Count - 1)
                             {
                                 altSymbols = alternativeSymbols.GetRange(j, 1);
@@ -409,7 +406,7 @@ namespace GrammarConverter
 
             return result;
         }
-        
+
         private bool IsApostropheInList(List<String> word)
         {
             if (word[0].Length > 1)
@@ -785,7 +782,7 @@ namespace GrammarConverter
 
             return result;
         }
-        
+
         private List<string> GetNoTerminalAndTerminals(string prod)
         {
             List<string> result = new List<string>();
@@ -961,7 +958,8 @@ namespace GrammarConverter
                         }
                         else
                         {
-                            String right = production.Substring(line.Length + 3,(production.Length - (line.Length + 3)));
+                            String right = production.Substring(line.Length + 3,
+                                (production.Length - (line.Length + 3)));
                             alternative = noTerminal + "'->" + right;
                             productions[i] = alternative;
                         }
