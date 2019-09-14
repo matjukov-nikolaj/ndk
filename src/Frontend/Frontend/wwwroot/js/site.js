@@ -65,8 +65,9 @@ function parseInput(lrTable) {
     function stateIndex() {
         return stack[2 * ((stack.length - 1) >> 1)];
     }
-
-    var tokens = ($element('slrInputSequence').value.trim() + ' $').split(' ');
+    
+    var line = ($element('slrInputSequence').value.replace(/(\r\n|\n|\r)/gm, " ")).replace(/\s\s+/g, ' ');
+    var tokens = (line.trim() + ' $').split(' ');
     var tokenIndex = 0;
     var token = tokens[tokenIndex];
     var state = lrTable.states[stateIndex()];
@@ -120,9 +121,9 @@ function parseInput(lrTable) {
     var resultClass = (isAccepted ? "text-accepted" : "text-declined");
     $('#slrAlgorithmId').text(resultText).removeClass().addClass(resultClass);
     
-    CreateEnteredGrammarTable(stackHtml, "#slrState");
-    CreateEnteredGrammarTable(sequenceHtml, "#slrSequence");
-    CreateEnteredGrammarTable(transitionHtml, "#slrTransition");
+    CreateEnteredGrammarTable(stackHtml, "#slrState", false);
+    CreateEnteredGrammarTable(sequenceHtml, "#slrSequence", true);
+    CreateEnteredGrammarTable(transitionHtml, "#slrTransition",false);
 }
 
 function ProcessSlrTable(lrTable) {
@@ -225,9 +226,9 @@ function GrammarSlrVisualization(grammar) {
 
     $("#startSymbolSlr").html(grammar.axiom);
     console.log(grammar.rules);
-    CreateEnteredGrammarTable(CreateSlrList(grammar.rules), "#grammarSlr");
-    CreateEnteredGrammarTable(grammar.terminals, "#terminalsSlr");
-    CreateEnteredGrammarTable(grammar.nonterminals, "#noTerminalsSlr");
+    CreateEnteredGrammarTable(CreateSlrList(grammar.rules), "#grammarSlr", true);
+    CreateEnteredGrammarTable(grammar.terminals, "#terminalsSlr", true);
+    CreateEnteredGrammarTable(grammar.nonterminals, "#noTerminalsSlr", true);
 
     CreateSlrFirstFollowTable(grammar.firsts, grammar.follows, '#slrFirstFollow');
 }
@@ -391,10 +392,10 @@ function ParseGrammar(grammar) {
     var noTerminals = grammar.noTerminals;
     var startSymbol = grammar.startSymbol;
 
-    CreateEnteredGrammarTable(productions, '#grammar');
-    CreateEnteredGrammarTable(terminals, '#terminals');
-    CreateEnteredGrammarTable(noTerminals, '#noTerminals');
-    CreateEnteredGrammarTable(startSymbol, '#startSymbol');
+    CreateEnteredGrammarTable(productions, '#grammar', true);
+    CreateEnteredGrammarTable(terminals, '#terminals', true);
+    CreateEnteredGrammarTable(noTerminals, '#noTerminals', true);
+    CreateEnteredGrammarTable(startSymbol, '#startSymbol', true);
 }
 
 function LeftRecursionDeletion(newGrammar) {
@@ -413,9 +414,9 @@ function ParseProcessTable(processTable) {
     var sequence = processTable.SEQUENCE;
     var transition = processTable.TRANSITION;
 
-    CreateEnteredGrammarTable(state, '#state');
-    CreateEnteredGrammarTable(sequence, '#sequence');
-    CreateEnteredGrammarTable(transition, '#transition');
+    CreateEnteredGrammarTable(state, '#state', true);
+    CreateEnteredGrammarTable(sequence, '#sequence', true);
+    CreateEnteredGrammarTable(transition, '#transition', true);
 }
 
 
@@ -454,10 +455,14 @@ function TableM(table) {
     CreateMTableTable(mTable, '#mTable');
 }
 
-function CreateEnteredGrammarTable(list, id) {
+function CreateEnteredGrammarTable(list, id, needToEscape) {
     var row = '';
     for (var i in list) {
-        row += '<p>' + escapeHtml(list[i]) + '</p>';
+        if(needToEscape) {
+            row += '<p>' + escapeHtml(list[i]) + '</p>';
+        } else {
+            row += '<p>' + list[i] + '</p>';
+        }
     }
     $(id).html(row);
 }
