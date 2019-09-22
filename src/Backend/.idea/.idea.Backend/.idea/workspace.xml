@@ -4,23 +4,109 @@
     <bookmark url="file://$PROJECT_DIR$/Backend/Controllers/ValuesController.cs" line="74" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cf56874-27ce-44ea-b750-9e4e85dd1b91" name="Default Changelist" comment="" />
+    <list default="true" id="9cf56874-27ce-44ea-b750-9e4e85dd1b91" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Core/Core/model/LexerResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SlrSequence/SlrSequence/CompletedStates.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SlrSequence/SlrSequence/Lexer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__cglib_cglib_nodep_2_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_lordofthejars_nosqlunit_core_0_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_lordofthejars_nosqlunit_redis_0_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_14_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_projectlombok_lombok_1_16_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_spring_web_5_1_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_spring_webmvc_5_1_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__redis_clients_jedis_2_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/sonarIssues.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/src/main/java/com/ndk/reactive/redis/lexer/CompletedStates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-data-redis/src/main/java/com/ndk/reactive/redis/lexer/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../../build.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../run.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../../run.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Core/.idea/.idea.Core/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/.idea/.idea.Core/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/contentModel.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+              <folding>
+                <marker date="1569152801152" expanded="false" signature="6:269" ph="..." />
+                <marker date="1569152801152" expanded="true" signature="300:2368" ph="{...}" />
+                <marker date="1569152801152" expanded="true" signature="386:2366" ph="{...}" />
+                <marker date="1569152801152" expanded="true" signature="609:1731" ph="{...}" />
+                <marker date="1569152801152" expanded="true" signature="691:936" ph="{...}" />
+                <marker date="1569152801152" expanded="true" signature="968:1042" ph="{...}" />
+                <marker date="1569152801152" expanded="true" signature="1331:1674" ph="{...}" />
+                <marker date="1569152801152" expanded="true" signature="1481:1556" ph="{...}" />
+                <marker date="1569152801152" expanded="true" signature="1577:1660" ph="{...}" />
+                <marker date="1569152801152" expanded="true" signature="1798:2171" ph="{...}" />
+                <marker date="1569152801152" expanded="true" signature="2243:2360" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CD244751-0325-4121-9FE0-724DAFC7E191/21/e775927c/ActionMethodExecutor.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="98" column="8" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Backend/DictionaryAsArrayResolver.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Backend/Controllers/SequenceController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Backend/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Backend/Controllers/ValuesController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Backend/Controllers/StatisticController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Backend/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Backend/Controllers/SequenceController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CD244751-0325-4121-9FE0-724DAFC7E191/21/e775927c/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Backend/DictionaryAsArrayResolver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../SlrSequence/SlrSequence/CompletedStates.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -37,12 +123,45 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="width" value="975" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectId" id="1RBgqrVNTlhI9eN9ZzMBxa2GUif" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Backend" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Backend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Backend" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Backend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Backend" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
@@ -56,7 +175,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="coverage" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -78,10 +197,6 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="0" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="0" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <method v="2">
         <option name="Build" enabled="true" />
       </method>
@@ -115,9 +230,60 @@
       <workItem from="1558988197221" duration="6279000" />
       <workItem from="1559412959286" duration="1126000" />
       <workItem from="1559416828919" duration="2602000" />
+<<<<<<< HEAD
       <workItem from="1569146098426" duration="2288000" />
+=======
+      <workItem from="1569146098426" duration="1840000" />
+      <workItem from="1569149714768" duration="3254000" />
+>>>>>>> de3fa1d14c826c5ee65dfb408969e35143a25092
     </task>
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3254000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="REST Client" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Performance Profiler" />
+      <window_info anchor="bottom" id="Build" weight="0.32936078" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -129,7 +295,28 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
           </value>
         </entry>
       </map>
@@ -173,19 +360,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs</url>
-          <line>22</line>
-          <properties documentPath="$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs" initialLine="22">
-            <startOffsets>
-              <option value="618" />
-            </startOffsets>
-            <endOffsets>
-              <option value="619" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs</url>
           <line>23</line>
           <properties documentPath="$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs" initialLine="23">
             <startOffsets>
@@ -199,24 +373,54 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs</url>
-          <line>24</line>
-          <properties documentPath="$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs" initialLine="24">
+          <line>41</line>
+          <properties documentPath="$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs" initialLine="41">
             <startOffsets>
-              <option value="688" />
+              <option value="1362" />
             </startOffsets>
             <endOffsets>
-              <option value="713" />
+              <option value="1437" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <reveal-manager>
-      <revealed-members>
-        <RevealItemInfo typeName="Core.model.SequenceId" fieldName="sequence" />
-        <RevealItemInfo typeName="Core.model.SequenceId" fieldName="id" />
-      </revealed-members>
-    </reveal-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Backend/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CD244751-0325-4121-9FE0-724DAFC7E191/21/e775927c/ActionMethodExecutor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="98" column="8" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Controllers/SLRSequenceController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+          <folding>
+            <marker date="1569152801152" expanded="false" signature="6:269" ph="..." />
+            <marker date="1569152801152" expanded="true" signature="300:2368" ph="{...}" />
+            <marker date="1569152801152" expanded="true" signature="386:2366" ph="{...}" />
+            <marker date="1569152801152" expanded="true" signature="609:1731" ph="{...}" />
+            <marker date="1569152801152" expanded="true" signature="691:936" ph="{...}" />
+            <marker date="1569152801152" expanded="true" signature="968:1042" ph="{...}" />
+            <marker date="1569152801152" expanded="true" signature="1331:1674" ph="{...}" />
+            <marker date="1569152801152" expanded="true" signature="1481:1556" ph="{...}" />
+            <marker date="1569152801152" expanded="true" signature="1577:1660" ph="{...}" />
+            <marker date="1569152801152" expanded="true" signature="1798:2171" ph="{...}" />
+            <marker date="1569152801152" expanded="true" signature="2243:2360" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
