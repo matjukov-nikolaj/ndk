@@ -6,7 +6,8 @@ var ID_PROCESS_SEQUENCE_BUTTON = "#slrInputSequenceButton";
 var ID_SYNTACTICAL_ANALYZER_BUTTON = "#syntacticalAnalyzerMenu";
 var ID_SEQUENCE_CHECK_BUTTON = "#inputSequenceButton";
 var ID_TEXTAREA = 'textarea#enteredGrammar';
-var PROCESS_GRAMMAR_URL = "http://127.0.0.1:5000/api/values/";
+var PROCESS_GRAMMAR_URL = "http://127.0.0.1:5000/api/values//";
+var PROCESS_SLR_GRAMMAR_URL = "http://127.0.0.1:5000/api/slrsequence/";
 var PROCESS_SEQUENCE_URL = "http://127.0.0.1:5000/api/sequence/";
 var STATISTIC_URL = "http://127.0.0.1:5000/api/statistic/statistic";
 var INPUT_HIDDEN_ID = "#sequenceId";
@@ -52,9 +53,34 @@ function processSlrGrammar() {
 }
 
 function ProcessSequence(lrTable) {
+    console.log(lrTable);
     $(ID_PROCESS_SEQUENCE_BUTTON).on("click", function () {
-        parseInput(lrTable);
-        $(HIDDEN_SLR_SEQUENCE_ID).show();
+        var message = $('#slrInputSequence').val();
+        var obj = {
+            "sequence": message
+        };
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: PROCESS_SLR_GRAMMAR_URL,
+            type: "POST",
+            async: false,
+            cors: true,
+            data: JSON.stringify(obj),
+            success: function (data) {
+                parseInput(data);
+                $(HIDDEN_SLR_SEQUENCE_ID).show();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
+                CreateString(jqXHR.status + ", " + textStatus + ", " + errorThrown + '<br><p>Sorry, please try again</p>', "#errorBody");
+                $('#error').modal('show');
+            },
+            dataType: "json"
+        });
+        
     });
 }
 

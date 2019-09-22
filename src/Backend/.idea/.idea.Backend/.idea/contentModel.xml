@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\study\ndk\src\Backend" t="IncludeFlat">
+    <e p="C:\Users\greda\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\greda\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Backend.2135237879.00" t="ExcludeRecursive" />
+    <e p="D:\git\ndk\src\Backend" t="IncludeFlat">
       <e p="Backend" t="IncludeRecursive">
         <e p="application.properties" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
@@ -10,6 +12,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="SequenceController.cs" t="Include" />
+          <e p="SLRSequenceController.cs" t="Include" />
           <e p="StatisticController.cs" t="Include" />
           <e p="ValuesController.cs" t="Include" />
         </e>
@@ -31,7 +34,5 @@
       <e p="Backend.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
     </e>
-    <e p="C:\Users\Darya\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Darya\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Backend.1689101007.00" t="ExcludeRecursive" />
   </component>
 </project>
