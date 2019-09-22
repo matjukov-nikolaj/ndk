@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d6eef8f-7556-4f53-a816-e22e9fa97096" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend/Backend/Controllers/SLRSequenceController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/site.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/Pages/Index.cshtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,8 +52,8 @@
         <option value="$PROJECT_DIR$/Frontend/wwwroot/js/lib.js" />
         <option value="$PROJECT_DIR$/Frontend/Pages/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/Frontend/wwwroot/js/slr-parser.js" />
-        <option value="$PROJECT_DIR$/Frontend/Pages/Index.cshtml" />
         <option value="$PROJECT_DIR$/Frontend/wwwroot/js/site.js" />
+        <option value="$PROJECT_DIR$/Frontend/Pages/Index.cshtml" />
       </list>
     </option>
   </component>
@@ -133,7 +128,7 @@
       <workItem from="1560232975858" duration="319000" />
       <workItem from="1560426108030" duration="3746000" />
       <workItem from="1560708164841" duration="21756000" />
-      <workItem from="1569145132296" duration="2666000" />
+      <workItem from="1569145132296" duration="3522000" />
     </task>
     <task id="LOCAL-00001" summary="some changes">
       <created>1568453692128</created>

@@ -70,8 +70,20 @@ function ProcessSequence(lrTable) {
             cors: true,
             data: JSON.stringify(obj),
             success: function (data) {
-                parseInput(data);
-                $(HIDDEN_SLR_SEQUENCE_ID).show();
+                var res = data.lexerResults;
+                var findError = res.find("ERROR");
+                if (findError === -1)
+                {
+                    parseInput(data.convertedInput);
+                    $(HIDDEN_SLR_SEQUENCE_ID).show();
+                }
+                else
+                {
+                    var resultText = "sequence declined by LEXER";
+                    var resultClass = "text-declined";
+                    $('#slrAlgorithmId').text(resultText).removeClass().addClass(resultClass);
+
+                }
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 ErrorVisualization(jqXHR, textStatus, errorThrown, '#error');
