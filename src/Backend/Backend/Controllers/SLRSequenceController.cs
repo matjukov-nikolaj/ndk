@@ -22,7 +22,6 @@ namespace Backend.Controllers
         public IActionResult Post([FromBody] SequenceId value)
         {
             var sequenceId = Guid.NewGuid().ToString();
-            Console.WriteLine(value);
             try
             {
                 string textKey = "SLR_SEQUENCE_" + sequenceId;

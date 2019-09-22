@@ -14,3 +14,5 @@ for /l %%i in (1, 1, %%b) do start "%%a" /d %%a dotnet %%a.dll
 start "SequenceHandler" /d SequenceHandler\ dotnet SequenceHandler.dll
 
 start "SequenceStatistic" /d SequenceStatistic\ dotnet SequenceStatistic.dll
+
+start "SlrSequence" /d SlrSequence\ dotnet SlrSequence.dll
