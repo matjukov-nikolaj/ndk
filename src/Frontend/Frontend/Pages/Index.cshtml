@@ -38,7 +38,7 @@
         <div class="col-6">
             <h4>Parsing the resulting grammar</h4>
             <div>
-                <p>Start symbol:   <span id="startSymbol"></span></p>
+                <p>Start symbol: <span id="startSymbol"></span></p>
             </div>
             <div class="d-flex flex-row">
                 <div class="card mb-3 mr-3" style="max-width: 18rem;">
@@ -121,62 +121,12 @@
 </div>
 <div id="hiddenSlrContent" class="container">
     <div class="row">
-        <div class="col-6">
-            <h4>Parsing the resulting grammar</h4>
-            <div>
-                <p>Start symbol:   <span id="startSymbolSlr"></span></p>
-            </div>
-            <div class="d-flex flex-row">
-                <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                    <div class="card-header">Grammar</div>
-                    <div class="card-body scrollbar-near-moon" id="grammarSlr">
-                    </div>
-                </div>
-                <div class="card mb-3 mr-3" style="max-width: 18rem;">
-                    <div class="card-header">Terminals</div>
-                    <div class="card-body scrollbar-near-moon" id="terminalsSlr">
-                    </div>
-                </div>
-                <div class="card mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Not terminals</div>
-                    <div class="card-body scrollbar-near-moon" id="noTerminalsSlr">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <h4>SLR table</h4>
-            <table class="table table-bordered" style="border: none">
-                <thead>
-                <tr id="slrTable">
-                </tr>
-                </thead>
-            </table>
-        </div>
-        <div class="col-6">
-            <h4>Selecting First and Follow</h4>
-            <table class="table table-bordered">
-                <thead>
-                <tr class="card-header">
-                    <td>Not terminals</td>
-                    <td>First</td>
-                    <td>Follow</td>
-                </tr>
-                </thead>
-                <tbody id="slrFirstFollow">
-                <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-6">
+        <div class="form-group col-12">
             <h4>Input sequence</h4>
             <div class="container">
                 <div class="row">
-                    <textarea type="text" class="form-control col-9 mr-1" id="slrInputSequence" placeholder="Sequence"></textarea>
-                    <button type="button" class="btn btn-dark col-2" id="slrInputSequenceButton">Check</button>
+                    <textarea type="text" class="form-control" rows="5" id="slrInputSequence" placeholder="Sequence"></textarea>
+                    <button type="button" class="btn btn-dark mt-2" id="slrInputSequenceButton">Check</button>
                 </div>
             </div>
             <div id="slrHiddenSequenceContent">
@@ -203,7 +153,61 @@
                 <p id="slrAlgorithmId"></p>
             </div>
         </div>
-        <div class="col-12">
+        <div class="form-group col-12">
+            <h4>SLR table</h4>
+            <div class="table-wrapper-scroll-y custom-scrollbar">
+                <table class="table table-bordered" style="border: none">
+                    <thead>
+                    <tr id="slrTable">
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="form-group col-12">
+            <h4>Parsing the resulting grammar</h4>
+            <div>
+                <p>Start symbol: <span id="startSymbolSlr"></span></p>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="card mb-3 mr-3">
+                    <div class="card-header">Grammar</div>
+                    <div class="card-body scrollbar-near-moon" id="grammarSlr">
+                    </div>
+                </div>
+                <div class="card mb-3 mr-3">
+                    <div class="card-header">Terminals</div>
+                    <div class="card-body scrollbar-near-moon" id="terminalsSlr">
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">Not terminals</div>
+                    <div class="card-body scrollbar-near-moon" id="noTerminalsSlr">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-12">
+            <h4>Selecting First and Follow</h4>
+            <div class="table-wrapper-scroll-y custom-scrollbar">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="card-header">
+                        <td>Not terminals</td>
+                        <td>First</td>
+                        <td>Follow</td>
+                    </tr>
+                    </thead>
+                    <tbody id="slrFirstFollow">
+                    <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tbody>
+                </table>
+                </div>
+        </div>
+        <div class="form-group col-12">
             <button type="button" class="btn btn-dark mt-2 mb-3" data-toggle="modal" id="showProcess">Show Process</button>
             <div id="showProcessContent">
                 <table class="table table-bordered">
