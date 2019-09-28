@@ -431,7 +431,7 @@ namespace SlrSequence
         {
             this.keyWords.Add("abstract");
             this.keyWords.Add("assert");
-            this.keyWords.Add("boolean");
+            this.keyWords.Add("bool");
             this.keyWords.Add("break");
             this.keyWords.Add("byte");
             this.keyWords.Add("case");
@@ -481,6 +481,7 @@ namespace SlrSequence
             this.keyWords.Add("while");
             this.keyWords.Add("true");
             this.keyWords.Add("false");
+            this.keyWords.Add("string");
         }
 
         public void goToState(char ch)
@@ -494,6 +495,7 @@ namespace SlrSequence
                 {
                     String resStr = "=====ERROR=====> " + this.currStr;
                     result += resStr + "\n";
+                    Console.WriteLine(resStr);
                     this.initCurrentFields();
                     return;
                 }

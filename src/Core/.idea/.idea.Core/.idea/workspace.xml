@@ -5,45 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5afe93b-ee15-445b-9b57-a532760cc8ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Core/model/LexerResult.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SlrSequence/SlrSequence/CompletedStates.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SlrSequence/SlrSequence/Lexer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__cglib_cglib_nodep_2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_lordofthejars_nosqlunit_core_0_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__com_lordofthejars_nosqlunit_redis_0_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_14_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_projectlombok_lombok_1_16_20.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_1_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_1_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_spring_web_5_1_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__org_springframework_spring_webmvc_5_1_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/libraries/Maven__redis_clients_jedis_2_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/sonarIssues.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/src/main/java/com/ndk/reactive/redis/lexer/CompletedStates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-data-redis/src/main/java/com/ndk/reactive/redis/lexer/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../../build.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../run.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../../run.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/.idea/.idea.Backend/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Core/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/.idea/.idea.Frontend/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SlrSequence/.idea/.idea.SlrSequence/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SlrSequence/.idea/.idea.SlrSequence/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Core/model/Sequence.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+            <state relative-caret-position="165">
+              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
               <folding>
                 <marker date="1560787231779" expanded="false" signature="6:47" ph="..." />
                 <marker date="1560787231779" expanded="true" signature="69:660" ph="{...}" />
@@ -145,7 +108,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Core/model/Result.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
+            <state relative-caret-position="15">
               <caret line="2" column="23" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="23" />
               <folding>
                 <marker date="1560787231773" expanded="true" signature="20:329" ph="{...}" />
@@ -159,7 +122,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Core/model/NewGrammar.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="180">
               <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <marker date="1560787231769" expanded="false" signature="6:47" ph="..." />
@@ -174,8 +137,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Core/model/LexerResult.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+            <state relative-caret-position="240">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding>
                 <marker date="1569152365327" expanded="true" signature="20:308" ph="{...}" />
                 <marker date="1569152365327" expanded="true" signature="51:306" ph="{...}" />
@@ -188,7 +151,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Core/model/TableM.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="120">
               <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
               <folding>
                 <marker date="1560787231794" expanded="false" signature="6:47" ph="..." />
@@ -236,8 +199,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-31" />
+    <option name="y" value="114" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -247,6 +210,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -254,24 +219,11 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Core" type="24d0babc:SolutionExplorerModelNode" />
             </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Core" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Core" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Core" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Core" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="model" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
           </expand>
           <select />
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="FileSystemExplorer" />
-      <pane id="AssemblyExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -340,7 +292,8 @@
       <workItem from="1559410321841" duration="1783000" />
       <workItem from="1559412842409" duration="986000" />
       <workItem from="1560535995907" duration="525000" />
-      <workItem from="1569152259515" duration="1262000" />
+      <workItem from="1569152259515" duration="1367000" />
+      <workItem from="1569153864392" duration="174000" />
     </task>
     <task id="LOCAL-00001" summary="added models for communication between frontend and backend">
       <created>1558794557585</created>
@@ -353,7 +306,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19228000" />
+    <option name="totallyTimeSpent" value="19507000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -366,8 +319,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2803838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -385,7 +339,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Unit Tests" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="13" visible="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="15" visible="true" weight="0.3336945" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -434,6 +388,19 @@
             <marker date="1560787231748" expanded="true" signature="99:439" ph="{...}" />
             <marker date="1560787231748" expanded="true" signature="132:437" ph="{...}" />
             <marker date="1560787231748" expanded="true" signature="204:430" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/model/Sequence.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <marker date="1560787231779" expanded="false" signature="6:47" ph="..." />
+            <marker date="1560787231779" expanded="true" signature="69:660" ph="{...}" />
+            <marker date="1560787231779" expanded="true" signature="97:658" ph="{...}" />
+            <marker date="1560787231779" expanded="true" signature="296:651" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -491,7 +458,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Core/model/Result.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
+        <state relative-caret-position="15">
           <caret line="2" column="23" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="23" />
           <folding>
             <marker date="1560787231773" expanded="true" signature="20:329" ph="{...}" />
@@ -503,7 +470,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Core/model/NewGrammar.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="180">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <marker date="1560787231769" expanded="false" signature="6:47" ph="..." />
@@ -514,22 +481,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Core/model/Sequence.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-          <folding>
-            <marker date="1560787231779" expanded="false" signature="6:47" ph="..." />
-            <marker date="1560787231779" expanded="true" signature="69:660" ph="{...}" />
-            <marker date="1560787231779" expanded="true" signature="97:658" ph="{...}" />
-            <marker date="1560787231779" expanded="true" signature="296:651" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Core/model/TableM.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="120">
           <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
           <folding>
             <marker date="1560787231794" expanded="false" signature="6:47" ph="..." />
@@ -542,8 +496,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Core/model/LexerResult.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        <state relative-caret-position="240">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
             <marker date="1569152365327" expanded="true" signature="20:308" ph="{...}" />
             <marker date="1569152365327" expanded="true" signature="51:306" ph="{...}" />

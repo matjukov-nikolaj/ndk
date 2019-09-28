@@ -70,11 +70,12 @@ function ProcessSequence(lrTable) {
             cors: true,
             data: JSON.stringify(obj),
             success: function (data) {
-                var res = data.lexerResults;
-                var findError = res.find("ERROR");
+                var newData = JSON.parse(data);
+                var res = newData.lexerResults;
+                var findError = res.search("ERROR");
                 if (findError === -1)
                 {
-                    parseInput(data.convertedInput);
+                    parseInput(lrTable, newData.convertedInput);
                     $(HIDDEN_SLR_SEQUENCE_ID).show();
                 }
                 else
@@ -97,14 +98,14 @@ function ProcessSequence(lrTable) {
 }
 
 
-function parseInput(lrTable) {
+function parseInput(lrTable, data) {
     var stack = [0];
 
     function stateIndex() {
         return stack[2 * ((stack.length - 1) >> 1)];
     }
     
-    var line = ($element('slrInputSequence').value.replace(/(\r\n|\n|\r)/gm, " ")).replace(/\s\s+/g, ' ');
+    var line = (data.replace(/(\r\n|\n|\r)/gm, " ")).replace(/\s\s+/g, ' ');
     var tokens = (line.trim() + ' $').split(' ');
     var tokenIndex = 0;
     var token = tokens[tokenIndex];
