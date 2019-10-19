@@ -1,0 +1,23 @@
+package cop5555sp15.ast;
+
+import cop5555sp15.TokenStream.Token;
+import cop5555sp15.ast.expressions.Expression;
+
+public class AssignmentStatement extends Statement {
+	
+	LValue lvalue;
+	public Expression expression;
+
+	@Override
+	public Object visit(ASTVisitor v, Object arg) throws Exception {
+		return v.visitAssignmentStatement(this,arg);
+	}
+
+	public AssignmentStatement(Token firstToken, LValue lvalue,
+			Expression expression) {
+		super(firstToken);
+		this.lvalue = lvalue;
+		this.expression = expression;
+	}
+
+}
