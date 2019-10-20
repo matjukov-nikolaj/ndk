@@ -58,9 +58,9 @@ namespace GrammarConverter
                 grammarConverter.DeleteLeftRecursion();
                 grammarConverter.Factorization();
                 grammarConverter.SortGrammar();
-
+                
                 grammarConverter.SetNoTerminals(grammarConverter.GetNoTerminals(grammarConverter.GetProductions()));
-
+                
                 grammarConverter.First();
 
                 grammarConverter.Follow();
@@ -76,6 +76,8 @@ namespace GrammarConverter
                 newGrammar.terminals = grammarConverter.GetTerminals();
 
                 newGrammar.noTerminals = grammarConverter.GetNoTerminals();
+
+                newGrammar.emptyNoTerminals = grammarConverter.GetEmptyNoTerminals();
 
                 String json = JsonConvert.SerializeObject(newGrammar);
 

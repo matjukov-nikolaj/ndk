@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Metadata;
 using Core.model;
 using Microsoft.VisualBasic;
@@ -16,6 +17,7 @@ namespace TableMGenerator
 
         private List<String> terminals;
         private List<String> noTerminals;
+        private List<String> emptyNoTerminals;
         
 
         public TableMGenerator(NewGrammar convertedGrammar)
@@ -26,6 +28,7 @@ namespace TableMGenerator
             follow = convertedGrammar.follow;
             terminals = convertedGrammar.terminals;
             noTerminals = convertedGrammar.noTerminals;
+            emptyNoTerminals = convertedGrammar.emptyNoTerminals;
         }
 
         public List<List<String>> GetTable()
@@ -41,34 +44,37 @@ namespace TableMGenerator
             {
                 String production = productions[i];
                 String noTerminal = "";
-                String alternative = "";
+                List<String> alternative = new List<string>();
                 if (IsApostrophe(production))
                 {
-                    noTerminal = production.Substring(0, 2);
-                    alternative = production.Substring(4, 1);
-                    if (IsApostrophe(alternative))
-                    {
-                        alternative += "'";
-                    }
+                    String[] noTermAlt = production.Split(" -> ");
+                    noTerminal = noTermAlt[0];
+                    alternative = noTermAlt[1].Split(" ").OfType<string>().ToList();
                 }
                 else
                 {
-                    noTerminal = production.Substring(0, 1);
-                    alternative = production.Substring(3, 1);
-                    if (production.Length > 4)
+                    String[] noTermAlt = production.Split(" -> ");
+                    noTerminal = noTermAlt[0];
+                    alternative = noTermAlt[1].Split(" ").OfType<string>().ToList();
+                }
+
+                for (int j = 0; j < alternative.Count; j++)
+                {
+                    GenerateFromFirstAndFollow(alternative[j], noTerminal, production);
+                    if (!emptyNoTerminals.Contains(alternative[j]))
                     {
-                        if (IsApostrophe(alternative))
-                        {
-                            alternative += "'";
-                        }
+                        break;
                     }
                 }
 
-                GenerateFromFirstAndFollow(alternative, noTerminal, production);
+                if (alternative.Count == 1 && alternative[0] == "&")
+                {
+                    GenerateFromFirstAndFollow(alternative[0], noTerminal, production);
+                }
 
             }
         }
-
+        
         public void Clear()
         {
             mTable = new List<List<string>>();
@@ -82,9 +88,9 @@ namespace TableMGenerator
         private void GenerateFromFirstAndFollow(String alternative, String noTerminal, String production)
         {
             List<String> temp = new List<string>();
-            if (!Char.IsUpper(alternative[0]))
+            if (!alternative.Contains("<") && !alternative.Contains(">"))
             {
-                if (alternative[0].Equals('&'))
+                if (alternative.Equals("&"))
                 {
                     int posNoTerminal = -1;
                     for (int j = 0; j < noTerminals.Count; j++)
@@ -157,12 +163,8 @@ namespace TableMGenerator
 
         private bool IsApostrophe(String word)
         {
-            if (word.Length > 1)
-            {
-                return word[1].Equals('\'') ? true : false;
-            }
-
-            return false;
+            String noTerm = word.Split(" -> ")[0];
+            return noTerm[noTerm.Length - 1].Equals('\'');
         }
     }
 }

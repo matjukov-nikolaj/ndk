@@ -15,7 +15,8 @@ namespace GrammarProcessor
         {
             grammar = new Grammar();
             this.inputGrammar = input;
-            grammar.startSymbol = inputGrammar[0][0].ToString();
+            String row = inputGrammar[0];
+            grammar.startSymbol = row.Split(" -> ")[0];
         }
 
         public Grammar GetGrammar()
@@ -44,55 +45,32 @@ namespace GrammarProcessor
 
             for (int i = 0; i < inputGrammar.Count; i++)
             {
-                String line = inputGrammar[i];
-                for (int j = 0; j < line.Length; j++)
+                String alternative = inputGrammar[i].Split(" -> ")[1];
+                String[] alts = alternative.Split(" ");
+                for (int j = 0; j < alts.Length; j++)
                 {
-                    char ch = line[j];
-                    char chBefore = ' ';
-                    char chAfter = ' ';
-                    if (j < line.Length - 2)
+                    String element = alts[j];
+                    if (element.Length >= 3)
                     {
-                        chBefore = line[j + 1];
-                    }
-
-                    if (j > 0)
-                    {
-                        chAfter = line[j - 1];
-                    }
-
-                    HandleTerminalsInProductions(ch, result, chBefore, chAfter);
-                }
-            }
-
-            return result;
-        }
-        
-        private void HandleTerminalsInProductions(char ch, List<String> result, char chBefore, char chAfter)
-        {
-            if (!Char.IsUpper(ch) && !result.Contains(ch.ToString()) && ch != '\'' && ch != '&')
-            {
-                if (ch == '-')
-                {
-                    if (chBefore != '>')
-                    {
-                        result.Add(ch.ToString());
-                    }
-                }
-                else
-                {
-                    if (ch == '>')
-                    {
-                        if (chAfter != '-')
+                        if (element[0] != '<' && element[element.Length - 1] != '>')
                         {
-                            result.Add(ch.ToString());
+                            if (!result.Contains(element))
+                            {
+                                result.Add(element);
+                            }
                         }
                     }
                     else
                     {
-                        result.Add(ch.ToString());
+                        if (!result.Contains(element))
+                        {
+                            result.Add(element);
+                        }
                     }
                 }
             }
+
+            return result;
         }
 
         private List<String> GetNoTerminals(List<String> inputGrammar)
@@ -102,17 +80,10 @@ namespace GrammarProcessor
             for (int i = 0; i < inputGrammar.Count; i++)
             {
                 String line = inputGrammar[i];
-                char ch = line[0];
-                String noTerminal = ch.ToString();
-                char nextCh = line[1];
-                if (nextCh == '\'')
+                String[] noTermAlt = line.Split(" -> ");
+                if (!result.Contains(noTermAlt[0]))
                 {
-                    noTerminal += "'";
-                }
-
-                if (!result.Contains(noTerminal))
-                {
-                    result.Add(noTerminal);
+                    result.Add(noTermAlt[0]);
                 }
             }
 

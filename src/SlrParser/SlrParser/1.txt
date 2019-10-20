@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SlrParser
+{
+    public class SlrParser
+    {
+        private string input;
+
+        public Dictionary<String, List<List<Slr>>> productions;
+
+        private List<String> noTerminalsNames;
+
+        private List<String> terminalsNames;
+        
+        private List<Slr> noTerminals;
+
+        private List<Slr> terminals;
+
+        public SlrParser(string input)
+        {
+            this.input = input;
+            productions = new Dictionary<string, List<List<Slr>>>();
+            noTerminals = new List<Slr>();
+            terminals = new List<Slr>();
+            noTerminalsNames = new List<string>();
+            terminalsNames = new List<string>();
+        }
+
+        public void ProcessInputGrammar()
+        {
+            String[] tempProds = input.Split("\n");
+            for (int i = 0; i < tempProds.Length; i++)
+            {
+                String[] tempProd = tempProds[i].Split(" -> ");
+                String nT = tempProd[0];
+                String alt = tempProd[1];
+
+                if (!noTerminalsNames.Contains(nT))
+                {
+                    noTerminalsNames.Add(nT);
+                }
+
+                String[] elementsAlt = alt.Split(" ");
+                List<Slr> tempAltSlr = new List<Slr>();
+                
+                for (int j = 0; j < elementsAlt.Length; j++)
+                {
+                    String element = elementsAlt[j];
+                    Slr slr = new Slr(element, i, j, false);
+                    if (IsNoTerminal(element))
+                    {
+                        slr.isNoTerminal = true;
+                        noTerminals.Add(slr);
+                    }
+                    else
+                    {
+                        if (!terminalsNames.Contains(element))
+                        {
+                            terminalsNames.Add(element);
+                        }
+                        terminals.Add(slr);
+                    }
+
+                    tempAltSlr.Add(slr);
+                }
+
+                if (productions.ContainsKey(nT))
+                {
+                    List<List<Slr>> prodList = productions[nT];
+                    prodList.Add(tempAltSlr);
+                }
+                else
+                {
+                    List<List<Slr>> prodList = new List<List<Slr>>();
+                    prodList.Add(tempAltSlr);
+                    productions.Add(nT, prodList);
+                }
+            }
+        }
+
+        public void First()
+        {
+            bool notDone = false;
+            do
+            {
+                notDone = false;
+
+                for (int i = 0; i < productions.Count; i++)
+                {
+                    
+                }
+
+            } while (notDone);
+        }
+
+        private bool IsNoTerminal(String str)
+        {
+            if (str.Length >= 3)
+            {
+                return ((str[0].ToString() == "<") && (str[str.Length - 1].ToString() == ">"));
+            }
+
+            return false;
+        }
+    }
+}
