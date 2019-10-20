@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Metadata;
 using Core.model;
 using Microsoft.VisualBasic;
@@ -43,67 +44,35 @@ namespace TableMGenerator
             {
                 String production = productions[i];
                 String noTerminal = "";
-                String alt = "";
-                List<String> alternative = new List<String>();
+                List<String> alternative = new List<string>();
                 if (IsApostrophe(production))
                 {
-                    noTerminal = production.Substring(0, 2);
-                    alt = production.Substring(4, production.Length - 4);
-                    alternative = GetNoTerminalAndTerminals(alt);
+                    String[] noTermAlt = production.Split(" -> ");
+                    noTerminal = noTermAlt[0];
+                    alternative = noTermAlt[1].Split(" ").OfType<string>().ToList();
                 }
                 else
                 {
-                    noTerminal = production.Substring(0, 1);
-                    alt = production.Substring(3, production.Length - 3);
-                    alternative = GetNoTerminalAndTerminals(alt);
+                    String[] noTermAlt = production.Split(" -> ");
+                    noTerminal = noTermAlt[0];
+                    alternative = noTermAlt[1].Split(" ").OfType<string>().ToList();
                 }
 
                 for (int j = 0; j < alternative.Count; j++)
                 {
                     GenerateFromFirstAndFollow(alternative[j], noTerminal, production);
-                        if (!emptyNoTerminals.Contains(alternative[j]))
-                        {
-                            break;
-                        }
+                    if (!emptyNoTerminals.Contains(alternative[j]))
+                    {
+                        break;
+                    }
                 }
 
-                if (alt == "&")
+                if (alternative.Count == 1 && alternative[0] == "&")
                 {
-                    GenerateFromFirstAndFollow(alt, noTerminal, production);
+                    GenerateFromFirstAndFollow(alternative[0], noTerminal, production);
                 }
 
             }
-        }
-        
-        private List<string> GetNoTerminalAndTerminals(string prod)
-        {
-            List<string> result = new List<string>();
-            char ch = ' ';
-
-            char nextCh = ' ';
-            for (int i = 0; i < prod.Length; i++)
-            {
-                if (i != prod.Length - 1)
-                {
-                    nextCh = prod[i + 1];
-                }
-
-                ch = prod[i];
-                if (Char.IsUpper(ch) && nextCh == '\'')
-                {
-                    result.Add(ch + "'");
-                }
-                else if (Char.IsUpper(ch))
-                {
-                    result.Add(ch.ToString());
-                }
-                else if (Char.IsLower(ch))
-                {
-                    result.Add(ch.ToString());
-                }
-            }
-
-            return result;
         }
         
         public void Clear()
@@ -119,9 +88,9 @@ namespace TableMGenerator
         private void GenerateFromFirstAndFollow(String alternative, String noTerminal, String production)
         {
             List<String> temp = new List<string>();
-            if (!Char.IsUpper(alternative[0]))
+            if (!alternative.Contains("<") && !alternative.Contains(">"))
             {
-                if (alternative[0].Equals('&'))
+                if (alternative.Equals("&"))
                 {
                     int posNoTerminal = -1;
                     for (int j = 0; j < noTerminals.Count; j++)
@@ -194,12 +163,8 @@ namespace TableMGenerator
 
         private bool IsApostrophe(String word)
         {
-            if (word.Length > 1)
-            {
-                return word[1].Equals('\'') ? true : false;
-            }
-
-            return false;
+            String noTerm = word.Split(" -> ")[0];
+            return noTerm[noTerm.Length - 1].Equals('\'');
         }
     }
 }

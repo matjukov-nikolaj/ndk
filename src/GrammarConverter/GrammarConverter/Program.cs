@@ -58,9 +58,9 @@ namespace GrammarConverter
                 grammarConverter.DeleteLeftRecursion();
                 grammarConverter.Factorization();
                 grammarConverter.SortGrammar();
-
+                
                 grammarConverter.SetNoTerminals(grammarConverter.GetNoTerminals(grammarConverter.GetProductions()));
-
+                
                 grammarConverter.First();
 
                 grammarConverter.Follow();

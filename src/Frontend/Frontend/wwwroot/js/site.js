@@ -841,7 +841,7 @@ function TableM(table) {
 function CreateEnteredGrammarTable(list, id) {
     var row = '';
     for (var i in list) {
-        row += '<p>' + list[i] + '</p>';
+        row += '<p>' + escapeHtml(list[i]) + '</p>';
     }
     $(id).html(row);
 }
@@ -850,7 +850,7 @@ function CreateEnteredGrammarTable(list, id) {
 function CreateStatisticGrammarTable(list, id) {
     var row = '';
     for (var i in list) {
-        row += '<p>' + list[i] + '</p>';
+        row += '<p>' + escapeHtml(list[i]) + '</p>';
     }
     console.log(id);
     $("#" + id).html(row);
@@ -875,7 +875,7 @@ function CreateAcceptedStatisticTable(items, row, number, idGrammarItem, idSeque
 function CreateStatisticSequenceTable(items, id) {
     var row = '';
     for (var i in items) {
-        row += '<p>' + items[i] + '</p><hr/>';
+        row += '<p>' + escapeHtml(items[i]) + '</p><hr/>';
     }
     console.log(row);
     $("#" + id).html(row);
@@ -886,7 +886,7 @@ function CreateNewGrammarTable(productions, first, follow, id) {
     for (var i in productions) {
         row += '<tr><td>' +
 
-            productions[i] + '</td><td>' + first[i] + '</td><td>' + follow[i] + '</td></tr>';
+            escapeHtml(productions[i]) + '</td><td>' + escapeHtml(first[i]) + '</td><td>' + escapeHtml(follow[i]) + '</td></tr>';
     }
     $(id).html(row);
 }
@@ -896,7 +896,7 @@ function CreateMTableTable(mTable, id) {
     for (var i in mTable) {
         (i == 0) ? row += '<tr class="card-header">' : row += '<tr>';
         for (var j in mTable[i]) {
-            (j == 0) ? row += '<td class="card-header">' + mTable[i][j] + '</td>' : row += '<td>' + mTable[i][j] + '</td>';
+            (j == 0) ? row += '<td class="card-header">' + escapeHtml(mTable[i][j]) + '</td>' : row += '<td>' + escapeHtml(mTable[i][j]) + '</td>';
         }
         row += '</tr>';
     }
@@ -909,6 +909,23 @@ function ErrorVisualization(jqXHR, textStatus, errorThrown, id) {
 }
 
 function CreateString(list, id) {
-    var row = '<p>' + list + '</p>';
+    var row = '<p>' + escapeHtml(list) + '</p>';
     $(id).html(row);
+}
+
+var entityMap = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+    '/': '&#x2F;',
+    '`': '&#x60;',
+    '=': '&#x3D;'
+};
+
+function escapeHtml (string) {
+    return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+        return entityMap[s];
+    });
 }

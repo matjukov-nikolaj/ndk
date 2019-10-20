@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac32dbc8-804b-4eb9-baa6-cd21aba0aedc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../config/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../config/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../run.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../../run.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/.idea/.idea.GrammarConverter/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/GrammarConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/GrammarConverter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../GrammarConverter/GrammarConverter/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrammarProcessor/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrammarProcessor/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrammarProcessor/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrammarProcessor/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrammarProcessor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrammarProcessor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrammarProcessor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GrammarProcessor/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrammarProcessor/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/GrammarProcessor/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TableMGenerator/.idea/.idea.TableMGenerator/.idea/vcs.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,13 +14,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GrammarProcessor/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+            <state relative-caret-position="735">
+              <caret line="58" column="16" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
               <folding>
-                <marker date="1559580568982" expanded="true" signature="6:146" ph="..." />
+                <marker date="1559580568982" expanded="false" signature="6:146" ph="..." />
                 <marker date="1559580568982" expanded="true" signature="174:3338" ph="{...}" />
                 <marker date="1559580568982" expanded="true" signature="194:3336" ph="{...}" />
                 <marker date="1559580568982" expanded="true" signature="453:1526" ph="{...}" />
@@ -46,36 +37,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GrammarProcessor/GrammarProcessor.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+            <state relative-caret-position="231">
+              <caret line="53" column="21" lean-forward="true" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
               <folding>
-                <marker date="1559578966222" expanded="false" signature="6:84" ph="..." />
-                <marker date="1559578966222" expanded="true" signature="112:3415" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="148:3413" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="284:445" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="482:530" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="559:734" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="776:992" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="1070:1857" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="1192:1819" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="1307:1805" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="1490:1582" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="1614:1705" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="1975:2730" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="2082:2720" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="2127:2299" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="2186:2281" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="2320:2706" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="2373:2568" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="2439:2546" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="2593:2688" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="2802:3404" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="2924:3366" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="3146:3221" ph="{...}" />
-                <marker date="1559578966222" expanded="true" signature="3272:3352" ph="{...}" />
+                <marker date="1560539039224" expanded="false" signature="6:84" ph="..." />
+                <marker date="1560539039224" expanded="true" signature="112:2686" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="148:2684" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="284:478" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="515:563" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="592:767" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="809:1025" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="1103:2177" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="1225:2139" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="1420:2125" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="1529:1882" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="1636:1860" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="1721:1834" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="1907:2107" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="1984:2085" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="2249:2675" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="2371:2637" ph="{...}" />
+                <marker date="1560539039224" expanded="true" signature="2541:2623" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -94,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/GrammarProcessor/application.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="20" lean-forward="true" selection-end-line="9" selection-end-column="20" />
+              <caret line="9" column="20" selection-end-line="9" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -113,14 +98,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/GrammarProcessor/application.properties" />
-        <option value="$PROJECT_DIR$/GrammarProcessor/GrammarProcessor.cs" />
         <option value="$PROJECT_DIR$/GrammarProcessor/Program.cs" />
+        <option value="$PROJECT_DIR$/GrammarProcessor/GrammarProcessor.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1014" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -129,45 +114,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GrammarProcessor" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GrammarProcessor" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="GrammarProcessor" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GrammarProcessor" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="GrammarProcessor" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Dependencies" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="GrammarProcessor" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="GrammarProcessor" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Dependencies" type="24d0babc:SolutionExplorerModelNode" />
-              <item name=".NETCoreApp 2.2" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GrammarConverter/GrammarConverter.sln" />
+    <property name="last_opened_file_path" value="D:/ndk/src/GrammarProcessor/GrammarProcessor.sln" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -222,11 +180,13 @@
       <workItem from="1558891193055" duration="3909000" />
       <workItem from="1558972878921" duration="4557000" />
       <workItem from="1559579907794" duration="2956000" />
+      <workItem from="1560537574939" duration="5730000" />
+      <workItem from="1560800146702" duration="6514000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19907000" />
+    <option name="totallyTimeSpent" value="32151000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -238,17 +198,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1014" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13207547" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30525163" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3217768" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.24052005" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2866521" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.20801733" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -260,7 +220,7 @@
       <window_info anchor="bottom" id="Unit Tests" order="12" />
       <window_info anchor="bottom" id="Terminal" order="13" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="15" weight="0.32936078" />
+      <window_info anchor="bottom" id="Build" order="15" weight="0.32932165" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -282,63 +242,42 @@
           <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/GrammarProcessor/Program.cs</url>
+          <line>58</line>
+          <properties documentPath="$PROJECT_DIR$/GrammarProcessor/Program.cs" initialLine="58">
+            <startOffsets>
+              <option value="2144" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2195" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/GrammarProcessor/GrammarProcessor.cs</url>
+          <line>43</line>
+          <properties documentPath="$PROJECT_DIR$/GrammarProcessor/GrammarProcessor.cs" initialLine="43">
+            <startOffsets>
+              <option value="1126" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1167" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A2DDBDA9-1E09-414A-801B-36BA566856C2/b5/6d7134e8/List`1.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2160">
-          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GrammarProcessor/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="20" lean-forward="true" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GrammarProcessor/GrammarProcessor.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-          <folding>
-            <marker date="1559578966222" expanded="false" signature="6:84" ph="..." />
-            <marker date="1559578966222" expanded="true" signature="112:3415" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="148:3413" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="284:445" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="482:530" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="559:734" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="776:992" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="1070:1857" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="1192:1819" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="1307:1805" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="1490:1582" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="1614:1705" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="1975:2730" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="2082:2720" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="2127:2299" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="2186:2281" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="2320:2706" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="2373:2568" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="2439:2546" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="2593:2688" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="2802:3404" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="2924:3366" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="3146:3221" ph="{...}" />
-            <marker date="1559578966222" expanded="true" signature="3272:3352" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GrammarProcessor/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+        <state relative-caret-position="735">
+          <caret line="58" column="16" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
           <folding>
-            <marker date="1559580568982" expanded="true" signature="6:146" ph="..." />
+            <marker date="1559580568982" expanded="false" signature="6:146" ph="..." />
             <marker date="1559580568982" expanded="true" signature="174:3338" ph="{...}" />
             <marker date="1559580568982" expanded="true" signature="194:3336" ph="{...}" />
             <marker date="1559580568982" expanded="true" signature="453:1526" ph="{...}" />
@@ -350,6 +289,47 @@
             <marker date="1559580568982" expanded="true" signature="1646:3214" ph="{...}" />
             <marker date="1559580568982" expanded="true" signature="1777:1919" ph="{...}" />
             <marker date="1559580568982" expanded="true" signature="3246:3320" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A2DDBDA9-1E09-414A-801B-36BA566856C2/b5/6d7134e8/List`1.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2160">
+          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GrammarProcessor/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GrammarProcessor/GrammarProcessor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="53" column="21" lean-forward="true" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+          <folding>
+            <marker date="1560539039224" expanded="false" signature="6:84" ph="..." />
+            <marker date="1560539039224" expanded="true" signature="112:2686" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="148:2684" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="284:478" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="515:563" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="592:767" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="809:1025" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="1103:2177" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="1225:2139" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="1420:2125" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="1529:1882" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="1636:1860" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="1721:1834" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="1907:2107" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="1984:2085" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="2249:2675" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="2371:2637" ph="{...}" />
+            <marker date="1560539039224" expanded="true" signature="2541:2623" ph="{...}" />
           </folding>
         </state>
       </provider>
