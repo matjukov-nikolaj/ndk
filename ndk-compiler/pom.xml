@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cop5555sp15</groupId>
+    <groupId>compiler.ndk</groupId>
     <artifactId>ndk-compiler</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
@@ -60,7 +60,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.ood.simuduck.App</mainClass>
+                            <mainClass>compiler.ndk.execute.Example1</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
