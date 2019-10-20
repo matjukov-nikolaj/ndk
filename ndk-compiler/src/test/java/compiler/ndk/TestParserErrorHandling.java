@@ -47,7 +47,7 @@ public class TestParserErrorHandling {
 		System.out.println("***********\nimport3");
 		String input = "import class A { } "; // this input is wrong.
 		System.out.println(input);
-		Kind ExpectedIncorrectTokenKind = KW_CLASS;
+		Kind ExpectedIncorrectTokenKind = KEY_WORD_CLASS;
 		parseIncorrectInput(input, ExpectedIncorrectTokenKind);
 	}
 
@@ -57,7 +57,7 @@ public class TestParserErrorHandling {
 		System.out.println("***********\ndef_simple_type2");
 		String input = "class A {def B:int; def C:boolean; def S: string} ";
 		System.out.println(input);
-		parseIncorrectInput(input, RCURLY);
+		parseIncorrectInput(input, RIGHT_BRACE);
 	}
 	
 	@Test
@@ -65,7 +65,7 @@ public class TestParserErrorHandling {
 		System.out.println("***********\nmultiple_errors1");
 		String input = "class A {def B:int; def C:boolean; def S: strings;  def F: sing} ";
 		System.out.println(input);
-		parseIncorrectInput(input, IDENT, IDENT);
+		parseIncorrectInput(input, IDENTIFIER, IDENTIFIER);
 	}
 	
 

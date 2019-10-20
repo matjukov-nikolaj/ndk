@@ -1,24 +1,24 @@
 class BubbleSort {
-	def arr: @[int];
-	def isNotSorted: boolean;
+	var arr: [int];
+	var isNotSorted: boolean;
 	isNotSorted = true;
-	arr = @[6, 0, 3];
-	def sizeArr: int;
+	arr = [6, 0, 3];
+	var sizeArr: int;
 	sizeArr = 3;
 	while (isNotSorted)
 	{
 		isNotSorted = false;
-		def i: int;
+		var i: int;
 		i = 1;
 		while (i < sizeArr)
 		{
-			def prevNumber: int;
-			def currNumber: int;
+			var prevNumber: int;
+			var currNumber: int;
 			prevNumber = arr[i - 1];
 			currNumber = arr[i];
 			if (prevNumber > currNumber)
 			{
-				def temp: int;
+				var temp: int;
 				temp = arr[i];
 				arr[i] = arr[i - 1];
 				arr[i - 1] = temp;

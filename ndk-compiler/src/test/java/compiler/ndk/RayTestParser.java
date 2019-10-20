@@ -60,7 +60,7 @@ public class RayTestParser {
 		System.out.println("import5");
 		String input = "import a class A { } ";
 		System.out.println(input);
-		parseIncorrectInput(input, KW_CLASS);	
+		parseIncorrectInput(input, KEY_WORD_CLASS);
 	}
 	
 	@Test
@@ -76,7 +76,7 @@ public class RayTestParser {
 		System.out.println("import7");
 		String input = "import a.b class A { } ";
 		System.out.println(input);
-		parseIncorrectInput(input, KW_CLASS);	
+		parseIncorrectInput(input, KEY_WORD_CLASS);
 	}
 	
 	@Test
@@ -92,7 +92,7 @@ public class RayTestParser {
 		System.out.println("incorrectClass1");
 		String input = "import a.b{ } ";
 		System.out.println(input);
-		parseIncorrectInput(input, LCURLY);	
+		parseIncorrectInput(input, LEFT_BRACE);
 	}
 	
 	public void incorrectClass2() throws SyntaxException {
@@ -115,7 +115,7 @@ public class RayTestParser {
 		System.out.println("def_simple_type4");
 		String input = "class A {def B: ine;} ";
 		System.out.println(input);
-		parseIncorrectInput(input, IDENT);
+		parseIncorrectInput(input, IDENTIFIER);
 	}
 	
 	@Test
@@ -147,7 +147,7 @@ public class RayTestParser {
 		System.out.println("declaration5");
 		String input = "class A {def X={};} ";
 		System.out.println(input);
-		parseIncorrectInput(input, RCURLY);
+		parseIncorrectInput(input, RIGHT_BRACE);
 	}
 	
 	@Test
@@ -163,7 +163,7 @@ public class RayTestParser {
 		System.out.println("def_key_value_type4");
 		String input = "class A {def S:@@(int:string];} ";
 		System.out.println(input);
-		parseIncorrectInput(input, LPAREN);
+		parseIncorrectInput(input, LEFT_BRACKET);
 	}	
 	
 	@Test
@@ -171,7 +171,7 @@ public class RayTestParser {
 		System.out.println("def_key_value_type5");
 		String input = "class A {def S:@@[int];} ";
 		System.out.println(input);
-		parseIncorrectInput(input, RSQUARE);
+		parseIncorrectInput(input, RIGHT_SQUARE);
 	}	
 	
 	@Test
@@ -179,7 +179,7 @@ public class RayTestParser {
 		System.out.println("def_key_value_type6");
 		String input = "class A {def S:@@[int:];} ";
 		System.out.println(input);
-		parseIncorrectInput(input, RSQUARE);
+		parseIncorrectInput(input, RIGHT_SQUARE);
 	}		
 			
 	@Test
@@ -195,7 +195,7 @@ public class RayTestParser {
 		System.out.println("def_key_value_type2");
 		String input = "class A {def L:@{int];} ";
 		System.out.println(input);
-		parseIncorrectInput(input, LCURLY);
+		parseIncorrectInput(input, LEFT_BRACE);
 	}	
 	
 	@Test
@@ -211,7 +211,7 @@ public class RayTestParser {
 		System.out.println("def_key_value_type4");
 		String input = "class A {def L:@[];} ";
 		System.out.println(input);
-		parseIncorrectInput(input, RSQUARE);
+		parseIncorrectInput(input, RIGHT_SQUARE);
 	}	
 	
 	@Test
@@ -275,7 +275,7 @@ public class RayTestParser {
 		System.out.println("closureEval2");
 		String input = "class A  { x[z] = a(b,c]; } ";
 		System.out.println(input);
-		parseIncorrectInput(input, RSQUARE);
+		parseIncorrectInput(input, RIGHT_SQUARE);
 	} 	
 	
 	@Test
@@ -283,7 +283,7 @@ public class RayTestParser {
 		System.out.println("expressionList1");
 		String input = "class A  { x[z] = a(b,); } ";
 		System.out.println(input);
-		parseIncorrectInput(input, RPAREN);
+		parseIncorrectInput(input, RIGHT_BRACKET);
 	} 	
 	
 	@Test
@@ -291,7 +291,7 @@ public class RayTestParser {
 		System.out.println("expressionList2");
 		String input = "class A  { x[z] = a(b,); } ";
 		System.out.println(input);
-		parseIncorrectInput(input, RPAREN);
+		parseIncorrectInput(input, RIGHT_BRACKET);
 	} 	
 	
 	@Test
@@ -315,7 +315,7 @@ public class RayTestParser {
 		System.out.println("list2");
 		String input = "class A  { x = @[a); } ";
 		System.out.println(input);
-		parseIncorrectInput(input, RPAREN);
+		parseIncorrectInput(input, RIGHT_BRACKET);
 	} 	
 	
 	@Test
@@ -334,20 +334,20 @@ public class RayTestParser {
 		parseCorrectInput(input);
 	} 	
 	
-	@Test
+	/*@Test
 	public void mapList2()throws SyntaxException {
 		System.out.println("mapList2");
 		String input = "class A  { x = @@@[a]; } ";
 		System.out.println(input);
 		parseIncorrectInput(input, AT);
-	} 	
+	} */
 	
 	@Test
 	public void mapList3()throws SyntaxException {
 		System.out.println("mapList3");
 		String input = "class A  { x = @@[); } ";
 		System.out.println(input);
-		parseIncorrectInput(input, RPAREN);
+		parseIncorrectInput(input, RIGHT_BRACKET);
 	} 	
 	
 	@Test
@@ -363,7 +363,7 @@ public class RayTestParser {
 		System.out.println("mapList5");
 		String input = "class A  { x = @@[a:b,]; } ";
 		System.out.println(input);
-		parseIncorrectInput(input, RSQUARE);
+		parseIncorrectInput(input, RIGHT_SQUARE);
 	} 	
 	
 	@Test
@@ -406,13 +406,13 @@ public class RayTestParser {
 		parseIncorrectInput(input, ASSIGN);
 	}
 	
-	@Test
+	/*@Test
 	public void expressions9() throws SyntaxException {
 		System.out.println("expressions9");
 		String input = "class A {x=a@b;} ";
 		System.out.println(input);
 		parseIncorrectInput(input, AT);
-	}
+	}*/
 		
 	@Test
 	public void factor8() throws SyntaxException {
@@ -486,20 +486,20 @@ public class RayTestParser {
 		parseIncorrectInput(input, SEMICOLON, EOF);
 	}
 	
-	@Test
+	/*@Test
 	public void def_closure6() throws SyntaxException {
 		System.out.println("def_closure6");
 		String input = "class A {def x={y, z, v,->};} ";
 		System.out.println(input);
 		parseIncorrectInput(input, ARROW);
-	}	
+	}	*/
 	
 	@Test
 	public void def_closure7() throws SyntaxException {
 		System.out.println("def_closure7");
 		String input = "class A {def x={ def ->};} ";
 		System.out.println(input);
-		parseIncorrectInput(input, KW_DEF);
+		parseIncorrectInput(input, KEY_WORD_VAR);
 	}	
 	
 	@Test
@@ -518,13 +518,13 @@ public class RayTestParser {
 		parseIncorrectInput(input, INT_LIT);
 	}	
 	
-	@Test
+	/*@Test
 	public void def_closure10() throws SyntaxException {
 		System.out.println("def_closure10");
 		String input = "class A {def x={ y, @ ->};} ";
 		System.out.println(input);
 		parseIncorrectInput(input, AT);
-	}
+	}*/
 	
 	@Test
 	public void statement8() throws SyntaxException {
@@ -539,7 +539,7 @@ public class RayTestParser {
 		System.out.println("statement9");
 		String input = "class A  { while a) { }; } ";
 		System.out.println(input);
-		parseIncorrectInput(input, IDENT);
+		parseIncorrectInput(input, IDENTIFIER);
 	}
 	
 	@Test
@@ -547,7 +547,7 @@ public class RayTestParser {
 		System.out.println("statement10");
 		String input = "class A  { while(a { }; } ";
 		System.out.println(input);
-		parseIncorrectInput(input, LCURLY);
+		parseIncorrectInput(input, LEFT_BRACE);
 	}
 	
 	@Test
@@ -555,7 +555,7 @@ public class RayTestParser {
 		System.out.println("statement11");
 		String input = "class A  { if a) { }; } ";
 		System.out.println(input);
-		parseIncorrectInput(input, IDENT);
+		parseIncorrectInput(input, IDENTIFIER);
 	}
 	
 	@Test
@@ -563,7 +563,7 @@ public class RayTestParser {
 		System.out.println("statement12");
 		String input = "class A  { if(a { };  } ";
 		System.out.println(input);
-		parseIncorrectInput(input, LCURLY);
+		parseIncorrectInput(input, LEFT_BRACE);
 	}
 
 	@Test
@@ -571,7 +571,7 @@ public class RayTestParser {
 		System.out.println("statement13");
 		String input = "class A  { if(a) { } else() { }; } ";
 		System.out.println(input);
-		parseIncorrectInput(input, LPAREN);
+		parseIncorrectInput(input, LEFT_BRACKET);
 	}
 
 }
