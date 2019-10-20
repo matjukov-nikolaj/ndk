@@ -47,23 +47,23 @@ public class Lexer {
 	final HashMap<String, Kind> reservedWord = new HashMap<String, Kind>();			
     
 	public void initReservedWord(){
-		this.reservedWord.put("int", Kind.KW_INT);
-		this.reservedWord.put("string", Kind.KW_STRING);
-		this.reservedWord.put("boolean", Kind.KW_BOOLEAN);
-		this.reservedWord.put("import", Kind.KW_IMPORT);
-		this.reservedWord.put("class", Kind.KW_CLASS);
-		this.reservedWord.put("def", Kind.KW_DEF);
-		this.reservedWord.put("while", Kind.KW_WHILE);
-		this.reservedWord.put("if", Kind.KW_IF);
-		this.reservedWord.put("else", Kind.KW_ELSE);
-		this.reservedWord.put("return", Kind.KW_RETURN);
-		this.reservedWord.put("print", Kind.KW_PRINT);
+		this.reservedWord.put("int", Kind.KEY_WORD_INT);
+		this.reservedWord.put("string", Kind.KEY_WORD_STRING);
+		this.reservedWord.put("boolean", Kind.KEY_WORD_BOOLEAN);
+		//this.reservedWord.put("import", Kind.KEY_WORD_IMPORT);
+		this.reservedWord.put("class", Kind.KEY_WORD_CLASS);
+		this.reservedWord.put("var", Kind.KEY_WORD_VAR);
+		this.reservedWord.put("while", Kind.KEY_WORD_WHILE);
+		this.reservedWord.put("if", Kind.KEY_WORD_IF);
+		this.reservedWord.put("else", Kind.KEY_WORD_ELSE);
+		//this.reservedWord.put("return", Kind.KEY_WORD_RETURN);
+		this.reservedWord.put("print", Kind.KEY_WORD_PRINT);
 		this.reservedWord.put("true", Kind.BL_TRUE);
 		this.reservedWord.put("false", Kind.BL_FALSE);
 		this.reservedWord.put("null", Kind.NL_NULL);
-		this.reservedWord.put("size", Kind.KW_SIZE);
-		this.reservedWord.put("key", Kind.KW_KEY);
-		this.reservedWord.put("value", Kind.KW_VALUE);
+		this.reservedWord.put("size", Kind.KEY_WORD_SIZE);
+		//this.reservedWord.put("key", Kind.KEY_WORD_KEY);
+		//this.reservedWord.put("value", Kind.KEY_WORD_VALUE);
 	}
 	
 
@@ -120,29 +120,29 @@ public class Lexer {
 					t= stream.new Token(COMMA, begOffset, index, line);
 					break;
 				case '(':
-					t= stream.new Token(LPAREN, begOffset, index, line);
+					t= stream.new Token(LEFT_BRACKET, begOffset, index, line);
 					break;
 				case ')':
-					t= stream.new Token(RPAREN, begOffset, index, line);
+					t= stream.new Token(RIGHT_BRACKET, begOffset, index, line);
 					break;
 				case '[':
-					t= stream.new Token(LSQUARE, begOffset, index, line);
+					t= stream.new Token(LEFT_SQUARE, begOffset, index, line);
 					break;
 				case ']':
-					t= stream.new Token(RSQUARE, begOffset, index, line);
+					t= stream.new Token(RIGHT_SQUARE, begOffset, index, line);
 					break;
 				case '{':
-					t= stream.new Token(LCURLY, begOffset, index, line);
+					t= stream.new Token(LEFT_BRACE, begOffset, index, line);
 					break;
 				case '}':
-					t= stream.new Token(RCURLY, begOffset, index, line);
+					t= stream.new Token(RIGHT_BRACE, begOffset, index, line);
 					break;
 				case ':':
 					t= stream.new Token(COLON, begOffset, index, line);
 					break;
-				case '?':
+				/*case '?':
 					t= stream.new Token(QUESTION, begOffset, index, line);
-					break;
+					break;*/
 				case '=':
 					state = State.GOT_EQUALS;
 					break;
@@ -170,15 +170,15 @@ public class Lexer {
 				case '/':
 					state = State.GOT_SLASH;
 					break;
-				case '%':
+				/*case '%':
 					t= stream.new Token(MOD, begOffset, index, line);
-					break;		
+					break;*/
 				case '!':
 					state = State.GOT_EXCLAM;
 					break;
-				case '@':
+				/*case '@':
 					t= stream.new Token(AT, begOffset, index, line);
-					break;
+					break;*/
 				case '"':
 					state = State.STRING_PART;
 					break;
@@ -210,7 +210,7 @@ public class Lexer {
 					}
 				}
 				break;				
-			case GOT_DOT:
+			/*case GOT_DOT:
 				switch(ch){
 				case '.':
 					t= stream.new Token(RANGE, begOffset, index, line);
@@ -218,7 +218,7 @@ public class Lexer {
 				default:
 					t= stream.new Token(DOT, begOffset, --index, line);
 				}
-				break;
+				break;*/
 			case GOT_EQUALS:
 				switch(ch){
 				case '=':
@@ -231,32 +231,32 @@ public class Lexer {
 			case GOT_LANGLE:
 				switch(ch){
 				case '=':
-					t= stream.new Token(LE, begOffset, index, line);
+					t= stream.new Token(LESS_EQUAL, begOffset, index, line);
 					break;
-				case '<':
+				/*case '<':
 					t= stream.new Token(LSHIFT, begOffset, index, line);
-					break;
+					break;*/
 				default:
-					t= stream.new Token(LT, begOffset, --index, line);
+					t= stream.new Token(LESS_THAN, begOffset, --index, line);
 				}
 				break;
 			case GOT_RANGLE:
 				switch(ch){
 				case '=':
-					t= stream.new Token(GE, begOffset, index, line);
+					t= stream.new Token(GREATER_EQUAL, begOffset, index, line);
 					break;
-				case '>':
+				/*case '>':
 					t= stream.new Token(RSHIFT, begOffset, index, line);
-					break;
+					break;*/
 				default:
-					t= stream.new Token(GT, begOffset, --index, line);
+					t= stream.new Token(GREATER_THAN, begOffset, --index, line);
 				}
 				break;
 			case GOT_HYPHEN:
 				switch(ch){
-				case '>':
+				/*case '>':
 					t= stream.new Token(ARROW, begOffset, index, line);
-					break;
+					break;*/
 				default:
 					t= stream.new Token(MINUS, begOffset, --index, line);
 				}
@@ -276,7 +276,7 @@ public class Lexer {
 					state = State.GOT_SLASHSTAR;
 					break;
 				default:
-					t= stream.new Token(DIV, begOffset, --index, line);						
+					t= stream.new Token(DIV, begOffset, --index, line);
 				}
 				break;
 			case GOT_SLASHSTAR:
@@ -324,7 +324,7 @@ public class Lexer {
 					if(reservedWord.containsKey(s)){					
 						t= stream.new Token(reservedWord.get(s), begOffset, --index, line);		
 					}else{
-						t= stream.new Token(IDENT, begOffset, --index, line);		
+						t= stream.new Token(IDENTIFIER, begOffset, --index, line);
 					}		
 					//t= stream.new Token(IDENT, begOffset, --index, line);	
 				}

@@ -41,7 +41,7 @@ public class Example2 {
 //					+ "print s2;\n"
 //					+ "}";
 
-		File file = new File("D://prog.ndk");
+		File file = new File("C:\\Users\\fedia\\Desktop\\Study\\ndk-compiler\\ndk\\prog.ndk");
 		Codelet codelet = CodeletBuilder.newInstance(file);
 		codelet.execute();
 //		Codelet codelet = CodeletBuilder.newInstance(source);

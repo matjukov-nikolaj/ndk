@@ -1,7 +1,7 @@
 package compiler.ndk.symbolTable;
 
 import compiler.ndk.lexer.TokenStream;
-import static compiler.ndk.lexer.TokenStream.Kind.IDENT;
+import static compiler.ndk.lexer.TokenStream.Kind.IDENTIFIER;
 import compiler.ndk.lexer.TokenStream.Token;
 
 public class DummyToken extends Token {
@@ -11,7 +11,7 @@ public class DummyToken extends Token {
 	String text;
 	
 	public DummyToken(String id) {
-		stream.super(IDENT, 0, 0, 0);
+		stream.super(IDENTIFIER, 0, 0, 0);
 		this.text = id;
 	}
 	

@@ -232,21 +232,21 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 			mv.visitLabel(l1);
 			mv.visitInsn(ICONST_0);
 			mv.visitLabel(l2);
-		} else if (op ==  LT || op == GT || op == LE || op == GE) {
+		} else if (op ==  LESS_THAN || op == GREATER_THAN || op == LESS_EQUAL || op == GREATER_EQUAL) {
 			binaryExpression.expression0.visit(this,arg);
 			binaryExpression.expression1.visit(this,arg);
 			Label l1 = new Label();
 			switch(op) {
-			case LT: 
+			case LESS_THAN:
 				mv.visitJumpInsn(IF_ICMPGE, l1);
 				break;
-			case GT:
+			case GREATER_THAN:
 				mv.visitJumpInsn(IF_ICMPLE, l1);
 				break;
-			case LE: 
+			case LESS_EQUAL:
 				mv.visitJumpInsn(IF_ICMPGT, l1);
 				break;
-			case GE:	
+			case GREATER_EQUAL:
 				mv.visitJumpInsn(IF_ICMPLT, l1);
 				break;
 			default:

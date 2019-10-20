@@ -15,9 +15,9 @@ public class Program extends ASTNode {
 	
 	public String JVMName;
 
-	public Program(Token firstToken, List<QualifiedName> imports, String name, Block block) {
+	public Program(Token firstToken, /*List<QualifiedName> imports,*/ String name, Block block) {
 		super(firstToken);
-		this.imports = imports;
+		//this.imports = imports;
 		this.name = name;
 		this.block = block;
 	}

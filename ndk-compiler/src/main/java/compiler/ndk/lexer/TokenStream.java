@@ -75,46 +75,46 @@ public class TokenStream {
 
 
 	public static enum Kind {
-		IDENT,
+		IDENTIFIER,
 		/* reserved words */
-		KW_INT, KW_STRING, KW_BOOLEAN, KW_IMPORT, KW_CLASS, KW_DEF, 
-		KW_WHILE, KW_IF, KW_ELSE, KW_RETURN, KW_PRINT, KW_SIZE, KW_KEY, KW_VALUE,
+		KEY_WORD_INT, KEY_WORD_STRING, KEY_WORD_BOOLEAN, /*KEY_WORD_IMPORT,*/ KEY_WORD_CLASS, KEY_WORD_VAR,
+		KEY_WORD_WHILE, KEY_WORD_IF, KEY_WORD_ELSE, /*KEY_WORD_RETURN,*/ KEY_WORD_PRINT, KEY_WORD_SIZE, /*KEY_WORD_KEY, KEY_WORD_VALUE,*/
 		/* boolean literals */
 		BL_TRUE, BL_FALSE,
 		/* null literal */
 		NL_NULL,
 		/* separators */
-		DOT, // .
-		RANGE, // ..
+		//DOT, // .
+		//RANGE, // ..
 		SEMICOLON, // ;
 		COMMA, // ,
-		LPAREN, // (
-		RPAREN, // )
-		LSQUARE, // [
-		RSQUARE, // ]
-		LCURLY, // {
-		RCURLY, // }
+		LEFT_BRACKET, // (
+		RIGHT_BRACKET, // )
+		LEFT_SQUARE, // [
+		RIGHT_SQUARE, // ]
+		LEFT_BRACE, // {
+		RIGHT_BRACE, // }
 		COLON, // :
-		QUESTION, // ?
+		//QUESTION, // ?
 		ASSIGN, // =
 		BAR, // |
 		AND, // &
 		EQUAL, // ==
 		NOTEQUAL, // !=
-		LT, // <
-		GT, // >
-		LE, // <=
-		GE, // >=
+		LESS_THAN, // <
+		GREATER_THAN, // >
+		LESS_EQUAL, // <=
+		GREATER_EQUAL, // >=
 		PLUS, // +
 		MINUS, // -
 		TIMES, // *
 		DIV, // /
-		MOD, // %
+		//MOD, // %
 		NOT, // !
 		LSHIFT, // <<
 		RSHIFT, // >>
-		ARROW, // ->
-		AT, // @
+		//ARROW, // ->
+		//AT, // @
 		INT_LIT, STRING_LIT,
 		/* end of file */
 		EOF,

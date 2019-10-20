@@ -99,7 +99,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			} else {
 				throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 			}	
-		case LT: case GT: case LE: case GE:
+		case LESS_THAN: case GREATER_THAN: case LESS_EQUAL: case GREATER_EQUAL:
 			if (expr0Type.equals(booleanType) || expr0Type.equals(intType)) {
 				binaryExpression.setType(booleanType);
 				return booleanType;
