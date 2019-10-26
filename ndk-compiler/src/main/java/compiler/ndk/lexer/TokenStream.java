@@ -4,38 +4,24 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 
-/**
- * This class holds the tokenize input. It is initialized with the input
- * (several constructors provide different options for providing the input) and
- * passed to a Lexer which fills in the tokens. The nextToken method is used
- * by the parser to retrieve the Tokens.
- * 
- * @author Beverly Sanders
- *
- */
 public class TokenStream {
-	char[] inputChars; // input
-	public final ArrayList<Token> tokens = new ArrayList<Token>(); // holds tokens after scan
-																	
+	char[] inputChars;
+	public final ArrayList<Token> tokens = new ArrayList<Token>();
 
-	/* provide input in char array */
 	public TokenStream(char[] inputChars) {
 		this.inputChars = inputChars;
 	}
 
-	/* provide input via a Reader */
 	public TokenStream(Reader r) {
 		this.inputChars = getChars(r);
 	}
 
-	/* provide input via a String */
 	public TokenStream(String inputString) {
 		int length = inputString.length();
 		inputChars = new char[length];
 		inputString.getChars(0, length, inputChars, 0);
 	}
 
-	// reads all the characters in the given reader into a char array.
 	private char[] getChars(Reader r) {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -54,12 +40,10 @@ public class TokenStream {
 
 	private int pos = 0;
 
-	/** returns the next token and increments the position */
 	public Token nextToken() {
 		return tokens.get(pos++);
 	}
 
-	/** resets the position in the token stream */
 	public void reset() {
 		pos = 0;
 	}
@@ -77,15 +61,13 @@ public class TokenStream {
 	public static enum Kind {
 		IDENTIFIER,
 		/* reserved words */
-		KEY_WORD_INT, KEY_WORD_STRING, KEY_WORD_BOOLEAN, /*KEY_WORD_IMPORT,*/ KEY_WORD_CLASS, KEY_WORD_VAR,
-		KEY_WORD_WHILE, KEY_WORD_IF, KEY_WORD_ELSE, /*KEY_WORD_RETURN,*/ KEY_WORD_PRINT, KEY_WORD_SIZE, /*KEY_WORD_KEY, KEY_WORD_VALUE,*/
+		KEY_WORD_INT, KEY_WORD_STRING, KEY_WORD_BOOLEAN, KEY_WORD_CLASS, KEY_WORD_VAR,
+		KEY_WORD_WHILE, KEY_WORD_IF, KEY_WORD_ELSE, KEY_WORD_PRINT, KEY_WORD_SIZE,
 		/* boolean literals */
 		BL_TRUE, BL_FALSE,
 		/* null literal */
 		NL_NULL,
 		/* separators */
-		//DOT, // .
-		//RANGE, // ..
 		SEMICOLON, // ;
 		COMMA, // ,
 		LEFT_BRACKET, // (
@@ -95,7 +77,6 @@ public class TokenStream {
 		LEFT_BRACE, // {
 		RIGHT_BRACE, // }
 		COLON, // :
-		//QUESTION, // ?
 		ASSIGN, // =
 		BAR, // |
 		AND, // &
@@ -107,14 +88,11 @@ public class TokenStream {
 		GREATER_EQUAL, // >=
 		PLUS, // +
 		MINUS, // -
-		TIMES, // *
+		MUL, // *
 		DIV, // /
-		//MOD, // %
 		NOT, // !
 		LSHIFT, // <<
 		RSHIFT, // >>
-		//ARROW, // ->
-		//AT, // @
 		INT_LIT, STRING_LIT,
 		/* end of file */
 		EOF,
@@ -123,14 +101,6 @@ public class TokenStream {
 		UNTERMINATED_STRING,  //end of input is reached before the closing "
 		UNTERMINATED_COMMENT  //end of input is reached before the closing */
 	}
-
-	/*
-	 * This is a non-static inner class. Each instance is linked to a instance
-	 * of StreamToken and can access that instance's variables.
-	 * 
-	 * Example of token creation where stream is an instance of TokenStream:
-	 * Token t = stream.new Token(SEMI, beg, end, line);
-	 */
 
 	public class Token {
 		public final Kind kind;
@@ -145,13 +115,11 @@ public class TokenStream {
 			this.lineNumber = lineNumber;
 		}
 
-		/* this should only be applied to Tokens with kind==INT_LIT */
 		public int getIntVal() {
 			assert kind == Kind.INT_LIT : "attempted to get value of non-number token";
 			return Integer.valueOf(getText());
 		}
 
-		/* this should only be applied to Tokens with kind==BOOLEAN_LIT */
 		public boolean getBooleanVal() {
 			assert (kind == Kind.BL_TRUE || kind == Kind.BL_FALSE) : "attempted to get boolean value of non-boolean token";
 			return kind == Kind.BL_TRUE;
@@ -161,12 +129,6 @@ public class TokenStream {
 			return lineNumber;
 		}
 
-		/**This method handles the escape characters in String literals.  The
-		 * getText method returns the string from the token's characters.  This means that
-		 * the Lexer can ignore escape characters.
-		 * 
-		 * @return
-		 */
 		public String getText() {
 			if (inputChars.length < end) {
 				assert kind == Kind.EOF && beg == inputChars.length;

@@ -3,12 +3,12 @@ package compiler.ndk.ast.expressions;
 import compiler.ndk.lexer.TokenStream.Token;
 import compiler.ndk.ast.visitor.ASTVisitor;
 
-public class ListOrMapElemExpression extends Expression {
+public class ListElemExpression extends Expression {
 public Token identToken;
 public Expression expression;
 
 
-	public ListOrMapElemExpression(Token firstToken, Token identToken,
+	public ListElemExpression(Token firstToken, Token identToken,
 		Expression expression) {
 	super(firstToken);
 	this.identToken = identToken;
@@ -18,7 +18,7 @@ public Expression expression;
 
 	@Override
 	public Object visit(ASTVisitor v, Object arg) throws Exception {
-		return v.visitListOrMapElemExpression(this,arg);
+		return v.visitListElemExpression(this,arg);
 	}
 
 }

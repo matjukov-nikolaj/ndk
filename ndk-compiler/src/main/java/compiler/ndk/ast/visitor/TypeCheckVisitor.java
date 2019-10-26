@@ -89,7 +89,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		case PLUS:
 			check(expr0Type.equals(intType) || expr0Type == stringType, "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 			break;
-		case MINUS:	case TIMES:	case DIV:			
+		case MINUS:	case MUL:	case DIV:
 			check(expr0Type.equals(intType), "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 			break;
 		case EQUAL:	case NOTEQUAL:
@@ -382,8 +382,8 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 
 	/** gets the type from the enclosed expression */
 	@Override
-	public Object visitListOrMapElemExpression(
-			ListOrMapElemExpression listOrMapElemExpression, Object arg)
+	public Object visitListElemExpression(
+			ListElemExpression listOrMapElemExpression, Object arg)
 			throws Exception {
 		String ident = listOrMapElemExpression.identToken.getText();
 		Declaration dec = symbolTable.lookup(ident);

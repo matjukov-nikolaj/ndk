@@ -12,12 +12,10 @@ public class SimpleType extends Type {
 		this.type = type;
 	}
 
-
 	@Override
 	public Object visit(ASTVisitor v, Object arg) throws Exception {
 		return v.visitSimpleType(this,arg);
 	}
-
 
 	@Override
 	public String getJVMType() {

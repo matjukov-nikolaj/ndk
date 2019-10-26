@@ -117,7 +117,7 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 			mv.visitMethodInsn(INVOKESPECIAL, "java/util/ArrayList", "<init>", "()V", false);
 			mv.visitFieldInsn(PUTFIELD, className, varName, "Ljava/util/List;");
 			((InheritedAttributes) arg).listName = varName;	
-			if(assignmentStatement.expression instanceof ListOrMapElemExpression) {
+			if(assignmentStatement.expression instanceof ListElemExpression) {
 				mv.visitVarInsn(ALOAD, 0);
 				assignmentStatement.expression.visit(this, arg);
 				mv.visitFieldInsn(PUTFIELD, className, varName, "Ljava/util/List;");
@@ -181,7 +181,7 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 			binaryExpression.expression1.visit(this,arg);
 			mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
 			mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "toString", "()Ljava/lang/String;", false);
-		} else if ((op == PLUS || op == MINUS || op == TIMES || op == DIV) && exprType.equals(intType)) {
+		} else if ((op == PLUS || op == MINUS || op == MUL || op == DIV) && exprType.equals(intType)) {
 			binaryExpression.expression0.visit(this,arg);
 			binaryExpression.expression1.visit(this,arg);
 			switch(op) {
@@ -191,7 +191,7 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 			case MINUS:
 				mv.visitInsn(ISUB);
 				break;
-			case TIMES:
+			case MUL:
 				mv.visitInsn(IMUL);
 				break;
 			case DIV:
@@ -616,8 +616,8 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 	}
 
 	@Override
-	public Object visitListOrMapElemExpression(
-			ListOrMapElemExpression listOrMapElemExpression, Object arg)
+	public Object visitListElemExpression(
+			ListElemExpression listOrMapElemExpression, Object arg)
 			throws Exception {		
 		MethodVisitor mv = ((InheritedAttributes) arg).mv;
 		String varName = listOrMapElemExpression.identToken.getText();

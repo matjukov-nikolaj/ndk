@@ -123,7 +123,7 @@ public class RayTestLexer {
 		lexer.scan();
 		System.out.println(stream);
 		Token t = stream.nextToken();
-		Kind[] expectedKinds = { TIMES, DIV, EOF };
+		Kind[] expectedKinds = { MUL, DIV, EOF };
 		String[] expectedTexts = { "*", "/", "" }; // need empty string for eof
 		assertEquals(6, t.beg);
 		assertArrayEquals(expectedKinds, makeKindArray(stream));
@@ -169,7 +169,7 @@ public class RayTestLexer {
 		Lexer lexer = new Lexer(stream);
 		lexer.scan();
 		System.out.println(stream);
-		Kind[] expectedKinds = { STRING_LIT, TIMES, DIV, EOF };
+		Kind[] expectedKinds = { STRING_LIT, MUL, DIV, EOF };
 		String[] expectedTexts = { "/*", "*", "/", "" }; // need empty string for eof
 		assertArrayEquals(expectedKinds, makeKindArray(stream));
 		assertArrayEquals(expectedTexts, makeTokenTextArray(stream));
@@ -199,7 +199,7 @@ public class RayTestLexer {
 		Lexer lexer = new Lexer(stream);
 		lexer.scan();
 		System.out.println(stream);
-		Kind[] expectedKinds = { BAR, AND, PLUS, MINUS, TIMES, DIV, EOF };
+		Kind[] expectedKinds = { BAR, AND, PLUS, MINUS, MUL, DIV, EOF };
 		String[] expectedTexts = { "|", "&", "+", "-", "*", "/", "" }; // need empty string for eof
 		assertArrayEquals(expectedKinds, makeKindArray(stream));
 		assertArrayEquals(expectedTexts, makeTokenTextArray(stream));

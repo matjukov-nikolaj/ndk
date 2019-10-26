@@ -56,7 +56,7 @@ namespace GrammarConverter
                 Grammar grammar = JsonConvert.DeserializeObject<Grammar>(value);
                 GrammarConverter grammarConverter = new GrammarConverter(grammar);
                 grammarConverter.DeleteLeftRecursion();
-                grammarConverter.Factorization();
+                //grammarConverter.Factorization();
                 grammarConverter.SortGrammar();
                 
                 grammarConverter.SetNoTerminals(grammarConverter.GetNoTerminals(grammarConverter.GetProductions()));

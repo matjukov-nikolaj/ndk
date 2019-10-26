@@ -18,7 +18,6 @@ public class Closure extends ASTNode {
 		this.formalArgList = formalArgList;
 		this.statementList = statementList;
 	}
-/**NEW*/
 	
 	String JVMType;
 	List<String> argTypes;

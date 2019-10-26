@@ -1,30 +1,7 @@
 class BubbleSort {
-	var arr: [int];
-	var isNotSorted: boolean;
-	isNotSorted = true;
-	arr = [6, 0, 3];
-	var sizeArr: int;
-	sizeArr = 3;
-	while (isNotSorted)
-	{
-		isNotSorted = false;
-		var i: int;
-		i = 1;
-		while (i < sizeArr)
-		{
-			var prevNumber: int;
-			var currNumber: int;
-			prevNumber = arr[i - 1];
-			currNumber = arr[i];
-			if (prevNumber > currNumber)
-			{
-				var temp: int;
-				temp = arr[i];
-				arr[i] = arr[i - 1];
-				arr[i - 1] = temp;
-				isNotSorted = true;
-			};
-			i = i + 1;
-		};
-	};
+	var s1: int;
+	var res: int;
+	var arr: [boolean];
+	arr = [ true, true, true];
+	print arr[0];
 }

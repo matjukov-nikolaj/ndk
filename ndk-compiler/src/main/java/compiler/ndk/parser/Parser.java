@@ -1,5 +1,6 @@
 package compiler.ndk.parser;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,7 +124,7 @@ public class Parser {
 	//token kinds.  You can pass these to isKind.
 	static final Kind[] REL_OPS = { BAR, AND, EQUAL, NOTEQUAL, LESS_THAN, GREATER_THAN, LESS_EQUAL, GREATER_EQUAL };
 	static final Kind[] WEAK_OPS = { PLUS, MINUS };
-	static final Kind[] STRONG_OPS = { TIMES/*, DIV */};
+	static final Kind[] STRONG_OPS = { MUL, DIV };
 	static final Kind[] VERY_STRONG_OPS = { LSHIFT, RSHIFT };
 	//the FIRST set of simple type
 	static final Kind[] SIMPLE_TYPE = { KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING }; 
@@ -160,17 +161,13 @@ public class Parser {
 		Token first = t;
 		Program p = null;
 		String name = null;
-		//List<QualifiedName> imports = ImportList();
-		//try-catch deal with missing class and class name
 		try{
 			match(KEY_WORD_CLASS);
 			name = t.getText();
 			match(IDENTIFIER);
 		}catch(SyntaxException e){
-			exceptionList.add(e);	
-			//loop exit when meeting the first "{"
+			exceptionList.add(e);
 			while(!isKind(LEFT_BRACE)){
-				//if EOF occur, rethrow exception
 				if(isKind(EOF)){
 					throw new SyntaxException(t, t.kind);					
 				}else{
@@ -179,7 +176,7 @@ public class Parser {
 			}
 		}		
 		Block block = block();
-		p = new Program(first, /*imports,*/ name, block);
+		p = new Program(first, name, block);
 		return p;
 	}
 
@@ -456,7 +453,7 @@ public class Parser {
 				consume();
 				//try-catch deal with while exceptions
 				try{
-					if(isKind(TIMES)){
+					if(isKind(MUL)){
 						consume();
 						match(LEFT_BRACKET);
 						e = expression();
@@ -476,7 +473,7 @@ public class Parser {
 						match(RIGHT_BRACKET);
 						s = new WhileStatement(first, e, block()); 
 					}else{
-						Kind[] while_set = { TIMES, LEFT_BRACKET };
+						Kind[] while_set = { MUL, LEFT_BRACKET };
 						throw new SyntaxException(t, while_set);
 					}			
 				}catch(SyntaxException whileException){
@@ -519,14 +516,6 @@ public class Parser {
 					match(RIGHT_BRACE);
 				}		
 				break;
-			/*case KEY_WORD_RETURN:
-				consume();
-				s = new ReturnStatement(first, expression());
-				break;
-			case MOD:
-				consume();
-				s = new ExpressionStatement(first, expression());
-				break;*/
 			default:
 				throw new SyntaxException(t, STATEMENT_FIRST);
 			}
@@ -573,39 +562,21 @@ public class Parser {
 	private List<Expression> expressionList() throws SyntaxException{
 		List<Expression> expressions= new ArrayList<Expression>();
 		if(isKind(EXPRESSION_FIRST)){
-			expressions.add(expression());
+			Expression prev = expression();
+			expressions.add(prev);
 			while(isKind(COMMA)){
 				match(COMMA);
-				expressions.add(expression());
+				Expression curr = expression();
+				expressions.add(curr);
+				if (prev.firstToken.kind != curr.firstToken.kind) {
+					throw new SyntaxException(curr.firstToken, prev.firstToken.kind);
+				}
+				prev = curr;
 			}
 		}
 		return expressions;
 	}
-		
-	//<KeyValueExpression> ::= <Expression> : <Expression>
-	/*private KeyValueExpression keyValueExpression() throws SyntaxException{
-		Expression key = null;
-		Expression value = null;
-		Token first = t;
-		key = expression();
-		match(COLON);
-		value = expression();
-		return new KeyValueExpression(first, key, value);
-	}*/
-	
-	//<KeyValueList> ::= empty | <KeyValueExpression> ( , <KeyValueExpression> ) *
-	/*private List<KeyValueExpression> keyValueList() throws SyntaxException{
-		List<KeyValueExpression> kvexpressions= new ArrayList<KeyValueExpression>();
-		if(isKind(EXPRESSION_FIRST)){
-			kvexpressions.add(keyValueExpression());
-			while(isKind(COMMA)){
-				match(COMMA);
-				kvexpressions.add(keyValueExpression());
-			}
-		}
-		return kvexpressions;
-	}*/
-	
+
 	//<Expression> ::= <Term> (<RelOp> <Term>)*
 	private Expression expression() throws SyntaxException{
 		Expression e1 = null;
@@ -622,7 +593,7 @@ public class Parser {
 	}
 	
 	//<Term> ::= <Elem> (<WeakOp> <Elem>)*
-	private Expression term() throws SyntaxException{
+	private Expression term() throws SyntaxException {
 		Expression e1 = null;
 		Expression e2 = null;
 		Token first = t;
@@ -631,6 +602,10 @@ public class Parser {
 			Token op = t;
 			match(WEAK_OPS);
 			e2 = element();
+			if ((e2.firstToken.kind == BL_TRUE || e1.firstToken.kind == BL_TRUE || e2.firstToken.kind == BL_FALSE || e1.firstToken.kind == BL_FALSE) ||
+					(e1.firstToken.kind != IDENTIFIER && e2.firstToken.kind != IDENTIFIER) && (e1.firstToken.kind != e2.firstToken.kind)) {
+				throw new SyntaxException(e2.firstToken, e1.firstToken.kind);
+			}
 			e1 = new BinaryExpression(first, e1, op, e2);
 		}
 		return e1;
@@ -689,12 +664,11 @@ public class Parser {
 			switch(t.kind){
 			case LEFT_SQUARE:
 				consume();
-				e = new ListOrMapElemExpression(first, identToken, expression());
+				e = new ListElemExpression(first, identToken, expression());
 				match(RIGHT_SQUARE);
 				break;
 			case LEFT_BRACKET:
 				consume();
-				//<ClosureEvalExpression> ::= IDENT (<ExpressionList>)
 				e = new ClosureEvalExpression(first, identToken, expressionList());
 				match(RIGHT_BRACKET);
 				break;
@@ -739,40 +713,11 @@ public class Parser {
 			e = new SizeExpression(first, expression());			
 			match(RIGHT_BRACKET);
 			break;
-		/*case KEY_WORD_KEY:
+		case LEFT_SQUARE:
 			consume();
-			match(LBRACKET);
-			e = new KeyExpression(first, expression());			
-			match(RBRACKET);
+			e = new ListExpression(first, expressionList());
+			match(RIGHT_SQUARE);
 			break;
-		case KEY_WORD_VALUE:
-			consume();
-			match(LBRACKET);
-			e = new ValueExpression(first, expression());			
-			match(RBRACKET);
-			break;*/
-		/*case LBRACE:
-			e = new ClosureExpression(first, closure());
-			break;*/
-		case LEFT_SQUARE /*AT*/:
-			consume();
-			/*if(isKind(LSQUARE)){
-				consume();*/
-				//<List> ::=@ [ <ExpressionList> ]
-				e = new ListExpression(first, expressionList());
-				match(RIGHT_SQUARE);
-				break;
-			/*}else if(isKind(AT)){
-				consume();
-				match(LSQUARE);
-				//<MapList> ::= @@[ <KeyValueList> ]
-				e = new MapListExpression(first, keyValueList());
-				match(RSQUARE);
-				break;
-			}else{
-				Kind[] list_set = { LSQUARE, AT };
-				throw new SyntaxException(t, list_set);	
-			}*/
 		default:
 			throw new SyntaxException(t, EXPRESSION_FIRST);		
 		}

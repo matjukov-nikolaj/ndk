@@ -60,7 +60,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>compiler.ndk.execute.Example1</mainClass>
+                            <mainClass>compiler.ndk.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

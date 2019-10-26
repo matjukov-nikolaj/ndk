@@ -75,7 +75,7 @@ public class TestLexer {
 												// the eof token
 		//assertEquals(AT, stream.nextToken().kind);
 		assertEquals(ILLEGAL_CHAR, stream.nextToken().kind);
-		assertEquals(TIMES, stream.nextToken().kind);
+		assertEquals(MUL, stream.nextToken().kind);
 		assertEquals(EOF, stream.nextToken().kind);
 
 	}
@@ -534,7 +534,7 @@ public class TestLexer {
 		System.out.println("commentsTest3");
 		String input = "/* /* */ */";
 		TokenStream stream = scanInput(input);
-		Kind[] expectedKinds = { TIMES, DIV, EOF };
+		Kind[] expectedKinds = { MUL, DIV, EOF };
 		String[] expectedTexts = {"*", "/", "" }; // need empty string for eof
 		assertArrayEquals(expectedKinds, makeKindArray(stream));
 		assertArrayEquals(expectedTexts, makeTokenTextArray(stream));

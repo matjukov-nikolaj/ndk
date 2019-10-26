@@ -165,20 +165,14 @@ public class Lexer {
 					state = State.GOT_HYPHEN;
 					break;
 				case '*':
-					t= stream.new Token(TIMES, begOffset, index, line);
+					t= stream.new Token(MUL, begOffset, index, line);
 					break;
 				case '/':
 					state = State.GOT_SLASH;
 					break;
-				/*case '%':
-					t= stream.new Token(MOD, begOffset, index, line);
-					break;*/
 				case '!':
 					state = State.GOT_EXCLAM;
 					break;
-				/*case '@':
-					t= stream.new Token(AT, begOffset, index, line);
-					break;*/
 				case '"':
 					state = State.STRING_PART;
 					break;
@@ -209,16 +203,7 @@ public class Lexer {
 					//	System.out.println("other character");
 					}
 				}
-				break;				
-			/*case GOT_DOT:
-				switch(ch){
-				case '.':
-					t= stream.new Token(RANGE, begOffset, index, line);
-					break;
-				default:
-					t= stream.new Token(DOT, begOffset, --index, line);
-				}
-				break;*/
+				break;
 			case GOT_EQUALS:
 				switch(ch){
 				case '=':
@@ -233,9 +218,6 @@ public class Lexer {
 				case '=':
 					t= stream.new Token(LESS_EQUAL, begOffset, index, line);
 					break;
-				/*case '<':
-					t= stream.new Token(LSHIFT, begOffset, index, line);
-					break;*/
 				default:
 					t= stream.new Token(LESS_THAN, begOffset, --index, line);
 				}

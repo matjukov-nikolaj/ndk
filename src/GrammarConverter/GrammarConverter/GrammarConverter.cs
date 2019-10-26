@@ -827,15 +827,14 @@ namespace GrammarConverter
                     tempProd.Add("'");
                 }
 
-                tempProd.Add("-");
-                tempProd.Add(">");
+                tempProd.Add(" -> ");
                 tempProd.AddRange(tempAlts);
 //                    ints.OfType<int>().ToList();
 
                 List<String> lines = line.Split(" ").OfType<String>().ToList();
                 if (tempProd.Count >= 3 + lines.Count)
                 {
-                    List<String> next = tempProd.GetRange(3, line.Length);
+                    List<String> next = tempProd.GetRange(3, lines.Count);
                     if (IsEqualsList(next, lines))
                     {
                         String alternative = null;
@@ -933,7 +932,7 @@ namespace GrammarConverter
                     }
                 }
             }
-            else
+            else if (result.Count == 1)
             {
                 res += result[0];
             }

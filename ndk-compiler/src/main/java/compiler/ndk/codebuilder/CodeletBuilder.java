@@ -37,11 +37,15 @@ public class CodeletBuilder {
 	public static Codelet newInstance(File file) throws Exception {
 		FileReader fr = new FileReader(file);
 		ASTNode ast = parseInput(fr);
-		checkType(ast);
-    	byte[] bytecode = generateByteCode(ast);
-		DynamicClassLoader loader = new DynamicClassLoader(Thread.currentThread().getContextClassLoader());
-	    Class<?> testClass = loader.define( ((Program)ast).JVMName, bytecode);
-		return (Codelet) testClass.newInstance();
+		if (ast != null) {
+			checkType(ast);
+			byte[] bytecode = generateByteCode(ast);
+			DynamicClassLoader loader = new DynamicClassLoader(Thread.currentThread().getContextClassLoader());
+			Class<?> testClass = loader.define(((Program) ast).JVMName, bytecode);
+			return (Codelet) testClass.newInstance();
+		} else {
+			return null;
+		}
 	}
 
 	private static ASTNode parseInput(String source) {

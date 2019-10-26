@@ -229,10 +229,10 @@ public class ToStringVisitor implements ASTVisitor {
 	}
 
 	@Override
-	public Object visitListOrMapElemExpression(
-			ListOrMapElemExpression listOrMapElemExpression, Object arg)
+	public Object visitListElemExpression(
+			ListElemExpression listOrMapElemExpression, Object arg)
 			throws Exception {
-		sb.append(arg).append("ListOrMapElemExpression").append('\n');
+		sb.append(arg).append("ListElemExpression").append('\n');
 		String indent = arg + "  ";
 		sb.append(indent).append(listOrMapElemExpression.identToken.getText())
 				.append('\n');
@@ -271,7 +271,6 @@ public class ToStringVisitor implements ASTVisitor {
 	@Override
 	public Object visitProgram(Program program, Object arg) throws Exception {
 		sb.append("Program\n");
-		sb.append("import");
 		String indent = "  ";
 		Iterator<QualifiedName> it = program.imports.iterator();
 		while (it.hasNext()) {

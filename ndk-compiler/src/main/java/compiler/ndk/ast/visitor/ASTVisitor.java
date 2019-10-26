@@ -44,8 +44,8 @@ public interface ASTVisitor {
 			Object arg)throws Exception;
 	Object visitKeyValueType(KeyValueType keyValueType, Object arg)throws Exception;
 	Object visitListExpression(ListExpression listExpression, Object arg)throws Exception;
-	Object visitListOrMapElemExpression(
-			ListOrMapElemExpression listOrMapElemExpression, Object arg)throws Exception;
+	Object visitListElemExpression(
+			ListElemExpression listElemExpression, Object arg)throws Exception;
 	Object visitListType(ListType listType, Object arg)throws Exception;
 	Object visitMapListExpression(MapListExpression mapListExpression,
 			Object arg)throws Exception;
