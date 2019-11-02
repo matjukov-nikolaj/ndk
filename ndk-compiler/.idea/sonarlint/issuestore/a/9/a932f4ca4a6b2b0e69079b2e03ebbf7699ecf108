@@ -1,0 +1,32 @@
+
+hsquid:CommentedOutCodeLineâ"<This block of commented-out lines of code should be removed.(—é·íıÿÿÿÿ
+lsquid:S1192;"PDefine a constant instead of duplicating this literal "Ljava/util/List" 7 times.(ÆßïÎúÿÿÿÿ
+Jsquid:S1199­"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+]squid:S3027R"FPut single-quotes around '<' to use the faster "indexOf(char)" method.(«Û¯Å
+squid:S1192V"eDefine a constant instead of duplicating this literal "code generation not yet implemented" 20 times.(‘Ü¶øÿÿÿÿ
+fsquid:S3027S"JPut single-quotes around '>' to use the faster "lastIndexOf(char)" method.(¦ãâøûÿÿÿÿ
+^squid:S3027Õ"FPut single-quotes around '>' to use the faster "indexOf(char)" method.(ôñäõ
+zsquid:S1450#"^Remove the "classDescriptor" field and declare it as a local variable in the relevant methods.(‹çËÏüÿÿÿÿ
+msquid:S1192>"QDefine a constant instead of duplicating this literal "Ljava/util/List;" 8 times.(µÚïâşÿÿÿÿ
+bsquid:S3027q"FPut single-quotes around '<' to use the faster "indexOf(char)" method.(ÆßïÎúÿÿÿÿ
+hsquid:S1192g"RDefine a constant instead of duplicating this literal "java/lang/Boolean" 4 times.(ãììl
+ksquid:S1192k"ODefine a constant instead of duplicating this literal "java/util/List" 5 times.(„·µÅıÿÿÿÿ
+^squid:S3027Õ"FPut single-quotes around '<' to use the faster "indexOf(char)" method.(ôñäõ
+^squid:S3027á"FPut single-quotes around '<' to use the faster "indexOf(char)" method.(«Û¯Å
+fsquid:S2259Û"IA "NullPointerException" could be thrown; "elementType" is nullable here.(ºõˆ…øÿÿÿÿ
+Isquid:S11997"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+hsquid:S1450!"QRemove the "fv" field and declare it as a local variable in the relevant methods.(Šã¸»
+Esquid:S1125É"(Remove the literal "true" boolean value.(¶Äìûÿÿÿÿ
+Ssquid:S2589h"7Remove this expression which always evaluates to "true"(¯æ€½ÿÿÿÿÿ
+dsquid:S1192e"HDefine a constant instead of duplicating this literal "valueOf" 4 times.(ÇÎƒéûÿÿÿÿ
+nsquid:S1192e"RDefine a constant instead of duplicating this literal "java/lang/Integer" 4 times.(ÇÎƒéûÿÿÿÿ
+bsquid:S3027;"FPut single-quotes around '<' to use the faster "indexOf(char)" method.(ÆßïÎúÿÿÿÿ
+bsquid:S3027S"FPut single-quotes around '<' to use the faster "indexOf(char)" method.(¦ãâøûÿÿÿÿ
+csquid:S1192u"GDefine a constant instead of duplicating this literal "<init>" 4 times.(µ¦¿¢şÿÿÿÿ
+usquid:S1192±"XDefine a constant instead of duplicating this literal "java/lang/StringBuilder" 4 times.(ß’ãûùÿÿÿÿ
+csquid:S3027™"FPut single-quotes around '<' to use the faster "indexOf(char)" method.(ÀÏ¼ıøÿÿÿÿ
+Isquid:S1199B"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+Fsquid:S1905­")Remove this unnecessary cast to "String".(˜±¹Éıÿÿÿÿ
+osquid:S3776ª"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(¥š„éùÿÿÿÿ
+csquid:S3027Æ"FPut single-quotes around '<' to use the faster "indexOf(char)" method.(ÆßïÎúÿÿÿÿ
+^squid:S3027ş"FPut single-quotes around '<' to use the faster "indexOf(char)" method.(«Û¯Å

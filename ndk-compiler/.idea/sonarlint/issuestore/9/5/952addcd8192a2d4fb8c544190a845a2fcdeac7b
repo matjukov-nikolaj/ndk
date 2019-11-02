@@ -1,0 +1,21 @@
+
+osquid:S1301â"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ8ïİÊÅà-
+bsquid:CommentedOutCodeLine`"<This block of commented-out lines of code should be removed.(¢ĞÍ
+hsquid:S1450%"QRemove the "ch" field and declare it as a local variable in the relevant methods.(àˆ¦Š
+isquid:CommentedOutCodeLineA"<This block of commented-out lines of code should be removed.(Œ×Ñğ8ïİÊÅà-
+hsquid:S1301î"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ
+hsquid:S1301Ù"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ
+hsquid:S1301€"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ
+osquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ìûå«üÿÿÿÿ8ïİÊÅà-
+osquid:CommentedOutCodeLineğ"<This block of commented-out lines of code should be removed.(Á¹…«ıÿÿÿÿ8ïİÊÅà-
+hsquid:S1301Ğ"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ
+bsquid:CommentedOutCodeLine·"<This block of commented-out lines of code should be removed.(¹Ïª%
+osquid:S2293/"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ò€ÉJ
+ksquid:S1450"TRemove the "state" field and declare it as a local variable in the relevant methods.(·˜é
+isquid:CommentedOutCodeLine5"<This block of commented-out lines of code should be removed.(§ÏÔ8ïİÊÅà-
+hsquid:CommentedOutCodeLineß"<This block of commented-out lines of code should be removed.(õ–ôÄùÿÿÿÿ
+isquid:CommentedOutCodeLine;"<This block of commented-out lines of code should be removed.(ê¨²Æ8ïİÊÅà-
+hsquid:S1301÷"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ
+hsquid:CommentedOutCodeLineË"<This block of commented-out lines of code should be removed.(ïã›ìøÿÿÿÿ
+osquid:CommentedOutCodeLineç"<This block of commented-out lines of code should be removed.(÷óñŒüÿÿÿÿ8ïİÊÅà-
+nsquid:S3776f"RRefactor this method to reduce its Cognitive Complexity from 72 to the 15 allowed.(Â¦í øÿÿÿÿ
