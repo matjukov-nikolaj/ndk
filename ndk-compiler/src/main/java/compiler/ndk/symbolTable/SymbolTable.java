@@ -25,60 +25,10 @@ public class SymbolTable {
 	LinkedList<Integer> scopeStack;
 	int currentScope;
 	
-	
-	/** 
-	 * to be called when block entered
-	 * @return size of stack after block is entered.
-	 */
-	public int enterScope(){
-		scopeStack.addFirst(++currentScope);
-		return scopeStack.size();
-	}
-	
-	
-	/**
-	 * leaves scope
-	 * @returns size of scope stack at entrance to this method
-	 * 
-	 * For a block with correctly nested scopes, the value returned from enterScope at the
-	 * beginning of the block should match the value returned at the end of the scope.
-	 */
-	public int leaveScope(){
-		int size = scopeStack.size();
-		if(size > 0) scopeStack.removeFirst();
-		return size;
-	}
-	
-	public boolean insert(String ident, Declaration dec){
-		//check for existing entry with same scope
-		SymbolTableEntry entry = entries.get(ident);		
-		while (entry != null){
-			if (entry.scope == currentScope){ return false;}
-			entry = entry.next;	
-		}
-		entries.put(ident, new SymbolTableEntry(currentScope, dec, entries.get(ident)));
-		return true;
-	}
-	
-	public Declaration lookup(String ident){
-		SymbolTableEntry entry = entries.get(ident);
-		if (entry == null) return null;
-		SymbolTableEntry tmpEntry;
-		for (int i = 0; i < scopeStack.size(); ++i){
-			tmpEntry = entry;
-			int scope = scopeStack.get(i);
-			while (tmpEntry != null && tmpEntry.scope != scope){
-				tmpEntry = tmpEntry.next;
-			}
-			if (tmpEntry != null) return tmpEntry.dec;
-		}
-		return null;
-	}
-	
 	public SymbolTable() {
 		currentScope = 0;
-		entries = new HashMap<String, SymbolTableEntry>();
-		scopeStack = new LinkedList<Integer>();
+		entries = new HashMap<>();
+		scopeStack = new LinkedList<>();
 		scopeStack.addFirst(currentScope); //push
 	}
 	

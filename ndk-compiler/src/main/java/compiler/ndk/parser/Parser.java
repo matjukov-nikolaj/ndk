@@ -12,9 +12,6 @@ import static compiler.ndk.lexer.TokenStream.Kind.*;
 import compiler.ndk.ast.blockElems.BlockElem;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
-import compiler.ndk.ast.lValues.ExpressionLValue;
-import compiler.ndk.ast.lValues.IdentLValue;
-import compiler.ndk.ast.lValues.LValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
 
@@ -229,11 +226,6 @@ public class Parser {
         Block block = null;
         try {
             switch (t.kind) {
-                case IDENTIFIER:
-                    LValue lvalue = lValue();
-                    match(ASSIGN);
-                    s = new AssignmentStatement(first, lvalue, expression());
-                    break;
                 case KEY_WORD_PRINT:
                     consume();
                     s = new PrintStatement(first, expression());
@@ -260,43 +252,6 @@ public class Parser {
             }
         }
         return s;
-    }
-
-    //<LValue> ::= IDENT | IDENT [ <Expression> ]
-    private LValue lValue() throws SyntaxException {
-        LValue l = null;
-        Token first = t;
-        if (isKind(IDENTIFIER)) {
-            Token identToken = t;
-            consume();
-            if (isKind(LEFT_SQUARE)) {
-                consume();
-                l = new ExpressionLValue(first, identToken, expression());
-                match(RIGHT_SQUARE);
-            } else {
-                l = new IdentLValue(first, identToken);
-            }
-        }
-        return l;
-    }
-
-    //<ExpressionList> ::= empty | <Expression> ( , <Expression> )*!!!!!!!!!
-    private List<Expression> expressionList() throws SyntaxException {
-        List<Expression> expressions = new ArrayList<Expression>();
-        if (isKind(EXPRESSION_FIRST)) {
-            Expression prev = expression();
-            expressions.add(prev);
-            while (isKind(COMMA)) {
-                match(COMMA);
-                Expression curr = expression();
-                expressions.add(curr);
-                if (prev.firstToken.kind != curr.firstToken.kind) {
-                    throw new SyntaxException(curr.firstToken, prev.firstToken.kind);
-                }
-                prev = curr;
-            }
-        }
-        return expressions;
     }
 
     //<Expression> ::= <Term> (<RelOp> <Term>)*
@@ -385,43 +340,10 @@ public class Parser {
                 e = new IntLitExpression(t, t.getIntVal());
                 consume();
                 break;
-            case BL_TRUE:
-                e = new BooleanLitExpression(t, t.getBooleanVal());
-                consume();
-                break;
-            case BL_FALSE:
-                e = new BooleanLitExpression(t, t.getBooleanVal());
-                consume();
-                break;
-            case STRING_LIT:
-                e = new StringLitExpression(t, t.getText());
-                consume();
-                break;
             case LEFT_BRACKET:
                 consume();
                 e = expression();
                 match(RIGHT_BRACKET);
-                break;
-            case NOT:
-                op = t;
-                consume();
-                e = new UnaryExpression(first, op, factor());
-                break;
-            case MINUS:
-                op = t;
-                consume();
-                e = new UnaryExpression(first, op, factor());
-                break;
-            case KEY_WORD_SIZE:
-                consume();
-                match(LEFT_BRACKET);
-                e = new SizeExpression(first, expression());
-                match(RIGHT_BRACKET);
-                break;
-            case LEFT_SQUARE:
-                consume();
-                e = new ListExpression(first, expressionList());
-                match(RIGHT_SQUARE);
                 break;
             default:
                 throw new SyntaxException(t, EXPRESSION_FIRST);
