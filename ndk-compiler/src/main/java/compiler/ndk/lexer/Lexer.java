@@ -27,23 +27,17 @@ public class Lexer {
 		STRING_PART,
 		EOF
 	}
-	//the current state of the DFA 
+
 	private State state;
-	
-	//the index of (next) char to process during scanning, or if none, past the end of the array
+
 	private int index = 0; 
-	
-	//the char to process during scanning
+
 	private char ch;
 
-	//the current line number
 	private int line = 1;	
-	
-    //local references to TokenStream objects for convenience
-      //set in constructor
+
 	final TokenStream stream;
 
-	//the keywords hash map
 	final HashMap<String, Kind> reservedWord = new HashMap<String, Kind>();			
     
 	public void initReservedWord(){
@@ -64,31 +58,24 @@ public class Lexer {
 
 	
 	public Lexer(TokenStream stream) {
-		//initialize input stream
 		this.stream = stream;
-		//initialize reserved words Hashmap
 		this.initReservedWord();
 	}
 
 
 	
 	private char getch(){
-		
 		if(index < stream.inputChars.length){
 			return stream.inputChars[index++];
 		}else{//deal with EOF
 			index++;
 			return (char)-1;
 		}
-		
-		
 	}
 
-	// Fills in the stream.tokens list with recognized tokens from the input
 	public void scan() {
 		Token t = null; 
 		do{
-		//System.out.println("perform next()");
 			t = next();
 			stream.tokens.add(t);		
 		}while(!t.kind.equals(EOF));	
@@ -320,7 +307,6 @@ public class Lexer {
 				}
 				break;
 			case EOF:
-				//take two iteration to end
 				t= stream.new Token(EOF, begOffset, index-2, line);
 				break;
 			default:

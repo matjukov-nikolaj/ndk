@@ -110,13 +110,11 @@ public class Parser {
         return false;
     }
 
-    static final Kind[] REL_OPS = {BAR, AND, EQUAL, NOTEQUAL, LESS_THAN, GREATER_THAN, LESS_EQUAL, GREATER_EQUAL};
     static final Kind[] WEAK_OPS = {PLUS, MINUS};
     static final Kind[] STRONG_OPS = {MUL, DIV};
-    static final Kind[] VERY_STRONG_OPS = {LSHIFT, RSHIFT};
     static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING};
-    static final Kind[] STATEMENT_FIRST = {IDENTIFIER, KEY_WORD_PRINT, KEY_WORD_WHILE, KEY_WORD_IF};
-    static final Kind[] EXPRESSION_FIRST = {IDENTIFIER, INT_LIT, BL_TRUE, BL_FALSE, STRING_LIT, NL_NULL, LEFT_BRACKET, NOT, MINUS, KEY_WORD_SIZE, LEFT_BRACE};
+    static final Kind[] STATEMENT_FIRST = { KEY_WORD_PRINT };
+    static final Kind[] EXPRESSION_FIRST = { INT_LIT };
     List<SyntaxException> exceptionList = new ArrayList<SyntaxException>();
 
     public List<SyntaxException> getExceptionList() {
@@ -140,7 +138,7 @@ public class Parser {
         }
     }
 
-    //<Program> ::= <ImportList> class IDENTIFIER <Block>
+    // <Program> -> class IDENTIFIER <Block>
     private Program program() throws SyntaxException {
         Token first = t;
         Program p = null;
@@ -165,22 +163,24 @@ public class Parser {
         return p;
     }
 
-    //<Block> ::= { (<Declaration> ; | <Statement> ; )* }
+//    <BlockContent> -> <Declarations> <Statements>
+//    <Declarations> -> <Declaration>
+//    <Declarations> -> <Declaration> <Declarations>
+//    <Statements> -> <Statement>
+//    <Statements> -> <Statement> <Statements>
+
     private Block block() throws SyntaxException {
         List<BlockElem> elems = new ArrayList<BlockElem>();
         BlockElem blockelem = null;
         Token first = t;
-        //try-catch deal with missing first "{" of block
         try {
             match(LEFT_BRACE);
         } catch (SyntaxException e) {
             exceptionList.add(e);
-            //if "VAR" or statement_FIRST or ";" occur, start to parse block
             while (!isKind(KEY_WORD_VAR) && !isKind(STATEMENT_FIRST) && !isKind(SEMICOLON)) {
                 if (isKind(EOF)) {
                     throw new SyntaxException(t, t.kind);
                 } else if (isKind(RIGHT_BRACE)) {
-                    //if "}" occur, exit loop
                     break;
                 } else {
                     consume();
@@ -193,11 +193,9 @@ public class Parser {
             } else if (isKind(STATEMENT_FIRST)) {
                 blockelem = statement();
             } else {
-                //statement may be empty
                 consume();
                 continue;
             }
-            //if there is no exception in this block element
             if (blockelem != null) {
                 match(SEMICOLON);
                 elems.add(blockelem);
@@ -207,23 +205,10 @@ public class Parser {
         return new Block(first, elems);
     }
 
-    /*
-    <Statement> ::= <LValue> = <Expression>
-    | print <Expression>
-    | while (<Expression>) <Block>
-    | while* ( <Expression> ) <Block>
-    | while* (<RangeExpression>) < Block>
-    | if (<Expression> ) <Block>
-    | if (<Expression>) <Block> else <Block>
-    | %<Expression>
-    | return <Expression>
-    | empty
-    */
+    // <Statement> -> print <Expression>;
     private Statement statement() throws SyntaxException {
         Statement s = null;
         Token first = t;
-        Expression e = null;
-        Block block = null;
         try {
             switch (t.kind) {
                 case KEY_WORD_PRINT:
@@ -236,15 +221,12 @@ public class Parser {
         } catch (SyntaxException e1) {
             exceptionList.add(e1);
             while (true) {
-                //if "}" occur, return
                 if (isKind(RIGHT_BRACE)) {
                     return null;
                 } else if (isKind(SEMICOLON)) {
-                    //prevent match ";" two times in block loop
                     match(SEMICOLON);
                     return null;
                 } else if (isKind(EOF)) {
-                    //if EOF occur, rethrow exception
                     throw new SyntaxException(t, t.kind);
                 } else {
                     consume();
@@ -254,22 +236,14 @@ public class Parser {
         return s;
     }
 
-    //<Expression> ::= <Term> (<RelOp> <Term>)*
     private Expression expression() throws SyntaxException {
         Expression e1 = null;
         Expression e2 = null;
         Token first = t;
         e1 = term();
-        while (isKind(REL_OPS)) {
-            Token op = t;
-            match(REL_OPS);
-            e2 = term();
-            e1 = new BinaryExpression(first, e1, op, e2);
-        }
         return e1;
     }
 
-    //<Term> ::= <Elem> (<WeakOp> <Elem>)*
     private Expression term() throws SyntaxException {
         Expression e1 = null;
         Expression e2 = null;
@@ -279,16 +253,11 @@ public class Parser {
             Token op = t;
             match(WEAK_OPS);
             e2 = element();
-            if ((e2.firstToken.kind == BL_TRUE || e1.firstToken.kind == BL_TRUE || e2.firstToken.kind == BL_FALSE || e1.firstToken.kind == BL_FALSE) ||
-                    (e1.firstToken.kind != IDENTIFIER && e2.firstToken.kind != IDENTIFIER) && (e1.firstToken.kind != e2.firstToken.kind)) {
-                throw new SyntaxException(e2.firstToken, e1.firstToken.kind);
-            }
             e1 = new BinaryExpression(first, e1, op, e2);
         }
         return e1;
     }
 
-    //<Elem> ::= <Thing> ( <StrongOp> <Thing>)*
     private Expression element() throws SyntaxException {
         Expression e1 = null;
         Expression e2 = null;
@@ -303,38 +272,16 @@ public class Parser {
         return e1;
     }
 
-    //<Thing> ::= <Factor> ( <VeryStrongOp> <Factor )*
     private Expression thing() throws SyntaxException {
         Expression e1 = null;
         Expression e2 = null;
         Token first = t;
         e1 = factor();
-        // TODO remove
-        while (isKind(VERY_STRONG_OPS)) {
-            Token op = t;
-            match(VERY_STRONG_OPS);
-            e2 = factor();
-            e1 = new BinaryExpression(first, e1, op, e2);
-        }
         return e1;
     }
 
-    /*
-     IDENT |
-     IDENT [ <Expression> ] |
-     INT_LIT | true | false | STRING_LIT |
-     ( <Expression> ) |
-     ! <Factor> | -<Factor> |
-     size(<Expression> ) |
-     key(<Expression ) |
-     value(<Expression >) |
-     <ClosureEvalExpression> | <Closure> |
-     <List> | <MapList>
-     */
     private Expression factor() throws SyntaxException {
         Expression e = null;
-        Token first = t;
-        Token op = null;
         switch (t.kind) {
             case INT_LIT:
                 e = new IntLitExpression(t, t.getIntVal());

@@ -6,8 +6,6 @@ import compiler.ndk.ast.blocks.Block;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
 
-import java.util.Iterator;
-
 public class ToStringVisitor implements ASTVisitor {
 
 	private StringBuilder sb;

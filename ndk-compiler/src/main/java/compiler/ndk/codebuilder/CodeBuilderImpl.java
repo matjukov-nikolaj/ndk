@@ -2,18 +2,16 @@ package compiler.ndk.codebuilder;
 
 import java.io.File;
 import java.io.FileReader;
-import java.lang.reflect.Field;
-import java.util.List;
 
 import compiler.ndk.ast.visitor.ASTNode;
-import compiler.ndk.ast.visitor.CodeGenVisitor;
+import compiler.ndk.ast.visitor.CodeGeneratorVisitor;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.visitor.ToStringVisitor;
 import compiler.ndk.lexer.Lexer;
 import compiler.ndk.lexer.TokenStream;
 import compiler.ndk.parser.Parser;
 
-public class CodeletBuilder {
+public class CodeBuilderImpl {
         public static class DynamicClassLoader extends ClassLoader {
             public DynamicClassLoader(ClassLoader parent) {
                 super(parent);
@@ -24,14 +22,14 @@ public class CodeletBuilder {
             }
         };
 
-	public static Codelet newInstance(File file) throws Exception {
+	public static CodeBuilder newInstance(File file) throws Exception {
 		FileReader fr = new FileReader(file);
 		ASTNode ast = parseInput(fr);
 		if (ast != null) {
 			byte[] bytecode = generateByteCode(ast);
 			DynamicClassLoader loader = new DynamicClassLoader(Thread.currentThread().getContextClassLoader());
 			Class<?> testClass = loader.define(((Program) ast).JVMName, bytecode);
-			return (Codelet) testClass.newInstance();
+			return (CodeBuilder) testClass.newInstance();
 		} else {
 			return null;
 		}
@@ -58,7 +56,7 @@ public class CodeletBuilder {
 	}
 
 	private static byte[] generateByteCode(ASTNode ast) {
-		CodeGenVisitor v = new CodeGenVisitor();
+		CodeGeneratorVisitor v = new CodeGeneratorVisitor();
 		byte[] bytecode = null;
 		try {
 			bytecode = (byte[]) ast.visit(v, null);

@@ -11,7 +11,7 @@ import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
 import org.objectweb.asm.*;
 
-public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
+public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants {
 
 	private ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 	//private TraceClassVisitor cw = new TraceClassVisitor(new PrintWriter(System.out));
@@ -98,7 +98,7 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 				className,
 				null,
 				"java/lang/Object",
-				new String[] { "compiler/ndk/codebuilder/Codelet" }
+				new String[] { "compiler/ndk/codebuilder/CodeBuilder" }
 		);
 		cw.visitSource(null, null);
 

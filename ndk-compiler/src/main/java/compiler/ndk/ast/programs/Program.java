@@ -1,7 +1,5 @@
 package compiler.ndk.ast.programs;
 
-import java.util.List;
-
 import compiler.ndk.lexer.TokenStream.Token;
 import compiler.ndk.ast.visitor.ASTNode;
 import compiler.ndk.ast.visitor.ASTVisitor;
