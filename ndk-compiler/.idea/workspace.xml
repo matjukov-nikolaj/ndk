@@ -2,21 +2,78 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0dff159a-b3b3-46a2-a6b8-9711442f1a32" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55de8e77bea4b7ff4707047c13227f1e411934eb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/9/598e27be489c59244ac33fd528f319921b225b19" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/c/6c17ea17792f857cd7c4fa5bc92c1873abd67d97" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/e/7e5e412b1ffe1379b5f5cdeb149056ab0c7eb935" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/8513f3b9704ef581450135a009a0c348539e7738" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6b3ae8524997344198ad819617ab566cb65c1d6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/9/c9b72a049790f06ea56337f352c34c0b462536fa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/8/d88f028638ef97f03b297c7a84c0b54db7fbf604" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/8/d8a869945b2f6ff1c1641b5cdb5de8b2f6c7f905" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/db72c52530a225b5768ffcbe6192ea9f9b0012dc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/5/e5c7f24b50c1cbf4e38cb84f31236ad845e41b00" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8449ffa9ff9d6cfbbea934ef6143f864c143640" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe9ce732e1f78da54b9175caff776d87947d9e36" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGeneratorVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prog.ndk" beforeDir="false" afterPath="$PROJECT_DIR$/prog.ndk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/declarations/Declaration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/declarations/DummyDec.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/statements/AssignmentStatement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/statements/ExpressionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/statements/ExpressionStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/BooleanLitExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/IdentExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/KeyExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/KeyValueExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/ListElemExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/ListExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/MapListExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/RangeExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/SizeExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/StringLitExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/UnaryExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/ValueExpression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/lValues/ExpressionLValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/lValues/IdentLValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/lValues/LValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/programs/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/programs/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/qualifiedNames/QualifiedName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGenVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ToStringVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ToStringVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/Codelet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeletBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeBuilderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/TypeConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/TypeConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compiler/ndk/parser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/symbolTable/DummyToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compiler/ndk/symbolTable/SymbolTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/blockElems/declarations/Declaration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/blockElems/declarations/DummyDec.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/blockElems/statements/AssignmentStatement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/blockElems/statements/ExpressionStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/blockElems/statements/ExpressionStatement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/BooleanLitExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/IdentExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/KeyExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/KeyValueExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/ListElemExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/ListExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/MapListExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/RangeExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/SizeExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/StringLitExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/UnaryExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/expressions/ValueExpression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/lValues/ExpressionLValue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/lValues/IdentLValue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/lValues/LValue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/programs/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/programs/Program.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/qualifiedNames/QualifiedName.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/ASTVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/ASTVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/CodeGenVisitor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/CodeGenVisitor$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/CodeGenVisitor$InheritedAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/CodeGenVisitor$InheritedAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/CodeGenVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/CodeGenVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/ToStringVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/ast/visitor/ToStringVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/codebuilder/CodeletBuilder$DynamicClassLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/codebuilder/CodeletBuilder$DynamicClassLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/codebuilder/CodeletBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/codebuilder/CodeletBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/codebuilder/TypeConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/codebuilder/TypeConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/parser/Parser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/parser/Parser$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/parser/Parser$SyntaxException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/parser/Parser$SyntaxException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/ndk/parser/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/symbolTable/DummyToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/symbolTable/SymbolTable$SymbolTableEntry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/ndk/symbolTable/SymbolTable.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,23 +85,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/parser/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4862">
-              <caret line="306" selection-start-line="306" selection-end-line="306" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ASTVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="40" column="94" selection-start-line="40" selection-start-column="94" selection-end-line="40" selection-end-column="94" />
+            <state relative-caret-position="255">
+              <caret line="15" column="70" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,11 +97,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CodeletBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeletBuilder.java">
+      <file leaf-file-name="ASTNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="170">
+              <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CodeBuilderImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeBuilderImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,23 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ToStringVisitor.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ToStringVisitor.java">
+      <file leaf-file-name="Lexer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/Lexer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="179" column="31" lean-forward="true" selection-start-line="179" selection-start-column="31" selection-end-line="179" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CodeGenVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGenVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4777">
-              <caret line="293" selection-start-line="293" selection-end-line="293" />
+            <state relative-caret-position="255">
+              <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,17 +133,20 @@
       <file leaf-file-name="Program.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/programs/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="202">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssignmentStatement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/statements/AssignmentStatement.java">
+      <file leaf-file-name="CodeGeneratorVisitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="2261">
+              <caret line="142" selection-start-line="142" selection-end-line="142" />
             </state>
           </provider>
         </entry>
@@ -109,7 +154,7 @@
       <file leaf-file-name="BinaryExpression.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/BinaryExpression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="202">
               <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
@@ -118,8 +163,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="136">
+              <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,6 +181,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Block.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blocks/Block.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -147,36 +201,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;&lt;</find>
-      <find>ClosureDec</find>
-      <find>return</find>
-      <find>StatementList</find>
-      <find>ImportList</find>
-      <find>-&gt;</find>
-      <find>%</find>
-      <find>VarDec</find>
-      <find>visitWhileStarStatement</find>
-      <find>while (</find>
-      <find>STRING_LIT</find>
       <find>STATEMENT_FIRST</find>
-      <find>ListType</find>
-      <find>def</find>
-      <find>IDENT</find>
-      <find>RPAREN</find>
-      <find>ИД_ЕКУГ</find>
-      <find>ListExpression</find>
-      <find>TIMES</find>
-      <find>LESS_EQUAL</find>
-      <find>&quot;Z&quot;</find>
-      <find>&quot;I&quot;</find>
-      <find>KeyValueType</find>
-      <find>INTGR</find>
-      <find>&quot;INTGR&quot;</find>
-      <find>BLN</find>
-      <find>visitValueExpression</find>
-      <find>toByte</find>
-      <find>JVMName</find>
-      <find>closure</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -191,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/Example2.java" />
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/execute/CallExecuteTwice.java" />
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/closures/Closure.java" />
-        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/programs/Program.java" />
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/execute/Example2.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/ListElemExpression.java" />
@@ -201,14 +225,19 @@
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/TokenStream.java" />
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/TypeConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/types/SimpleType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/Main.java" />
         <option value="$PROJECT_DIR$/prog.ndk" />
-        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/Lexer.java" />
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeletBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGenVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/parser/Parser.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ToStringVisitor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/programs/Program.java" />
+        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/statements/ExpressionStatement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/parser/Parser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGeneratorVisitor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeletBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeBuilderImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/Lexer.java" />
       </list>
     </option>
   </component>
@@ -220,12 +249,6 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -298,17 +321,6 @@
               <item name="ndk" type="462c0819:PsiDirectoryNode" />
               <item name="ast" type="462c0819:PsiDirectoryNode" />
               <item name="blockElems" type="462c0819:PsiDirectoryNode" />
-              <item name="declarations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ndk-compiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ndk-compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ndk" type="462c0819:PsiDirectoryNode" />
-              <item name="ast" type="462c0819:PsiDirectoryNode" />
-              <item name="blockElems" type="462c0819:PsiDirectoryNode" />
               <item name="statements" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -339,27 +351,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ndk" type="462c0819:PsiDirectoryNode" />
               <item name="ast" type="462c0819:PsiDirectoryNode" />
-              <item name="lValues" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ndk-compiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ndk-compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ndk" type="462c0819:PsiDirectoryNode" />
-              <item name="ast" type="462c0819:PsiDirectoryNode" />
               <item name="programs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ndk-compiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ndk-compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ndk" type="462c0819:PsiDirectoryNode" />
-              <item name="ast" type="462c0819:PsiDirectoryNode" />
-              <item name="qualifiedNames" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ndk-compiler" type="b2602c69:ProjectViewProjectNode" />
@@ -402,15 +394,6 @@
               <item name="ndk-compiler" type="b2602c69:ProjectViewProjectNode" />
               <item name="ndk-compiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ndk" type="462c0819:PsiDirectoryNode" />
-              <item name="symbolTable" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ndk-compiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ndk-compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -427,19 +410,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="compiler.ndk" />
-      <recent name="com" />
-      <recent name="" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -541,7 +518,7 @@
       <workItem from="1571563915854" duration="10297000" />
       <workItem from="1572103926770" duration="10739000" />
       <workItem from="1572683327485" duration="8631000" />
-      <workItem from="1572768862003" duration="258000" />
+      <workItem from="1572768862003" duration="2908000" />
     </task>
     <task id="LOCAL-00001" summary="just">
       <created>1571568433130</created>
@@ -564,45 +541,53 @@
       <option name="project" value="LOCAL" />
       <updated>1572114079402</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="some changes">
+      <created>1572769171173</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1572769171173</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29925000" />
+    <option name="totallyTimeSpent" value="32575000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.45089757" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32946146" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24114583" />
-      <window_info anchor="bottom" id="SonarLint" order="7" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="SonarQube" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37064415" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.1372756" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3812038" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.19007392" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24114583" />
+      <window_info anchor="bottom" id="SonarLint" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.41393876" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32946146" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,88 +605,33 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ToStringVisitor.java</url>
-          <line>179</line>
+          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/parser/Parser.java</url>
+          <line>250</line>
           <properties />
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/parser/Parser.java</url>
-          <line>234</line>
+          <line>242</line>
           <properties />
-          <option name="timeStamp" value="25" />
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGenVisitor.java</url>
-          <line>283</line>
+          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGeneratorVisitor.java</url>
+          <line>133</line>
           <properties />
-          <option name="timeStamp" value="29" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGenVisitor.java</url>
-          <line>315</line>
+          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGeneratorVisitor.java</url>
+          <line>68</line>
           <properties />
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGenVisitor.java</url>
-          <line>293</line>
-          <properties />
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeletBuilder.java</url>
-          <line>42</line>
-          <properties />
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeletBuilder.java</url>
-          <line>31</line>
-          <properties />
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGenVisitor.java</url>
-          <line>240</line>
-          <properties />
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGenVisitor.java</url>
-          <line>142</line>
-          <properties />
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeletBuilder.java</url>
-          <line>49</line>
-          <properties />
-          <option name="timeStamp" value="38" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="39" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/compiler/ndk/TestParserErrorHandling.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/compiler/ndk/RayTestAST.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/compiler/ndk/TestParser.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/types/ListType.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/Expression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.4/lib/src.zip!/java.base/java/text/ParseException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="62" column="11" selection-start-line="62" selection-start-column="11" selection-end-line="62" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/execute/CallExecuteTwice.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/execute/Example1.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -739,20 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/symbolTable/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/TypeConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="37" lean-forward="true" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -820,13 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/TokenStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/types/KeyValueType.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/types/UndeclaredType.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/TypeCheckVisitor.java" />
@@ -847,31 +756,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/statements/AssignmentStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="320" column="22" lean-forward="true" selection-start-line="320" selection-start-column="22" selection-end-line="320" selection-end-column="22" />
+        <state relative-caret-position="187">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/symbolTable/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-202">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/TokenStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-355">
+          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/TypeConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/declarations/Declaration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/BlockElem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/statements/Statement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/statements/ExpressionStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ToStringVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+            <element signature="e#417#418#0" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/prog.ndk">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTNode.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/parser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+        <state relative-caret-position="248">
+          <caret line="250" selection-start-line="250" selection-end-line="250" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blocks/Block.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/BinaryExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="202">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -882,24 +873,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/BinaryExpression.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blocks/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="238">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/blockElems/statements/AssignmentStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/programs/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="40" column="94" selection-start-line="40" selection-start-column="94" selection-end-line="40" selection-end-column="94" />
+        <state relative-caret-position="202">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -908,76 +892,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGeneratorVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2261">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <caret line="15" column="70" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/CodeGenVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeBuilderImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4777">
-          <caret line="293" selection-start-line="293" selection-end-line="293" />
+        <state relative-caret-position="493">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/parser/Parser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/lexer/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4862">
-          <caret line="306" selection-start-line="306" selection-end-line="306" />
+        <state relative-caret-position="255">
+          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/codebuilder/CodeletBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/programs/Program.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ToStringVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="179" column="31" lean-forward="true" selection-start-line="179" selection-start-column="31" selection-end-line="179" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

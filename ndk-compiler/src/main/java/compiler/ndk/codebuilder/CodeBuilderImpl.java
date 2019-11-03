@@ -12,7 +12,6 @@ import compiler.ndk.ast.visitor.ToStringVisitor;
 import compiler.ndk.lexer.Lexer;
 import compiler.ndk.lexer.TokenStream;
 import compiler.ndk.parser.Parser;
-import compiler.ndk.symbolTable.SymbolTable;
 
 public class CodeletBuilder {
         public static class DynamicClassLoader extends ClassLoader {
@@ -69,58 +68,4 @@ public class CodeletBuilder {
 		return bytecode;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public static List getList(Codelet codelet, String name) throws Exception{
-		Class<? extends Codelet> codeletClass = codelet.getClass();
-		Field Field = codeletClass.getDeclaredField(name);
-		Field.setAccessible(true);
-		List l = (List) Field.get(codelet);
-		return l;
-	}
-
-	public static int getInt(Codelet codelet, String name) throws Exception{
-		Class<? extends Codelet> codeletClass = codelet.getClass();
-		Field Field = codeletClass.getDeclaredField(name);
-		Field.setAccessible(true);
-		int i = (int) Field.get(codelet);
-		return i;
-	}
-
-	public static void setInt(Codelet codelet, String name, int value) throws Exception{
-		Class<? extends Codelet> codeletClass = codelet.getClass();
-		Field Field = codeletClass.getDeclaredField(name);
-		Field.setAccessible(true);
-		Field.set(codelet, value);
-	}
-
-	public static String getString(Codelet codelet, String name) throws Exception{
-		Class<? extends Codelet> codeletClass = codelet.getClass();
-		Field Field = codeletClass.getDeclaredField(name);
-		Field.setAccessible(true);
-		String s = (String) Field.get(codelet);
-		return s;
-	}
-
-
-	public static void setString(Codelet codelet, String name, String value) throws Exception{
-		Class<? extends Codelet> codeletClass = codelet.getClass();
-		Field Field = codeletClass.getDeclaredField(name);
-		Field.setAccessible(true);
-		Field.set(codelet, value);
-	}
-
-	public static boolean getBoolean(Codelet codelet, String name) throws Exception{
-		Class<? extends Codelet> codeletClass = codelet.getClass();
-		Field Field = codeletClass.getDeclaredField(name);
-		Field.setAccessible(true);
-		boolean b = (boolean) Field.get(codelet);
-		return b;
-	}
-
-	public static void setBoolean(Codelet codelet, String name, boolean value) throws Exception{
-		Class<? extends Codelet> codeletClass = codelet.getClass();
-		Field Field = codeletClass.getDeclaredField(name);
-		Field.setAccessible(true);
-		Field.set(codelet, value);
-	}
 }
