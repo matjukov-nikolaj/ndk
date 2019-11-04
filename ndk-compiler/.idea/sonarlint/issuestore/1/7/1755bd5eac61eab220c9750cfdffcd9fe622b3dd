@@ -1,0 +1,7 @@
+
+‡squid:S11929"dDefine a constant instead of duplicating this literal "code generation not yet implemented" 3 times.(‘Ü¶øÿÿÿÿ8·›é‚ã-
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(…ÇÏ¥8‘îå‚ã-
+Dsquid:S1068"&Remove this unused "fv" private field.(Šã¸»8‘îå‚ã-
+Psquid:S1199j"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8‘îå‚ã-
+{squid:S1450"XRemove the "className" field and declare it as a local variable in the relevant methods.(Ö„œüÿÿÿÿ8‘îå‚ã-
+squid:S1450"^Remove the "classDescriptor" field and declare it as a local variable in the relevant methods.(‹çËÏüÿÿÿÿ8‘îå‚ã-

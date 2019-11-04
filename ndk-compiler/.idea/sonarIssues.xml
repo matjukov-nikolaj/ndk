@@ -83,6 +83,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/Expression.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/IntLitExpression.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/expressions/ListElemExpression.java">
           <value>
             <set />
@@ -114,6 +124,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/types/UndeclaredType.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/compiler/ndk/ast/visitor/ASTNode.java">
           <value>
             <set />
           </value>

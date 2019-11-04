@@ -1,6 +1,6 @@
 
-†"squid:ClassVariableVisibilityCheck"SMake imports a static final constant or non-public and provide accessors if needed.(‡ğ¥ûÿÿÿÿ
-~"squid:ClassVariableVisibilityCheck"PMake name a static final constant or non-public and provide accessors if needed.( şÍ¾
-osquid:S00116"RRename this field "JVMName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊüŒÓùÿÿÿÿ
-"squid:ClassVariableVisibilityCheck"QMake block a static final constant or non-public and provide accessors if needed.(¤õ™ş
-†"squid:ClassVariableVisibilityCheck"SMake JVMName a static final constant or non-public and provide accessors if needed.(ÊüŒÓùÿÿÿÿ
+†"squid:ClassVariableVisibilityCheck
+"QMake block a static final constant or non-public and provide accessors if needed.(¤õ™ş8îîå‚ã-
+…"squid:ClassVariableVisibilityCheck	"PMake name a static final constant or non-public and provide accessors if needed.( şÍ¾8îîå‚ã-
+"squid:ClassVariableVisibilityCheck"SMake JVMName a static final constant or non-public and provide accessors if needed.(ÊüŒÓùÿÿÿÿ8îîå‚ã-
+vsquid:S00116"RRename this field "JVMName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊüŒÓùÿÿÿÿ8îîå‚ã-

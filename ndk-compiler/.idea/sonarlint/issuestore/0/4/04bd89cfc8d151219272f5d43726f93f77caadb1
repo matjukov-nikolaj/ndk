@@ -1,28 +1,22 @@
 
-}squid:S2293®"YReplace the type specification in this constructor call with the diamond operator ("<>").(¶¨İÿÿÿÿÿ8ÔúÕÉà-
-msquid:S1871ª"IThis case's code block is the same as the block for the case on line 550.(ß¼¨ıÿÿÿÿ8ÔúÕÉà-
-csquid:CommentedOutCodeLineâ"<This block of commented-out lines of code should be removed.(Î¬³¨
-:squid:S1948"#Make "t" transient or serializable.(á‘ƒå
-Osquid:S2589ˆ"7Remove this expression which always evaluates to "true"(ÌªŞÉ
-Ysquid:S1141ê"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÔúÕÉà-
-1squid:S1165"Make this "t" field final.(á‘ƒå
-{"squid:ClassVariableVisibilityCheck"MMake t a static final constant or non-public and provide accessors if needed.(á‘ƒå
-msquid:S1871¼"IThis case's code block is the same as the block for the case on line 567.(Ğÿßøÿÿÿÿ8ÔúÕÉà-
-]squid:UnusedPrivateMethod‚"+Remove this unused private "varDec" method.( ïÓĞùÿÿÿÿ8ÑÖÊÅà-
-osquid:CommentedOutCodeLine¦"<This block of commented-out lines of code should be removed.(Æ€Ò›úÿÿÿÿ8¿û‰Êà-
-}"squid:ClassVariableVisibilityCheck"OMake msg a static final constant or non-public and provide accessors if needed.(İÑºŒ
-Esquid:S1481Ú"&Remove this unused "c" local variable.(Ê¹€¸8ÑÖÊÅà-
-usquid:S2293~"YReplace the type specification in this constructor call with the diamond operator ("<>").(²±ó·şÿÿÿÿ
-osquid:S3776®"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(­áñ¯ùÿÿÿÿ
-Ysquid:S1141Â"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÔúÕÉà-
-osquid:CommentedOutCodeLineÈ"<This block of commented-out lines of code should be removed.(‡–Éïşÿÿÿÿ8ÔúÕÉà-
-‚"squid:ClassVariableVisibilityCheck"TMake expected a static final constant or non-public and provide accessors if needed.(â¼×‡
-vsquid:S3776¯"RRefactor this method to reduce its Cognitive Complexity from 34 to the 15 allowed.(Ã¹üÿÿÿÿ8ÔúÕÉà-
-Nsquid:S11614":Add the "@Override" annotation above this method signature(‡+
-vsquid:S2293¯"YReplace the type specification in this constructor call with the diamond operator ("<>").(­üÅàûÿÿÿÿ
-csquid:CommentedOutCodeLine­"<This block of commented-out lines of code should be removed.(’“ş™
-8squid:S1165"!Make this "expected" field final.(â¼×‡
-qsquid:S00117×"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çÿ…«8ÔúÕÉà-
-csquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Î¬³¨
-vsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( òòşûÿÿÿÿ8ÔúÕÉà-
-3squid:S1165"Make this "msg" field final.(İÑºŒ
+}squid:S2293­"YReplace the type specification in this constructor call with the diamond operator ("<>").(­üÅàûÿÿÿÿ8½óå‚ã-
+Fsquid:S1481•"'Remove this unused "e2" local variable.(º™§8ÆÄºƒã-
+„"squid:ClassVariableVisibilityCheck"OMake msg a static final constant or non-public and provide accessors if needed.(İÑºŒ8½óå‚ã-
+jsquid:CommentedOutCodeLineĞ"<This block of commented-out lines of code should be removed.(í©²×8Şâ¢ƒã-
+vsquid:S3776¬"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(­áñ¯ùÿÿÿÿ8½óå‚ã-
+‚"squid:ClassVariableVisibilityCheck"MMake t a static final constant or non-public and provide accessors if needed.(á‘ƒå8½óå‚ã-
+Nsquid:S1481ò"*Remove this unused "first" local variable.(½æç»úÿÿÿÿ8¢«Êƒã-
+Nsquid:S1481–"*Remove this unused "first" local variable.(½æç»úÿÿÿÿ8ÆÄºƒã-
+Qsquid:S1135À"2Complete the task associated to this TODO comment.(äíšÄ8½óå‚ã-
+8squid:S1165"Make this "t" field final.(á‘ƒå8½óå‚ã-
+|squid:S2293v"YReplace the type specification in this constructor call with the diamond operator ("<>").(²±ó·şÿÿÿÿ8½óå‚ã-
+jsquid:S1301Õ"KReplace this "switch" statement by "if" statements to increase readability.(’ø­¬8½óå‚ã-
+:squid:S1165"Make this "msg" field final.(İÑºŒ8½óå‚ã-
+]squid:S1854ò"9Remove this useless assignment to local variable "first".(½æç»úÿÿÿÿ8¢«Êƒã-
+Asquid:S1948"#Make "t" transient or serializable.(á‘ƒå8½óå‚ã-
+‰"squid:ClassVariableVisibilityCheck"TMake expected a static final constant or non-public and provide accessors if needed.(â¼×‡8½óå‚ã-
+Fsquid:S1481ñ"'Remove this unused "e2" local variable.(º™§8¢«Êƒã-
+?squid:S1165"!Make this "expected" field final.(â¼×‡8½óå‚ã-
+Vsquid:S2589€"7Remove this expression which always evaluates to "true"(ÌªŞÉ8½óå‚ã-
+]squid:S1854–"9Remove this useless assignment to local variable "first".(½æç»úÿÿÿÿ8ÆÄºƒã-
+Usquid:S1161.":Add the "@Override" annotation above this method signature(‡+8½óå‚ã-

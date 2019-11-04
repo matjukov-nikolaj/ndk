@@ -1,36 +1,0 @@
-
-dsquid:S00112“"FDefine and throw a dedicated exception instead of using a generic one.(ğ«œáøÿÿÿÿ
-csquid:S00112t"FDefine and throw a dedicated exception instead of using a generic one.(ğ…Î†ÿÿÿÿÿ
-hsquid:S00117f"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‡
-isquid:S00117†"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‡
-^squid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(í€õÍ
-]squid:S00112l"FDefine and throw a dedicated exception instead of using a generic one.(¥ŞİA
-hsquid:S00117n"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‡
-usquid:S1488h"YImmediately return this expression instead of assigning it to the temporary variable "l".(èå¬Öûÿÿÿÿ
-csquid:S00112%"FDefine and throw a dedicated exception instead of using a generic one.(‰·•¼úÿÿÿÿ
-T
-squid:S106E"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ
-T
-squid:S106S"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-csquid:S00112{"FDefine and throw a dedicated exception instead of using a generic one.(ºö“»ùÿÿÿÿ
-T
-squid:S106;"9Replace this use of System.out or System.err by a logger.(‡ÉÀ²ùÿÿÿÿ
-isquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‡
-dsquid:S00112‹"FDefine and throw a dedicated exception instead of using a generic one.(¿Õò¡úÿÿÿÿ
-hsquid:S00117}"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‡
-^squid:S00112„"FDefine and throw a dedicated exception instead of using a generic one.(ŠÚüO
-T
-squid:S106H"9Replace this use of System.out or System.err by a logger.(‡ÉÀ²ùÿÿÿÿ
-Vsquid:S1118":Add a private constructor to hide the implicit public one.(³’ç‚ıÿÿÿÿ
-isquid:S00117•"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‡
-vsquid:S1488"YImmediately return this expression instead of assigning it to the temporary variable "b".(Şø¯ûÿÿÿÿ
-T
-squid:S1068"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ
-Ksquid:EmptyStatementUsageCheck"Remove this empty statement.(ôŸìúÿÿÿÿ
-esquid:S2259"I"NullPointerException" will be thrown when invoking method "checkType()".(Ğ…µÿúÿÿÿÿ
-csquid:S00112d"FDefine and throw a dedicated exception instead of using a generic one.(¨’œÑüÿÿÿÿ
-T
-squid:S106^"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-hsquid:S00117v"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‡
-psquid:S1488p"YImmediately return this expression instead of assigning it to the temporary variable "i".(à•İ‘
-psquid:S1488"YImmediately return this expression instead of assigning it to the temporary variable "s".(ÄŞ™£

@@ -1,13 +1,13 @@
 
-… squid:ForLoopCounterChangedCheckš"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
-msquid:S1206¬"PThis class overrides "equals()" and should therefore also override "hashCode()".(Ý¢êÍýÿÿÿÿ
-gsquid:CommentedOutCodeLineM"<This block of commented-out lines of code should be removed.(ÀÈ›öùÿÿÿÿ
-… squid:ForLoopCounterChangedCheck‘"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
-Esquid:S2786=")Remove this redundant "static" qualifier.(ìâ¾‘úÿÿÿÿ
 squid:S1319	"qThe type of the "tokens" object should be an interface such as "List" rather than the implementation "ArrayList".(æÿ¯Ùúÿÿÿÿ
-^squid:S00112""FDefine and throw a dedicated exception instead of using a generic one.(•ó¹
-… squid:ForLoopCounterChangedCheck”"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
-… squid:ForLoopCounterChangedCheck—"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
-bsquid:CommentedOutCodeLineG"<This block of commented-out lines of code should be removed.(ì¡¾¥
+… squid:ForLoopCounterChangedCheckˆ"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
+isquid:S3776{"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ü¦Ùš
 usquid:S2293	"YReplace the type specification in this constructor call with the diamond operator ("<>").(æÿ¯Ùúÿÿÿÿ
-jsquid:S3776„"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ü¦Ùš
+… squid:ForLoopCounterChangedCheck‹"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
+… squid:ForLoopCounterChangedCheck‘"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
+gsquid:CommentedOutCodeLineI"<This block of commented-out lines of code should be removed.(ÀÈ›öùÿÿÿÿ
+Esquid:S27869")Remove this redundant "static" qualifier.(ìâ¾‘úÿÿÿÿ
+msquid:S1206£"PThis class overrides "equals()" and should therefore also override "hashCode()".(Ý¢êÍýÿÿÿÿ
+^squid:S00112""FDefine and throw a dedicated exception instead of using a generic one.(•ó¹
+… squid:ForLoopCounterChangedCheckŽ"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
+bsquid:CommentedOutCodeLineC"<This block of commented-out lines of code should be removed.(ì¡¾¥

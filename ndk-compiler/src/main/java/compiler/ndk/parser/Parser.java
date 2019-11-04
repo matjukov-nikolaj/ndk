@@ -168,7 +168,6 @@ public class Parser {
 //    <Declarations> -> <Declaration> <Declarations>
 //    <Statements> -> <Statement>
 //    <Statements> -> <Statement> <Statements>
-
     private Block block() throws SyntaxException {
         List<BlockElem> elems = new ArrayList<BlockElem>();
         BlockElem blockelem = null;
@@ -236,51 +235,42 @@ public class Parser {
         return s;
     }
 
+    // <Expression> -> <NumberExpression>
+    // <NumberExpressions> -> <NumberExpression>
+    // <NumberExpressions> -> <NumberExpressions><WeakOperation><NumberExpression>
     private Expression expression() throws SyntaxException {
         Expression e1 = null;
         Expression e2 = null;
         Token first = t;
         e1 = term();
+        while (isKind(WEAK_OPS)) {
+            Token op = t;
+            match(WEAK_OPS);
+            e2 = term();
+            e1 = new BinaryExpression(first, e1, op, e2);
+        }
         return e1;
     }
 
+    // <NumberExpression> -> <NumberExpression><StrongOperation><NumberElem>
     private Expression term() throws SyntaxException {
         Expression e1 = null;
         Expression e2 = null;
         Token first = t;
         e1 = element();
-        while (isKind(WEAK_OPS)) {
+        while (isKind(STRONG_OPS)) {
             Token op = t;
-            match(WEAK_OPS);
+            match(STRONG_OPS);
             e2 = element();
             e1 = new BinaryExpression(first, e1, op, e2);
         }
         return e1;
     }
 
+    // <NumberExpression> -> <NumberElem>
+    // <NumberElem> -> (<NumberExpressions>)
+    // <NumberElem> -> INT_LIT
     private Expression element() throws SyntaxException {
-        Expression e1 = null;
-        Expression e2 = null;
-        Token first = t;
-        e1 = thing();
-        while (isKind(STRONG_OPS)) {
-            Token op = t;
-            match(STRONG_OPS);
-            e2 = thing();
-            e1 = new BinaryExpression(first, e1, op, e2);
-        }
-        return e1;
-    }
-
-    private Expression thing() throws SyntaxException {
-        Expression e1 = null;
-        Expression e2 = null;
-        Token first = t;
-        e1 = factor();
-        return e1;
-    }
-
-    private Expression factor() throws SyntaxException {
         Expression e = null;
         switch (t.kind) {
             case INT_LIT:
@@ -297,4 +287,5 @@ public class Parser {
         }
         return e;
     }
+
 }
