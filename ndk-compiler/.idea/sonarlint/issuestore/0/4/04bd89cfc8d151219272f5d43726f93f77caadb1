@@ -1,22 +1,0 @@
-
-}squid:S2293­"YReplace the type specification in this constructor call with the diamond operator ("<>").(­όΕΰϋÿÿÿÿ8½σε‚γ-
-Fsquid:S1481•"'Remove this unused "e2" local variable.(Ί™§8ΖΔΊƒγ-
-„"squid:ClassVariableVisibilityCheck"OMake msg a static final constant or non-public and provide accessors if needed.(έΡΊ8½σε‚γ-
-jsquid:CommentedOutCodeLineΠ"<This block of commented-out lines of code should be removed.(ν©²Χ8ήβΆƒγ-
-vsquid:S3776¬"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(­αρ―ωÿÿÿÿ8½σε‚γ-
-‚"squid:ClassVariableVisibilityCheck"MMake t a static final constant or non-public and provide accessors if needed.(α‘ƒε8½σε‚γ-
-Nsquid:S1481ς"*Remove this unused "first" local variable.(½ζη»ϊÿÿÿÿ8Ά«Κƒγ-
-Nsquid:S1481–"*Remove this unused "first" local variable.(½ζη»ϊÿÿÿÿ8ΖΔΊƒγ-
-Qsquid:S1135ΐ"2Complete the task associated to this TODO comment.(δνΔ8½σε‚γ-
-8squid:S1165"Make this "t" field final.(α‘ƒε8½σε‚γ-
-|squid:S2293v"YReplace the type specification in this constructor call with the diamond operator ("<>").(²±σ·ώÿÿÿÿ8½σε‚γ-
-jsquid:S1301Υ"KReplace this "switch" statement by "if" statements to increase readability.(’ψ­¬8½σε‚γ-
-:squid:S1165"Make this "msg" field final.(έΡΊ8½σε‚γ-
-]squid:S1854ς"9Remove this useless assignment to local variable "first".(½ζη»ϊÿÿÿÿ8Ά«Κƒγ-
-Asquid:S1948"#Make "t" transient or serializable.(α‘ƒε8½σε‚γ-
-‰"squid:ClassVariableVisibilityCheck"TMake expected a static final constant or non-public and provide accessors if needed.(βΌΧ‡8½σε‚γ-
-Fsquid:S1481ρ"'Remove this unused "e2" local variable.(Ί™§8Ά«Κƒγ-
-?squid:S1165"!Make this "expected" field final.(βΌΧ‡8½σε‚γ-
-Vsquid:S2589€"7Remove this expression which always evaluates to "true"(ΜªήΙ8½σε‚γ-
-]squid:S1854–"9Remove this useless assignment to local variable "first".(½ζη»ϊÿÿÿÿ8ΖΔΊƒγ-
-Usquid:S1161.":Add the "@Override" annotation above this method signature(‡+8½σε‚γ-

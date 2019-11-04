@@ -1,11 +1,0 @@
-
-hsquid:S1450#"QRemove the "ch" field and declare it as a local variable in the relevant methods.(àˆ¦Š
-osquid:S1301Ó"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ8Ìç„ã-
-osquid:S1301¸"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ8Ìç„ã-
-osquid:S2293)"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ò€ÉJ
-ksquid:S1450"TRemove the "state" field and declare it as a local variable in the relevant methods.(·˜é
-osquid:S1301Á"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ8Ìç„ã-
-osquid:S1301Ê"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ8Ìç„ã-
-osquid:S1301Ù"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ8Ìç„ã-
-osquid:S1301â"KReplace this "switch" statement by "if" statements to increase readability.(Œ¹ÿÿÿÿÿ8Ìç„ã-
-usquid:S3776T"RRefactor this method to reduce its Cognitive Complexity from 72 to the 15 allowed.(Â¦í øÿÿÿÿ8Ìç„ã-
