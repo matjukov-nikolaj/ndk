@@ -16,8 +16,8 @@ const rendererMainConfig = {
     MARGIN: 10,
     DISTANCE: 200,
     INDENT: 30,
-    BACKGROUND_COLOR: "rgb(170, 240, 209)",
-    BACKGROUND_COLOR_OPACITY: "rgba(170, 240, 209, 0.5)",
+    BACKGROUND_COLOR: "rgb(255, 255, 255)",
+    BACKGROUND_COLOR_OPACITY: "rgba(255, 255, 255, 0.5)",
     LINE_WIDTH: 2,
 };
 

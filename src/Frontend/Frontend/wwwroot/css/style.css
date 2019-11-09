@@ -35,7 +35,7 @@ body
 {
     font: 900 50px "Lato", sans-serif;
     text-align: center;
-    color: #506a85;
+    color: #FFFFFF;
     text-transform: uppercase;
 }
 
@@ -62,13 +62,13 @@ body
     width: 100%;
     text-transform: uppercase;
     font: bold 18px "Source Sans Pro", sans-serif;
-    background: #00bc9c;
+    background: #343a40;
     text-align: center;
     border-radius: 3px;
     border-left: none;
     border-right: none;
     border-top: none;
-    border-bottom: 2px solid #00a085;
+    border-bottom: 2px solid #000000;
     cursor: pointer;
 }
 
@@ -76,7 +76,7 @@ body
 {
     position: relative;
     margin: 10px auto;
-    border: 2px solid #00a085;
+    border: 2px solid #000000;
     width: 98%;
     height: 790px;
     overflow: scroll;
@@ -174,7 +174,7 @@ body
 li
 {
     list-style-type: none;
-    color: #506a85;
+    color: #000000;
     font-size: 24px;
     font-family: "Lato", sans-serif;
     font-weight: bold;
@@ -213,7 +213,7 @@ li
     padding-top: 32px;
     text-align: center;
     font-size: 44px;
-    color: #506a85;
+    color: #000000;
     font-family: "Lato", sans-serif;
     width: 88%;
     margin: 0 auto;
@@ -251,7 +251,7 @@ li
 {
     font: 900 20px "Lato", sans-serif;
     text-align: center;
-    color: #506a85;
+    color: #000000;
 }
 
 .theme_images

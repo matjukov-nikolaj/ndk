@@ -19,6 +19,6 @@ const globalConfig = {
 const colorConfig = {
     INSERT_NODE: "#fc6c85",
     SELECT_ELEMENT: "#506a85",
-    FRAME_COLOR: "rgb(0, 160, 133)",
-    FRAME_COLOR_OPACITY: "rgba(0, 160, 133, 0.5)",
+    FRAME_COLOR: "rgb(0, 0, 0)",
+    FRAME_COLOR_OPACITY: "rgba(0, 0, 0, 0.5)",
 };

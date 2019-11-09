@@ -2,87 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d6eef8f-7556-4f53-a816-e22e9fa97096" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/Compiler.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/images/button_close.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/images/logic_chart_left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/images/logic_chart_right.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/global-config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/help-modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/load-modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/node.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/point.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/rect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/renderer-config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/save-modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/scroll-controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/tree-controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/tree-loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/tree-renderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/tree-saver.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/tree.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/vendor/file-saver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/.idea/sonarIssues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ndk-compiler/.idea/sonarIssues.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ndk-compiler/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/prog.ndk" beforeDir="false" afterPath="$PROJECT_DIR$/../../ndk-compiler/prog.ndk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/src/main/java/compiler/ndk/ast/visitor/ToStringVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ndk-compiler/src/main/java/compiler/ndk/ast/visitor/ToStringVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/declarations/ClosureDec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/declarations/Declaration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/declarations/DummyDec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/declarations/VarDec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/statements/AssignmentStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/statements/IfElseStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/statements/IfStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/statements/ReturnStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/statements/WhileRangeStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/statements/WhileStarStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/blockElems/statements/WhileStatement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/closures/Closure.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/BooleanLitExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/ClosureEvalExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/ClosureExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/IdentExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/KeyExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/KeyValueExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/ListElemExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/ListExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/MapListExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/RangeExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/SizeExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/StringLitExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/UnaryExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/expressions/ValueExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/lValues/ExpressionLValue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/lValues/IdentLValue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/lValues/LValue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/qualifiedNames/QualifiedName.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/types/KeyValueType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/types/ListType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/types/SimpleType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/types/Type.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/types/UndeclaredType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/visitor/CodeGenVisitor$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/visitor/CodeGenVisitor$InheritedAttributes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/visitor/CodeGenVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/visitor/ToStringVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/visitor/ToStringVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/visitor/TypeCheckVisitor$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/visitor/TypeCheckVisitor$TypeCheckException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/ast/visitor/TypeCheckVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/codebuilder/Codelet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/codebuilder/CodeletBuilder$DynamicClassLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/codebuilder/CodeletBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/symbolTable/DummyToken.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/symbolTable/SymbolTable$SymbolTableEntry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ndk-compiler/target/classes/compiler/ndk/symbolTable/SymbolTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/Frontend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/Frontend.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/Pages/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/Pages/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/wwwroot/Compiler.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/wwwroot/Compiler.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/wwwroot/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/wwwroot/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/global-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/global-config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/renderer-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/wwwroot/js/mm/renderer-config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,15 +29,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/site.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Frontend/Pages/Shared/_Layout.cshtml">
           <provider selected="true" editor-type-id="text-editor">
@@ -168,31 +82,56 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/Compiler.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="923">
-              <caret line="75" column="14" lean-forward="true" selection-start-line="75" selection-start-column="14" selection-end-line="75" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="44" column="16" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+            <state relative-caret-position="210">
+              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/Compiler.html.cs">
+        <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-30">
-              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-              <folding>
-                <marker date="1573317046173" expanded="true" signature="68:183" ph="{...}" />
-                <marker date="1573317046173" expanded="true" signature="108:181" ph="{...}" />
-                <marker date="1573317046173" expanded="true" signature="142:175" ph="{...}" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/global-config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/help-modal.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/renderer-config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/tree-controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3630" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/tree-renderer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="170" column="53" selection-start-line="170" selection-start-column="53" selection-end-line="170" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -342,7 +281,10 @@
         <option value="$PROJECT_DIR$/Frontend/Pages/Compiler.cshtml" />
         <option value="$PROJECT_DIR$/Frontend/Pages/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/Frontend/wwwroot/js/mm/main.js" />
+        <option value="$PROJECT_DIR$/Frontend/wwwroot/js/mm/global-config.js" />
         <option value="$PROJECT_DIR$/Frontend/wwwroot/Compiler.html" />
+        <option value="$PROJECT_DIR$/Frontend/wwwroot/css/style.css" />
+        <option value="$PROJECT_DIR$/Frontend/wwwroot/js/mm/renderer-config.js" />
       </list>
     </option>
   </component>
@@ -501,12 +443,12 @@
       <workItem from="1559414412779" duration="8502000" />
       <workItem from="1559583190364" duration="516000" />
       <workItem from="1559583719596" duration="459000" />
-      <workItem from="1573316444240" duration="2387000" />
+      <workItem from="1573316444240" duration="3269000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27293000" />
+    <option name="totallyTimeSpent" value="28175000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -519,7 +461,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26972282" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -528,7 +469,7 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.16468039" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16468039" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39965397" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -765,13 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/global-config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/save-as-modal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-315" />
@@ -906,17 +840,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/help-modal.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/tree-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3630" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/tree-renderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="170" column="53" selection-start-line="170" selection-start-column="53" selection-end-line="170" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/Compiler.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="923">
-          <caret line="75" column="14" lean-forward="true" selection-start-line="75" selection-start-column="14" selection-end-line="75" selection-end-column="14" />
+        <state relative-caret-position="210">
+          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="16" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+        <state relative-caret-position="270">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/global-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/wwwroot/js/mm/renderer-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
         </state>
       </provider>
     </entry>
