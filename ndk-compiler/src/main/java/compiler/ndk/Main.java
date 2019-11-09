@@ -9,7 +9,7 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception{
 
-		File file = new File("D:\\ndkcompiler\\ndk\\prog.ndk");
+		File file = new File("D:\\arithmetic-compiler\\ndk\\prog.ndk");
 		Codelet codelet = CodeletBuilder.newInstance(file);
 		if (codelet != null) {
 			codelet.execute();

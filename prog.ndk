@@ -1,7 +1,3 @@
 class BubbleSort {
-	var s1: int;
-	var res: int;
-	var arr: [boolean];
-	arr = [ true, true, true];
-	print arr[0];
+
 }
