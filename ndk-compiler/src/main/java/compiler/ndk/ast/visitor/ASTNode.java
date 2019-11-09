@@ -12,6 +12,7 @@ public abstract class ASTNode {
 
 	public abstract Object visit(ASTVisitor v, Object arg) throws Exception;
 
+	/* toString method uses a PrintVisitor to print the  AST */
 	@Override
 	public String toString() {
 		ToStringVisitor v = new ToStringVisitor();

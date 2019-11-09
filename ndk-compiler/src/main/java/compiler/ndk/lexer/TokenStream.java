@@ -44,6 +44,10 @@ public class TokenStream {
 		return tokens.get(pos++);
 	}
 
+	public void reset() {
+		pos = 0;
+	}
+
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for (Token t : tokens) {
@@ -114,6 +118,11 @@ public class TokenStream {
 		public int getIntVal() {
 			assert kind == Kind.INT_LIT : "attempted to get value of non-number token";
 			return Integer.valueOf(getText());
+		}
+
+		public boolean getBooleanVal() {
+			assert (kind == Kind.BL_TRUE || kind == Kind.BL_FALSE) : "attempted to get boolean value of non-boolean token";
+			return kind == Kind.BL_TRUE;
 		}
 
 		public int getLineNumber() {

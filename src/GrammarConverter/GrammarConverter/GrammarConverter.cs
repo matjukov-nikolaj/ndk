@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Core.model;
+using Microsoft.AspNetCore.Routing.Tree;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace GrammarConverter
 {
@@ -22,6 +25,8 @@ namespace GrammarConverter
 
         private List<List<String>> follow;
 
+        private List<String> emptyNoTerminals;
+
         public GrammarConverter(Grammar grammar)
         {
             terminals = grammar.terminals;
@@ -33,6 +38,7 @@ namespace GrammarConverter
 
             first = new List<List<string>>();
             follow = new List<List<string>>();
+            emptyNoTerminals = new List<string>();
         }
 
         public List<String> GetProductions()
@@ -44,15 +50,20 @@ namespace GrammarConverter
         {
             this.noTerminals = newNoTerminals;
         }
-        
+
         public List<String> GetTerminals()
         {
             return terminals;
         }
-        
+
         public List<String> GetNoTerminals()
         {
             return noTerminals;
+        }
+
+        public List<String> GetEmptyNoTerminals()
+        {
+            return emptyNoTerminals;
         }
 
         public void Clear()
@@ -60,10 +71,10 @@ namespace GrammarConverter
             terminals = new List<string>();
             noTerminals = new List<string>();
             startSymbol = null;
-            
+
             productions = new List<string>();
             newProductions = new List<string>();
-            
+
             first = new List<List<string>>();
             follow = new List<List<string>>();
         }
@@ -75,12 +86,15 @@ namespace GrammarConverter
             for (int i = 0; i < noTerminals.Count; i++)
             {
                 String noTerminal = noTerminals[i];
-                if (noTerminal.Length == 1)
+                if (noTerminal[noTerminal.Length - 1].ToString() != "'")
                 {
                     for (int j = 0; j < productions.Count; j++)
                     {
                         String production = productions[j];
-                        if (production[0].Equals(noTerminal[0]) && !production[1].ToString().Equals("'") &&
+                        String[] noTermAlt = production.Split(" -> ");
+                        String ср = noTermAlt[0][noTermAlt[0].Length - 1].ToString();
+                        if (noTermAlt[0].Equals(noTerminal) &&
+                            !noTermAlt[0][noTermAlt[0].Length - 1].ToString().Equals("'") &&
                             !newGrammar.Contains(production))
                         {
                             newGrammar.Add(production);
@@ -90,12 +104,18 @@ namespace GrammarConverter
                     for (int j = 0; j < productions.Count; j++)
                     {
                         String production = productions[j];
-                        if (production[0].Equals(noTerminal[0]) && !newGrammar.Contains(production))
+                        String[] noTermAlt = production.Split(" -> ");
+                        String noTerm = noTermAlt[0];
+                        if (noTerm[noTerm.Length - 1].ToString() == "'")
+                        {
+                            noTerm = noTerm.Substring(0, noTerm.Length - 1);
+                        }
+
+                        if (noTerm.Equals(noTerminal) && !newGrammar.Contains(production))
                         {
                             newGrammar.Add(production);
                         }
                     }
-
                 }
             }
 
@@ -116,20 +136,30 @@ namespace GrammarConverter
                 String production = productions[i];
                 if (IsLeftRecursion(production))
                 {
-                    String alternative = production[3] + "'" + "->" + production.Substring(4, production.Length - 4) +
-                                  production[3] + "'";
+                    String[] noTermAlt = production.Split(" -> ");
+
+                    String[] altsArr = noTermAlt[1].Split(" ");
+                    List<string> alts = altsArr.OfType<string>().ToList();
+                    List<String> nextRange = alts.GetRange(1, alts.Count - 1);
+
+                    String alternative = alts[0] + "'" + " ->";
+                    for (int j = 0; j < nextRange.Count; j++)
+                    {
+                        alternative += " " + nextRange[j];
+                    }
+
+                    alternative += " " + alts[0] + "'";
                     productions[i] = alternative;
-                    
-                    SetStateNoTerminal(production[0].ToString());
+
+                    SetStateNoTerminal(noTermAlt[0]);
                 }
             }
 
             ManageLeftRecursion();
             DeleteRecStates();
             productions.AddRange(newProductions);
-
         }
-        
+
         public List<String> GetNoTerminals(List<String> inputGrammar)
         {
             List<String> result = new List<string>();
@@ -137,17 +167,10 @@ namespace GrammarConverter
             for (int i = 0; i < inputGrammar.Count; i++)
             {
                 String line = inputGrammar[i];
-                char ch = line[0];
-                String noTerminal = ch.ToString();
-                char nextCh = line[1];
-                if (nextCh == '\'')
+                String[] noTermAlt = line.Split(" -> ");
+                if (!result.Contains(noTermAlt[0]))
                 {
-                    noTerminal += "'";
-                }
-
-                if (!result.Contains(noTerminal))
-                {
-                    result.Add(noTerminal);
+                    result.Add(noTermAlt[0]);
                 }
             }
 
@@ -165,25 +188,33 @@ namespace GrammarConverter
                     for (int j = 0; j < productions.Count; j++)
                     {
                         String production = productions[j];
-                        String noTerminal = production[0].ToString();
-                        String nextSymbolNoTerminal = production[1].ToString();
+                        String[] noTermAlt = production.Split(" -> ");
+                        String noTerminal = noTermAlt[0];
+                        String nextSymbolNoTerminal = noTerminal[noTerminal.Length - 1].ToString();
                         if (noTerminal.Equals(noTerminalRec) && !nextSymbolNoTerminal.Equals("'"))
                         {
-                            String alternative = noTerminal + "->" + production.Substring(3, production.Length - 3) +
-                                                 noTerminal + "'";
+                            String[] altsArr = noTermAlt[1].Split(" ");
+                            List<string> alts = altsArr.OfType<string>().ToList();
+                            List<String> nextRange = alts.GetRange(0, alts.Count);
+                            String alternative = noTerminal + " ->";
+                            for (int k = 0; k < nextRange.Count; k++)
+                            {
+                                alternative += " " + nextRange[k];
+                            }
+
+                            alternative += " " + noTerminal + "'";
                             newProductions.Add(alternative);
                             count++;
                         }
-
                     }
 
                     if (count == 0)
                     {
-                        String alternative = noTerminals[i][0] + "->" + noTerminals[i][0] + "'";
+                        String alternative = noTerminals[i] + " -> " + noTerminals[i] + "'";
                         newProductions.Add(alternative);
                     }
 
-                    String alternativeEpsilon = noTerminals[i][0] + "'->&";
+                    String alternativeEpsilon = noTerminals[i] + "' -> &";
                     newProductions.Add(alternativeEpsilon);
                 }
             }
@@ -195,6 +226,7 @@ namespace GrammarConverter
             {
                 String noTerminal = noTerminals[i];
                 List<String> productions = GetProductionsForFactorization(noTerminal);
+                //TODO continue work with factorization
                 if (productions != null && productions.Count > 1)
                 {
                     List<String> onlyFirstChar = GetFirstLetterArray(productions);
@@ -207,8 +239,8 @@ namespace GrammarConverter
                             if (!subLine.Equals(null))
                             {
                                 ChangePosition(subLine);
-                                String alternative = noTerminal + "->" + subLine + noTerminal + "'";
-                                productions.Add(alternative);
+                                String alternative = noTerminal + " -> " + subLine + noTerminal + "'";
+                                this.productions.Add(alternative);
                             }
                         }
                     }
@@ -216,28 +248,84 @@ namespace GrammarConverter
             }
         }
 
+        private List<String> GetProductionsForFactorization(String noTerminal)
+        {
+            List<String> result = new List<string>();
+            bool leftRec = false;
+            for (int i = 0; i < productions.Count; i++)
+            {
+                String production = productions[i];
+                String[] noTermAlt = production.Split(" -> ");
+                String firstSymbol = noTermAlt[0];
+                if (noTermAlt[0][noTermAlt[0].Length - 1].ToString().Equals("'"))
+                {
+                    firstSymbol = firstSymbol.Replace("'", "");
+                }
+
+                String nextSymbol = noTermAlt[0][noTermAlt[0].Length - 1].ToString();
+                if (firstSymbol.Equals(noTerminal))
+                {
+                    result.Add(noTermAlt[1]);
+                    if (nextSymbol.Equals("\'"))
+                    {
+                        leftRec = true;
+                    }
+                }
+            }
+
+            if (leftRec)
+            {
+                result = null;
+            }
+
+            return result;
+        }
+
         public void First()
         {
             FillFirst();
+            emptyNoTerminals = GetAllEmptyNoTerminals();
+
             for (int i = 0; i < productions.Count; i++)
             {
                 String production = productions[i];
                 List<String> firstTemp = new List<string>();
-                if (IsApostrophe(production))
+                String[] noTermAltArr = production.Split(" -> ");
+                List<String> alternative = noTermAltArr[1].Split(" ").OfType<string>().ToList();
+                List<String> alt = alternative;
+                int altLength = alt.Count;
+                List<String> altSymbols = new List<String>();
+                for (int j = 0; j < alt.Count; j++)
                 {
-                    firstTemp.AddRange(GetLineOfFirstSet(production.Substring(4, production.Length - 4)));
-                }
-                else
-                {
-                    firstTemp.AddRange(GetLineOfFirstSet(production.Substring(3, production.Length - 3)));
+                    if (j == alt.Count - 1)
+                    {
+                        altSymbols = alt.GetRange(j, 1);
+                    }
+                    else
+                    {
+                        altSymbols = alt.GetRange(j, altLength - j);
+                    }
+
+                    firstTemp.AddRange(GetLineOfFirstSet(altSymbols));
+                    if (!emptyNoTerminals.Contains(altSymbols[0]))
+                    {
+                        break;
+                    }
                 }
 
-                String noTerminal = production.Substring(0, 2);
-                String lol = production.Substring(1, 1);
-                if (production.Substring(1, 1).Equals("-"))
+                firstTemp = firstTemp.Distinct().ToList();
+                for (int j = 0; j < firstTemp.Count; j++)
                 {
-                    noTerminal = production.Substring(0, 1);
+                    String item = firstTemp[j];
+                    if (item.Equals("&"))
+                    {
+                        firstTemp.RemoveAt(j);
+                        firstTemp.Add("&");
+                        break;
+                    }
                 }
+
+                String noTerminal = production.Split(" -> ")[0];
 
                 for (int j = 0; j < noTerminals.Count; j++)
                 {
@@ -249,7 +337,176 @@ namespace GrammarConverter
                     }
                 }
             }
+        }
 
+        private List<string> GetLineOfFirstSet(List<String> production)
+        {
+            List<string> result = new List<string>();
+//            if (production.Equals("\'"))
+//            {
+//                return result;
+//            }
+
+            if (terminals.Contains(production[0]))
+            {
+                result.Add(production[0]);
+            }
+            else
+            {
+                List<string> temp = new List<string>();
+
+                List<string> firstSet = new List<string>();
+                    temp = GetProductionsForFirst(production[0]);
+                    for (int i = 0; i < temp.Count; i++)
+                    {
+                        String[] noTermAltArr = temp[i].Split(" -> ");
+                        List<String> alternative = noTermAltArr[1].Split(" ").OfType<string>().ToList();
+                        List<String> alt = alternative;
+                        int altLength = alt.Count;
+                        List<String> altSymbols = new List<String>();
+                        for (int j = 0; j < alt.Count; j++)
+                        {
+                            if (j == alt.Count - 1)
+                            {
+                                altSymbols = alt.GetRange(j, 1);
+                            }
+                            else
+                            {
+                                altSymbols = alt.GetRange(j, altLength - j);
+                            }
+
+                            firstSet.AddRange(GetLineOfFirstSet(altSymbols));
+                            if (!emptyNoTerminals.Contains(altSymbols[0]))
+                            {
+                                break;
+                            }
+                        
+                    }
+                }
+
+                result.AddRange(firstSet);
+            }
+
+            return result;
+        }
+
+        private bool IsApostropheInList(List<String> word)
+        {
+            if (word[0].Length > 1)
+            {
+                return word[0][1].Equals('\'') ? true : false;
+            }
+
+            return false;
+        }
+
+        private List<string> GetAllEmptyNoTerminals()
+        {
+            List<string> result = new List<string>();
+            List<string> current = new List<string>();
+
+            do
+            {
+                result.Clear();
+                result.AddRange(current);
+                current.Clear();
+                current.AddRange(GetEmptyNotTerminals(result));
+            } while (!IsEqualsList(result, current));
+
+            return result;
+        }
+
+        private bool IsEqualsList(List<String> list1, List<String> list2)
+        {
+            list1.Sort();
+            list2.Sort();
+            if (list1.Count != list2.Count)
+            {
+                return false;
+            }
+
+            List<bool> boolList = new List<bool>();
+            for (int i = 0; i < list1.Count; i++)
+            {
+                if (list1[i] == list2[i])
+                {
+                    boolList.Add(true);
+                }
+                else
+                {
+                    boolList.Add(false);
+                }
+            }
+
+            for (int i = 0; i < boolList.Count; i++)
+            {
+                if (!boolList[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private List<string> GetEmptyNotTerminals(List<string> result)
+        {
+            List<string> current = new List<string>();
+
+            for (int i = 0; i < productions.Count; i++)
+            {
+                String production = productions[i];
+                String[] noTermAltArr = production.Split(" -> ");
+                
+                List<String> alternative =  noTermAltArr[1].Split(" ").OfType<String>().ToList(); ;
+                if (alternative.Count > 1 && terminals.Contains(alternative[0]))
+                {
+                    continue;
+                }
+
+                String noTermAlt = noTermAltArr[0];
+                if (alternative.Count >= 1 && alternative[0] == "&")
+                {
+                    current.Add(noTermAlt);
+                }
+
+                List<string> noTerms = GetNoTerminal(alternative);
+                for (int j = 0; j < noTerms.Count; j++)
+                {
+                    String noTerm = noTerms[j];
+                    if (!result.Contains(noTerm))
+                    {
+                        break;
+                    }
+
+                    if ((j == noTerms.Count - 1) && result.Contains(noTerm))
+                    {
+                        current.Add(noTermAlt);
+                    }
+                }
+            }
+
+            return current;
+        }
+
+        private bool IsTerm(String alt)
+        {
+            return (alt.Length > 1 && Char.IsLower(alt[0]));
+        }
+
+        private List<string> GetNoTerminal(List<string> alt)
+        {
+            List<string> result = new List<string>();
+            for (int i = 0; i < alt.Count; i++)
+            {
+                String item = alt[i];
+                if (noTerminals.Contains(item))
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result;
         }
 
         public List<List<String>> GetFirst()
@@ -270,23 +527,23 @@ namespace GrammarConverter
             {
                 String prod = productions[i];
                 List<String> followSet = new List<string>();
-                int startProd = 3;
-                String noTerminal = prod[0].ToString();
-                if (prod[1].Equals('\''))
+                String[] noTermAltArr = prod.Split(" -> ");
+                String noTerminal = noTermAltArr[0];
+                
+                List<string> noTerminalsSet = GetNoTerminalsSet(noTermAltArr[1]);
+                
+                if (noTerminalsSet.Count == 0)
                 {
-                    startProd = 4;
-                    noTerminal += "'";
                 }
-
-                List<string> noTerminalsSet = GetNoTerminalsSet(prod, startProd);
-                if (noTerminalsSet.Count == 0) {
-                } else {
+                else
+                {
                     for (int j = 0; j < noTerminalsSet.Count; j++)
                     {
-                        String alternative = prod.Substring(startProd, prod.Length - startProd);
-                        
+                        String alternative = noTermAltArr[1];
+                        // TODO Rotate bug here
                         followSet.AddRange(Rotate(noTerminalsSet[j], alternative, noTerminal));
                     }
+
                     followSetTemp.AddRange(followSet);
                     AddNewElementToFollowSet(followSet);
                 }
@@ -294,47 +551,78 @@ namespace GrammarConverter
 
             PassageFollowSet(followSetTemp);
             PassageFollowSet(followSetTemp);
+
+            for (int i = 0; i < follow.Count; i++)
+            {
+                List<String> row = follow[i];
+                row.Remove("$");
+                row.Add("$");
+            }
         }
 
+        private List<String> Rotate(String noTerminalSetEl, String production, String noTerminal)
+        {
+            List<String> result = new List<string>();
+            String right = ProductionLeftOrRight(noTerminalSetEl, production, false);
+            List<String> rightArr = right.Split(" ").OfType<String>().ToList();
+            if (String.IsNullOrEmpty(right))
+            {
+                result.Add("º " + noTerminalSetEl + " " + noTerminal);
+            }
+            else
+            {
+                if (!noTerminals.Contains(rightArr[0]) && !rightArr[0][rightArr[0].Length - 1].Equals('\''))
+                {
+                    result.Add(noTerminalSetEl + " " + rightArr[0]);
+                }
+                else
+                {
+                    List<String> listRight = rightArr;
+                    for (int k = 0; k < listRight.Count; k++)
+                    {
+                        String nt = listRight[k];
+
+                        for (int i = 0; i < noTerminals.Count; i++)
+                        {
+                            if (nt.Equals(first[i][0]))
+                            {
+                                for (int j = 1; j < first[i].Count; j++)
+                                {
+                                    if (first[i][j].Equals("&"))
+                                    {
+                                        result.Add("º " + noTerminalSetEl + " " + noTerminal);
+                                    }
+                                    else
+                                    {
+                                        result.Add(noTerminalSetEl + " " + first[i][j]);
+                                    }
+                                }
+                            }
+                        }
+
+                        if (!emptyNoTerminals.Contains(nt))
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+        
         private void PassageFollowSet(List<String> followSetTemp)
         {
             for (int i = 0; i < followSetTemp.Count; i++)
             {
-                String temp = followSetTemp[i];
-                if (temp[0].Equals('º'))
+                List<String> temp = followSetTemp[i].Split(" ").OfType<String>().ToList();
+                if (temp[0].Equals("º"))
                 {
-                    String nt1 = temp[1].ToString();
-                    String nt2 = "";
-                    if (followSetTemp[i][2].Equals('\''))
-                    {
-                        nt1 += "'";
-                    }
+                    String nt1 = temp[1];
+                    String nt2 = temp[2];
 
-                    if (temp.Length == 4)
-                    {
-                        if (followSetTemp[i][2].Equals('\''))
-                        {
-                            nt2 = temp[3].ToString();
-                        }
-                        else
-                        {
-                            nt2 = temp[2] + "'";
-                        }
-                    }
-                    else
-                    {
-                        if (temp.Length == 5)
-                        {
-                            nt2 = temp[3] + "'";
-                        }
-                        else
-                        {
-                            nt2 = temp[2].ToString();
-                        }
-                    }
-                    int posBefore= GetPosition(noTerminals, nt1);
+                    int posBefore = GetPosition(noTerminals, nt1);
                     int posAfter = GetPosition(noTerminals, nt2);
-
                     SetPositionBeforeAndAfter(posBefore, posAfter);
                 }
             }
@@ -345,7 +633,7 @@ namespace GrammarConverter
             for (int i = 0; i < follow[posAfter].Count; i++)
             {
                 String temp = follow[posAfter][i];
-                if (temp.Length != 2 && !Char.IsUpper(temp[0]))
+                if (!noTerminals.Contains(temp))
                 {
                     if (!follow[posBefore].Contains(temp))
                     {
@@ -360,29 +648,12 @@ namespace GrammarConverter
             int result = -1;
             for (int i = 0; i < arr.Count; i++)
             {
-                String term = noTerminal[0].ToString();
-                String termInArr = arr[i][0].ToString();
-                if (noTerminal.Length == 2 && arr[i].Length == 2)
+                if (arr[i] == noTerminal)
                 {
-                    if (term.Equals(termInArr))
-                    {
-                        result = i;
-                    }
-                }
-                else
-                {
-                    if (arr[i].Length == 1 && noTerminal.Length == 1)
-                    {
-                        if (term.Equals(termInArr))
-                        {
-                            result = i;
-                        }
-                    }
+                    result = i;
                 }
             }
-
             return result;
-
         }
 
         private void AddNewElementToFollowSet(List<String> newElements)
@@ -391,62 +662,41 @@ namespace GrammarConverter
             {
                 for (int k = 0; k < follow.Count; k++)
                 {
-                    if (newElements[j][0].ToString().Equals(follow[k][0]))
+                    if (newElements[j].Split(" ")[0].Equals(follow[k][0]))
                     {
-                        if (!follow[k].Contains(newElements[j][2].ToString()))
+                        if (!follow[k].Contains(newElements[j].Split(" ")[1]))
                         {
-                            follow[k].Add(newElements[j][2].ToString());
+                            follow[k].Add(newElements[j].Split(" ")[1]);
                         }
                     }
                 }
             }
         }
-
-        private List<String> Rotate(String noTerminalSetEl, String production, String noTerminal)
+        private List<string> GetNoTerminalAndTerminals(string prod)
         {
-            List<String> result = new List<string>();
+            List<string> result = new List<string>();
+            char ch = ' ';
 
-            String left = ProductionLeftOrRight(noTerminalSetEl, production, true);
-            String right = ProductionLeftOrRight(noTerminalSetEl, production, false);
-
-            if (String.IsNullOrEmpty(right))
+            char nextCh = ' ';
+            for (int i = 0; i < prod.Length; i++)
             {
-                result.Add("º" + noTerminalSetEl + noTerminal);
-            }
-            else
-            {
-                if (!Char.IsUpper(right[0]) && !right[0].Equals('\''))
+                if (i != prod.Length - 1)
                 {
-                    result.Add(noTerminalSetEl + " " + right[0]);
+                    nextCh = prod[i + 1];
+                }
+
+                ch = prod[i];
+                if (Char.IsUpper(ch) && nextCh == '\'')
+                {
+                    result.Add(ch.ToString() + "'");
+                }
+                else if (Char.IsUpper(ch))
+                {
+                    result.Add(ch.ToString());
                 }
                 else
                 {
-                    String nt = right[0].ToString();
-                    if (right.Length > 1)
-                    {
-                        if (right[1].Equals('\''))
-                        {
-                            nt += "'";
-                        }
-                    }
-
-                    for (int i = 0; i < noTerminals.Count; i++)
-                    {
-                        if (nt.Equals(first[i][0]))
-                        {
-                            for (int j = 1; j < first[i].Count; j++)
-                            {
-                                if (first[i][j].Equals("&"))
-                                {
-                                    result.Add("º" + noTerminalSetEl + noTerminal);
-                                }
-                                else
-                                {
-                                    result.Add(noTerminalSetEl + " " + first[i][j]);
-                                }
-                            }
-                        }
-                    }
+                    result.Add(ch.ToString());
                 }
             }
 
@@ -456,69 +706,58 @@ namespace GrammarConverter
         private String ProductionLeftOrRight(String noTerminal, String prod, bool isLeft)
         {
             String result = null;
-            String symbol = noTerminal[0].ToString();
             int posBefore = 0;
             int posAfter = 0;
-            
-            for (int i = 0; i < prod.Length; i++)
+            String[] prods = prod.Split(" ");
+            for (int i = 0; i < prods.Length; i++)
             {
-                if (prod[i].Equals(noTerminal[0]))
+                if (prods[i].Equals(noTerminal))
                 {
-                    posBefore = i - 1;
-                    if (noTerminal.Length == 2)
+                    posAfter = i + 1;
+                }
+            }
+            
+            List<String> resultArr = new List<string>();
+            
+                resultArr = (prods.OfType<String>().ToList()).GetRange(posAfter, prods.Length - posAfter);
+                if (resultArr.Count == 0)
+                {
+                    return "";
+                }
+
+                if (resultArr.Count > 1)
+            {
+                for (int i = 0; i < resultArr.Count; i++)
+                {
+                    if (i != resultArr.Count - 1)
                     {
-                        posAfter = i + 2;
+                        result += resultArr[i] + " ";
                     }
                     else
                     {
-                        posAfter = i + 1;
+                        result += resultArr[i];
                     }
                 }
-            }
-
-            if (isLeft)
-            {
-                Char[] prodArr = prod.ToCharArray();
-                String lol = "";
-                for (int i = 0; i < posBefore + 1; i++)
-                {
-                    lol += prodArr[i];
-                }
-
-                result = lol;
             }
             else
             {
-                result = prod.Substring(posAfter, prod.Length - posAfter);
+                result += resultArr[0];
             }
-
+            
             return result;
-
         }
 
-        private List<String> GetNoTerminalsSet(String prod, int start)
+        private List<String> GetNoTerminalsSet(String alt)
         {
             List<String> result = new List<string>();
-            for (int i = start; i < prod.Length; i++)
+            List<String> alts = alt.Split(" ").OfType<String>().ToList();
+
+            for (int i = 0; i < alts.Count; i++)
             {
-                if (Char.IsUpper(prod[i]))
+                String item = alts[i];
+                if (noTerminals.Contains(item))
                 {
-                    String ch = prod[i].ToString();
-                    if (i < prod.Length - 1)
-                    {
-                        if (prod[i + 1].Equals('\''))
-                        {
-                            result.Add(ch + "'");
-                        }
-                        else
-                        {
-                            result.Add(ch);
-                        }
-                    }
-                    else
-                    {
-                        result.Add(ch);
-                    }
+                    result.Add(item);
                 }
             }
 
@@ -535,57 +774,23 @@ namespace GrammarConverter
                 {
                     temp.Add("$");
                 }
+
                 follow.Add(temp);
             }
         }
 
-        private List<string> GetLineOfFirstSet(String production)
-        {
-            List<string> result = new List<string>();
-            if (!Char.IsUpper(production[0]))
-            {
-                result.Add(production[0].ToString());
-            }
-            else
-            {
-                List<string> temp = new List<string>();
-                List<string> firstSet = new List<string>();
-                if (IsApostrophe(production))
-                {
-                    temp = GetProductionsForFirst(production[0].ToString(), true);
-                    for (int i = 0; i < temp.Count; i++)
-                    {
-                        firstSet.AddRange(GetLineOfFirstSet(temp[i]));
-                    }
-                }
-                else
-                {
-                    temp = GetProductionsForFirst(production[0].ToString(), false);
-                    for (int i = 0; i < temp.Count; i++)
-                    {
-                        firstSet.AddRange(GetLineOfFirstSet(temp[i]));
-                    }
-                }
-                result.AddRange(firstSet);
-            }
-
-            return result;
-        }
-
-        private List<String> GetProductionsForFirst(String noTerminal, bool isApostrophe)
+        private List<String> GetProductionsForFirst(String noTerminal)
         {
             List<String> result = new List<string>();
             for (int i = 0; i < productions.Count; i++)
             {
                 String production = productions[i];
-                String firstTemp = production[0].ToString();
-                if (firstTemp.Equals(noTerminal) && !isApostrophe && !IsApostrophe(production))
+                String[] noTermAltArr = production.Split(" -> ");
+
+                String nt = noTermAltArr[0];
+                if (nt.Equals(noTerminal))
                 {
-                    result.Add(production.Substring(3, production.Length - 3));
-                }
-                else if (firstTemp.Equals(noTerminal) && isApostrophe && IsApostrophe(production))
-                {
-                    result.Add(production.Substring(4, production.Length - 4));
+                    result.Add(production);
                 }
             }
 
@@ -594,12 +799,7 @@ namespace GrammarConverter
 
         private bool IsApostrophe(String word)
         {
-            if (word.Length > 1)
-            {
-                return word[1].Equals('\'') ? true : false;
-            }
-
-            return false;
+            return word[word.Length - 1].ToString() == "'";
         }
 
         private void FillFirst()
@@ -617,22 +817,57 @@ namespace GrammarConverter
             for (int i = 0; i < productions.Count; i++)
             {
                 String production = productions[i];
-                String noTerminal = production[0].ToString();
-                if (production.Length >= 3 + line.Length)
+                String[] noTermAlt = production.Split(" -> ");
+                String noTerminal = noTermAlt[0];
+                List<String> tempAlts = noTermAlt[1].Split(" ").OfType<String>().ToList();
+                List<String> tempProd = new List<string>();
+                tempProd.Add(noTerminal);
+                if (noTerminal[noTerminal.Length - 1].ToString().Equals("'"))
                 {
-                    String next = production.Substring(3, production.Length - 3 + line.Length);
-                    if (next.Equals(line))
+                    tempProd.Add("'");
+                }
+
+                tempProd.Add(" -> ");
+                tempProd.AddRange(tempAlts);
+//                    ints.OfType<int>().ToList();
+
+                List<String> lines = line.Split(" ").OfType<String>().ToList();
+                if (tempProd.Count >= 3 + lines.Count)
+                {
+                    List<String> next = tempProd.GetRange(3, lines.Count);
+                    if (IsEqualsList(next, lines))
                     {
                         String alternative = null;
-                        if (production.Length == next.Length + 3)
+                        if (tempProd.Count == next.Count + 3)
                         {
-                            alternative = noTerminal + "'->&";
+                            alternative = noTerminal + "' -> &";
                             productions[i] = alternative;
                         }
                         else
                         {
-                            String right = production.Substring(line.Length + 3, production.Length - line.Length + 3);
-                            alternative = noTerminal + "'->" + right;
+                            List<String> rightArr =
+                                tempProd.GetRange(lines.Count + 3, tempProd.Count - (lines.Count + 3));
+                            String right = "";
+                            if (rightArr.Count > 1)
+                            {
+                                for (int j = 0; j < rightArr.Count; j++)
+                                {
+                                    if (j != rightArr.Count - 1)
+                                    {
+                                        right += rightArr[j] + " ";
+                                    }
+                                    else
+                                    {
+                                        right += rightArr[j];
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                right += rightArr[0];
+                            }
+
+                            alternative = noTerminal + "' -> " + right;
                             productions[i] = alternative;
                         }
                     }
@@ -647,22 +882,29 @@ namespace GrammarConverter
                 return "";
             }
 
-            String result = lines[0];
+            String[] altsArr = lines[0].Split(" ");
+            List<String> alts = altsArr.OfType<string>().ToList();
+            List<String> result = alts;
+
             for (int i = 1; i < lines.Count; i++)
             {
-                if (lines[i].Length < result.Length)
+                altsArr = lines[i].Split(" ");
+                alts = altsArr.OfType<string>().ToList();
+                if (alts.Count < result.Count)
                 {
-                    result = lines[i];
+                    result = alts;
                 }
             }
 
-            int end = result.Length;
+            int end = result.Count;
             for (int i = 0; i < lines.Count; i++)
             {
                 int j;
                 for (j = 0; j < end; j++)
                 {
-                    if (result[j] != lines[i][j])
+                    String[] altsArr1 = lines[i].Split(" ");
+                    List<String> alts1 = altsArr1.OfType<string>().ToList();
+                    if (result[j] != alts1[j])
                     {
                         break;
                     }
@@ -674,18 +916,39 @@ namespace GrammarConverter
                 }
             }
 
-            return result.Substring(0, result.Length - end);
+            String res = "";
+            result = result.GetRange(0, result.Count - end);
+            if (result.Count > 1)
+            {
+                for (int i = 0; i < result.Count; i++)
+                {
+                    if (i != result.Count - 1)
+                    {
+                        res += result[i] + " ";
+                    }
+                    else
+                    {
+                        res += result[i];
+                    }
+                }
+            }
+            else if (result.Count == 1)
+            {
+                res += result[0];
+            }
 
+            return res;
         }
 
         private List<String> LeaveAppearence(List<String> productions, String ch)
         {
             List<String> result = new List<string>();
             int count = 0;
-
             for (int i = 0; i < productions.Count; i++)
             {
-                if (ch.Equals(productions[i][0]))
+                String[] altsArr = productions[i].Split(" ");
+                List<String> alts = altsArr.OfType<String>().ToList();
+                if (ch.Equals(alts[0]))
                 {
                     result.Add(productions[i]);
                     count++;
@@ -698,11 +961,10 @@ namespace GrammarConverter
         private List<String> GetFirstLetterArray(List<String> productions)
         {
             List<String> result = new List<string>();
-
             for (int i = 0; i < productions.Count; i++)
             {
-                String ch = productions[i][0].ToString();
-                result.Add(ch);
+                String[] altArr = productions[i].Split(" ");
+                result.Add(altArr[0]);
             }
 
             return RemoveDuplicates(result);
@@ -711,33 +973,6 @@ namespace GrammarConverter
         private List<String> RemoveDuplicates(List<String> items)
         {
             return new List<string>(new HashSet<string>(items));
-        }
-
-        private List<String> GetProductionsForFactorization(String noTerminal)
-        {
-            List<String> result = new List<string>();
-            bool leftRec = false;
-            for (int i = 0; i < productions.Count; i++)
-            {
-                String production = productions[i];
-                String firstSymbol = production[0].ToString();
-                String nextSymbol = production[1].ToString();
-                if (firstSymbol.Equals(noTerminal))
-                {
-                    result.Add(production.Substring(3, production.Length - 3));
-                    if (nextSymbol.Equals("\'"))
-                    {
-                        leftRec = true;
-                    }
-                }
-            }
-
-            if (leftRec)
-            {
-                result = null;
-            }
-
-            return result;
         }
 
         private void DeleteRecStates()
@@ -751,8 +986,9 @@ namespace GrammarConverter
                     while (count < productions.Count)
                     {
                         String production = productions[count];
-                        String noTerminal = production[0].ToString();
-                        String nextSymbolNoTerminal = production[1].ToString();
+                        String[] noTermAlt = production.Split(" -> ");
+                        String noTerminal = noTermAlt[0];
+                        String nextSymbolNoTerminal = noTerminal[noTerminal.Length - 1].ToString();
                         if (noTerminal.Equals(noTerminalRec) && !nextSymbolNoTerminal.Equals("'"))
                         {
                             productions.RemoveAt(count);
@@ -761,7 +997,6 @@ namespace GrammarConverter
                         {
                             count++;
                         }
-
                     }
                 }
             }
@@ -780,8 +1015,9 @@ namespace GrammarConverter
 
         private bool IsLeftRecursion(String production)
         {
-            return production[0] == production[3] ? true : false;
+            String[] noTermAlt = production.Split(" -> ");
+            String[] alts = noTermAlt[1].Split(" ");
+            return noTermAlt[0] == alts[0] ? true : false;
         }
-
     }
 }

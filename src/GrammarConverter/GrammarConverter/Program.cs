@@ -56,11 +56,11 @@ namespace GrammarConverter
                 Grammar grammar = JsonConvert.DeserializeObject<Grammar>(value);
                 GrammarConverter grammarConverter = new GrammarConverter(grammar);
                 grammarConverter.DeleteLeftRecursion();
-                grammarConverter.Factorization();
+                //grammarConverter.Factorization();
                 grammarConverter.SortGrammar();
-
+                
                 grammarConverter.SetNoTerminals(grammarConverter.GetNoTerminals(grammarConverter.GetProductions()));
-
+                
                 grammarConverter.First();
 
                 grammarConverter.Follow();
@@ -76,6 +76,8 @@ namespace GrammarConverter
                 newGrammar.terminals = grammarConverter.GetTerminals();
 
                 newGrammar.noTerminals = grammarConverter.GetNoTerminals();
+
+                newGrammar.emptyNoTerminals = grammarConverter.GetEmptyNoTerminals();
 
                 String json = JsonConvert.SerializeObject(newGrammar);
 

@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\MarioSlim\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_GrammarConverter.1258113598.00" t="ExcludeRecursive" />
-    <e p="D:\dpndk\ndk\src\GrammarConverter" t="IncludeFlat">
+    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_GrammarConverter.-339232535.00" t="ExcludeRecursive" />
+    <e p="D:\ndkcompiler\ndk\src\GrammarConverter" t="IncludeFlat">
       <e p="GrammarConverter" t="IncludeRecursive">
         <e p="application.properties" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="GrammarConverter.cs" t="Include" />
         <e p="GrammarConverter.csproj" t="IncludeRecursive" />
+        <e p="IsEmpty.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.2" t="Include">

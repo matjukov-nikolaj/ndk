@@ -5,6 +5,8 @@ import compiler.ndk.ast.visitor.ASTVisitor;
 
 public class IntLitExpression extends Expression {
 	public int value;
+	
+	
 
 	public IntLitExpression(Token firstToken, int value) {
 		super(firstToken);

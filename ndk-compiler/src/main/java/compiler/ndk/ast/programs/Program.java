@@ -1,11 +1,15 @@
 package compiler.ndk.ast.programs;
 
+import java.util.List;
+
 import compiler.ndk.lexer.TokenStream.Token;
 import compiler.ndk.ast.visitor.ASTNode;
 import compiler.ndk.ast.visitor.ASTVisitor;
+import compiler.ndk.ast.qualifiedNames.QualifiedName;
 import compiler.ndk.ast.blocks.Block;
 
 public class Program extends ASTNode {
+	public List<QualifiedName> imports;
 	public String name;
 	public Block block;
 	
