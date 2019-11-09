@@ -112,7 +112,6 @@ public class Parser {
 
     static final Kind[] WEAK_OPS = {PLUS, MINUS};
     static final Kind[] STRONG_OPS = {MUL, DIV};
-    static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING};
     static final Kind[] STATEMENT_FIRST = { KEY_WORD_PRINT };
     static final Kind[] EXPRESSION_FIRST = { INT_LIT };
     List<SyntaxException> exceptionList = new ArrayList<SyntaxException>();

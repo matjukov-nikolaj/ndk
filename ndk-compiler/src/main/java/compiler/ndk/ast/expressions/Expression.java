@@ -5,9 +5,6 @@ import compiler.ndk.ast.visitor.ASTNode;
 
 public abstract class Expression extends ASTNode {
 	
-	String expressionType;
-
-
 	Expression(Token firstToken) {
 		super(firstToken);
 	}
