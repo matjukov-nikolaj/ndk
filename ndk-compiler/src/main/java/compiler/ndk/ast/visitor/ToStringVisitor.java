@@ -8,73 +8,114 @@ import compiler.ndk.ast.blockElems.statements.*;
 
 public class ToStringVisitor implements ASTVisitor {
 
-	private StringBuilder sb;
+    private StringBuilder sb;
 
-	public ToStringVisitor() {
-		sb = new StringBuilder();
-	}
+    public ToStringVisitor() {
+        sb = new StringBuilder();
+    }
 
-	public String getString() {
-		return sb.toString();
-	}
+    public String getString() {
+        return sb.toString();
+    }
 
-	@Override
-	public Object visitBinaryExpression(BinaryExpression binaryExpression,
+    @Override
+    public Object visitBinaryExpression(BinaryExpression binaryExpression,
                                         Object arg) throws Exception {
-		sb.append(arg).append("BinaryExpression").append('\n');
-		String indent = arg + "  ";
-		binaryExpression.expression0.visit(this, indent);
-		sb.append(indent).append(binaryExpression.op.getText()).append('\n');
-		binaryExpression.expression1.visit(this, indent);
-		return null;
-	}
+        String tabs = arg + "\t";
+        sb.append(tabs + "{\n" +
+                tabs + "\t\"title\":");
+        sb.append("\"BinaryExpression\",").append('\n');
+        sb.append(tabs + "\t\"children\": [\n");
+        String indent = tabs + "\t";
 
-	@Override
-	public Object visitBlock(Block block, Object arg) throws Exception {
-		sb.append(arg).append("Block").append('\n');
-		String indent = arg + "  ";
-		for (BlockElem elem : block.elems) {
-			elem.visit(this, indent);
-		}
-		return null;
-	}
+        binaryExpression.expression0.visit(this, indent);
 
-	@Override
-	public Object visitExpressionStatement(
-			ExpressionStatement expressionStatement, Object arg)
-			throws Exception {
-		sb.append(arg).append("ExpressionStatement").append('\n');
-		String indent = arg + "  ";
-		expressionStatement.expression.visit(this, indent);
-		return null;
-	}
+        sb.append(",\n");
+        sb.append(tabs + "\t\t{\n" +
+                tabs + "\t\t\t\"title\":");
+        sb.append("\"" + binaryExpression.op.getText() + "\",").append('\n');
+        sb.append(tabs + "\t\t\t\"children\": []\n");
+        sb.append(tabs + "\t\t},\n");
 
-	@Override
-	public Object visitIntLitExpression(IntLitExpression intLitExpression,
-			Object arg) {
-		sb.append(arg).append("IntLitExpression").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(intLitExpression.value).append('\n');
-		return null;
-	}
+        binaryExpression.expression1.visit(this, indent);
+        sb.append("\n");
+        sb.append(tabs + "\t]\n");
+        sb.append(tabs + "}");
+        return null;
+    }
 
-	@Override
-	public Object visitPrintStatement(PrintStatement printStatement, Object arg)
-			throws Exception {
-		sb.append(arg).append("PrintStatement").append('\n');
-		String indent = arg + "  ";
-		printStatement.expression.visit(this, indent);
-		return null;
-	}
+    @Override
+    public Object visitBlock(Block block, Object arg) throws Exception {
+        String tabs = arg + "\t";
+        sb.append(tabs + "{\n" +
+                tabs + "\t\"title\":");
+        sb.append("\"Block\",").append('\n');
+        sb.append(tabs + "\t\"children\": [\n");
+        String indent = tabs + "\t";
+        for (BlockElem elem : block.elems) {
+            elem.visit(this, indent);
+        }
+        sb.append(tabs + "\t]\n");
+        sb.append(tabs + "}\n");
+        return null;
+    }
 
-	@Override
-	public Object visitProgram(Program program, Object arg) throws Exception {
-		sb.append("Program\n");
-		String indent = "  ";
-		sb.append("class ").append(program.name).append('\n');
-		program.block.visit(this, indent);
-		sb.append('\n');
-		return null;
-	}
+    @Override
+    public Object visitExpressionStatement(
+            ExpressionStatement expressionStatement, Object arg)
+            throws Exception {
+        sb.append(arg).append("ExpressionStatement").append('\n');
+        String indent = arg + "  ";
+        expressionStatement.expression.visit(this, indent);
+        return null;
+    }
+
+    @Override
+    public Object visitIntLitExpression(IntLitExpression intLitExpression,
+                                        Object arg) {
+        String tabs = arg + "\t";
+        sb.append(tabs + "{\n" +
+                tabs + "\t\"title\":");
+        sb.append("\"IntLitExpression\",").append('\n');
+        sb.append(tabs + "\t\"children\": [\n");
+        sb.append(tabs + "\t\t{\n" +
+                tabs + "\t\t\t\"title\":");
+        sb.append("\"" + intLitExpression.value + "\",").append('\n');
+        sb.append(tabs + "\t\t\t\"children\": []\n");
+        sb.append(tabs + "\t\t}\n");
+        sb.append(tabs + "\t]\n");
+        sb.append(tabs + "}");
+        return null;
+    }
+
+    @Override
+    public Object visitPrintStatement(PrintStatement printStatement, Object arg)
+            throws Exception {
+        String tabs = arg + "\t";
+        sb.append(tabs + "{\n" +
+                tabs + "\t\"title\":");
+        sb.append("\"PrintStatement\",").append('\n');
+        sb.append(tabs + "\t\"children\": [\n");
+        String indent = tabs + "\t";
+        printStatement.expression.visit(this, indent);
+        sb.append("\n");
+        sb.append(tabs + "\t]\n");
+        sb.append(tabs + "}\n");
+        return null;
+    }
+
+    @Override
+    public Object visitProgram(Program program, Object arg) throws Exception {
+        sb.append("{\"root\":\n" +
+                "\t{\n" +
+                "\t\t\"title\": \"Program ");
+        String indent = "\t\t";
+        sb.append("class ").append(program.name).append("\",\n");
+        sb.append("\t\t\"children\": [\n");
+        program.block.visit(this, indent);
+        sb.append("\t\t]\n\t}\n}");
+        sb.append('\n');
+        return null;
+    }
 
 }

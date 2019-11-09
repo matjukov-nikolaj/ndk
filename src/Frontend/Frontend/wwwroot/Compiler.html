@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Compiler</title>
+    <meta charset='utf-8'/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <div class="header_background">
+        <div class="header_title">
+            <h1 class="title_name">mind-maps</h1>
+        </div>
+        <div class="button_block">
+            <button id="openLoad" class="style_button" title="load">load</button>
+        </div>
+        <div class="button_block">
+            <button id="openDownload" class="style_button" title="download">save</button>
+        </div>
+        <div class="option_button">
+            <button id="openInformation" class="style_button" title="select theme">help</button>
+        </div>
+    </div>
+</header>
+<div id="canvasDiv">
+    <canvas id='canvas'></canvas>
+</div>
+<div id="modalHelp" class="modal">
+    <div class="modal_dialog">
+        <div id="modalContents" class="modal_content">
+            <button id="closeInformation" class="modal_close"></button>
+            <h1 class="modal_title">Help</h1>
+            <div class="information_box">
+                <ul>
+                    <li>A new element creation - the key TAB</li>
+                    <li>Element switching - arrow keys</li>
+                    <li>Element deletion - the key DEL</li>
+                    <li>Element selection occurs by hovering mouse cursor over the element and left click</li>
+                    <li>Text editing - the key F2 or double-click on the element</li>
+                    <li>Drag and drop of an element- press the left mouse button on the element and drag it to a new position.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalSave" class="modal">
+    <div class="modal_dialog">
+        <div id="modalInput" class="modal_content">
+            <button id="closeSave" class="modal_close"></button>
+            <h1 class="modal_title">Download</h1>
+            <div class="input_save_block">
+                <input placeholder="Enter the name of the file" id="input_save" class="input_save" type="text">
+            </div>
+            <div class="button_modal_save">
+                <button id="saveButton" class="style_button" title="download">save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalLoad" class="modal">
+    <div class="modal_dialog">
+        <div id="modalLoadFile" class="modal_content">
+            <button id="closeLoad" class="modal_close"></button>
+            <h1 class="modal_title">Load the file</h1>
+            <div class="choose_file">
+                <input type="file" id="files" name="files[]" accept=".json"/>
+                <output id="list"></output>
+            </div>
+            <div class="button_modal_load">
+                <button id="loadButton" class="style_button" title="download">load</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/mm/renderer-config.js"></script>
+<script src="js/mm/tree.js"></script>
+<script src="js/mm/global-config.js"></script>
+<script src="js/mm/modal.js"></script>
+<script src="js/mm/load-modal.js"></script>
+<script src="js/mm/save-modal.js"></script>
+<script src="js/mm/help-modal.js"></script>
+<script src="js/mm/point.js"></script>
+<script src="js/mm/rect.js"></script>
+<script src="js/mm/tree-controller.js"></script>
+<script src="js/mm/tree-saver.js"></script>
+<script src="js/mm/tree-loader.js"></script>
+<script src="js/mm/tree-renderer.js"></script>
+<script src="js/mm/scroll-controller.js"></script>
+<script src="js/mm/node.js"></script>
+<script src="js/mm/main.js"></script>
+<script src="js/mm/vendor/file-saver.js"></script>
+</body>
+</html>

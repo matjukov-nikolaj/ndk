@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\MarioSlim\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Frontend.71734110.01" t="ExcludeRecursive" />
-    <e p="D:\dpndk\ndk\src\Frontend" t="IncludeFlat">
+    <e p="C:\Users\MarioSlim\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Frontend.1781212119.00" t="ExcludeRecursive" />
+    <e p="D:\arithmetic-compiler\ndk\src\Frontend" t="IncludeFlat">
       <e p="Frontend" t="IncludeRecursive">
         <e p="application.properties" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
@@ -38,11 +38,40 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="wwwroot" t="Include">
+          <e p="Compiler.html" t="Include" />
+          <e p="Compiler.html.cs" t="Include" />
           <e p="css" t="Include">
             <e p="site.css" t="Include" />
+            <e p="style.css" t="Include" />
           </e>
           <e p="favicon.ico" t="Include" />
+          <e p="images" t="Include">
+            <e p="button_close.png" t="Include" />
+            <e p="logic_chart_left.png" t="Include" />
+            <e p="logic_chart_right.png" t="Include" />
+          </e>
           <e p="js" t="Include">
+            <e p="MM" t="Include">
+              <e p="global-config.js" t="Include" />
+              <e p="help-modal.js" t="Include" />
+              <e p="load-modal.js" t="Include" />
+              <e p="main.js" t="Include" />
+              <e p="modal.js" t="Include" />
+              <e p="node.js" t="Include" />
+              <e p="point.js" t="Include" />
+              <e p="rect.js" t="Include" />
+              <e p="renderer-config.js" t="Include" />
+              <e p="save-modal.js" t="Include" />
+              <e p="scroll-controller.js" t="Include" />
+              <e p="tree-controller.js" t="Include" />
+              <e p="tree-loader.js" t="Include" />
+              <e p="tree-renderer.js" t="Include" />
+              <e p="tree-saver.js" t="Include" />
+              <e p="tree.js" t="Include" />
+              <e p="vendor" t="Include">
+                <e p="file-saver.js" t="Include" />
+              </e>
+            </e>
             <e p="site.js" t="Include" />
           </e>
           <e p="lib" t="Include">
