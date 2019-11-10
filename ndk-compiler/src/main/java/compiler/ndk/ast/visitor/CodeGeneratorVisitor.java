@@ -266,14 +266,6 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
 	}
 
 	@Override
-	public Object visitValueExpression(ValueExpression valueExpression,
-			Object arg) throws Exception {
-		valueExpression.expression.visit(this, arg);
-		throw new UnsupportedOperationException(
-				"code generation not yet implemented");
-	}
-
-	@Override
 	public Object visitUndeclaredType(UndeclaredType undeclaredType, Object arg)
 			throws Exception {
 		throw new UnsupportedOperationException(

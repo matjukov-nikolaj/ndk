@@ -284,13 +284,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 				"undeclared types not supported");
 	}
 
-	@Override
-	public Object visitValueExpression(ValueExpression valueExpression,
-			Object arg) throws Exception {
-//		return valueExpression.expression.visit(this, arg);
-		throw new UnsupportedOperationException("not yet implemented");
-	}
-
 	/**
 	 * check that this variable has not already been declared in the same scope.
 	 */

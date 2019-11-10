@@ -156,15 +156,6 @@ public class ToStringVisitor implements ASTVisitor {
 	}
 
 	@Override
-	public Object visitValueExpression(ValueExpression valueExpression,
-			Object arg) throws Exception {
-		sb.append(arg).append("ValueExpression").append('\n');
-		String indent = arg + "  ";
-		valueExpression.expression.visit(this, indent);
-		return null;
-	}
-
-	@Override
 	public Object visitVarDec(VarDec varDec, Object arg) throws Exception {
 		sb.append(arg).append("VarDec").append('\n');
 		String indent = arg + "  ";

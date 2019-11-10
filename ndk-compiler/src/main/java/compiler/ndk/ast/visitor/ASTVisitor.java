@@ -29,7 +29,6 @@ public interface ASTVisitor {
 	Object visitStringLitExpression(StringLitExpression stringLitExpression,
 			Object arg)throws Exception;
 	Object visitUnaryExpression(UnaryExpression unaryExpression, Object arg)throws Exception;
-	Object visitValueExpression(ValueExpression valueExpression, Object arg) throws Exception;
 	Object visitVarDec(VarDec varDec, Object arg)throws Exception;
 	Object visitUndeclaredType(UndeclaredType undeclaredType, Object arg) throws Exception;
 }
