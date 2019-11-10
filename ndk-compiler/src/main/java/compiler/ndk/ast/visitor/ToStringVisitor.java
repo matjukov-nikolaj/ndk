@@ -1,20 +1,15 @@
 package compiler.ndk.ast.visitor;
 
 import compiler.ndk.ast.blockElems.BlockElem;
-import compiler.ndk.ast.blockElems.declarations.ClosureDec;
 import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
-import compiler.ndk.ast.closures.Closure;
 import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
-import compiler.ndk.ast.qualifiedNames.QualifiedName;
 import compiler.ndk.ast.blockElems.statements.*;
 import compiler.ndk.ast.types.SimpleType;
 import compiler.ndk.ast.types.UndeclaredType;
-
-import java.util.Iterator;
 
 public class ToStringVisitor implements ASTVisitor {
 
@@ -57,54 +52,6 @@ public class ToStringVisitor implements ASTVisitor {
 		for (BlockElem elem : block.elems) {
 			elem.visit(this, indent);
 		}
-		return null;
-	}
-
-	@Override
-	public Object visitClosure(Closure closure, Object arg) throws Exception {
-		sb.append(arg).append("Closure").append('\n');
-		String indent = arg + "  ";
-		for (VarDec dec : closure.formalArgList) {
-			dec.visit(this, indent);
-		}
-		for (Statement statement : closure.statementList) {
-			statement.visit(this, indent);
-		}
-		return null;
-	}
-
-	@Override
-	public Object visitClosureDec(ClosureDec closureDeclaration, Object arg)
-			throws Exception {
-		sb.append(arg).append("ClosureDec").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(closureDeclaration.identToken.getText())
-				.append('\n');
-		;
-		closureDeclaration.closure.visit(this, indent);
-		return null;
-	}
-
-	@Override
-	public Object visitClosureEvalExpression(
-			ClosureEvalExpression closureExpression, Object arg)
-			throws Exception {
-		sb.append(arg).append("ClosureEvalExpression").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(closureExpression.identToken.getText())
-				.append('\n');
-		for (Expression e : closureExpression.expressionList) {
-			e.visit(this, indent);
-		}
-		return null;
-	}
-
-	@Override
-	public Object visitClosureExpression(ClosureExpression closureExpression,
-										 Object arg) throws Exception {
-		sb.append(arg).append("ClosureExpression").append('\n');
-		String indent = arg + "  ";
-		closureExpression.closure.visit(this, indent);
 		return null;
 	}
 
@@ -172,12 +119,6 @@ public class ToStringVisitor implements ASTVisitor {
 		sb.append("class ").append(program.name).append('\n');
 		program.block.visit(this, indent);
 		sb.append('\n');
-		return null;
-	}
-
-	@Override
-	public Object visitQualifiedName(QualifiedName qualifiedName, Object arg) {
-		assert false;
 		return null;
 	}
 

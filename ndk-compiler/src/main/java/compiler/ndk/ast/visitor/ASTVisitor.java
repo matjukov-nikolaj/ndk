@@ -1,15 +1,12 @@
 package compiler.ndk.ast.visitor;
 
 
-import compiler.ndk.ast.blockElems.declarations.ClosureDec;
 import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
-import compiler.ndk.ast.closures.Closure;
 import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
-import compiler.ndk.ast.qualifiedNames.QualifiedName;
 import compiler.ndk.ast.blockElems.statements.*;
 import compiler.ndk.ast.types.SimpleType;
 import compiler.ndk.ast.types.UndeclaredType;
@@ -20,13 +17,6 @@ public interface ASTVisitor {
 									Object arg)throws Exception;
 	Object visitBinaryExpression(BinaryExpression binaryExpression, Object arg)throws Exception;
 	Object visitBlock(Block block, Object arg) throws Exception;
-	Object visitClosure(Closure closure, Object arg)throws Exception;
-	Object visitClosureDec(ClosureDec closureDeclaration,
-						   Object arg)throws Exception;
-	Object visitClosureEvalExpression(ClosureEvalExpression closureExpression,
-									  Object arg)throws Exception;
-	Object visitClosureExpression(ClosureExpression closureExpression,
-								  Object arg)throws Exception;
 	Object visitExpressionLValue(ExpressionLValue expressionLValue, Object arg)throws Exception;
 	Object visitExpressionStatement(ExpressionStatement expressionStatement,
 			Object arg)throws Exception;
@@ -35,7 +25,6 @@ public interface ASTVisitor {
 	Object visitIntLitExpression(IntLitExpression intLitExpression, Object arg)throws Exception;
 	Object visitPrintStatement(PrintStatement printStatement, Object arg)throws Exception;
 	Object visitProgram(Program program, Object arg) throws Exception;
-	Object visitQualifiedName(QualifiedName qualifiedName, Object arg);
 	Object visitSimpleType(SimpleType simpleType, Object arg)throws Exception;
 	Object visitStringLitExpression(StringLitExpression stringLitExpression,
 			Object arg)throws Exception;

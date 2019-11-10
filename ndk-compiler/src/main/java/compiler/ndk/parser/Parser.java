@@ -13,7 +13,6 @@ import compiler.ndk.ast.blockElems.BlockElem;
 import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
-import compiler.ndk.ast.closures.Closure;
 import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.lValues.LValue;
@@ -214,7 +213,6 @@ public class Parser {
     //<Declaration> ::= VAR <VarDec> | VAR <ClosureDec>
     private BlockElem declaration() throws SyntaxException {
         BlockElem d = null;
-        Closure c = null;
         Token first = t;
         //try-catch deal with declaration exception
         try {
@@ -535,7 +533,7 @@ public class Parser {
                         break;
                     case LEFT_BRACKET:
                         consume();
-                        e = new ClosureEvalExpression(first, identToken, expressionList());
+//                        e = new ClosureEvalExpression(first, identToken, expressionList());
                         match(RIGHT_BRACKET);
                         break;
                     default:

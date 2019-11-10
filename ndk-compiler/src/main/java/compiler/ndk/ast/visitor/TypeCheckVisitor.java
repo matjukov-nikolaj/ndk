@@ -3,16 +3,13 @@ package compiler.ndk.ast.visitor;
 import compiler.ndk.lexer.TokenStream.Kind;
 import compiler.ndk.codebuilder.TypeConstants;
 import compiler.ndk.ast.blockElems.BlockElem;
-import compiler.ndk.ast.blockElems.declarations.ClosureDec;
 import compiler.ndk.ast.blockElems.declarations.Declaration;
 import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
-import compiler.ndk.ast.closures.Closure;
 import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
-import compiler.ndk.ast.qualifiedNames.QualifiedName;
 import compiler.ndk.ast.blockElems.statements.*;
 import compiler.ndk.ast.types.SimpleType;
 import compiler.ndk.ast.types.UndeclaredType;
@@ -63,7 +60,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 				String listType = "Ljava/util/ArrayList<" + elementType + ">;";
 				check(exprType.equals(listType), "uncompatible assignment type", assignmentStatement);
 			}
-		} else {//if (lvType.substring(0, lvType.indexOf("<")).equals("Ljava/util/Map$Entry")){
+		} else {
 			throw new UnsupportedOperationException("Map is not support yet");
 		}		
 		return null;		
@@ -134,100 +131,13 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return null;
 	}
 
-	/**
-	 * Sets the expressionType to booleanType and returns it
-	 * 
-	 * @param booleanLitExpression
-	 * @param arg
-	 * @return
-	 * @throws Exception
-	 */
-
-	/**
-	 * A closure defines a new scope Visit all the declarations in the
-	 * formalArgList, and all the statements in the statementList construct and
-	 * set the JVMType, the argType array, and the result type
-	 * 
-	 * @param closure
-	 * @param arg
-	 * @return
-	 * @throws Exception
-	 */
-	@Override
-	public Object visitClosure(Closure closure, Object arg) throws Exception {
-//		List<String> argTypes = new ArrayList<String>();
-//		String resultType = null;
-//		int numScopes = symbolTable.enterScope();
-////		 visit children
-//		for (VarDec vd : closure.formalArgList) {
-//			String vdType = (String) vd.visit(this, arg);
-//			argTypes.add(vdType);
-//		}
-//		for (Statement s : closure.statementList) {
-//			s.visit(this, arg);
-//		}
-//		int numScopesExit = symbolTable.leaveScope();
-//		check(numScopesExit > 0 && numScopesExit == numScopes,
-//				"unbalanced scopes", closure);
-//		closure.setJVMType(JVMType);
-//		closure.setArgTypes(argTypes);
-//		closure.setResultType(resultType);
-//		return resultType;
-		throw new UnsupportedOperationException("not yet implemented");
-	}
-
-	/**
-	 * Make sure that the name has not already been declared and insert in
-	 * symbol table. Visit the closure
-	 * @throws Exception 
-	 */
-	@Override
-	public Object visitClosureDec(ClosureDec closureDec, Object arg) throws Exception {
-		String ident = closureDec.identToken.getText();
-		check(symbolTable.insert(ident, closureDec) == true, "redeclared Clousere", closureDec);
-		closureDec.closure.visit(this, arg);
-//		return null;
-		throw new UnsupportedOperationException("not yet implemented");
-	}
-
-	/**
-	 * Check that the given name is declared as a closure Check the argument
-	 * types The type is the return type of the closure
-	 */
-	@Override
-	public Object visitClosureEvalExpression(
-			ClosureEvalExpression closureEvalExpression, Object arg)
-			throws Exception {
-		String ident = closureEvalExpression.identToken.getText();
-		Declaration dec = symbolTable.lookup(ident);
-		check(dec != null, "redeclare ClosureEval", closureEvalExpression);
-//		Declaration dec = symbolTable.lookup(ident);
-		if (dec instanceof ClosureDec) {
-			for (Expression expr : closureEvalExpression.expressionList) {
-				expr.visit(this, arg);
-			}
-		} else {
-			throw new TypeCheckException(ident + " is not defined as a closure", closureEvalExpression);
-		}		
-//		return null;
-		throw new UnsupportedOperationException("not yet implemented");
-	}
-
-	@Override
-	public Object visitClosureExpression(ClosureExpression closureExpression,
-										 Object arg) throws Exception {
-//		String closureReturnType = (String) closureExpression.closure.visit(this, arg);	
-//		return closureReturnType;
-		throw new UnsupportedOperationException("not yet implemented");
-	}
-
 	@Override
 	public Object visitExpressionLValue(ExpressionLValue expressionLValue,
 										Object arg) throws Exception {
 		String ident = expressionLValue.identToken.getText();
 		Declaration dec = symbolTable.lookup(ident);
 		check(dec != null, "redeclare ExpressionLValue", expressionLValue);
-//		Declaration dec = symbolTable.lookup(ident);
+
 		if (!(dec instanceof VarDec)) {
 			throw new TypeCheckException(ident + " is not defined as a variable", expressionLValue);
 		} else {
@@ -322,12 +232,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		}
 		program.block.visit(this, true);
 		return null;
-	}
-
-	@Override
-	public Object visitQualifiedName(QualifiedName qualifiedName, Object arg) {
-//		return null;
-		throw new UnsupportedOperationException("not yet implemented");
 	}
 
 	/**
