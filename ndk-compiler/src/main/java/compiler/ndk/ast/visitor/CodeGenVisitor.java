@@ -15,8 +15,6 @@ import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.qualifiedNames.QualifiedName;
 import compiler.ndk.ast.blockElems.statements.*;
-//import compiler.ndk.ast.types.KeyValueType;
-//import compiler.ndk.ast.types.ListType;
 import compiler.ndk.ast.types.SimpleType;
 import compiler.ndk.ast.types.UndeclaredType;
 import org.objectweb.asm.*;
