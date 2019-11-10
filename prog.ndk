@@ -1,3 +1,8 @@
 class BubbleSort {
-
+    var a: int;
+    var b: string;
+    a = 2 + 5;
+    b = "hello";
+    print a;
+    print b;
 }

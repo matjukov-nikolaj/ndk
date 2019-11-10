@@ -14,8 +14,8 @@ import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.qualifiedNames.QualifiedName;
 import compiler.ndk.ast.blockElems.statements.*;
-import compiler.ndk.ast.types.KeyValueType;
-import compiler.ndk.ast.types.ListType;
+//import compiler.ndk.ast.types.KeyValueType;
+//import compiler.ndk.ast.types.ListType;
 import compiler.ndk.ast.types.SimpleType;
 import compiler.ndk.ast.types.UndeclaredType;
 import compiler.ndk.symbolTable.SymbolTable;
@@ -144,13 +144,13 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	 * @return
 	 * @throws Exception
 	 */
-	@Override
-	public Object visitBooleanLitExpression(
-			BooleanLitExpression booleanLitExpression, Object arg)
-			throws Exception {
-		booleanLitExpression.setType(booleanType);
-		return booleanType;
-	}
+//	@Override
+//	public Object visitBooleanLitExpression(
+//			BooleanLitExpression booleanLitExpression, Object arg)
+//			throws Exception {
+//		booleanLitExpression.setType(booleanType);
+//		return booleanType;
+//	}
 
 	/**
 	 * A closure defines a new scope Visit all the declarations in the
@@ -300,27 +300,27 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		}		
 	}
 
-	@Override
-	public Object visitIfElseStatement(IfElseStatement ifElseStatement,
-									   Object arg) throws Exception {
-		String condType = (String) ifElseStatement.expression.visit(this, arg);
-		check(condType.equals(booleanType), "uncompatible IfElse condition", ifElseStatement);
-		ifElseStatement.ifBlock.visit(this, arg);
-		ifElseStatement.elseBlock.visit(this, arg);
-		return null;
-	}
-
-	/**
-	 * expression type is boolean
-	 */
-	@Override
-	public Object visitIfStatement(IfStatement ifStatement, Object arg)
-			throws Exception {
-		String condType = (String) ifStatement.expression.visit(this, arg);
-		check(condType.equals(booleanType), "uncompatible If condition", ifStatement);
-		ifStatement.block.visit(this, arg);
-		return null;
-	}
+//	@Override
+//	public Object visitIfElseStatement(IfElseStatement ifElseStatement,
+//									   Object arg) throws Exception {
+//		String condType = (String) ifElseStatement.expression.visit(this, arg);
+//		check(condType.equals(booleanType), "uncompatible IfElse condition", ifElseStatement);
+//		ifElseStatement.ifBlock.visit(this, arg);
+//		ifElseStatement.elseBlock.visit(this, arg);
+//		return null;
+//	}
+//
+//	/**
+//	 * expression type is boolean
+//	 */
+//	@Override
+//	public Object visitIfStatement(IfStatement ifStatement, Object arg)
+//			throws Exception {
+//		String condType = (String) ifStatement.expression.visit(this, arg);
+//		check(condType.equals(booleanType), "uncompatible If condition", ifStatement);
+//		ifStatement.block.visit(this, arg);
+//		return null;
+//	}
 
 	/**
 	 * expression type is int
@@ -332,98 +332,98 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return intType;
 	}
 
-	@Override
-	public Object visitKeyExpression(KeyExpression keyExpression, Object arg)
-			throws Exception {
-		String keyExprType = (String) keyExpression.expression.visit(this, arg);
-		keyExpression.setType(keyExprType);
-		return keyExprType;
-	}
-
-	@Override
-	public Object visitKeyValueExpression(
-			KeyValueExpression keyValueExpression, Object arg) throws Exception {
-	//	String keyType = (String) keyValueExpression.key.visit(this, arg);
-	//	String valueTyoe = (String) keyValueExpression.value.visit(this, arg);
-		throw new UnsupportedOperationException("not yet implemented");
-	}
-
-	@Override
-	public Object visitKeyValueType(KeyValueType keyValueType, Object arg)
-			throws Exception {
-		keyValueType.keyType.visit(this, arg);
-		keyValueType.valueType.visit(this, arg);
-//		return keyValueType.getJVMType();
-		throw new UnsupportedOperationException("not yet implemented");
-	}
-
-	// visit the expressions (children) and ensure they are the same type
-	// the return type is "Ljava/util/ArrayList<"+type0+">;" where type0 is the
-	// type of elements in the list
-	// this should handle lists of lists, and empty list. An empty list is
-	// indicated by "Ljava/util/ArrayList;".
-	@Override
-	public Object visitListExpression(ListExpression listExpression, Object arg)
-			throws Exception {
-		if (listExpression.expressionList.isEmpty()) {	
-			listExpression.setType(emptyList);
-			return emptyList;
-		}		
-		String oldListType = (String) listExpression.expressionList.get(0).visit(this, arg);
-		for(Expression expr : listExpression.expressionList) {
-			String listType = (String) expr.visit(this, arg);
-			check(oldListType.equals(listType),	"uncompatible list type", listExpression);
-			oldListType = listType;			
-		}
-		String listType = "Ljava/util/ArrayList<" + oldListType + ">;";
-		listExpression.setType(listType);
-		return listType;
-	}
-
-	/** gets the type from the enclosed expression */
-	@Override
-	public Object visitListElemExpression(
-			ListElemExpression listOrMapElemExpression, Object arg)
-			throws Exception {
-		String ident = listOrMapElemExpression.identToken.getText();
-		Declaration dec = symbolTable.lookup(ident);
-		check(dec != null, "undeclare MapElemExpression", listOrMapElemExpression);
-		if (!(dec instanceof VarDec)) {			
-			throw new TypeCheckException(ident + " is not defined as a variable", listOrMapElemExpression);
-		}	
-		String varType = (String) ((VarDec)dec).type.visit(this, arg);
-		if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
-			String lomrExprType = (String) listOrMapElemExpression.expression.visit(this, arg);
-			check(lomrExprType.equals(intType), "List subscript must be int", listOrMapElemExpression);
-			String elementType = varType.substring(varType.indexOf("<") + 1, varType.lastIndexOf(">"));
-			listOrMapElemExpression.setType(elementType);
-			return elementType;
-		} else {
-			throw new UnsupportedOperationException("not yet implemented");
-		}
-	}
-
-	@Override
-	public Object visitListType(ListType listType, Object arg) throws Exception {
-		listType.type.visit(this, arg);
-		return listType.getJVMType();	
-	}
-
-	@Override
-	public Object visitMapListExpression(MapListExpression mapListExpression,
-			Object arg) throws Exception {
-		if (mapListExpression.mapList.isEmpty()) {
-			return emptyMap;
-		}
-		String oldMapListType = (String) mapListExpression.mapList.get(0).visit(this, arg);
-		for (KeyValueExpression kvExpr : mapListExpression.mapList) {
-			String mapListType = (String) kvExpr.visit(this, arg);
-			check(oldMapListType.equals(mapListType),	"uncompatible list type", mapListExpression);
-			oldMapListType = mapListType;		
-		}
-//		return oldMapListType;
-		throw new UnsupportedOperationException("not yet implemented");
-	}
+//	@Override
+//	public Object visitKeyExpression(KeyExpression keyExpression, Object arg)
+//			throws Exception {
+//		String keyExprType = (String) keyExpression.expression.visit(this, arg);
+//		keyExpression.setType(keyExprType);
+//		return keyExprType;
+//	}
+//
+//	@Override
+//	public Object visitKeyValueExpression(
+//			KeyValueExpression keyValueExpression, Object arg) throws Exception {
+//	//	String keyType = (String) keyValueExpression.key.visit(this, arg);
+//	//	String valueTyoe = (String) keyValueExpression.value.visit(this, arg);
+//		throw new UnsupportedOperationException("not yet implemented");
+//	}
+//
+//	@Override
+//	public Object visitKeyValueType(KeyValueType keyValueType, Object arg)
+//			throws Exception {
+//		keyValueType.keyType.visit(this, arg);
+//		keyValueType.valueType.visit(this, arg);
+////		return keyValueType.getJVMType();
+//		throw new UnsupportedOperationException("not yet implemented");
+//	}
+//
+//	// visit the expressions (children) and ensure they are the same type
+//	// the return type is "Ljava/util/ArrayList<"+type0+">;" where type0 is the
+//	// type of elements in the list
+//	// this should handle lists of lists, and empty list. An empty list is
+//	// indicated by "Ljava/util/ArrayList;".
+//	@Override
+//	public Object visitListExpression(ListExpression listExpression, Object arg)
+//			throws Exception {
+//		if (listExpression.expressionList.isEmpty()) {
+//			listExpression.setType(emptyList);
+//			return emptyList;
+//		}
+//		String oldListType = (String) listExpression.expressionList.get(0).visit(this, arg);
+//		for(Expression expr : listExpression.expressionList) {
+//			String listType = (String) expr.visit(this, arg);
+//			check(oldListType.equals(listType),	"uncompatible list type", listExpression);
+//			oldListType = listType;
+//		}
+//		String listType = "Ljava/util/ArrayList<" + oldListType + ">;";
+//		listExpression.setType(listType);
+//		return listType;
+//	}
+//
+//	/** gets the type from the enclosed expression */
+//	@Override
+//	public Object visitListElemExpression(
+//			ListElemExpression listOrMapElemExpression, Object arg)
+//			throws Exception {
+//		String ident = listOrMapElemExpression.identToken.getText();
+//		Declaration dec = symbolTable.lookup(ident);
+//		check(dec != null, "undeclare MapElemExpression", listOrMapElemExpression);
+//		if (!(dec instanceof VarDec)) {
+//			throw new TypeCheckException(ident + " is not defined as a variable", listOrMapElemExpression);
+//		}
+//		String varType = (String) ((VarDec)dec).type.visit(this, arg);
+//		if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
+//			String lomrExprType = (String) listOrMapElemExpression.expression.visit(this, arg);
+//			check(lomrExprType.equals(intType), "List subscript must be int", listOrMapElemExpression);
+//			String elementType = varType.substring(varType.indexOf("<") + 1, varType.lastIndexOf(">"));
+//			listOrMapElemExpression.setType(elementType);
+//			return elementType;
+//		} else {
+//			throw new UnsupportedOperationException("not yet implemented");
+//		}
+//	}
+//
+//	@Override
+//	public Object visitListType(ListType listType, Object arg) throws Exception {
+//		listType.type.visit(this, arg);
+//		return listType.getJVMType();
+//	}
+//
+//	@Override
+//	public Object visitMapListExpression(MapListExpression mapListExpression,
+//			Object arg) throws Exception {
+//		if (mapListExpression.mapList.isEmpty()) {
+//			return emptyMap;
+//		}
+//		String oldMapListType = (String) mapListExpression.mapList.get(0).visit(this, arg);
+//		for (KeyValueExpression kvExpr : mapListExpression.mapList) {
+//			String mapListType = (String) kvExpr.visit(this, arg);
+//			check(oldMapListType.equals(mapListType),	"uncompatible list type", mapListExpression);
+//			oldMapListType = mapListType;
+//		}
+////		return oldMapListType;
+//		throw new UnsupportedOperationException("not yet implemented");
+//	}
 
 	@Override
 	public Object visitPrintStatement(PrintStatement printStatement, Object arg)
@@ -460,22 +460,22 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	 * Note that in spite of the name, this is not in the Expression type
 	 * hierarchy.
 	 */
-	@Override
-	public Object visitRangeExpression(RangeExpression rangeExpression,
-			Object arg) throws Exception {
-		String lowerType = (String) rangeExpression.lower.visit(this, arg);
-		String upperType = (String) rangeExpression.upper.visit(this, arg);
-		check(lowerType.equals(intType) && upperType.equals(intType), "uncompatible range expression", rangeExpression);
-		return null;
-	}
-
-	// nothing to do here
-	@Override
-	public Object visitReturnStatement(ReturnStatement returnStatement,
-									   Object arg) throws Exception {
-//		return returnStatement.expression.visit(this, arg);
-		throw new UnsupportedOperationException("not yet implemented");
-	}
+//	@Override
+//	public Object visitRangeExpression(RangeExpression rangeExpression,
+//			Object arg) throws Exception {
+//		String lowerType = (String) rangeExpression.lower.visit(this, arg);
+//		String upperType = (String) rangeExpression.upper.visit(this, arg);
+//		check(lowerType.equals(intType) && upperType.equals(intType), "uncompatible range expression", rangeExpression);
+//		return null;
+//	}
+//
+//	// nothing to do here
+//	@Override
+//	public Object visitReturnStatement(ReturnStatement returnStatement,
+//									   Object arg) throws Exception {
+////		return returnStatement.expression.visit(this, arg);
+//		throw new UnsupportedOperationException("not yet implemented");
+//	}
 
 	@Override
 	public Object visitSimpleType(SimpleType simpleType, Object arg)
@@ -483,17 +483,17 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return simpleType.getJVMType();
 	}
 
-	@Override
-	public Object visitSizeExpression(SizeExpression sizeExpression, Object arg)
-			throws Exception {
-		String exprType = (String) sizeExpression.expression.visit(this, arg);		
-		if (exprType.substring(0, exprType.indexOf("<")).equals("Ljava/util/List")) {
-			sizeExpression.setType(intType);
-			return intType;
-		} else {
-			throw new TypeCheckException("size is undefined for " + exprType, sizeExpression);
-		}		
-	}
+//	@Override
+//	public Object visitSizeExpression(SizeExpression sizeExpression, Object arg)
+//			throws Exception {
+//		String exprType = (String) sizeExpression.expression.visit(this, arg);
+//		if (exprType.substring(0, exprType.indexOf("<")).equals("Ljava/util/List")) {
+//			sizeExpression.setType(intType);
+//			return intType;
+//		} else {
+//			throw new TypeCheckException("size is undefined for " + exprType, sizeExpression);
+//		}
+//	}
 
 	@Override
 	public Object visitStringLitExpression(
@@ -553,31 +553,31 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	 * All checking will be done in the children since grammar ensures that the
 	 * rangeExpression is a rangeExpression.
 	 */
-	@Override
-	public Object visitWhileRangeStatement(
-			WhileRangeStatement whileRangeStatement, Object arg)
-			throws Exception {
-		whileRangeStatement.rangeExpression.visit(this, arg);
-		whileRangeStatement.block.visit(this, arg);
-		return null;
-	}
-
-	@Override
-	public Object visitWhileStarStatement(
-			WhileStarStatement whileStarStatement, Object arg) throws Exception {
-		whileStarStatement.expression.visit(this, arg);
-		whileStarStatement.block.visit(this, arg);
-		return null;
-	}
-
-	@Override
-	public Object visitWhileStatement(WhileStatement whileStatement, Object arg)
-			throws Exception {
-		whileStatement.expression.visit(this, arg);
-		String condType = (String) whileStatement.expression.visit(this, arg);
-		check(condType.equals(booleanType), "uncompatible If condition", whileStatement);
-		whileStatement.block.visit(this, arg);
-		return null;
-	}
+//	@Override
+//	public Object visitWhileRangeStatement(
+//			WhileRangeStatement whileRangeStatement, Object arg)
+//			throws Exception {
+//		whileRangeStatement.rangeExpression.visit(this, arg);
+//		whileRangeStatement.block.visit(this, arg);
+//		return null;
+//	}
+//
+//	@Override
+//	public Object visitWhileStarStatement(
+//			WhileStarStatement whileStarStatement, Object arg) throws Exception {
+//		whileStarStatement.expression.visit(this, arg);
+//		whileStarStatement.block.visit(this, arg);
+//		return null;
+//	}
+//
+//	@Override
+//	public Object visitWhileStatement(WhileStatement whileStatement, Object arg)
+//			throws Exception {
+//		whileStatement.expression.visit(this, arg);
+//		String condType = (String) whileStatement.expression.visit(this, arg);
+//		check(condType.equals(booleanType), "uncompatible If condition", whileStatement);
+//		whileStatement.block.visit(this, arg);
+//		return null;
+//	}
 
 }

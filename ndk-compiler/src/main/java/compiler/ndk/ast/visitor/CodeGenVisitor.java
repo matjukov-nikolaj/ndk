@@ -15,8 +15,8 @@ import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.qualifiedNames.QualifiedName;
 import compiler.ndk.ast.blockElems.statements.*;
-import compiler.ndk.ast.types.KeyValueType;
-import compiler.ndk.ast.types.ListType;
+//import compiler.ndk.ast.types.KeyValueType;
+//import compiler.ndk.ast.types.ListType;
 import compiler.ndk.ast.types.SimpleType;
 import compiler.ndk.ast.types.UndeclaredType;
 import org.objectweb.asm.*;
@@ -117,13 +117,13 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 			mv.visitMethodInsn(INVOKESPECIAL, "java/util/ArrayList", "<init>", "()V", false);
 			mv.visitFieldInsn(PUTFIELD, className, varName, "Ljava/util/List;");
 			((InheritedAttributes) arg).listName = varName;	
-			if(assignmentStatement.expression instanceof ListElemExpression) {
-				mv.visitVarInsn(ALOAD, 0);
+//			if(assignmentStatement.expression instanceof ListElemExpression) {
+//				mv.visitVarInsn(ALOAD, 0);
+//				assignmentStatement.expression.visit(this, arg);
+//				mv.visitFieldInsn(PUTFIELD, className, varName, "Ljava/util/List;");
+//			} else {
 				assignmentStatement.expression.visit(this, arg);
-				mv.visitFieldInsn(PUTFIELD, className, varName, "Ljava/util/List;");
-			} else {
-				assignmentStatement.expression.visit(this, arg);
-			}
+//			}
 		}
 		return null;			
 	}	
@@ -321,18 +321,18 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 		return null;
 	}
 	
-	@Override
-	public Object visitBooleanLitExpression(
-			BooleanLitExpression booleanLitExpression, Object arg)
-			throws Exception {
-		MethodVisitor mv = ((InheritedAttributes) arg).mv;
-		if (booleanLitExpression.value == true) {
-			mv.visitInsn(ICONST_1);
-		} else {
-			mv.visitInsn(ICONST_0);
-		}	
-		return null;
-	}
+//	@Override
+//	public Object visitBooleanLitExpression(
+//			BooleanLitExpression booleanLitExpression, Object arg)
+//			throws Exception {
+//		MethodVisitor mv = ((InheritedAttributes) arg).mv;
+//		if (booleanLitExpression.value == true) {
+//			mv.visitInsn(ICONST_1);
+//		} else {
+//			mv.visitInsn(ICONST_0);
+//		}
+//		return null;
+//	}
 
 	@Override
 	public Object visitClosure(Closure closure, Object arg) throws Exception {
@@ -383,31 +383,31 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 				"code generation not yet implemented");
 	}	
 
-	@Override
-	public Object visitKeyExpression(KeyExpression keyExpression, Object arg)
-			throws Exception {
-		keyExpression.expression.visit(this, arg);
-		throw new UnsupportedOperationException(
-				"code generation not yet implemented");
-	}
-
-	@Override
-	public Object visitKeyValueExpression(
-			KeyValueExpression keyValueExpression, Object arg) throws Exception {
-		keyValueExpression.key.visit(this, arg);
-		keyValueExpression.value.visit(this, arg);
-		throw new UnsupportedOperationException(
-				"code generation not yet implemented");
-	}
-
-	@Override
-	public Object visitKeyValueType(KeyValueType keyValueType, Object arg)
-			throws Exception {
-		keyValueType.keyType.visit(this, arg);
-		keyValueType.valueType.visit(this, arg);
-		throw new UnsupportedOperationException(
-				"code generation not yet implemented");
-	}
+//	@Override
+//	public Object visitKeyExpression(KeyExpression keyExpression, Object arg)
+//			throws Exception {
+//		keyExpression.expression.visit(this, arg);
+//		throw new UnsupportedOperationException(
+//				"code generation not yet implemented");
+//	}
+//
+//	@Override
+//	public Object visitKeyValueExpression(
+//			KeyValueExpression keyValueExpression, Object arg) throws Exception {
+//		keyValueExpression.key.visit(this, arg);
+//		keyValueExpression.value.visit(this, arg);
+//		throw new UnsupportedOperationException(
+//				"code generation not yet implemented");
+//	}
+//
+//	@Override
+//	public Object visitKeyValueType(KeyValueType keyValueType, Object arg)
+//			throws Exception {
+//		keyValueType.keyType.visit(this, arg);
+//		keyValueType.valueType.visit(this, arg);
+//		throw new UnsupportedOperationException(
+//				"code generation not yet implemented");
+//	}
 
 	
 
@@ -477,22 +477,22 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 				"code generation not yet implemented");
 	}
 
-	@Override
-	public Object visitRangeExpression(RangeExpression rangeExpression,
-			Object arg) throws Exception {
-		rangeExpression.lower.visit(this, arg);
-		rangeExpression.upper.visit(this, arg);
-		throw new UnsupportedOperationException(
-				"code generation not yet implemented");
-	}
-
-	@Override
-	public Object visitReturnStatement(ReturnStatement returnStatement,
-									   Object arg) throws Exception {
-		returnStatement.expression.visit(this, arg);
-		throw new UnsupportedOperationException(
-				"code generation not yet implemented");
-	}
+//	@Override
+//	public Object visitRangeExpression(RangeExpression rangeExpression,
+//			Object arg) throws Exception {
+//		rangeExpression.lower.visit(this, arg);
+//		rangeExpression.upper.visit(this, arg);
+//		throw new UnsupportedOperationException(
+//				"code generation not yet implemented");
+//	}
+//
+//	@Override
+//	public Object visitReturnStatement(ReturnStatement returnStatement,
+//									   Object arg) throws Exception {
+//		returnStatement.expression.visit(this, arg);
+//		throw new UnsupportedOperationException(
+//				"code generation not yet implemented");
+//	}
 
 	@Override
 	public Object visitValueExpression(ValueExpression valueExpression,
@@ -501,67 +501,67 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 		throw new UnsupportedOperationException(
 				"code generation not yet implemented");
 	}
-	@Override
-	public Object visitIfElseStatement(IfElseStatement ifElseStatement,
-									   Object arg) throws Exception {
-		MethodVisitor mv = ((InheritedAttributes) arg).mv;
-		Label l1 = new Label();
-		ifElseStatement.expression.visit(this, arg);
-		mv.visitJumpInsn(IFEQ, l1);
-		ifElseStatement.ifBlock.visit(this, arg);
-		Label l2 = new Label();
-		mv.visitJumpInsn(GOTO, l2);
-		mv.visitLabel(l1);
-		ifElseStatement.elseBlock.visit(this, arg);
-		mv.visitLabel(l2);
-		return null;
-	}
-
-	@Override
-	public Object visitIfStatement(IfStatement ifStatement, Object arg)
-			throws Exception {
-		MethodVisitor mv = ((InheritedAttributes) arg).mv;
-		Label l1 = new Label();
-		ifStatement.expression.visit(this, arg);
-		mv.visitJumpInsn(IFEQ, l1);
-		ifStatement.block.visit(this, arg);		
-		mv.visitLabel(l1);
-		return null;
-	}
-
-	@Override
-	public Object visitWhileRangeStatement(
-			WhileRangeStatement whileRangeStatement, Object arg)
-			throws Exception {
-		whileRangeStatement.rangeExpression.visit(this, arg);
-		whileRangeStatement.block.visit(this, arg);
-		throw new UnsupportedOperationException(
-				"code generation not yet implemented");
-	}
-
-	@Override
-	public Object visitWhileStarStatement(WhileStarStatement whileStarStatement,
-			Object arg) throws Exception {
-		whileStarStatement.expression.visit(this, arg);
-		whileStarStatement.block.visit(this, arg);
-		throw new UnsupportedOperationException(
-				"code generation not yet implemented");
-	}
-
-	@Override
-	public Object visitWhileStatement(WhileStatement whileStatement, Object arg)
-			throws Exception {
-		MethodVisitor mv = ((InheritedAttributes) arg).mv;
-		Label l1 = new Label();		
-		mv.visitLabel(l1);
-		whileStatement.expression.visit(this, arg);		
-		Label l2 = new Label();	
-		mv.visitJumpInsn(IFEQ, l2);			
-		whileStatement.block.visit(this, arg);	
-		mv.visitJumpInsn(GOTO, l1);
-		mv.visitLabel(l2);		
-		return null;
-	}
+//	@Override
+//	public Object visitIfElseStatement(IfElseStatement ifElseStatement,
+//									   Object arg) throws Exception {
+//		MethodVisitor mv = ((InheritedAttributes) arg).mv;
+//		Label l1 = new Label();
+//		ifElseStatement.expression.visit(this, arg);
+//		mv.visitJumpInsn(IFEQ, l1);
+//		ifElseStatement.ifBlock.visit(this, arg);
+//		Label l2 = new Label();
+//		mv.visitJumpInsn(GOTO, l2);
+//		mv.visitLabel(l1);
+//		ifElseStatement.elseBlock.visit(this, arg);
+//		mv.visitLabel(l2);
+//		return null;
+//	}
+//
+//	@Override
+//	public Object visitIfStatement(IfStatement ifStatement, Object arg)
+//			throws Exception {
+//		MethodVisitor mv = ((InheritedAttributes) arg).mv;
+//		Label l1 = new Label();
+//		ifStatement.expression.visit(this, arg);
+//		mv.visitJumpInsn(IFEQ, l1);
+//		ifStatement.block.visit(this, arg);
+//		mv.visitLabel(l1);
+//		return null;
+//	}
+//
+//	@Override
+//	public Object visitWhileRangeStatement(
+//			WhileRangeStatement whileRangeStatement, Object arg)
+//			throws Exception {
+//		whileRangeStatement.rangeExpression.visit(this, arg);
+//		whileRangeStatement.block.visit(this, arg);
+//		throw new UnsupportedOperationException(
+//				"code generation not yet implemented");
+//	}
+//
+//	@Override
+//	public Object visitWhileStarStatement(WhileStarStatement whileStarStatement,
+//			Object arg) throws Exception {
+//		whileStarStatement.expression.visit(this, arg);
+//		whileStarStatement.block.visit(this, arg);
+//		throw new UnsupportedOperationException(
+//				"code generation not yet implemented");
+//	}
+//
+//	@Override
+//	public Object visitWhileStatement(WhileStatement whileStatement, Object arg)
+//			throws Exception {
+//		MethodVisitor mv = ((InheritedAttributes) arg).mv;
+//		Label l1 = new Label();
+//		mv.visitLabel(l1);
+//		whileStatement.expression.visit(this, arg);
+//		Label l2 = new Label();
+//		mv.visitJumpInsn(IFEQ, l2);
+//		whileStatement.block.visit(this, arg);
+//		mv.visitJumpInsn(GOTO, l1);
+//		mv.visitLabel(l2);
+//		return null;
+//	}
 
 	@Override
 	public Object visitUndeclaredType(UndeclaredType undeclaredType, Object arg)
@@ -586,89 +586,89 @@ public class CodeGenVisitor implements ASTVisitor, Opcodes, TypeConstants {
 		return null;
 	}
 	
-	@Override
-	public Object visitListExpression(ListExpression listExpression, Object arg)
-			throws Exception {
-		MethodVisitor mv = ((InheritedAttributes) arg).mv;	
-		String listName = ((InheritedAttributes) arg).listName;	
-		String elementType = null;
-		if (!listExpression.expressionList.isEmpty()) {
-			String listType = listExpression.getType();
-			elementType = listType.substring(listType.indexOf("<") + 1, listType.indexOf(">"));
-		}		
-		for (Expression e : listExpression.expressionList) {
-			mv.visitVarInsn(ALOAD, 0);
-			mv.visitFieldInsn(GETFIELD, className, listName, "Ljava/util/List;");
-			e.visit(this, arg);			
-			if (elementType.equals(intType)) {
-				mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
-			} else if (elementType.equals(booleanType))	{
-				mv.visitMethodInsn(INVOKESTATIC, "java/lang/Boolean", "valueOf", "(Z)Ljava/lang/Boolean;", false);
-			} else if (elementType.equals(stringType)) {
-				// nothing to do
-			} else if (elementType.substring(0, elementType.indexOf("<")).equals("Ljava/util/List")) {
-//				mv.visitVarInsn(ALOAD, 1);
-			}
-			mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "add", "(Ljava/lang/Object;)Z", true);
-			mv.visitInsn(POP);
-		}
-		return null;
-	}
-
-	@Override
-	public Object visitListElemExpression(
-			ListElemExpression listOrMapElemExpression, Object arg)
-			throws Exception {		
-		MethodVisitor mv = ((InheritedAttributes) arg).mv;
-		String varName = listOrMapElemExpression.identToken.getText();
-		mv.visitVarInsn(ALOAD, 0);
-		mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/List;");
-		listOrMapElemExpression.expression.visit(this, arg);
-		String elementType = listOrMapElemExpression.getType();
-		mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "get", "(I)Ljava/lang/Object;", true);
-		if (elementType.equals(intType)) {
-			mv.visitTypeInsn(CHECKCAST, "java/lang/Integer");
-			mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Integer", "intValue", "()I", false);
-		} else if (elementType.equals(booleanType))	{
-			mv.visitTypeInsn(CHECKCAST, "java/lang/Boolean");
-			mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Boolean", "booleanValue", "()Z", false);
-		} else if (elementType.equals(stringType)) {
-			mv.visitTypeInsn(CHECKCAST, "java/lang/String");
-			mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/String", "toString", "()Ljava/lang/String;", false);
-		} else if (elementType.substring(0, elementType.indexOf("<")).equals("Ljava/util/List")) {
-			mv.visitTypeInsn(CHECKCAST, "java/util/List");
-		}		
-		return null;
-	}
-
-	@Override
-	public Object visitListType(ListType listType, Object arg) throws Exception {
-		return listType.getJVMType();
-	}
-
-	@Override
-	public Object visitMapListExpression(MapListExpression mapListExpression,
-			Object arg) throws Exception {
-		for (Expression e : mapListExpression.mapList) {
-			e.visit(this, arg);
-		}
-		throw new UnsupportedOperationException(
-				"code generation not yet implemented");
-	}
-	
-	@Override
-	public Object visitSizeExpression(SizeExpression sizeExpression, Object arg)
-			throws Exception {
-		MethodVisitor mv = ((InheritedAttributes) arg).mv;
-		sizeExpression.expression.visit(this, arg);			
-		String varType = sizeExpression.expression.getType();
-		if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
-			mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "size", "()I", true);
-		} else {
-			throw new UnsupportedOperationException("Map size not support yet");
-		}
-		return null;
-	}
+//	@Override
+//	public Object visitListExpression(ListExpression listExpression, Object arg)
+//			throws Exception {
+//		MethodVisitor mv = ((InheritedAttributes) arg).mv;
+//		String listName = ((InheritedAttributes) arg).listName;
+//		String elementType = null;
+//		if (!listExpression.expressionList.isEmpty()) {
+//			String listType = listExpression.getType();
+//			elementType = listType.substring(listType.indexOf("<") + 1, listType.indexOf(">"));
+//		}
+//		for (Expression e : listExpression.expressionList) {
+//			mv.visitVarInsn(ALOAD, 0);
+//			mv.visitFieldInsn(GETFIELD, className, listName, "Ljava/util/List;");
+//			e.visit(this, arg);
+//			if (elementType.equals(intType)) {
+//				mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
+//			} else if (elementType.equals(booleanType))	{
+//				mv.visitMethodInsn(INVOKESTATIC, "java/lang/Boolean", "valueOf", "(Z)Ljava/lang/Boolean;", false);
+//			} else if (elementType.equals(stringType)) {
+//				// nothing to do
+//			} else if (elementType.substring(0, elementType.indexOf("<")).equals("Ljava/util/List")) {
+////				mv.visitVarInsn(ALOAD, 1);
+//			}
+//			mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "add", "(Ljava/lang/Object;)Z", true);
+//			mv.visitInsn(POP);
+//		}
+//		return null;
+//	}
+//
+//	@Override
+//	public Object visitListElemExpression(
+//			ListElemExpression listOrMapElemExpression, Object arg)
+//			throws Exception {
+//		MethodVisitor mv = ((InheritedAttributes) arg).mv;
+//		String varName = listOrMapElemExpression.identToken.getText();
+//		mv.visitVarInsn(ALOAD, 0);
+//		mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/List;");
+//		listOrMapElemExpression.expression.visit(this, arg);
+//		String elementType = listOrMapElemExpression.getType();
+//		mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "get", "(I)Ljava/lang/Object;", true);
+//		if (elementType.equals(intType)) {
+//			mv.visitTypeInsn(CHECKCAST, "java/lang/Integer");
+//			mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Integer", "intValue", "()I", false);
+//		} else if (elementType.equals(booleanType))	{
+//			mv.visitTypeInsn(CHECKCAST, "java/lang/Boolean");
+//			mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Boolean", "booleanValue", "()Z", false);
+//		} else if (elementType.equals(stringType)) {
+//			mv.visitTypeInsn(CHECKCAST, "java/lang/String");
+//			mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/String", "toString", "()Ljava/lang/String;", false);
+//		} else if (elementType.substring(0, elementType.indexOf("<")).equals("Ljava/util/List")) {
+//			mv.visitTypeInsn(CHECKCAST, "java/util/List");
+//		}
+//		return null;
+//	}
+//
+//	@Override
+//	public Object visitListType(ListType listType, Object arg) throws Exception {
+//		return listType.getJVMType();
+//	}
+//
+//	@Override
+//	public Object visitMapListExpression(MapListExpression mapListExpression,
+//			Object arg) throws Exception {
+//		for (Expression e : mapListExpression.mapList) {
+//			e.visit(this, arg);
+//		}
+//		throw new UnsupportedOperationException(
+//				"code generation not yet implemented");
+//	}
+//
+//	@Override
+//	public Object visitSizeExpression(SizeExpression sizeExpression, Object arg)
+//			throws Exception {
+//		MethodVisitor mv = ((InheritedAttributes) arg).mv;
+//		sizeExpression.expression.visit(this, arg);
+//		String varType = sizeExpression.expression.getType();
+//		if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
+//			mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "size", "()I", true);
+//		} else {
+//			throw new UnsupportedOperationException("Map size not support yet");
+//		}
+//		return null;
+//	}
 
 	@Override
 	public Object visitPrintStatement(PrintStatement printStatement, Object arg)

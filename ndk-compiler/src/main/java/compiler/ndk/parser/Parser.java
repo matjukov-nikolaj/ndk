@@ -279,7 +279,7 @@ public class Parser {
             type = new SimpleType(first, typeToken);
         } else if (isKind(LEFT_SQUARE)) {
             consume();
-            type = new ListType(first, type());
+            //type = new ListType(first, type());
             match(RIGHT_SQUARE);
         } else {
             Kind[] type_set = {KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING/*, AT */};
@@ -333,12 +333,12 @@ public class Parser {
 							break;
 						}*/
                             match(RIGHT_BRACKET);
-                            s = new WhileStarStatement(first, e, block());
+                            //s = new WhileStarStatement(first, e, block());
                         } else if (isKind(LEFT_BRACKET)) {
                             consume();
                             e = expression();
                             match(RIGHT_BRACKET);
-                            s = new WhileStatement(first, e, block());
+                            //s = new WhileStatement(first, e, block());
                         } else {
                             Kind[] while_set = {MUL, LEFT_BRACKET};
                             throw new SyntaxException(t, while_set);
@@ -366,10 +366,10 @@ public class Parser {
                         block = block();
                         if (isKind(KEY_WORD_ELSE)) {
                             consume();
-                            s = new IfElseStatement(first, e, block, block());
+                            //s = new IfElseStatement(first, e, block, block());
                             break;
                         }
-                        s = new IfStatement(first, e, block);
+                        //s = new IfStatement(first, e, block);
                     } catch (SyntaxException ifException) {
                         exceptionList.add(ifException);
                         //throw token until meet "}"
@@ -531,7 +531,7 @@ public class Parser {
                 switch (t.kind) {
                     case LEFT_SQUARE:
                         consume();
-                        e = new ListElemExpression(first, identToken, expression());
+                        //e = new ListElemExpression(first, identToken, expression());
                         match(RIGHT_SQUARE);
                         break;
                     case LEFT_BRACKET:
@@ -547,14 +547,14 @@ public class Parser {
                 e = new IntLitExpression(t, t.getIntVal());
                 consume();
                 break;
-            case BL_TRUE:
-                e = new BooleanLitExpression(t, t.getBooleanVal());
-                consume();
-                break;
-            case BL_FALSE:
-                e = new BooleanLitExpression(t, t.getBooleanVal());
-                consume();
-                break;
+//            case BL_TRUE:
+//                e = new BooleanLitExpression(t, t.getBooleanVal());
+//                consume();
+//                break;
+//            case BL_FALSE:
+//                e = new BooleanLitExpression(t, t.getBooleanVal());
+//                consume();
+//                break;
             case STRING_LIT:
                 e = new StringLitExpression(t, t.getText());
                 consume();
@@ -574,15 +574,15 @@ public class Parser {
                 consume();
                 e = new UnaryExpression(first, op, factor());
                 break;
-            case KEY_WORD_SIZE:
-                consume();
-                match(LEFT_BRACKET);
-                e = new SizeExpression(first, expression());
-                match(RIGHT_BRACKET);
-                break;
+//            case KEY_WORD_SIZE:
+//                consume();
+//                match(LEFT_BRACKET);
+//                e = new SizeExpression(first, expression());
+//                match(RIGHT_BRACKET);
+//                break;
             case LEFT_SQUARE:
                 consume();
-                e = new ListExpression(first, expressionList());
+                //e = new ListExpression(first, expressionList());
                 match(RIGHT_SQUARE);
                 break;
             default:
