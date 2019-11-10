@@ -4,7 +4,6 @@ import compiler.ndk.ast.blockElems.BlockElem;
 import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
-import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
@@ -52,17 +51,6 @@ public class ToStringVisitor implements ASTVisitor {
 		for (BlockElem elem : block.elems) {
 			elem.visit(this, indent);
 		}
-		return null;
-	}
-
-	@Override
-	public Object visitExpressionLValue(ExpressionLValue expressionLValue,
-										Object arg) throws Exception {
-		sb.append(arg).append("ExpressionLValue").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(expressionLValue.identToken.getText())
-				.append('\n');
-		expressionLValue.expression.visit(this, indent);
 		return null;
 	}
 

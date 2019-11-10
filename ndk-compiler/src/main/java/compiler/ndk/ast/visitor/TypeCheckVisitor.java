@@ -7,7 +7,6 @@ import compiler.ndk.ast.blockElems.declarations.Declaration;
 import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
-import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
@@ -50,18 +49,10 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			throws Exception {
 		String lvType = (String) assignmentStatement.lvalue.visit(this, arg);
 		String exprType = (String) assignmentStatement.expression.visit(this, arg);
-		if(lvType.equals(intType) || lvType.equals(booleanType) || lvType.equals(stringType)) {
+		if (lvType.equals(intType) || lvType.equals(stringType)) {
 			check(lvType.equals(exprType), "uncompatible assignment type", assignmentStatement);
-		} else if (lvType.substring(0, lvType.indexOf("<")).equals("Ljava/util/List")) {
-			if (exprType.substring(0, lvType.indexOf("<")).equals("Ljava/util/List")) {
-				check(exprType.equals(lvType), "uncompatible assignment type", assignmentStatement);
-			} else if (!exprType.equals(emptyList)) {
-				String elementType = lvType.substring(lvType.indexOf("<") + 1, lvType.lastIndexOf(">"));
-				String listType = "Ljava/util/ArrayList<" + elementType + ">;";
-				check(exprType.equals(listType), "uncompatible assignment type", assignmentStatement);
-			}
 		} else {
-			throw new UnsupportedOperationException("Map is not support yet");
+			throw new UnsupportedOperationException("Unsuppported type");
 		}		
 		return null;		
 	}
@@ -87,26 +78,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		case MINUS:	case MUL:	case DIV:
 			check(expr0Type.equals(intType), "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 			break;
-		case EQUAL:	case NOTEQUAL:
-			if (expr0Type.equals(booleanType) || expr0Type.equals(intType) ||expr0Type.equals(stringType)) {
-				binaryExpression.setType(booleanType);
-				return booleanType;
-			} else {
-				throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
-			}	
-		case LESS_THAN: case GREATER_THAN: case LESS_EQUAL: case GREATER_EQUAL:
-			if (expr0Type.equals(booleanType) || expr0Type.equals(intType)) {
-				binaryExpression.setType(booleanType);
-				return booleanType;
-			} else {
-				throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
-			}		
-		case LSHIFT: case RSHIFT:
-			check(expr0Type.equals(intType), "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
-			break;
-		case BAR: case AND:
-			check(expr0Type.equals(booleanType), "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
-			break;
 		default:
 			throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 		} 	
@@ -129,29 +100,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		check(numScopesExit > 0 && numScopesExit == numScopes,
 				"unbalanced scopes", block);
 		return null;
-	}
-
-	@Override
-	public Object visitExpressionLValue(ExpressionLValue expressionLValue,
-										Object arg) throws Exception {
-		String ident = expressionLValue.identToken.getText();
-		Declaration dec = symbolTable.lookup(ident);
-		check(dec != null, "redeclare ExpressionLValue", expressionLValue);
-
-		if (!(dec instanceof VarDec)) {
-			throw new TypeCheckException(ident + " is not defined as a variable", expressionLValue);
-		} else {
-			String varType = (String) ((VarDec)dec).type.visit(this, arg);			
-			if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
-				String exprType = (String) expressionLValue.expression.visit(this, arg);
-				check(exprType.equals(intType), "List subscript must be int", expressionLValue);
-				String elementType = varType.substring(varType.indexOf("<") + 1, varType.lastIndexOf(">"));
-				expressionLValue.setType(elementType);
-				return elementType;
-			} else {
-				throw new UnsupportedOperationException("map not yet implemented");
-			}
-		}
 	}
 
 	@Override
@@ -262,11 +210,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	public Object visitUnaryExpression(UnaryExpression unaryExpression,
 			Object arg) throws Exception {
 		String exprType = (String) unaryExpression.expression.visit(this, arg);
-		if(unaryExpression.op.kind == NOT) {
-			if(!exprType.equals(booleanType)) {
-				throw new TypeCheckException("not operator is undefined for " + exprType, unaryExpression);
-			}			
-		} else if (unaryExpression.op.kind == MINUS) { 
+		if (unaryExpression.op.kind == MINUS) {
 			if (!exprType.equals(intType)){
 				throw new TypeCheckException("minus operator is undefined for " + exprType, unaryExpression);
 			}

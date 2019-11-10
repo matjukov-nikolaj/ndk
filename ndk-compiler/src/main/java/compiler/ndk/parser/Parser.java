@@ -13,7 +13,6 @@ import compiler.ndk.ast.blockElems.BlockElem;
 import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
-import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.lValues.LValue;
 import compiler.ndk.ast.programs.Program;
@@ -411,13 +410,7 @@ public class Parser {
         if (isKind(IDENTIFIER)) {
             Token identToken = t;
             consume();
-            if (isKind(LEFT_SQUARE)) {
-                consume();
-                l = new ExpressionLValue(first, identToken, expression());
-                match(RIGHT_SQUARE);
-            } else {
-                l = new IdentLValue(first, identToken);
-            }
+            l = new IdentLValue(first, identToken);
         }
         return l;
     }
