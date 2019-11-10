@@ -116,13 +116,12 @@ public class Parser {
         return false;
     }
 
-    static final Kind[] REL_OPS = {BAR, AND, EQUAL, NOTEQUAL, LESS_THAN, GREATER_THAN, LESS_EQUAL, GREATER_EQUAL};
     static final Kind[] WEAK_OPS = {PLUS, MINUS};
     static final Kind[] STRONG_OPS = {MUL, DIV};
     static final Kind[] VERY_STRONG_OPS = {LSHIFT, RSHIFT};
-    static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING};
-    static final Kind[] STATEMENT_FIRST = {IDENTIFIER, KEY_WORD_PRINT, KEY_WORD_WHILE, KEY_WORD_IF};
-    static final Kind[] EXPRESSION_FIRST = {IDENTIFIER, INT_LIT, BL_TRUE, BL_FALSE, STRING_LIT, NL_NULL, LEFT_BRACKET, NOT, MINUS, KEY_WORD_SIZE, LEFT_BRACE};
+    static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_STRING};
+    static final Kind[] STATEMENT_FIRST = {IDENTIFIER, KEY_WORD_PRINT};
+    static final Kind[] EXPRESSION_FIRST = {IDENTIFIER, INT_LIT, STRING_LIT, NL_NULL, LEFT_BRACKET, NOT, MINUS, LEFT_BRACE};
     List<SyntaxException> exceptionList = new ArrayList<SyntaxException>();
 
     public List<SyntaxException> getExceptionList() {
@@ -282,7 +281,7 @@ public class Parser {
             //type = new ListType(first, type());
             match(RIGHT_SQUARE);
         } else {
-            Kind[] type_set = {KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING/*, AT */};
+            Kind[] type_set = {KEY_WORD_INT, KEY_WORD_STRING/*, AT */};
             throw new SyntaxException(t, type_set);
         }
         return type;
@@ -450,12 +449,12 @@ public class Parser {
         Expression e2 = null;
         Token first = t;
         e1 = term();
-        while (isKind(REL_OPS)) {
-            Token op = t;
-            match(REL_OPS);
-            e2 = term();
-            e1 = new BinaryExpression(first, e1, op, e2);
-        }
+//        while (isKind(REL_OPS)) {
+//            Token op = t;
+//            match(REL_OPS);
+//            e2 = term();
+//            e1 = new BinaryExpression(first, e1, op, e2);
+//        }
         return e1;
     }
 
@@ -547,14 +546,6 @@ public class Parser {
                 e = new IntLitExpression(t, t.getIntVal());
                 consume();
                 break;
-//            case BL_TRUE:
-//                e = new BooleanLitExpression(t, t.getBooleanVal());
-//                consume();
-//                break;
-//            case BL_FALSE:
-//                e = new BooleanLitExpression(t, t.getBooleanVal());
-//                consume();
-//                break;
             case STRING_LIT:
                 e = new StringLitExpression(t, t.getText());
                 consume();
@@ -574,12 +565,6 @@ public class Parser {
                 consume();
                 e = new UnaryExpression(first, op, factor());
                 break;
-//            case KEY_WORD_SIZE:
-//                consume();
-//                match(LEFT_BRACKET);
-//                e = new SizeExpression(first, expression());
-//                match(RIGHT_BRACKET);
-//                break;
             case LEFT_SQUARE:
                 consume();
                 //e = new ListExpression(first, expressionList());
