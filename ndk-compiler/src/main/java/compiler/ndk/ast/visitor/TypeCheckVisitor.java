@@ -100,10 +100,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 				return booleanType;
 			} else {
 				throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
-			}		
-		case LSHIFT: case RSHIFT:
-			check(expr0Type.equals(intType), "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
-			break;
+			}
 		case BAR: case AND:
 			check(expr0Type.equals(booleanType), "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 			break;

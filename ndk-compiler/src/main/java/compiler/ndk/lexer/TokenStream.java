@@ -72,8 +72,8 @@ public class TokenStream {
 		COMMA, // ,
 		LEFT_BRACKET, // (
 		RIGHT_BRACKET, // )
-		LEFT_SQUARE, // [
-		RIGHT_SQUARE, // ]
+//		LEFT_SQUARE, // [
+//		RIGHT_SQUARE, // ]
 		LEFT_BRACE, // {
 		RIGHT_BRACE, // }
 		COLON, // :
@@ -91,8 +91,6 @@ public class TokenStream {
 		MUL, // *
 		DIV, // /
 		NOT, // !
-		LSHIFT, // <<
-		RSHIFT, // >>
 		INT_LIT, STRING_LIT,
 		/* end of file */
 		EOF,

@@ -117,7 +117,6 @@ public class Parser {
 
     static final Kind[] WEAK_OPS = {PLUS, MINUS};
     static final Kind[] STRONG_OPS = {MUL, DIV};
-    static final Kind[] VERY_STRONG_OPS = {LSHIFT, RSHIFT};
     static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_STRING};
     static final Kind[] STATEMENT_FIRST = {IDENTIFIER, KEY_WORD_PRINT};
     static final Kind[] EXPRESSION_FIRST = {IDENTIFIER, INT_LIT, STRING_LIT, NL_NULL, LEFT_BRACKET, NOT, MINUS, LEFT_BRACE};
@@ -144,7 +143,7 @@ public class Parser {
         }
     }
 
-    //<Program> ::= <ImportList> class IDENTIFIER <Block>
+    // <Program> -> class IDENTIFIER <Block>
     private Program program() throws SyntaxException {
         Token first = t;
         Program p = null;
@@ -168,7 +167,12 @@ public class Parser {
         return p;
     }
 
-    //<Block> ::= { (<Declaration> ; | <Statement> ; )* }
+//    <Block> -> {<Declarations> <Statements>}
+//    <Declarations> -> <Declaration>
+//    <Declarations> -> <Declaration> <Declarations>
+//    <Statements> -> <Statement>
+//    <Statements> -> <Statement> <Statements>
+
     private Block block() throws SyntaxException {
         List<BlockElem> elems = new ArrayList<BlockElem>();
         BlockElem blockelem = null;
@@ -210,7 +214,7 @@ public class Parser {
         return new Block(first, elems);
     }
 
-    //<Declaration> ::= VAR <VarDec> | VAR <ClosureDec>
+    //<Declaration> ->  var IDENTIFIER  : <Type> ;
     private BlockElem declaration() throws SyntaxException {
         BlockElem d = null;
         Token first = t;
@@ -266,7 +270,7 @@ public class Parser {
         return v;
     }
 
-    //<Type> ::= <SimpleType> | <KeyValueType> | <ListType>
+    //<Type> -> <SimpleType>
     private Type type() throws SyntaxException {
         Token first = t;
         Type type = null;
@@ -274,28 +278,23 @@ public class Parser {
             Token typeToken = t;
             consume();
             type = new SimpleType(first, typeToken);
-        } else if (isKind(LEFT_SQUARE)) {
-            consume();
-            //type = new ListType(first, type());
-            match(RIGHT_SQUARE);
-        } else {
-            Kind[] type_set = {KEY_WORD_INT, KEY_WORD_STRING/*, AT */};
+        }
+        else {
+            Kind[] type_set = {KEY_WORD_INT, KEY_WORD_STRING};
             throw new SyntaxException(t, type_set);
         }
         return type;
     }
 
     /*
-    <Statement> ::= <LValue> = <Expression>
-    | print <Expression>
-    | while (<Expression>) <Block>
-    | while* ( <Expression> ) <Block>
-    | while* (<RangeExpression>) < Block>
-    | if (<Expression> ) <Block>
-    | if (<Expression>) <Block> else <Block>
-    | %<Expression>
-    | return <Expression>
-    | empty
+    <Statements> -> <Statement>
+    <Statements> -> <Statement> <Statements>
+    <Statement> -> <LValue> = <Expression>;
+    <Statement> -> print <Expression>;
+    <Statement> -> while ( <BoolExpressions> ) <Block>;
+    <Statement> -> <Block>;
+    <Statement> -> if ( <BoolExpressions> ) <Block>;
+    <Statement> -> if ( <BoolExpressions> ) <Block> else <Block>;
     */
     private Statement statement() throws SyntaxException {
         Statement s = null;
@@ -322,13 +321,6 @@ public class Parser {
                             match(LEFT_BRACKET);
                             e = expression();
                             //<RangeExpression> :: <Expression> .. <Expression>
-						/*if(isKind(RANGE)){
-							consume();
-							RangeExpression re= new RangeExpression(first, e, expression());
-							match(RBRACKET);
-							s = new WhileRangeStatement(first, re, block());
-							break;
-						}*/
                             match(RIGHT_BRACKET);
                             //s = new WhileStarStatement(first, e, block());
                         } else if (isKind(LEFT_BRACKET)) {
@@ -404,59 +396,32 @@ public class Parser {
         return s;
     }
 
-    //<LValue> ::= IDENT | IDENT [ <Expression> ]
+    //<LValue> -> IDENTIFIER
+    //<LValue> -> IDENTIFIER  [ <ListExpression> ]
     private LValue lValue() throws SyntaxException {
         LValue l = null;
         Token first = t;
         if (isKind(IDENTIFIER)) {
             Token identToken = t;
             consume();
-            if (isKind(LEFT_SQUARE)) {
-                consume();
-                l = new ExpressionLValue(first, identToken, expression());
-                match(RIGHT_SQUARE);
-            } else {
                 l = new IdentLValue(first, identToken);
-            }
         }
         return l;
     }
 
-    //<ExpressionList> ::= empty | <Expression> ( , <Expression> )*!!!!!!!!!
-    private List<Expression> expressionList() throws SyntaxException {
-        List<Expression> expressions = new ArrayList<Expression>();
-        if (isKind(EXPRESSION_FIRST)) {
-            Expression prev = expression();
-            expressions.add(prev);
-            while (isKind(COMMA)) {
-                match(COMMA);
-                Expression curr = expression();
-                expressions.add(curr);
-                if (prev.firstToken.kind != curr.firstToken.kind) {
-                    throw new SyntaxException(curr.firstToken, prev.firstToken.kind);
-                }
-                prev = curr;
-            }
-        }
-        return expressions;
-    }
-
-    //<Expression> ::= <Term> (<RelOp> <Term>)*
+    //<Expression> -> <BoolExpessions>
+    //<Expression> -> <StringExpession>
+    //<Expression> -> <NumberExpression>
     private Expression expression() throws SyntaxException {
         Expression e1 = null;
         Expression e2 = null;
         Token first = t;
         e1 = term();
-//        while (isKind(REL_OPS)) {
-//            Token op = t;
-//            match(REL_OPS);
-//            e2 = term();
-//            e1 = new BinaryExpression(first, e1, op, e2);
-//        }
         return e1;
     }
 
-    //<Term> ::= <Elem> (<WeakOp> <Elem>)*
+    //<NumberExpressions> -> <NumberExpression>
+    //<NumberExpressions> -> <NumberExpression><WeakOperation><NumberExpressions>
     private Expression term() throws SyntaxException {
         Expression e1 = null;
         Expression e2 = null;
@@ -475,48 +440,24 @@ public class Parser {
         return e1;
     }
 
-    //<Elem> ::= <Thing> ( <StrongOp> <Thing>)*
+    //<NumberExpression> -> <NumberElem><StrongOperation><NumberExpression>
+    //<NumberElem> -> (<NumberExpressions>)
+    //<NumberElem> -> INT_LIT
+    //<NumberElem> -> <LValue>
     private Expression element() throws SyntaxException {
         Expression e1 = null;
         Expression e2 = null;
         Token first = t;
-        e1 = thing();
+        e1 = factor();
         while (isKind(STRONG_OPS)) {
             Token op = t;
             match(STRONG_OPS);
-            e2 = thing();
-            e1 = new BinaryExpression(first, e1, op, e2);
-        }
-        return e1;
-    }
-
-    //<Thing> ::= <Factor> ( <VeryStrongOp> <Factor )*
-    private Expression thing() throws SyntaxException {
-        Expression e1 = null;
-        Expression e2 = null;
-        Token first = t;
-        e1 = factor();
-        while (isKind(VERY_STRONG_OPS)) {
-            Token op = t;
-            match(VERY_STRONG_OPS);
             e2 = factor();
             e1 = new BinaryExpression(first, e1, op, e2);
         }
         return e1;
     }
 
-    /*
-     IDENT |
-     IDENT [ <Expression> ] |
-     INT_LIT | true | false | STRING_LIT |
-     ( <Expression> ) |
-     ! <Factor> | -<Factor> |
-     size(<Expression> ) |
-     key(<Expression ) |
-     value(<Expression >) |
-     <ClosureEvalExpression> | <Closure> |
-     <List> | <MapList>
-     */
     private Expression factor() throws SyntaxException {
         Expression e = null;
         Token first = t;
@@ -526,11 +467,6 @@ public class Parser {
                 Token identToken = t;
                 match(IDENTIFIER);
                 switch (t.kind) {
-                    case LEFT_SQUARE:
-                        consume();
-                        //e = new ListElemExpression(first, identToken, expression());
-                        match(RIGHT_SQUARE);
-                        break;
                     case LEFT_BRACKET:
                         consume();
 //                        e = new ClosureEvalExpression(first, identToken, expressionList());
@@ -562,11 +498,6 @@ public class Parser {
                 op = t;
                 consume();
                 e = new UnaryExpression(first, op, factor());
-                break;
-            case LEFT_SQUARE:
-                consume();
-                //e = new ListExpression(first, expressionList());
-                match(RIGHT_SQUARE);
                 break;
             default:
                 throw new SyntaxException(t, EXPRESSION_FIRST);
