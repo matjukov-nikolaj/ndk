@@ -8,6 +8,7 @@ import java.util.List;
 import compiler.ndk.ast.visitor.ASTNode;
 import compiler.ndk.ast.visitor.CodeGenVisitor;
 import compiler.ndk.ast.programs.Program;
+import compiler.ndk.ast.visitor.ToStringVisitor;
 import compiler.ndk.ast.visitor.TypeCheckVisitor;
 import compiler.ndk.lexer.Lexer;
 import compiler.ndk.lexer.TokenStream;
@@ -55,6 +56,7 @@ public class CodeletBuilder {
 		Parser parser = new Parser(stream);
 		System.out.println();
 		ASTNode ast = parser.parse();
+
 		if (ast == null) {
 			System.out.println("errors " + parser.getErrors());
 		}
@@ -68,6 +70,13 @@ public class CodeletBuilder {
 		Parser parser = new Parser(stream);
 		System.out.println();
 		ASTNode ast = parser.parse();
+		ToStringVisitor v = new ToStringVisitor();
+		try {
+			ast.visit(v, null);
+			System.out.println(v.getString());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		if (ast == null) {
 			System.out.println("errors " + parser.getErrors());
 		}

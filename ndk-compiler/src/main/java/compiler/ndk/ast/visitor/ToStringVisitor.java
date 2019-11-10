@@ -20,7 +20,7 @@ public class ToStringVisitor implements ASTVisitor {
 
 	private StringBuilder sb;
 
-	ToStringVisitor() {
+	public ToStringVisitor() {
 		sb = new StringBuilder();
 	}
 
@@ -169,11 +169,6 @@ public class ToStringVisitor implements ASTVisitor {
 	public Object visitProgram(Program program, Object arg) throws Exception {
 		sb.append("Program\n");
 		String indent = "  ";
-		Iterator<QualifiedName> it = program.imports.iterator();
-		while (it.hasNext()) {
-			sb.append('\n').append(indent).append(it.next().name);
-		}
-		sb.append('\n');
 		sb.append("class ").append(program.name).append('\n');
 		program.block.visit(this, indent);
 		sb.append('\n');
