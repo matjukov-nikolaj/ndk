@@ -12,7 +12,6 @@ import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
 import compiler.ndk.ast.types.SimpleType;
-import compiler.ndk.ast.types.UndeclaredType;
 import org.objectweb.asm.*;
 
 public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants {
@@ -224,12 +223,6 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         return cw.toByteArray();
     }
 
-    @Override
-    public Object visitUndeclaredType(UndeclaredType undeclaredType, Object arg)
-            throws Exception {
-        throw new UnsupportedOperationException(
-                "code generation not yet implemented");
-    }
 
     @Override
     public Object visitIdentExpression(IdentExpression identExpression,

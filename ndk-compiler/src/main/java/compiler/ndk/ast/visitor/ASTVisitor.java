@@ -7,7 +7,6 @@ import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
 import compiler.ndk.ast.types.SimpleType;
-import compiler.ndk.ast.types.UndeclaredType;
 
 public interface ASTVisitor {
     Object visitAssignmentStatement(AssignmentStatement assignmentStatement, Object arg) throws Exception;
@@ -23,5 +22,4 @@ public interface ASTVisitor {
     Object visitStringLitExpression(StringLitExpression stringLitExpression, Object arg) throws Exception;
     Object visitUnaryExpression(UnaryExpression unaryExpression, Object arg) throws Exception;
     Object visitVarDec(VarDec varDec, Object arg) throws Exception;
-    Object visitUndeclaredType(UndeclaredType undeclaredType, Object arg) throws Exception;
 }

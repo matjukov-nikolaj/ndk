@@ -227,8 +227,6 @@ public class Parser {
                 if (isKind(COLON)) {
                     consume();
                     d = new VarDec(first, identToken, type());
-                } else {
-                    d = new VarDec(first, identToken, new UndeclaredType(identToken));
                 }
             } else {
                 throw new SyntaxException(t, t.kind);
@@ -263,8 +261,6 @@ public class Parser {
         if (isKind(COLON)) {
             consume();
             v = new VarDec(first, identToken, type());
-        } else {
-            v = new VarDec(first, identToken, new UndeclaredType(identToken));
         }
         return v;
     }

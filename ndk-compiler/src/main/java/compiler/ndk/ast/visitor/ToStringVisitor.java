@@ -8,10 +8,8 @@ import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
 import compiler.ndk.ast.types.SimpleType;
-import compiler.ndk.ast.types.UndeclaredType;
 
 public class ToStringVisitor implements ASTVisitor {
-
 	private StringBuilder sb;
 
 	public ToStringVisitor() {
@@ -26,31 +24,56 @@ public class ToStringVisitor implements ASTVisitor {
 	public Object visitAssignmentStatement(
 			AssignmentStatement assignmentStatement, Object arg)
 			throws Exception {
-		sb.append(arg).append("AssignmentStatement").append('\n');
-		String indent = arg + "  ";
+		String tabs = arg + "\t";
+		sb.append(tabs + "{\n" +
+				tabs + "\t\"title\":");
+		sb.append("\"AssignmentStatement\",").append('\n');
+		sb.append(tabs + "\t\"children\": [\n");
+		String indent = tabs + "\t";
 		assignmentStatement.lvalue.visit(this, indent);
 		assignmentStatement.expression.visit(this, indent);
+		sb.append(tabs + "\t]\n");
+		sb.append(tabs + "},\n");
 		return null;
 	}
 
 	@Override
 	public Object visitBinaryExpression(BinaryExpression binaryExpression,
-                                        Object arg) throws Exception {
-		sb.append(arg).append("BinaryExpression").append('\n');
-		String indent = arg + "  ";
+										Object arg) throws Exception {
+		String tabs = arg + "\t";
+		sb.append(tabs + "{\n" +
+				tabs + "\t\"title\":");
+		sb.append("\"BinaryExpression\",").append('\n');
+		sb.append(tabs + "\t\"children\": [\n");
+		String indent = tabs + "\t";
+
 		binaryExpression.expression0.visit(this, indent);
-		sb.append(indent).append(binaryExpression.op.getText()).append('\n');
+		sb.append("\n");
+		sb.append(tabs + "\t\t{\n" +
+				tabs + "\t\t\t\"title\":");
+		sb.append("\"" + binaryExpression.op.getText() + "\",").append('\n');
+		sb.append(tabs + "\t\t\t\"children\": []\n");
+		sb.append(tabs + "\t\t},\n");
+
 		binaryExpression.expression1.visit(this, indent);
+		sb.append(tabs + "\t]\n");
+		sb.append(tabs + "},");
 		return null;
 	}
 
 	@Override
 	public Object visitBlock(Block block, Object arg) throws Exception {
-		sb.append(arg).append("Block").append('\n');
-		String indent = arg + "  ";
+		String tabs = arg + "\t";
+		sb.append(tabs + "{\n" +
+				tabs + "\t\"title\":");
+		sb.append("\"Block\",").append('\n');
+		sb.append(tabs + "\t\"children\": [\n");
+		String indent = tabs + "\t";
 		for (BlockElem elem : block.elems) {
 			elem.visit(this, indent);
 		}
+		sb.append(tabs + "\t]\n");
+		sb.append(tabs + "}\n");
 		return null;
 	}
 
@@ -67,88 +90,162 @@ public class ToStringVisitor implements ASTVisitor {
 	@Override
 	public Object visitIdentExpression(IdentExpression identExpression,
 									   Object arg) {
-		sb.append(arg).append("IdentExpression").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(identExpression.identToken.getText())
-				.append('\n');
+
+		String tabs = arg + "\t";
+		sb.append(tabs + "{\n" +
+				tabs + "\t\"title\":");
+		sb.append("\"IdentExpression\",").append('\n');
+		sb.append(tabs + "\t\"children\": [\n");
+		sb.append(tabs + "\t\t{\n" +
+				tabs + "\t\t\t\"title\":");
+		sb.append("\"" + identExpression.identToken.getText() + "\",").append('\n');
+		sb.append(tabs + "\t\t\t\"children\": []\n");
+		sb.append(tabs + "\t\t}\n");
+		sb.append(tabs + "\t]\n");
+		sb.append(tabs + "},\n");
 		return null;
+
+
 	}
 
 	@Override
 	public Object visitIdentLValue(IdentLValue identLValue, Object arg) {
-		sb.append(arg).append("IdentLValue").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(identLValue.identToken.getText()).append('\n');
+		sb.append(arg + "\t{\n");
+		String indent = arg + "\t\t";
+		sb.append(indent + "\"title\":");
+		sb.append("\"IdentLValue\",").append('\n');
+		sb.append(indent + "\"children\": [\n");
+		sb.append(indent + "\t{\n");
+		indent = indent + "\t\t";
+		sb.append(indent + "\"title\":");
+		sb.append("\"" + identLValue.identToken.getText() + "\",").append('\n');
+		sb.append(indent + "\"children\": []\n");
+		sb.append(arg + "\t\t\t}\n");
+		sb.append(arg + "\t\t]\n");
+		sb.append(arg + "\t},\n");
 		return null;
 	}
 
 	@Override
 	public Object visitIntLitExpression(IntLitExpression intLitExpression,
-			Object arg) {
-		sb.append(arg).append("IntLitExpression").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(intLitExpression.value).append('\n');
+										Object arg) {
+		String tabs = arg + "\t";
+		sb.append(tabs + "{\n" +
+				tabs + "\t\"title\":");
+		sb.append("\"IntLitExpression\",").append('\n');
+		sb.append(tabs + "\t\"children\": [\n");
+		sb.append(tabs + "\t\t{\n" +
+				tabs + "\t\t\t\"title\":");
+		sb.append("\"" + intLitExpression.value + "\",").append('\n');
+		sb.append(tabs + "\t\t\t\"children\": []\n");
+		sb.append(tabs + "\t\t}\n");
+		sb.append(tabs + "\t]\n");
+		sb.append(tabs + "},\n");
 		return null;
 	}
 
 	@Override
 	public Object visitPrintStatement(PrintStatement printStatement, Object arg)
 			throws Exception {
-		sb.append(arg).append("PrintStatement").append('\n');
-		String indent = arg + "  ";
+		String tabs = arg + "\t";
+		sb.append(tabs + "{\n" +
+				tabs + "\t\"title\":");
+		sb.append("\"PrintStatement\",").append('\n');
+		sb.append(tabs + "\t\"children\": [\n");
+		String indent = tabs + "\t";
 		printStatement.expression.visit(this, indent);
+		sb.append(tabs + "\t]\n");
+		sb.append(tabs + "},\n");
 		return null;
 	}
 
 	@Override
 	public Object visitProgram(Program program, Object arg) throws Exception {
-		sb.append("Program\n");
-		String indent = "  ";
-		sb.append("class ").append(program.name).append('\n');
+		sb.append("{\"root\":\n" +
+				"\t{\n" +
+				"\t\t\"title\": \"Program ");
+		String indent = "\t\t";
+		sb.append("class ").append(program.name).append("\",\n");
+		sb.append("\t\t\"children\": [\n");
 		program.block.visit(this, indent);
+		sb.append("\t\t]\n\t}\n}");
 		sb.append('\n');
 		return null;
 	}
 
 	@Override
 	public Object visitSimpleType(SimpleType simpleType, Object arg) {
-		sb.append(arg).append("SimpleType").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(simpleType.type.getText()).append('\n');
+		sb.append(arg + "\t\t{\n");
+		String indent = arg + "\t\t\t";
+		sb.append(indent + "\"title\":");
+		sb.append("\"SimpleType\",").append('\n');
+		sb.append(indent + "\"children\": [\n");
+		sb.append(indent + "\t{\n");
+		indent = indent + "\t\t";
+		sb.append(indent + "\"title\":");
+		sb.append("\"" + simpleType.type.getText() + "\",").append('\n');
+		sb.append(indent + "\"children\": []\n");
+		sb.append(arg + "\t\t\t\t}\n");
+		sb.append(arg + "\t\t\t]\n");
+		sb.append(arg + "\t\t}\n");
+		return null;
+	}
+
+	@Override
+	public Object visitUnaryExpression(UnaryExpression unaryExpression,
+									   Object arg) throws Exception {
+		String tabs = arg + "\t";
+		sb.append(tabs + "{\n" +
+				tabs + "\t\"title\":");
+		sb.append("\"UnaryExpression\",").append('\n');
+		sb.append(tabs + "\t\"children\": [\n");
+		sb.append(tabs + "\t\t{\n" +
+				tabs + "\t\t\t\"title\":");
+		sb.append("\"" + unaryExpression.op.getText() + "\",").append('\n');
+		sb.append(tabs + "\t\t\t\"children\": []\n");
+		sb.append(tabs + "\t\t},\n");
+		String indent = arg + "\t";
+		unaryExpression.expression.visit(this, indent);
+		sb.append(tabs + "\t]\n");
+		sb.append(tabs + "},\n");
+		return null;
+	}
+
+	@Override
+	public Object visitVarDec(VarDec varDec, Object arg) throws Exception {
+		String tabs = arg + "\t";
+		sb.append(tabs + "{\n" +
+				tabs + "\t\"title\":");
+		sb.append("\"VarDec\",").append('\n');
+		sb.append(tabs + "\t\"children\": [\n");
+		sb.append(tabs + "\t\t{\n" +
+				tabs + "\t\t\t\"title\":");
+		sb.append("\"" + varDec.identToken.getText() + "\",").append('\n');
+		sb.append(tabs + "\t\t\t\"children\": []\n");
+		sb.append(tabs + "\t\t},\n");
+		String indent = arg + "\t";
+		varDec.type.visit(this, indent);
+		sb.append(tabs + "\t]\n");
+		sb.append(tabs + "},\n");
 		return null;
 	}
 
 	@Override
 	public Object visitStringLitExpression(
 			StringLitExpression stringLitExpression, Object arg) {
-		sb.append(arg).append("StringLitExpression").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(stringLitExpression.value).append('\n');
+		String tabs = arg + "\t";
+		sb.append(tabs + "{\n" +
+				tabs + "\t\"title\":");
+		sb.append("\"StringLitExpression\",").append('\n');
+		sb.append(tabs + "\t\"children\": [\n");
+		sb.append(tabs + "\t\t{\n" +
+				tabs + "\t\t\t\"title\":");
+		sb.append("\"" + stringLitExpression.value + "\",").append('\n');
+		sb.append(tabs + "\t\t\t\"children\": []\n");
+		sb.append(tabs + "\t\t}\n");
+		sb.append(tabs + "\t]\n");
+		sb.append(tabs + "},\n");
 		return null;
 	}
 
-	@Override
-	public Object visitUnaryExpression(UnaryExpression unaryExpression,
-			Object arg) throws Exception {
-		sb.append(arg).append("UnaryExpression").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(unaryExpression.op.getText()).append('\n');
-		unaryExpression.expression.visit(this, indent);
-		return null;
-	}
-
-	@Override
-	public Object visitUndeclaredType(UndeclaredType undeclaredType, Object arg)
-			throws Exception {
-		return null;
-	}
-
-	@Override
-	public Object visitVarDec(VarDec varDec, Object arg) throws Exception {
-		sb.append(arg).append("VarDec").append('\n');
-		String indent = arg + "  ";
-		sb.append(indent).append(varDec.identToken.getText()).append('\n');
-		varDec.type.visit(this, indent);
-		return null;
-	}
 }

@@ -11,7 +11,6 @@ import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
 import compiler.ndk.ast.types.SimpleType;
-import compiler.ndk.ast.types.UndeclaredType;
 import compiler.ndk.symbolTable.SymbolTable;
 import static compiler.ndk.lexer.TokenStream.Kind.*;
 
@@ -221,12 +220,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return exprType;
 	}
 
-	@Override
-	public Object visitUndeclaredType(UndeclaredType undeclaredType, Object arg)
-			throws Exception {
-		throw new UnsupportedOperationException(
-				"undeclared types not supported");
-	}
 
 	/**
 	 * check that this variable has not already been declared in the same scope.
