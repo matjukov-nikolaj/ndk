@@ -267,6 +267,8 @@ public class Parser {
                     consume();
                     try {
                         match(LEFT_BRACKET);
+                        e = new BooleanLitExpression(t, true);
+                        consume();
                         match(RIGHT_BRACKET);
                         block = block();
                         s = new IfStatement(first, e, block);

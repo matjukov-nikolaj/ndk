@@ -84,6 +84,14 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return expr0Type;
 	}
 
+	@Override
+	public Object visitBooleanLitExpression(
+			BooleanLitExpression booleanLitExpression, Object arg)
+			throws Exception {
+		booleanLitExpression.setType(booleanType);
+		return booleanType;
+	}
+
 	/**
 	 * expression type is boolean
 	 */

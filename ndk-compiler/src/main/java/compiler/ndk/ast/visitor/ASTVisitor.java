@@ -11,6 +11,7 @@ import compiler.ndk.ast.types.SimpleType;
 public interface ASTVisitor {
     Object visitAssignmentStatement(AssignmentStatement assignmentStatement, Object arg) throws Exception;
     Object visitBinaryExpression(BinaryExpression binaryExpression, Object arg) throws Exception;
+    Object visitBooleanLitExpression(BooleanLitExpression booleanLitExpression, Object arg)throws Exception;
     Object visitBlock(Block block, Object arg) throws Exception;
     Object visitExpressionStatement(ExpressionStatement expressionStatement, Object arg) throws Exception;
     Object visitIdentExpression(IdentExpression identExpression, Object arg) throws Exception;

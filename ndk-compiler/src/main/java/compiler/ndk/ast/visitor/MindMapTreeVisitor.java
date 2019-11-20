@@ -47,6 +47,15 @@ public class MindMapTreeVisitor implements ASTVisitor {
 	}
 
 	@Override
+	public Object visitBooleanLitExpression(
+			BooleanLitExpression booleanLitExpression, Object arg) {
+		Node node = (Node) arg;
+		Node newNode = new Node("BooleanLitExpression: " + booleanLitExpression.value);
+		node.appendChild(newNode);
+		return null;
+	}
+
+	@Override
 	public Object visitIfStatement(IfStatement ifStatement, Object arg)
 			throws Exception {
 		Node node = (Node) arg;

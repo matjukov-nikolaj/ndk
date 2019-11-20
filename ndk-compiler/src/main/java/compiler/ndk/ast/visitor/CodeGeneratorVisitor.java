@@ -231,13 +231,21 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             throws Exception {
         MethodVisitor mv = ((InheritedAttributes) arg).mv;
         Label l1 = new Label();
-        mv.visitInsn(ICONST_1);
+        ifStatement.expression.visit(this, arg);
         mv.visitJumpInsn(IFEQ, l1);
         ifStatement.block.visit(this, arg);
         mv.visitLabel(l1);
         return null;
     }
 
+    @Override
+    public Object visitBooleanLitExpression(
+            BooleanLitExpression booleanLitExpression, Object arg)
+            throws Exception {
+        MethodVisitor mv = ((InheritedAttributes) arg).mv;
+        mv.visitInsn(ICONST_1);
+        return null;
+    }
 
     @Override
     public Object visitIdentExpression(IdentExpression identExpression,

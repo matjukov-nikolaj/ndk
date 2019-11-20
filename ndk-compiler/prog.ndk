@@ -6,7 +6,7 @@ class Example {
     a = 3;
     a = 2 + 5;
     b = "hello";
-    if () {
+    if (true) {
         var test: string;
 
     };

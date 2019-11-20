@@ -28,25 +28,11 @@ public class SymbolTable {
 	private int currentScope;
 
 
-	/**
-	 * to be called when block entered
-	 *
-	 * @return size of stack after block is entered.
-	 */
 	public int enterScope() {
 		scopeStack.addFirst(++currentScope);
 		return scopeStack.size();
 	}
 
-
-	/**
-	 * leaves scope
-	 *
-	 * @returns size of scope stack at entrance to this method
-	 * <p>
-	 * For a block with correctly nested scopes, the value returned from enterScope at the
-	 * beginning of the block should match the value returned at the end of the scope.
-	 */
 	public int leaveScope() {
 		int size = scopeStack.size();
 		if (size > 0) scopeStack.removeFirst();

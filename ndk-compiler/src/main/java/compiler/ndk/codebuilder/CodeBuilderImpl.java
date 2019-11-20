@@ -36,10 +36,11 @@ public class CodeBuilderImpl {
         ASTNode ast = parseInput(fr);
         if (ast != null) {
             checkType(ast);
-            byte[] bytecode = generateByteCode(ast);
-            DynamicClassLoader loader = new DynamicClassLoader(Thread.currentThread().getContextClassLoader());
-            Class<?> testClass = loader.define(((Program) ast).JVMName, bytecode);
-            return (CodeBuilder) testClass.newInstance();
+//            byte[] bytecode = generateByteCode(ast);
+//            DynamicClassLoader loader = new DynamicClassLoader(Thread.currentThread().getContextClassLoader());
+//            Class<?> testClass = loader.define(((Program) ast).JVMName, bytecode);
+//            return (CodeBuilder) testClass.newInstance();
+            return null;
         } else {
             return null;
         }
