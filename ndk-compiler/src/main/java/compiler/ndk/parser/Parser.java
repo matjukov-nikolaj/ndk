@@ -117,8 +117,8 @@ public class Parser {
     static final Kind[] WEAK_OPS = {PLUS, MINUS};
     static final Kind[] STRONG_OPS = {MUL, DIV};
     static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_STRING};
-    static final Kind[] STATEMENT_FIRST = {IDENTIFIER, KEY_WORD_PRINT};
-    static final Kind[] EXPRESSION_FIRST = {IDENTIFIER, INT_LIT, STRING_LIT, NL_NULL, LEFT_BRACKET, NOT, MINUS, LEFT_BRACE};
+    static final Kind[] STATEMENT_FIRST = {IDENTIFIER, KEY_WORD_PRINT, KEY_WORD_IF};
+    static final Kind[] EXPRESSION_FIRST = {IDENTIFIER, INT_LIT, STRING_LIT, NL_NULL, LEFT_BRACKET, MINUS, LEFT_BRACE};
     List<SyntaxException> exceptionList = new ArrayList<SyntaxException>();
 
     public List<SyntaxException> getExceptionList() {
@@ -171,27 +171,14 @@ public class Parser {
 //    <Declarations> -> <Declaration> <Declarations>
 //    <Statements> -> <Statement>
 //    <Statements> -> <Statement> <Statements>
-
     private Block block() throws SyntaxException {
         List<BlockElem> elems = new ArrayList<BlockElem>();
         BlockElem blockelem = null;
         Token first = t;
-        //try-catch deal with missing first "{" of block
         try {
             match(LEFT_BRACE);
         } catch (SyntaxException e) {
             exceptionList.add(e);
-            //if "VAR" or statement_FIRST or ";" occur, start to parse block
-            while (!isKind(KEY_WORD_VAR) && !isKind(STATEMENT_FIRST) && !isKind(SEMICOLON)) {
-                if (isKind(EOF)) {
-                    throw new SyntaxException(t, t.kind);
-                } else if (isKind(RIGHT_BRACE)) {
-                    //if "}" occur, exit loop
-                    break;
-                } else {
-                    consume();
-                }
-            }
         }
         while (isKind(KEY_WORD_VAR) || isKind(STATEMENT_FIRST) || isKind(SEMICOLON)) {
             if (isKind(KEY_WORD_VAR)) {
@@ -199,11 +186,9 @@ public class Parser {
             } else if (isKind(STATEMENT_FIRST)) {
                 blockelem = statement();
             } else {
-                //statement may be empty
                 consume();
                 continue;
             }
-            //if there is no exception in this block element
             if (blockelem != null) {
                 match(SEMICOLON);
                 elems.add(blockelem);
@@ -213,17 +198,16 @@ public class Parser {
         return new Block(first, elems);
     }
 
+
     //<Declaration> ->  var IDENTIFIER  : <Type> ;
     private BlockElem declaration() throws SyntaxException {
         BlockElem d = null;
         Token first = t;
-        //try-catch deal with declaration exception
         try {
             match(KEY_WORD_VAR);
             Token identToken = t;
             match(IDENTIFIER);
             if (isKind(COLON) || isKind(SEMICOLON)) {
-                //<VarDec> ::= IDENT ( : <Type> | empty ) ;
                 if (isKind(COLON)) {
                     consume();
                     d = new VarDec(first, identToken, type());
@@ -233,36 +217,8 @@ public class Parser {
             }
         } catch (SyntaxException e) {
             exceptionList.add(e);
-            while (true) {
-                if (isKind(SEMICOLON)) {
-                    //prevent match ";" two times in block loop
-                    match(SEMICOLON);
-                    return null;
-                } else if (isKind(RIGHT_BRACE)) {
-                    //if "}" occur, return
-                    return null;
-                } else if (isKind(EOF)) {
-                    //if EOF occur, rethrow exception
-                    throw new SyntaxException(t, t.kind);
-                } else {
-                    consume();
-                }
-            }
         }
         return d;
-    }
-
-    //<VarDec> ::= IDENT ( : <Type> | empty ) ;
-    private VarDec varDec() throws SyntaxException {
-        VarDec v = null;
-        Token first = t;
-        Token identToken = t;
-        match(IDENTIFIER);
-        if (isKind(COLON)) {
-            consume();
-            v = new VarDec(first, identToken, type());
-        }
-        return v;
     }
 
     //<Type> -> <SimpleType>
@@ -307,53 +263,13 @@ public class Parser {
                     consume();
                     s = new PrintStatement(first, expression());
                     break;
-                case KEY_WORD_WHILE:
-                    consume();
-                    //try-catch deal with while exceptions
-                    try {
-                        if (isKind(MUL)) {
-                            consume();
-                            match(LEFT_BRACKET);
-                            e = expression();
-                            //<RangeExpression> :: <Expression> .. <Expression>
-                            match(RIGHT_BRACKET);
-                            //s = new WhileStarStatement(first, e, block());
-                        } else if (isKind(LEFT_BRACKET)) {
-                            consume();
-                            e = expression();
-                            match(RIGHT_BRACKET);
-                            //s = new WhileStatement(first, e, block());
-                        } else {
-                            Kind[] while_set = {MUL, LEFT_BRACKET};
-                            throw new SyntaxException(t, while_set);
-                        }
-                    } catch (SyntaxException whileException) {
-                        exceptionList.add(whileException);
-                        //throw token until meet "}"
-                        while (!isKind(RIGHT_BRACE)) {
-                            if (isKind(EOF)) {
-                                throw new SyntaxException(t, t.kind);
-                            }
-                            consume();
-                        }
-                        //closure itself end with "}", consume it
-                        match(RIGHT_BRACE);
-                    }
-                    break;
                 case KEY_WORD_IF:
                     consume();
-                    //try-catch deal with if exceptions
                     try {
                         match(LEFT_BRACKET);
-                        e = expression();
                         match(RIGHT_BRACKET);
                         block = block();
-                        if (isKind(KEY_WORD_ELSE)) {
-                            consume();
-                            //s = new IfElseStatement(first, e, block, block());
-                            break;
-                        }
-                        //s = new IfStatement(first, e, block);
+                        s = new IfStatement(first, e, block);
                     } catch (SyntaxException ifException) {
                         exceptionList.add(ifException);
                         //throw token until meet "}"
@@ -372,21 +288,6 @@ public class Parser {
             }
         } catch (SyntaxException e1) {
             exceptionList.add(e1);
-            while (true) {
-                //if "}" occur, return
-                if (isKind(RIGHT_BRACE)) {
-                    return null;
-                } else if (isKind(SEMICOLON)) {
-                    //prevent match ";" two times in block loop
-                    match(SEMICOLON);
-                    return null;
-                } else if (isKind(EOF)) {
-                    //if EOF occur, rethrow exception
-                    throw new SyntaxException(t, t.kind);
-                } else {
-                    consume();
-                }
-            }
         }
         return s;
     }
@@ -409,8 +310,6 @@ public class Parser {
     //<Expression> -> <NumberExpression>
     private Expression expression() throws SyntaxException {
         Expression e1 = null;
-        Expression e2 = null;
-        Token first = t;
         e1 = term();
         return e1;
     }
@@ -426,10 +325,10 @@ public class Parser {
             Token op = t;
             match(WEAK_OPS);
             e2 = element();
-            if ((e2.firstToken.kind == BL_TRUE || e1.firstToken.kind == BL_TRUE || e2.firstToken.kind == BL_FALSE || e1.firstToken.kind == BL_FALSE) ||
-                    (e1.firstToken.kind != IDENTIFIER && e2.firstToken.kind != IDENTIFIER) && (e1.firstToken.kind != e2.firstToken.kind)) {
-                throw new SyntaxException(e2.firstToken, e1.firstToken.kind);
-            }
+//            if ((e2.firstToken.kind == BL_TRUE || e1.firstToken.kind == BL_TRUE || e2.firstToken.kind == BL_FALSE || e1.firstToken.kind == BL_FALSE) ||
+//                    (e1.firstToken.kind != IDENTIFIER && e2.firstToken.kind != IDENTIFIER) && (e1.firstToken.kind != e2.firstToken.kind)) {
+//                throw new SyntaxException(e2.firstToken, e1.firstToken.kind);
+//            }
             e1 = new BinaryExpression(first, e1, op, e2);
         }
         return e1;
@@ -461,15 +360,7 @@ public class Parser {
             case IDENTIFIER:
                 Token identToken = t;
                 match(IDENTIFIER);
-                switch (t.kind) {
-                    case LEFT_BRACKET:
-                        consume();
-//                        e = new ClosureEvalExpression(first, identToken, expressionList());
-                        match(RIGHT_BRACKET);
-                        break;
-                    default:
-                        e = new IdentExpression(first, identToken);
-                }
+                e = new IdentExpression(first, identToken);
                 break;
             case INT_LIT:
                 e = new IntLitExpression(t, t.getIntVal());
@@ -483,11 +374,6 @@ public class Parser {
                 consume();
                 e = expression();
                 match(RIGHT_BRACKET);
-                break;
-            case NOT:
-                op = t;
-                consume();
-                e = new UnaryExpression(first, op, factor());
                 break;
             case MINUS:
                 op = t;

@@ -13,11 +13,14 @@ import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
 import compiler.ndk.ast.types.SimpleType;
 import org.objectweb.asm.*;
+import org.objectweb.asm.util.TraceClassVisitor;
+
+import java.io.PrintWriter;
 
 public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants {
 
     private ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
-    //private TraceClassVisitor cw = new TraceClassVisitor(new PrintWriter(System.out));
+//    private TraceClassVisitor cw = new TraceClassVisitor(new PrintWriter(System.out));
     private String className;
 
     static class InheritedAttributes {
@@ -220,7 +223,19 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         mv.visitMaxs(0, 0);
         mv.visitEnd();
         cw.visitEnd();
-        return cw.toByteArray();
+        return cw;
+    }
+
+    @Override
+    public Object visitIfStatement(IfStatement ifStatement, Object arg)
+            throws Exception {
+        MethodVisitor mv = ((InheritedAttributes) arg).mv;
+        Label l1 = new Label();
+        mv.visitInsn(ICONST_1);
+        mv.visitJumpInsn(IFEQ, l1);
+        ifStatement.block.visit(this, arg);
+        mv.visitLabel(l1);
+        return null;
     }
 
 

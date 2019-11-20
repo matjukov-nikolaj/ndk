@@ -85,6 +85,16 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	}
 
 	/**
+	 * expression type is boolean
+	 */
+	@Override
+	public Object visitIfStatement(IfStatement ifStatement, Object arg)
+			throws Exception {
+		ifStatement.block.visit(this, arg);
+		return null;
+	}
+
+	/**
 	 * Blocks define scopes. Check that the scope nesting level is the same at
 	 * the end as at the beginning of block
 	 */

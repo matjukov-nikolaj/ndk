@@ -1,10 +1,18 @@
-class BubbleSort {
+class Example {
     var a: int;
     var b: string;
+    var c: string;
+    c = " world";
     a = 3;
     a = 2 + 5;
     b = "hello";
+    if () {
+        var test: string;
+
+    };
+    print(b + c );
     print a;
     print b;
     print(a + 6);
+    print(2----2);
 }

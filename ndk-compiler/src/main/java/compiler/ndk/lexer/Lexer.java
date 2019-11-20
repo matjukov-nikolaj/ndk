@@ -66,7 +66,7 @@ public class Lexer {
     private char getch() {
         if (index < stream.inputChars.length) {
             return stream.inputChars[index++];
-        } else {//deal with EOF
+        } else {
             index++;
             return (char) -1;
         }

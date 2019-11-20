@@ -1,6 +1,7 @@
 package compiler.ndk.codebuilder;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.nio.file.Path;
@@ -90,6 +91,11 @@ public class CodeBuilderImpl {
         byte[] bytecode = null;
         try {
             bytecode = (byte[]) ast.visit(v, null);
+            Path currentRelativePath = Paths.get("");
+            String s = currentRelativePath.toAbsolutePath().toString();
+            try (FileOutputStream fos = new FileOutputStream(s + "\\prog.class")) {
+                fos.write(bytecode);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
