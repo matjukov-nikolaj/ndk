@@ -223,7 +223,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         mv.visitMaxs(0, 0);
         mv.visitEnd();
         cw.visitEnd();
-        return cw;
+        return cw.toByteArray();
     }
 
     @Override
