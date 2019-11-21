@@ -39,9 +39,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		throw new TypeCheckException(message, node);
 	}
 
-	/**
-	 * Ensure that types on left and right hand side are compatible.
-	 */
 	@Override
 	public Object visitAssignmentStatement(
 			AssignmentStatement assignmentStatement, Object arg)
@@ -56,13 +53,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return null;		
 	}
 
-	/**
-	 * Ensure that both types are the same, save and return the result type
-	 *		int (+ | - | * | /) int 				-> int
-	 *      string + string         				-> string
-	 *      int (== | != | < | <= | >= | >) int     -> boolean
-	 *      string (== | !=) string       			-> boolean
-	 */
 	@Override
 	public Object visitBinaryExpression(BinaryExpression binaryExpression,
                                         Object arg) throws Exception {
@@ -92,9 +82,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return booleanType;
 	}
 
-	/**
-	 * expression type is boolean
-	 */
 	@Override
 	public Object visitIfStatement(IfStatement ifStatement, Object arg)
 			throws Exception {
@@ -102,10 +89,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return null;
 	}
 
-	/**
-	 * Blocks define scopes. Check that the scope nesting level is the same at
-	 * the end as at the beginning of block
-	 */
 	@Override
 	public Object visitBlock(Block block, Object arg) throws Exception {
 		int numScopes = symbolTable.enterScope();
@@ -127,11 +110,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return null;
 	}
 
-	/**
-	 * Check that name has been declared in scope Get its type from the
-	 * declaration.
-	 * 
-	 */
 	@Override
 	public Object visitIdentExpression(IdentExpression identExpression,
 									   Object arg) throws Exception {
@@ -166,9 +144,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		}		
 	}
 
-	/**
-	 * expression type is int
-	 */
 	@Override
 	public Object visitIntLitExpression(IntLitExpression intLitExpression,
 			Object arg) throws Exception {
@@ -199,13 +174,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return null;
 	}
 
-	/**
-	 * Checks that both expressions have type int.
-	 * 
-	 * Note that in spite of the name, this is not in the Expression type
-	 * hierarchy.
-	 */
-
 	@Override
 	public Object visitSimpleType(SimpleType simpleType, Object arg)
 			throws Exception {
@@ -220,9 +188,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return stringType;
 	}
 
-	/**
-	 * if ! and boolean, then boolean else if - and int, then int else error
-	 */
 	@Override
 	public Object visitUnaryExpression(UnaryExpression unaryExpression,
 			Object arg) throws Exception {
@@ -239,18 +204,10 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	}
 
 
-	/**
-	 * check that this variable has not already been declared in the same scope.
-	 */
 	@Override
 	public Object visitVarDec(VarDec varDec, Object arg) throws Exception {
 		String ident = varDec.identToken.getText();
 		check(symbolTable.insert(ident, varDec), "redeclare VarDec", varDec);
 		return null;
 	}
-
-	/**
-	 * All checking will be done in the children since grammar ensures that the
-	 * rangeExpression is a rangeExpression.
-	 */
 }
