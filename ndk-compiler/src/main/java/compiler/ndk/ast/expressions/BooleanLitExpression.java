@@ -1,7 +1,7 @@
 package compiler.ndk.ast.expressions;
 
-import compiler.ndk.lexer.TokenStream.Token;
 import compiler.ndk.ast.visitor.ASTVisitor;
+import compiler.ndk.lexer.TokenStream.Token;
 
 public class BooleanLitExpression extends Expression {
 	public boolean value;

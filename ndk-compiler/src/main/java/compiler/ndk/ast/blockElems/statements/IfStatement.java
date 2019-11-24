@@ -1,9 +1,9 @@
 package compiler.ndk.ast.blockElems.statements;
 
-import compiler.ndk.lexer.TokenStream.Token;
-import compiler.ndk.ast.visitor.ASTVisitor;
 import compiler.ndk.ast.blocks.Block;
 import compiler.ndk.ast.expressions.Expression;
+import compiler.ndk.ast.visitor.ASTVisitor;
+import compiler.ndk.lexer.TokenStream.Token;
 
 public class IfStatement extends Statement {
 	public Expression expression;

@@ -15,13 +15,13 @@ public abstract class ASTNode {
 	/* toString method uses a PrintVisitor to print the  AST */
 	@Override
 	public String toString() {
-		ToStringVisitor v = new ToStringVisitor();
+		MindMapTreeVisitor v = new MindMapTreeVisitor();
 		try {
 			visit(v, "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return v.getString();
+		return "";
 	}
 
 }
