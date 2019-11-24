@@ -67,8 +67,22 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		case MINUS:	case MUL:	case DIV:
 			check(expr0Type.equals(intType), "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 			break;
+		case EQUAL:	case NOTEQUAL:
+			if (expr0Type.equals(booleanType) || expr0Type.equals(intType) ||expr0Type.equals(stringType)) {
+				binaryExpression.setType(booleanType);
+				return booleanType;
+			} else {
+				throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
+			}
+		case LESS_THAN: case GREATER_THAN: case LESS_EQUAL: case GREATER_EQUAL:
+			if (expr0Type.equals(booleanType) || expr0Type.equals(intType)) {
+				binaryExpression.setType(booleanType);
+				return booleanType;
+			} else {
+				throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
+			}
 		default:
-			throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
+		throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 		} 	
 		binaryExpression.setType(expr0Type);
 		return expr0Type;
@@ -85,6 +99,8 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	@Override
 	public Object visitIfStatement(IfStatement ifStatement, Object arg)
 			throws Exception {
+		String condType = (String) ifStatement.expression.visit(this, arg);
+		check(condType.equals(booleanType), "uncompatible If condition", ifStatement);
 		ifStatement.block.visit(this, arg);
 		return null;
 	}

@@ -1,17 +1,11 @@
 class Example {
     var a: int;
-    var b: string;
+    var b: int;
     var c: string;
     c = " world";
     a = 3;
-    b = "hello";
-    if (true) {
-        var test: string;
-
+    b = 5;
+    if ((a == b) & (b == a)) {
+        print("a");
     };
-    print(b + c );
-    print a;
-    print b;
-    print(a + 6);
-    print(2----2);
 }

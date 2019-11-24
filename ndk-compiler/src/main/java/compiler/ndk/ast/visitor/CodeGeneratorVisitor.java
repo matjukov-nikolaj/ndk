@@ -125,6 +125,64 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
                 default:
                     throw new UnsupportedOperationException("code generation not yet implemented");
             }
+        } else if (op == EQUAL) {
+            binaryExpression.expression0.visit(this,arg);
+            binaryExpression.expression1.visit(this,arg);
+            Label le1 = new Label();
+            if(exprType.equals(booleanType) || exprType.equals(intType)) {
+                mv.visitJumpInsn(IF_ICMPNE, le1);
+            }
+            else if(exprType.equals(stringType)) {
+                mv.visitJumpInsn(IF_ACMPNE, le1);
+            }
+            mv.visitInsn(ICONST_1);
+            Label le2 = new Label();
+            mv.visitJumpInsn(GOTO, le2);
+            mv.visitLabel(le1);
+            mv.visitInsn(ICONST_0);
+            mv.visitLabel(le2);
+        } else if (op == NOTEQUAL) {
+            binaryExpression.expression0.visit(this,arg);
+            binaryExpression.expression1.visit(this,arg);
+            Label l1 = new Label();
+            if(exprType.equals(booleanType) || exprType.equals(intType)) {
+                mv.visitJumpInsn(IF_ICMPEQ, l1);
+            }
+            else if(exprType.equals(stringType)) {
+                mv.visitJumpInsn(IF_ACMPEQ, l1);
+            }
+            mv.visitInsn(ICONST_1);
+            Label l2 = new Label();
+            mv.visitJumpInsn(GOTO, l2);
+            mv.visitLabel(l1);
+            mv.visitInsn(ICONST_0);
+            mv.visitLabel(l2);
+        } else if (op ==  LESS_THAN || op == GREATER_THAN || op == LESS_EQUAL || op == GREATER_EQUAL) {
+            binaryExpression.expression0.visit(this,arg);
+            binaryExpression.expression1.visit(this,arg);
+            Label l1 = new Label();
+            switch(op) {
+                case LESS_THAN:
+                    mv.visitJumpInsn(IF_ICMPGE, l1);
+                    break;
+                case GREATER_THAN:
+                    mv.visitJumpInsn(IF_ICMPLE, l1);
+                    break;
+                case LESS_EQUAL:
+                    mv.visitJumpInsn(IF_ICMPGT, l1);
+                    break;
+                case GREATER_EQUAL:
+                    mv.visitJumpInsn(IF_ICMPLT, l1);
+                    break;
+                default:
+                    throw new UnsupportedOperationException("code generation not yet implemented");
+            }
+            mv.visitInsn(ICONST_1);
+            Label l2 = new Label();
+            mv.visitJumpInsn(GOTO, l2);
+            mv.visitLabel(l1);
+            mv.visitInsn(ICONST_0);
+            mv.visitLabel(l2);
         } else {
             throw new UnsupportedOperationException("code generation not yet implemented");
         }

@@ -114,11 +114,12 @@ public class Parser {
         return false;
     }
 
+    static final Kind[] REL_OPS = {EQUAL, NOTEQUAL, LESS_THAN, GREATER_THAN, LESS_EQUAL, GREATER_EQUAL};
     static final Kind[] WEAK_OPS = {PLUS, MINUS};
     static final Kind[] STRONG_OPS = {MUL, DIV};
-    static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_STRING};
+    static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING};
     static final Kind[] STATEMENT_FIRST = {IDENTIFIER, KEY_WORD_PRINT, KEY_WORD_IF};
-    static final Kind[] EXPRESSION_FIRST = {IDENTIFIER, INT_LIT, STRING_LIT, NL_NULL, LEFT_BRACKET, MINUS, LEFT_BRACE};
+    static final Kind[] EXPRESSION_FIRST = {IDENTIFIER, INT_LIT, BL_TRUE, BL_FALSE, STRING_LIT, NL_NULL, LEFT_BRACKET, NOT, MINUS, LEFT_BRACE};
     List<SyntaxException> exceptionList = new ArrayList<SyntaxException>();
 
     public List<SyntaxException> getExceptionList() {
@@ -267,8 +268,7 @@ public class Parser {
                     consume();
                     try {
                         match(LEFT_BRACKET);
-                        e = new BooleanLitExpression(t, true);
-                        consume();
+                        e = expression();
                         match(RIGHT_BRACKET);
                         block = block();
                         s = new IfStatement(first, e, block);
@@ -303,7 +303,15 @@ public class Parser {
     //<Expression> -> <NumberExpression>
     private Expression expression() throws SyntaxException {
         Expression e1 = null;
+        Expression e2 = null;
+        Token first = t;
         e1 = term();
+        while (isKind(REL_OPS)) {
+            Token op = t;
+            match(REL_OPS);
+            e2 = term();
+            e1 = new BinaryExpression(first, e1, op, e2);
+        }
         return e1;
     }
 
@@ -318,6 +326,10 @@ public class Parser {
             Token op = t;
             match(WEAK_OPS);
             e2 = element();
+            if ((e2.firstToken.kind == BL_TRUE || e1.firstToken.kind == BL_TRUE || e2.firstToken.kind == BL_FALSE || e1.firstToken.kind == BL_FALSE) ||
+                    (e1.firstToken.kind != IDENTIFIER && e2.firstToken.kind != IDENTIFIER) && (e1.firstToken.kind != e2.firstToken.kind)) {
+                throw new SyntaxException(e2.firstToken, e1.firstToken.kind);
+            }
             e1 = new BinaryExpression(first, e1, op, e2);
         }
         return e1;
@@ -354,6 +366,19 @@ public class Parser {
             case INT_LIT:
                 e = new IntLitExpression(t, t.getIntVal());
                 consume();
+                break;
+            case BL_TRUE:
+                e = new BooleanLitExpression(t, t.getBooleanVal());
+                consume();
+                break;
+            case BL_FALSE:
+                e = new BooleanLitExpression(t, t.getBooleanVal());
+                consume();
+                break;
+            case NOT:
+                op = t;
+                consume();
+                e = new UnaryExpression(first, op, factor());
                 break;
             case STRING_LIT:
                 e = new StringLitExpression(t, t.getText());

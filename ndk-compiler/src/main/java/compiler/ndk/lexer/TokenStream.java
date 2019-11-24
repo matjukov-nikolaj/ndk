@@ -112,6 +112,11 @@ public class TokenStream {
             return Integer.valueOf(getText());
         }
 
+        public boolean getBooleanVal() {
+            assert (kind == Kind.BL_TRUE || kind == Kind.BL_FALSE) : "attempted to get boolean value of non-boolean token";
+            return kind == Kind.BL_TRUE;
+        }
+
         public int getLineNumber() {
             return lineNumber;
         }
