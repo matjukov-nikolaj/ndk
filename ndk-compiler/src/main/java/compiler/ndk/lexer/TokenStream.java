@@ -72,7 +72,7 @@ public class TokenStream {
 		RIGHT_BRACE, // }
 		COLON, // :
 		ASSIGN, // =
-		BAR, // |
+		OR, // |
 		AND, // &
 		EQUAL, // ==
 		NOTEQUAL, // !=

@@ -119,7 +119,7 @@ public class Lexer {
                             state = State.GOT_EQUALS;
                             break;
                         case '|':
-                            t = stream.new Token(BAR, begOffset, index, line);
+                            t = stream.new Token(OR, begOffset, index, line);
                             break;
                         case '&':
                             t = stream.new Token(AND, begOffset, index, line);
