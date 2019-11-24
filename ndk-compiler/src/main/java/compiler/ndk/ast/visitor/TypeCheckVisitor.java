@@ -92,7 +92,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	@Override
 	public Object visitBlock(Block block, Object arg) throws Exception {
 		int numScopes = symbolTable.enterScope();
-		// visit children
 		for (BlockElem elem : block.elems) {
 			elem.visit(this, arg);
 		}

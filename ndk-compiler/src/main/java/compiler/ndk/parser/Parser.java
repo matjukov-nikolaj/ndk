@@ -274,15 +274,6 @@ public class Parser {
                         s = new IfStatement(first, e, block);
                     } catch (SyntaxException ifException) {
                         exceptionList.add(ifException);
-                        //throw token until meet "}"
-                        while (!isKind(RIGHT_BRACE)) {
-                            if (isKind(EOF)) {
-                                throw new SyntaxException(t, t.kind);
-                            }
-                            consume();
-                        }
-                        //closure itself end with "}", consume it
-                        match(RIGHT_BRACE);
                     }
                     break;
                 default:
@@ -327,10 +318,6 @@ public class Parser {
             Token op = t;
             match(WEAK_OPS);
             e2 = element();
-//            if ((e2.firstToken.kind == BL_TRUE || e1.firstToken.kind == BL_TRUE || e2.firstToken.kind == BL_FALSE || e1.firstToken.kind == BL_FALSE) ||
-//                    (e1.firstToken.kind != IDENTIFIER && e2.firstToken.kind != IDENTIFIER) && (e1.firstToken.kind != e2.firstToken.kind)) {
-//                throw new SyntaxException(e2.firstToken, e1.firstToken.kind);
-//            }
             e1 = new BinaryExpression(first, e1, op, e2);
         }
         return e1;
