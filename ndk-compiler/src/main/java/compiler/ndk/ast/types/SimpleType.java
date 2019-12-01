@@ -20,6 +20,7 @@ public class SimpleType extends Type {
 	@Override
 	public String getJVMType() {
 		if(type.getText().equals("int")) return "I";
+		else if (type.getText().equals("boolean")) return "Z";
 		else return "Ljava/lang/String;";
 	}
 

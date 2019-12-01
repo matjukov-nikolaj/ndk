@@ -38,7 +38,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
     public Object visitVarDec(VarDec varDec, Object arg) throws Exception {
         String varName = varDec.identToken.getText();
         String varType = (String) varDec.type.visit(this, arg);
-        if (varType.equals(intType) || varType.equals(stringType)) {
+        if (varType.equals(intType) || varType.equals(stringType) || varType.equals(booleanType)) {
             {
                 FieldVisitor fv = cw.visitField(0, varName, varType, null, null);
                 fv.visitEnd();
@@ -55,7 +55,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         MethodVisitor mv = ((InheritedAttributes) arg).mv;
         String varName = (String) assignmentStatement.lvalue.visit(this, arg);
         String varType = assignmentStatement.lvalue.getType();
-        if (varType.equals(intType) || varType.equals(stringType)) {
+        if (varType.equals(intType) || varType.equals(stringType) || varType.equals(booleanType)) {
             if (assignmentStatement.lvalue instanceof IdentLValue) {
                 mv.visitVarInsn(ALOAD, 0);
                 assignmentStatement.expression.visit(this, arg);
@@ -312,7 +312,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         String varType = identExpression.getType();
         MethodVisitor mv = ((InheritedAttributes) arg).mv;
         mv.visitVarInsn(ALOAD, 0);
-        if (varType.equals(intType) || varType.equals(stringType)) {
+        if (varType.equals(intType) || varType.equals(stringType) || varType.equals(booleanType)) {
             mv.visitFieldInsn(GETFIELD, className, varName, varType);
         }
 
@@ -330,7 +330,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
                 "Ljava/io/PrintStream;");
         printStatement.expression.visit(this, arg);
         String etype = printStatement.expression.getType();
-        if (etype.equals("I") || etype.equals("Ljava/lang/String;")) {
+        if (etype.equals("I") || etype.equals("Ljava/lang/String;") || etype.equals("Z")) {
             String desc = "(" + etype + ")V";
             mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println",
                     desc, false);

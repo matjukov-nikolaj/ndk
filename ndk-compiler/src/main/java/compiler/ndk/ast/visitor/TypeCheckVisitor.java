@@ -45,7 +45,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			throws Exception {
 		String lvType = (String) assignmentStatement.lvalue.visit(this, arg);
 		String exprType = (String) assignmentStatement.expression.visit(this, arg);
-		if (lvType.equals(intType) || lvType.equals(stringType)) {
+		if (lvType.equals(intType) || lvType.equals(stringType) || lvType.equals(booleanType)) {
 			check(lvType.equals(exprType), "uncompatible assignment type", assignmentStatement);
 		} else {
 			throw new UnsupportedOperationException("Unsuppported type");
@@ -207,13 +207,17 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	public Object visitUnaryExpression(UnaryExpression unaryExpression,
 			Object arg) throws Exception {
 		String exprType = (String) unaryExpression.expression.visit(this, arg);
-		if (unaryExpression.op.kind == MINUS) {
+		if(unaryExpression.op.kind == NOT) {
+			if(!exprType.equals(booleanType)) {
+				throw new TypeCheckException("not operator is undefined for " + exprType, unaryExpression);
+			}
+		} else if (unaryExpression.op.kind == MINUS) {
 			if (!exprType.equals(intType)){
 				throw new TypeCheckException("minus operator is undefined for " + exprType, unaryExpression);
 			}
-		} else {			
+		} else {
 			throw new TypeCheckException("uncompatible unary expression", unaryExpression);
-		}		
+		}
 		unaryExpression.setType(exprType);
 		return exprType;
 	}
