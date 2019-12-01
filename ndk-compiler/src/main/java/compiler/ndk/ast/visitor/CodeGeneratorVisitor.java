@@ -183,7 +183,20 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             mv.visitLabel(l1);
             mv.visitInsn(ICONST_0);
             mv.visitLabel(l2);
-        } else {
+        } else if (op == AND) {
+            binaryExpression.expression0.visit(this, arg);
+            Label l1 = new Label();
+            mv.visitJumpInsn(IFEQ, l1);
+            binaryExpression.expression1.visit(this,arg);
+            mv.visitJumpInsn(IFEQ, l1);
+            mv.visitInsn(ICONST_1);
+            Label l2 = new Label();
+            mv.visitJumpInsn(GOTO, l2);
+            mv.visitLabel(l1);
+            mv.visitInsn(ICONST_0);
+            mv.visitLabel(l2);
+        }
+        else {
             throw new UnsupportedOperationException("code generation not yet implemented");
         }
         return null;
@@ -301,7 +314,11 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             BooleanLitExpression booleanLitExpression, Object arg)
             throws Exception {
         MethodVisitor mv = ((InheritedAttributes) arg).mv;
-        mv.visitInsn(ICONST_1);
+        if (booleanLitExpression.value == true) {
+            mv.visitInsn(ICONST_1);
+        } else {
+            mv.visitInsn(ICONST_0);
+        }
         return null;
     }
 
