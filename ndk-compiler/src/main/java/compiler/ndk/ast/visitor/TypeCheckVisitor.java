@@ -45,7 +45,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			throws Exception {
 		String lvType = (String) assignmentStatement.lvalue.visit(this, arg);
 		String exprType = (String) assignmentStatement.expression.visit(this, arg);
-		if (lvType.equals(intType) || lvType.equals(stringType)) {
+		if (lvType.equals(intType) || lvType.equals(stringType) || lvType.equals(booleanType)) {
 			check(lvType.equals(exprType), "uncompatible assignment type", assignmentStatement);
 		} else {
 			throw new UnsupportedOperationException("Unsuppported type");
@@ -67,8 +67,22 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		case MINUS:	case MUL:	case DIV:
 			check(expr0Type.equals(intType), "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 			break;
+		case EQUAL:	case NOTEQUAL:
+			if (expr0Type.equals(booleanType) || expr0Type.equals(intType) ||expr0Type.equals(stringType)) {
+				binaryExpression.setType(booleanType);
+				return booleanType;
+			} else {
+				throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
+			}
+		case LESS_THAN: case GREATER_THAN: case LESS_EQUAL: case GREATER_EQUAL:
+			if (expr0Type.equals(booleanType) || expr0Type.equals(intType)) {
+				binaryExpression.setType(booleanType);
+				return booleanType;
+			} else {
+				throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
+			}
 		default:
-			throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
+		throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 		} 	
 		binaryExpression.setType(expr0Type);
 		return expr0Type;
@@ -85,6 +99,8 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	@Override
 	public Object visitIfStatement(IfStatement ifStatement, Object arg)
 			throws Exception {
+		String condType = (String) ifStatement.expression.visit(this, arg);
+		check(condType.equals(booleanType), "uncompatible If condition", ifStatement);
 		ifStatement.block.visit(this, arg);
 		return null;
 	}
@@ -193,13 +209,17 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	public Object visitUnaryExpression(UnaryExpression unaryExpression,
 			Object arg) throws Exception {
 		String exprType = (String) unaryExpression.expression.visit(this, arg);
-		if (unaryExpression.op.kind == MINUS) {
+		if(unaryExpression.op.kind == NOT) {
+			if(!exprType.equals(booleanType)) {
+				throw new TypeCheckException("not operator is undefined for " + exprType, unaryExpression);
+			}
+		} else if (unaryExpression.op.kind == MINUS) {
 			if (!exprType.equals(intType)){
 				throw new TypeCheckException("minus operator is undefined for " + exprType, unaryExpression);
 			}
-		} else {			
+		} else {
 			throw new TypeCheckException("uncompatible unary expression", unaryExpression);
-		}		
+		}
 		unaryExpression.setType(exprType);
 		return exprType;
 	}
