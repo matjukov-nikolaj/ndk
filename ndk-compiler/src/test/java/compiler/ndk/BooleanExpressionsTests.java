@@ -245,12 +245,12 @@ public class BooleanExpressionsTests {
         printResult(input);
     }
 
-   /* @Test
+    @Test
     public void booleanVariable() throws Exception {
-        System.out.println("intVariable");
+        System.out.println("booleanVariable");
         String input = "class A {var x: boolean; \n x = false;\n  print x;}";
         printResult(input);
-    }*/
+    }
 
     @Test
     public void expressionsAndVars() throws Exception {

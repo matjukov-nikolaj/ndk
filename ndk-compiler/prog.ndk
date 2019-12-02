@@ -1,7 +1,7 @@
-class Example {
-    var d: boolean;
-    d = true;
-    if (d) {
-        print(d);
-    };
+class A {
+  var B:int;
+  var d: boolean;
+  if (d) {
+     print d;
+  };
 }

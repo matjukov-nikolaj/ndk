@@ -98,9 +98,25 @@ public class TestTypeChecker {
     }
 
     @Test
+    public void simpleWrongAssignments() throws Exception {
+        System.out.println("simpleWrongAssignments");
+        String input = "class A { var B:int;  var C:boolean; var D:string;  C = 5; D = \"hello\"; }";
+        System.out.println(input);
+        typeCheckIncorrectAST(parseCorrectInput(input));
+    }
+
+    @Test
+    public void simpleWrongAssignments1() throws Exception {
+        System.out.println("simpleWrongAssignments");
+        String input = "class A { var B:int;  var C:boolean; var D:string;  C = 5; B = \"hello\"; }";
+        System.out.println(input);
+        typeCheckIncorrectAST(parseCorrectInput(input));
+    }
+
+    @Test
     public void nestedScopes1() throws Exception {
         System.out.println("nestedScopes1");
-        String input = "class A {\n  var B:int;\n  var C: boolean;\n  if (true) {\n    var B: boolean;\n   if (true) {\n    var C: int;\n    C = 42;\n   };\n };\n}";
+        String input = "class A {\n  var B:int;\n  var C: boolean;\n  C = true;\n if (C) {\n    var B: boolean;\n   B = true;\n if (B) {\n    var C: int;\n    C = 42;\n   };\n };\n}";
         System.out.println(input);
         typeCheckCorrectAST(parseCorrectInput(input));
     }
@@ -116,7 +132,7 @@ public class TestTypeChecker {
     @Test
     public void unaryExpression1() throws Exception {
         System.out.println("unaryExpression1");
-        String input = "class A {\n  var B:int;\n  var C: boolean;\n  if (true) {\n    var B: boolean;\n   if (true) {\n    var C: int;\n    C = -42;\n   /*B = !B;*/\n  };\n };\n}";
+        String input = "class A {\n  var B:int;\n  var C: boolean;\n  C = true;\n if (C) {\n    var B: boolean;\n   B = true;\n if (B) {\n    var C: int;\n    C = -42;\n   B = !B;\n  };\n };\n}";
         System.out.println(input);
         typeCheckCorrectAST(parseCorrectInput(input));
     }
@@ -132,7 +148,7 @@ public class TestTypeChecker {
     @Test
     public void unaryExpression3() throws Exception {
         System.out.println("unaryExpression3");
-        String input = "class A {\n  var B:int;\n  var C: boolean;\n  if (C) {\n    var B: boolean;\n   if (B) {\n    var C: int;\n    C = -42;\n   B = -B;\n  };\n };\n}";
+        String input = "class A {\n  var B:int;\n  var C: boolean;\n  C = true;\n  if (C) {\n    var B: boolean;\n   if (B) {\n    var C: int;\n    C = -42;\n   B = -B;\n  };\n };\n}";
         System.out.println(input);
         typeCheckIncorrectAST(parseCorrectInput(input));
     }
