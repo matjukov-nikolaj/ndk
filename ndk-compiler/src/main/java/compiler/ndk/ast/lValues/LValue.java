@@ -1,5 +1,6 @@
 package compiler.ndk.ast.lValues;
 
+import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.lexer.TokenStream.Token;
 import compiler.ndk.ast.visitor.ASTNode;
 

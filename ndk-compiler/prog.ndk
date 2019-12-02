@@ -1,18 +1,17 @@
 class Example {
+    var kek: string;
+    kek = "lol";
+    print(kek);
     var a: int;
-    var b: string;
-    var c: string;
-    c = " world";
-    a = 3;
-    a = 2 + "kek";
-    b = "hello";
+    var b: int;
+    var c: int;
+    a = 102;
+    b = a;
+    c = b + 3;
+    print(c);
     if (true) {
-        var test: string;
-
+        var c: int;
+        c = 205;
+        print(c);
     };
-    print(b + c );
-    print a;
-    print b;
-    print(a + 6);
-    print(2----2);
 }

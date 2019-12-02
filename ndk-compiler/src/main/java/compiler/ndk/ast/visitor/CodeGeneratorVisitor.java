@@ -22,29 +22,28 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
     private ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 //    private TraceClassVisitor cw = new TraceClassVisitor(new PrintWriter(System.out));
     private String className;
+    int slot = 1;
 
     static class InheritedAttributes {
-        InheritedAttributes(MethodVisitor mv, String varName) {
+        InheritedAttributes(MethodVisitor mv) {
             super();
             this.mv = mv;
-            this.listName = varName;
         }
-
         MethodVisitor mv;
-        String listName;
+        Label start;
+        Label end;
     }
 
     @Override
     public Object visitVarDec(VarDec varDec, Object arg) throws Exception {
+        MethodVisitor mv = ((InheritedAttributes) arg).mv;
         String varName = varDec.identToken.getText();
         String varType = (String) varDec.type.visit(this, arg);
+        varDec.setSlot(slot);
+        slot++;
         if (varType.equals(intType) || varType.equals(stringType)) {
-            {
-                FieldVisitor fv = cw.visitField(0, varName, varType, null, null);
-                fv.visitEnd();
-            }
+            mv.visitLocalVariable(varName, varType, null, ((InheritedAttributes) arg).start, ((InheritedAttributes) arg).end, varDec.getSlot());
         }
-
         return null;
     }
 
@@ -55,11 +54,15 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         MethodVisitor mv = ((InheritedAttributes) arg).mv;
         String varName = (String) assignmentStatement.lvalue.visit(this, arg);
         String varType = assignmentStatement.lvalue.getType();
-        if (varType.equals(intType) || varType.equals(stringType)) {
+        assignmentStatement.expression.visit(this, arg);
+        if (varType.equals(intType)) {
             if (assignmentStatement.lvalue instanceof IdentLValue) {
-                mv.visitVarInsn(ALOAD, 0);
-                assignmentStatement.expression.visit(this, arg);
-                mv.visitFieldInsn(PUTFIELD, className, varName, varType);
+                mv.visitVarInsn(ISTORE, ((IdentLValue) assignmentStatement.lvalue).dec.getSlot());
+            }
+        }
+        if (varType.equals(stringType)) {
+            if (assignmentStatement.lvalue instanceof IdentLValue) {
+                mv.visitVarInsn(ASTORE, ((IdentLValue) assignmentStatement.lvalue).dec.getSlot());
             }
         }
         return null;
@@ -133,9 +136,26 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
 
     @Override
     public Object visitBlock(Block block, Object arg) throws Exception {
+        MethodVisitor mv = ((InheritedAttributes) arg).mv;
+        Label start = new Label();
+        Label end = new Label();
+        ((InheritedAttributes) arg).start = start;
+        ((InheritedAttributes) arg).end = end;
+
+        //add all variables declaration first
         for (BlockElem elem : block.elems) {
-            elem.visit(this, arg);
+            if (elem instanceof VarDec) {
+                elem.visit(this, arg);
+            }
         }
+
+        mv.visitLabel(start);
+        for (BlockElem elem : block.elems) {
+            if (!(elem instanceof VarDec)) {
+                elem.visit(this, arg);
+            }
+        }
+        mv.visitLabel(end);
         return null;
     }
 
@@ -204,7 +224,8 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             mv.visitEnd();
         }
 
-        MethodVisitor mv = cw.visitMethod(ACC_PUBLIC, "execute",
+        MethodVisitor mv  = cw.visitMethod(ACC_PUBLIC,
+                "main",
                 "()V",
                 null,
                 null
@@ -213,14 +234,12 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         Label lbeg = new Label();
         mv.visitLabel(lbeg);
         mv.visitLineNumber(program.firstToken.lineNumber, lbeg);
-        String listName = null;
-        program.block.visit(this, new InheritedAttributes(mv, listName));
-
+        program.block.visit(this, new InheritedAttributes(mv));
         mv.visitInsn(RETURN);
         Label lend = new Label();
         mv.visitLabel(lend);
         mv.visitLocalVariable("this", classDescriptor, null, lbeg, lend, 0);
-        mv.visitMaxs(0, 0);
+        mv.visitMaxs(1, 1);
         mv.visitEnd();
         cw.visitEnd();
         return cw.toByteArray();
@@ -253,9 +272,12 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         String varName = identExpression.identToken.getText();
         String varType = identExpression.getType();
         MethodVisitor mv = ((InheritedAttributes) arg).mv;
-        mv.visitVarInsn(ALOAD, 0);
-        if (varType.equals(intType) || varType.equals(stringType)) {
-            mv.visitFieldInsn(GETFIELD, className, varName, varType);
+//        mv.visitVarInsn(ALOAD, 0);
+        if (varType.equals(intType)) {
+            mv.visitVarInsn(ILOAD, identExpression.dec.getSlot());
+        }
+        if (varType.equals(stringType)) {
+            mv.visitVarInsn(ALOAD, identExpression.dec.getSlot());
         }
 
         return null;

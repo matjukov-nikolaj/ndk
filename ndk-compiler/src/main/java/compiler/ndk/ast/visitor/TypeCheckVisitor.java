@@ -120,6 +120,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			VarDec vd = (VarDec) dec;
 			String identType = (String) vd.type.visit(this, arg);
 			identExpression.setType(identType);
+			identExpression.dec = vd;
 			return identType;
 		} else {
 			throw new TypeCheckException(ident + " is not defined as a variable", identExpression);
@@ -137,6 +138,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			VarDec vd = (VarDec)dec;
 			String lvType = (String) vd.type.visit(this, arg);
 			identLValue.setType(lvType);
+			identLValue.dec = vd;
 			return lvType;
 		} else {
 			throw new TypeCheckException(ident + " is not defined as a variable", identLValue);

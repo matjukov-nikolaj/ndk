@@ -15,7 +15,7 @@ public class Main {
         File file = new File(s + "\\prog.ndk");
         CodeBuilder codeBuilder = CodeBuilderImpl.newInstance(file);
         if (codeBuilder != null) {
-            codeBuilder.execute();
+            codeBuilder.main();
         }
     }
 

@@ -6,11 +6,12 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import compiler.ndk.ast.blockElems.declarations.Declaration;
+import compiler.ndk.ast.blockElems.declarations.VarDec;
 
 public class SymbolTable {
 
 	static class SymbolTableEntry {
-		SymbolTableEntry(int scope, Declaration dec,
+		SymbolTableEntry(int scope, VarDec dec,
 						 SymbolTableEntry next) {
 			super();
 			this.scope = scope;
@@ -19,7 +20,7 @@ public class SymbolTable {
 		}
 
 		int scope;
-		Declaration dec;
+		VarDec dec;
 		SymbolTableEntry next;
 	}
 
@@ -39,7 +40,7 @@ public class SymbolTable {
 		return size;
 	}
 
-	public boolean insert(String ident, Declaration dec) {
+	public boolean insert(String ident, VarDec dec) {
 		SymbolTableEntry entry = entries.get(ident);
 		while (entry != null) {
 			if (entry.scope == currentScope) {
