@@ -1,17 +1,13 @@
-class Example {
-    var kek: string;
-    kek = "lol";
-    print(kek);
-    var a: int;
-    var b: int;
-    var c: int;
-    a = 102;
-    b = a;
-    c = b + 3;
-    print(c);
-    if (true) {
-        var c: int;
-        c = 205;
-        print(c);
+class A {
+    var B:int;
+    var C: boolean;
+    C=true;
+    if (C) {
+        var B: boolean;
+        B=true;
+        if (B) {
+            var C: int;
+            C = -42;
+        };
     };
 }

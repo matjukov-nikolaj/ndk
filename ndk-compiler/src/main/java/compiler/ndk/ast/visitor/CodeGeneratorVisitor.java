@@ -41,7 +41,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         String varType = (String) varDec.type.visit(this, arg);
         varDec.setSlot(slot);
         slot++;
-        if (varType.equals(intType) || varType.equals(stringType)) {
+        if (varType.equals(intType) || varType.equals(stringType) || varType.equals(booleanType)) {
             mv.visitLocalVariable(varName, varType, null, ((InheritedAttributes) arg).start, ((InheritedAttributes) arg).end, varDec.getSlot());
         }
         return null;
@@ -191,20 +191,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             mv.visitLabel(l1);
             mv.visitInsn(ICONST_0);
             mv.visitLabel(l2);
-        } else if (op == AND) {
-            binaryExpression.expression0.visit(this, arg);
-            Label l1 = new Label();
-            mv.visitJumpInsn(IFEQ, l1);
-            binaryExpression.expression1.visit(this,arg);
-            mv.visitJumpInsn(IFEQ, l1);
-            mv.visitInsn(ICONST_1);
-            Label l2 = new Label();
-            mv.visitJumpInsn(GOTO, l2);
-            mv.visitLabel(l1);
-            mv.visitInsn(ICONST_0);
-            mv.visitLabel(l2);
-        }
-        else {
+        } else {
             throw new UnsupportedOperationException("code generation not yet implemented");
         }
         return null;
@@ -272,6 +259,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
     public Object visitProgram(Program program, Object arg) throws Exception {
         className = program.JVMName;
         String classDescriptor = 'L' + className + ';';
+        // Обьявление класса
         cw.visit(52,
                 ACC_PUBLIC + ACC_SUPER,
                 className,
@@ -281,7 +269,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         );
         cw.visitSource(null, null);
 
-
+        // Обьявление контсруктора класса
         {
             MethodVisitor mv;
             mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
@@ -300,6 +288,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             mv.visitEnd();
         }
 
+        //Создание метода маин
         MethodVisitor mv  = cw.visitMethod(ACC_PUBLIC,
                 "main",
                 "()V",
@@ -310,6 +299,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         Label lbeg = new Label();
         mv.visitLabel(lbeg);
         mv.visitLineNumber(program.firstToken.lineNumber, lbeg);
+        //Посещение тела главного метода, т е блока
         program.block.visit(this, new InheritedAttributes(mv));
         mv.visitInsn(RETURN);
         Label lend = new Label();

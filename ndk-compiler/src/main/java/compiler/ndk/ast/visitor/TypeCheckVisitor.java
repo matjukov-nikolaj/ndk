@@ -224,7 +224,6 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		return exprType;
 	}
 
-
 	@Override
 	public Object visitVarDec(VarDec varDec, Object arg) throws Exception {
 		String ident = varDec.identToken.getText();

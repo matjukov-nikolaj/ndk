@@ -104,7 +104,7 @@ public class BooleanExpressionsTests {
                 .currentThread().getContextClassLoader());
         Class<?> testClass = loader.define(name, bytecode);
         CodeBuilder codelet = (CodeBuilder) testClass.newInstance();
-        codelet.execute();
+        codelet.main();
 
         System.out.println();
     }
