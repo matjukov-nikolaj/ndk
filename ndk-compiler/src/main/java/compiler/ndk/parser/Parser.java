@@ -331,10 +331,10 @@ public class Parser {
             Token op = t;
             match(WEAK_OPS);
             e2 = element();
-            if ((e2.firstToken.kind == BL_TRUE || e1.firstToken.kind == BL_TRUE || e2.firstToken.kind == BL_FALSE || e1.firstToken.kind == BL_FALSE) ||
-                    (e1.firstToken.kind != IDENTIFIER && e2.firstToken.kind != IDENTIFIER) && (e1.firstToken.kind != e2.firstToken.kind)) {
-                throw new SyntaxException(e2.firstToken, e1.firstToken.kind);
-            }
+//            if ((e2.firstToken.kind == BL_TRUE || e1.firstToken.kind == BL_TRUE || e2.firstToken.kind == BL_FALSE || e1.firstToken.kind == BL_FALSE) ||
+//                    (e1.firstToken.kind != IDENTIFIER && e2.firstToken.kind != IDENTIFIER) && (e1.firstToken.kind != e2.firstToken.kind)) {
+//                throw new SyntaxException(e2.firstToken, e1.firstToken.kind);
+//            }
             e1 = new BinaryExpression(first, e1, op, e2);
         }
         return e1;

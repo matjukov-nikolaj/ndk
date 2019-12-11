@@ -152,7 +152,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			return identType;
 		} else {
 			throw new TypeCheckException(ident + " is not defined as a variable", identExpression);
-		}		
+		}
 	}
 
 	@Override
@@ -170,7 +170,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			return lvType;
 		} else {
 			throw new TypeCheckException(ident + " is not defined as a variable", identLValue);
-		}		
+		}
 	}
 
 	@Override

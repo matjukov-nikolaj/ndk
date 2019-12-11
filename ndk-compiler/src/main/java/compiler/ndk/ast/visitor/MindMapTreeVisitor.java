@@ -61,6 +61,7 @@ public class MindMapTreeVisitor implements ASTVisitor {
 		Node node = (Node) arg;
 		Node newNode = new Node("IfStatement");
 		node.appendChild(newNode);
+		ifStatement.expression.visit(this, newNode);
 		ifStatement.block.visit(this, newNode);
 		return null;
 	}
@@ -70,6 +71,7 @@ public class MindMapTreeVisitor implements ASTVisitor {
 		Node node = (Node) arg;
 		Node newNode = new Node("IfElseStatement");
 		node.appendChild(newNode);
+		ifElseStatement.expression.visit(this, newNode);
 		ifElseStatement.ifBlock.visit(this, newNode);
 		ifElseStatement.elseBlock.visit(this, newNode);
 		return null;
