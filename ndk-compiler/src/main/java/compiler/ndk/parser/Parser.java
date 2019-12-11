@@ -114,7 +114,7 @@ public class Parser {
         return false;
     }
 
-    static final Kind[] REL_OPS = {EQUAL, NOTEQUAL, LESS_THAN, GREATER_THAN, LESS_EQUAL, GREATER_EQUAL};
+    static final Kind[] REL_OPS = {OR, AND, EQUAL, NOTEQUAL, LESS_THAN, GREATER_THAN, LESS_EQUAL, GREATER_EQUAL};
     static final Kind[] WEAK_OPS = {PLUS, MINUS};
     static final Kind[] STRONG_OPS = {MUL, DIV};
     static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING};
@@ -271,6 +271,11 @@ public class Parser {
                         e = expression();
                         match(RIGHT_BRACKET);
                         block = block();
+                        if (isKind(KEY_WORD_ELSE)) {
+                            consume();
+                            s = new IfElseStatement(first, e, block, block());
+                            break;
+                        }
                         s = new IfStatement(first, e, block);
                     } catch (SyntaxException ifException) {
                         exceptionList.add(ifException);

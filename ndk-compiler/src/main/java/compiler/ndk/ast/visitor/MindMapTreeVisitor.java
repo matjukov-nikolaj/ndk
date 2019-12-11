@@ -66,6 +66,16 @@ public class MindMapTreeVisitor implements ASTVisitor {
 	}
 
 	@Override
+	public Object visitIfElseStatement(IfElseStatement ifElseStatement, Object arg) throws Exception {
+		Node node = (Node) arg;
+		Node newNode = new Node("IfElseStatement");
+		node.appendChild(newNode);
+		ifElseStatement.ifBlock.visit(this, newNode);
+		ifElseStatement.elseBlock.visit(this, newNode);
+		return null;
+	}
+
+	@Override
 	public Object visitBlock(Block block, Object arg) throws Exception {
 		Node node = (Node) arg;
 		Node newNode = new Node("Block");

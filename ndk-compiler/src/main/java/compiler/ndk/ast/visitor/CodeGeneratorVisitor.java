@@ -191,7 +191,32 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             mv.visitLabel(l1);
             mv.visitInsn(ICONST_0);
             mv.visitLabel(l2);
-        } else {
+        } else if (op == AND) {
+            binaryExpression.expression0.visit(this, arg);
+            Label l1 = new Label();
+            mv.visitJumpInsn(IFEQ, l1);
+            binaryExpression.expression1.visit(this,arg);
+            mv.visitJumpInsn(IFEQ, l1);
+            mv.visitInsn(ICONST_1);
+            Label l2 = new Label();
+            mv.visitJumpInsn(GOTO, l2);
+            mv.visitLabel(l1);
+            mv.visitInsn(ICONST_0);
+            mv.visitLabel(l2);
+        } else if (op == OR) {
+            binaryExpression.expression0.visit(this, arg);
+            Label l1 = new Label();
+            mv.visitJumpInsn(IFNE, l1);
+            binaryExpression.expression1.visit(this,arg);
+            mv.visitJumpInsn(IFNE, l1);
+            mv.visitInsn(ICONST_0);
+            Label l2 = new Label();
+            mv.visitJumpInsn(GOTO, l2);
+            mv.visitLabel(l1);
+            mv.visitInsn(ICONST_1);
+            mv.visitLabel(l2);
+        }
+        else {
             throw new UnsupportedOperationException("code generation not yet implemented");
         }
         return null;
@@ -320,6 +345,21 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         mv.visitJumpInsn(IFEQ, l1);
         ifStatement.block.visit(this, arg);
         mv.visitLabel(l1);
+        return null;
+    }
+
+    @Override
+    public Object visitIfElseStatement(IfElseStatement ifElseStatement, Object arg) throws Exception {
+        MethodVisitor mv = ((InheritedAttributes) arg).mv;
+        Label l1 = new Label();
+        ifElseStatement.expression.visit(this, arg);
+        mv.visitJumpInsn(IFEQ, l1);
+        ifElseStatement.ifBlock.visit(this, arg);
+        Label l2 = new Label();
+        mv.visitJumpInsn(GOTO, l2);
+        mv.visitLabel(l1);
+        ifElseStatement.elseBlock.visit(this, arg);
+        mv.visitLabel(l2);
         return null;
     }
 
