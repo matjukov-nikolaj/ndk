@@ -81,6 +81,9 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			} else {
 				throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 			}
+		case OR: case AND:
+			check(expr0Type.equals(booleanType), "operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
+			break;
 		default:
 		throw new TypeCheckException("operator " + op.toString() + " is not defined for " + expr0Type, binaryExpression);
 		} 	
@@ -102,6 +105,15 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		String condType = (String) ifStatement.expression.visit(this, arg);
 		check(condType.equals(booleanType), "uncompatible If condition", ifStatement);
 		ifStatement.block.visit(this, arg);
+		return null;
+	}
+
+	@Override
+	public Object visitIfElseStatement(IfElseStatement ifElseStatement, Object arg) throws Exception {
+		String condType = (String) ifElseStatement.expression.visit(this, arg);
+		check(condType.equals(booleanType), "uncompatible IfElse condition", ifElseStatement);
+		ifElseStatement.ifBlock.visit(this, arg);
+		ifElseStatement.elseBlock.visit(this, arg);
 		return null;
 	}
 

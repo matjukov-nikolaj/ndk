@@ -1,9 +1,18 @@
 class BubbleSort {
     var a: int;
-    var b: string;
+    var b: int;
     a = 3;
-    b = "hello";
+    b = 5;
     print a;
     print b;
     print(a + 6);
+
+    if ((a > b) | (b > a))
+    {
+        print ("works or");
+    }
+    else
+    {
+        print ("works else");
+    };
 }
