@@ -98,17 +98,17 @@ public class TestParser {
 	@Test
 	public void errorOrToken() throws SyntaxException {
 		System.out.println("errorOrToken");
-		String input = "class A {x=a||b;} ";
+		String input = "class A {x=a|b;} ";
 		System.out.println(input);
-		parseIncorrectInput(input, OR);
+		System.out.println(parseCorrectInput(input));
 	}
 
 	@Test
 	public void errorAndToken() throws SyntaxException {
 		System.out.println("errorAndToken");
-		String input = "class A {x=a&&b;} ";
+		String input = "class A {x=a&b;} ";
 		System.out.println(input);
-		parseIncorrectInput(input, AND);
+		System.out.println(parseCorrectInput(input));
 	}
 
 	@Test
@@ -134,5 +134,11 @@ public class TestParser {
 		System.out.println(input);
 		parseIncorrectInput(input, RIGHT_BRACE);
 	}
-
+	@Test
+	public void ifElseStatement() throws SyntaxException {
+		System.out.println("ifElseStatement");
+		String input = "class A  {\n if (x) {};  \n if (y){} else {}; \n if (x) {} else {if (z) {} else {};} ; } ";
+		System.out.println(input);
+		System.out.println(parseCorrectInput(input));
+	}
 }

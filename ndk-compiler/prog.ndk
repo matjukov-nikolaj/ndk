@@ -9,7 +9,7 @@ class A {
 
     if ((a > b) & (b > a))
     {
-        print ("works or");
+        print ("works and");
     }
     else
     {
@@ -22,6 +22,6 @@ class A {
     }
     else
     {
-        print ("works and and else");
+        print ("works or and else");
     };
 }
