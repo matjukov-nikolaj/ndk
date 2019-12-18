@@ -150,7 +150,7 @@ public class AssignmentTests {
         printResult(input);
     }
 
-    /*@Test
+    @Test
     public void and() throws Exception {
         System.out.println("and");
         String input = "class A {\n print false & false;\n print false & true;\n  print true & false;\n  print true & true;\n}";
@@ -162,7 +162,7 @@ public class AssignmentTests {
         System.out.println("or");
         String input = "class A {\n print false | false;\n print false | true;\n  print true | false;\n  print true | true;\n}";
         printResult(input);
-    }*/
+    }
 
     @Test
     public void intEqual() throws Exception {
@@ -206,7 +206,7 @@ public class AssignmentTests {
         printResult(input);
     }
 
-    /*@Test
+    @Test
     public void binaryExpressionFail1() throws Exception {
         System.out.println("binaryExpressionFail1");
         String input = "class A {\n  print true + 1;}";
@@ -231,7 +231,7 @@ public class AssignmentTests {
         System.out.println(input);
         Program program = (Program) parseCorrectInput(input);
         typeCheckIncorrectAST(program);
-    }*/
+    }
 
 
     @Test
@@ -241,21 +241,27 @@ public class AssignmentTests {
         printResult(input);
     }
 
-   /* @Test
+    @Test
     public void booleanVariable() throws Exception {
         System.out.println("intVariable");
         String input = "class A {var x: boolean; \n x = false;\n  print x;}";
         printResult(input);
-    }*/
+    }
 
     @Test
     public void expressionsAndVars() throws Exception {
         System.out.println("expressionsAndVars");
         String input = "class A {var x: int; \n var b: boolean;";
-        input = input + "x = 42;\n   x = x + 1;\n   /*b = (x > 100) | (x == 43);*/\n  ";
-        input = input + "print \"x=\";\n  print x;\n /*print \"b=\"; print b;*/}";
+        input = input + "x = 42;\n   x = x + 1;\n b = (x > 100) | (x == 43);\n  ";
+        input = input + "print \"x=\";\n  print x;\n print \"b=\"; print b;}";
         printResult(input);
     }
 
+    @Test
+    public void ifElse() throws Exception{
+        System.out.println("ifElse");
+        String input = "class B {\n  if (true) {\n    print \"if\";\n} else {\n    print \"else\";\n};\n   print \"done\";  \n}";
+        printResult(input);
+    }
 }
 

@@ -135,9 +135,18 @@ public class TestLexer {
 	@Test
 	public void otherOperators() {
 		System.out.println("otherOperators");
-		String input = "| & + - * / !";
-		Kind[] expectedKinds = { OR, AND, PLUS, MINUS, MUL, DIV, NOT, EOF };
-		String[] expectedTexts = { "|", "&", "+", "-", "*", "/", "!", "" };
+		String input = "+ - * / !";
+		Kind[] expectedKinds = { PLUS, MINUS, MUL, DIV, NOT, EOF };
+		String[] expectedTexts = { "+", "-", "*", "/", "!", "" };
+		checkExpectedInput(input, expectedKinds, expectedTexts);
+	}
+
+	@Test
+	public void boolOperators() {
+		System.out.println("otherOperators");
+		String input = "| &";
+		Kind[] expectedKinds = { OR, AND, EOF };
+		String[] expectedTexts = { "|", "&", "" };
 		checkExpectedInput(input, expectedKinds, expectedTexts);
 	}
 
