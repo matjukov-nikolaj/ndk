@@ -10,6 +10,8 @@ import compiler.ndk.ast.blockElems.statements.*;
 import compiler.ndk.ast.types.SimpleType;
 import compiler.ndk.mindMapTree.Node;
 import compiler.ndk.mindMapTree.Tree;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.MethodVisitor;
 
 public class MindMapTreeVisitor implements ASTVisitor {
 
@@ -63,6 +65,17 @@ public class MindMapTreeVisitor implements ASTVisitor {
 		node.appendChild(newNode);
 		ifStatement.expression.visit(this, newNode);
 		ifStatement.block.visit(this, newNode);
+		return null;
+	}
+
+	@Override
+	public Object visitWhileStatement(WhileStatement whileStatement, Object arg)
+			throws Exception {
+		Node node = (Node) arg;
+		Node newNode = new Node("WhileStatement");
+		node.appendChild(newNode);
+		whileStatement.expression.visit(this, newNode);
+		whileStatement.block.visit(this, newNode);
 		return null;
 	}
 

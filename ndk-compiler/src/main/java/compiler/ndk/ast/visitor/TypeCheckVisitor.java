@@ -251,4 +251,14 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		check(symbolTable.insert(ident, varDec), "redeclare VarDec", varDec);
 		return null;
 	}
+
+	@Override
+	public Object visitWhileStatement(WhileStatement whileStatement, Object arg)
+			throws Exception {
+		whileStatement.expression.visit(this, arg);
+		String condType = (String) whileStatement.expression.visit(this, arg);
+		check(condType.equals(booleanType), "uncompatible If condition in while statement", whileStatement);
+		whileStatement.block.visit(this, arg);
+		return null;
+	}
 }

@@ -9,4 +9,15 @@ class A {
     k = ! !a | b | a & ! b;
     print(k);
     print(z);
+
+
+    var c: int;
+    c = 5;
+    while(c != 0) {
+        c = c - 1;
+        print(c);
+    };
+
+
+
 }

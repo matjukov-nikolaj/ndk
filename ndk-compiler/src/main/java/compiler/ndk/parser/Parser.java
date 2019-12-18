@@ -118,7 +118,7 @@ public class Parser {
     static final Kind[] WEAK_OPS = {PLUS, MINUS};
     static final Kind[] STRONG_OPS = {MUL, DIV};
     static final Kind[] SIMPLE_TYPE = {KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING};
-    static final Kind[] STATEMENT_FIRST = {IDENTIFIER, KEY_WORD_PRINT, KEY_WORD_IF};
+    static final Kind[] STATEMENT_FIRST = {IDENTIFIER, KEY_WORD_PRINT, KEY_WORD_IF, KEY_WORD_WHILE};
     static final Kind[] EXPRESSION_FIRST = {IDENTIFIER, INT_LIT, BL_TRUE, BL_FALSE, STRING_LIT, NL_NULL, LEFT_BRACKET, NOT, MINUS, LEFT_BRACE};
     List<SyntaxException> exceptionList = new ArrayList<SyntaxException>();
 
@@ -279,6 +279,23 @@ public class Parser {
                         s = new IfStatement(first, e, block);
                     } catch (SyntaxException ifException) {
                         exceptionList.add(ifException);
+                    }
+                    break;
+                case KEY_WORD_WHILE:
+                    consume();
+                    //try-catch deal with while exceptions
+                    try {
+                        if (isKind(LEFT_BRACKET)) {
+                            consume();
+                            e = expression();
+                            match(RIGHT_BRACKET);
+                            s = new WhileStatement(first, e, block());
+                        } else {
+                            Kind[] whileEx = {LEFT_BRACKET};
+                            throw new SyntaxException(t, whileEx);
+                        }
+                    } catch (SyntaxException whileException) {
+                        exceptionList.add(whileException);
                     }
                     break;
                 default:

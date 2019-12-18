@@ -100,6 +100,21 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
     }
 
     @Override
+    public Object visitWhileStatement(WhileStatement whileStatement, Object arg)
+            throws Exception {
+        MethodVisitor mv = ((InheritedAttributes) arg).mv;
+        Label l1 = new Label();
+        mv.visitLabel(l1);
+        whileStatement.expression.visit(this, arg);
+        Label l2 = new Label();
+        mv.visitJumpInsn(IFEQ, l2);
+        whileStatement.block.visit(this, arg);
+        mv.visitJumpInsn(GOTO, l1);
+        mv.visitLabel(l2);
+        return null;
+    }
+
+    @Override
     public Object visitBinaryExpression(BinaryExpression binaryExpression,
                                         Object arg) throws Exception {
         MethodVisitor mv = ((InheritedAttributes) arg).mv;

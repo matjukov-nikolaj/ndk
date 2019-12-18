@@ -25,4 +25,5 @@ public interface ASTVisitor {
     Object visitVarDec(VarDec varDec, Object arg) throws Exception;
     Object visitIfStatement(IfStatement ifStatement, Object arg) throws Exception;
     Object visitIfElseStatement(IfElseStatement ifElseStatement, Object arg) throws Exception;
+    Object visitWhileStatement(WhileStatement whileStatement, Object arg)throws Exception;
 }
