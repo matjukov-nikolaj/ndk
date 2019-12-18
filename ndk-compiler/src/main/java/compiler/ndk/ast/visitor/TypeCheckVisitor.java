@@ -120,8 +120,17 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 	@Override
 	public Object visitBlock(Block block, Object arg) throws Exception {
 		int numScopes = symbolTable.enterScope();
+		//add all variables declaration first
 		for (BlockElem elem : block.elems) {
-			elem.visit(this, arg);
+			if (elem instanceof VarDec) {
+				elem.visit(this, arg);
+			}
+		}
+
+		for (BlockElem elem : block.elems) {
+			if (!(elem instanceof VarDec)) {
+				elem.visit(this, arg);
+			}
 		}
 		int numScopesExit = symbolTable.leaveScope();
 		check(numScopesExit > 0 && numScopesExit == numScopes,

@@ -1,27 +1,12 @@
 class A {
-    var a: int;
-    var b: int;
-    a = 3;
-    b = 5;
-    print a;
-    print b;
-    print(a + 6);
-
-    if ((a > b) & (b > a))
-    {
-        print ("works or");
-    }
-    else
-    {
-        print ("works and and else");
-    };
-
-    if ((a > b) | (b > a))
-    {
-        print ("works or");
-    }
-    else
-    {
-        print ("works and and else");
-    };
+    var a: boolean;
+    var b: boolean;
+    a = true;
+    b = false;
+    var z: boolean;
+    z = ! (!a | b) | a & ! b;
+    var k: boolean;
+    k = ! !a | b | a & ! b;
+    print(k);
+    print(z);
 }
