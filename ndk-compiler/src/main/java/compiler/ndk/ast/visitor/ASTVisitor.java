@@ -3,9 +3,11 @@ package compiler.ndk.ast.visitor;
 import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
+import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
+import compiler.ndk.ast.types.ListType;
 import compiler.ndk.ast.types.SimpleType;
 
 public interface ASTVisitor {
@@ -25,5 +27,9 @@ public interface ASTVisitor {
     Object visitVarDec(VarDec varDec, Object arg) throws Exception;
     Object visitIfStatement(IfStatement ifStatement, Object arg) throws Exception;
     Object visitIfElseStatement(IfElseStatement ifElseStatement, Object arg) throws Exception;
-    Object visitWhileStatement(WhileStatement whileStatement, Object arg)throws Exception;
+    Object visitWhileStatement(WhileStatement whileStatement, Object arg) throws Exception;
+    Object visitExpressionLValue(ExpressionLValue expressionLValue, Object arg) throws Exception;
+    Object visitListType(ListType listType, Object arg) throws Exception;
+    Object visitListElemExpression(ListElemExpression listElemExpression, Object arg) throws Exception;
+    Object visitListExpression(ListExpression listExpression, Object arg) throws Exception;
 }

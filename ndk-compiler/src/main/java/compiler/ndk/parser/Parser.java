@@ -3,6 +3,7 @@ package compiler.ndk.parser;
 import java.util.ArrayList;
 import java.util.List;
 
+import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.lexer.TokenStream;
 import compiler.ndk.lexer.TokenStream.Kind;
 import compiler.ndk.lexer.TokenStream.Token;
@@ -230,9 +231,12 @@ public class Parser {
             Token typeToken = t;
             consume();
             type = new SimpleType(first, typeToken);
-        }
-        else {
-            Kind[] type_set = {KEY_WORD_INT, KEY_WORD_STRING};
+        } else if (isKind(LEFT_SQUARE)) {
+            consume();
+            type = new ListType(first, type());
+            match(RIGHT_SQUARE);
+        } else {
+            Kind[] type_set = {KEY_WORD_INT, KEY_WORD_BOOLEAN, KEY_WORD_STRING};
             throw new SyntaxException(t, type_set);
         }
         return type;
@@ -315,7 +319,13 @@ public class Parser {
         if (isKind(IDENTIFIER)) {
             Token identToken = t;
             consume();
-            l = new IdentLValue(first, identToken);
+            if (isKind(LEFT_SQUARE)) {
+                consume();
+                l = new ExpressionLValue(first, identToken, expression());
+                match(RIGHT_SQUARE);
+            } else {
+                l = new IdentLValue(first, identToken);
+            }
         }
         return l;
     }
@@ -335,6 +345,24 @@ public class Parser {
             e1 = new BinaryExpression(first, e1, op, e2);
         }
         return e1;
+    }
+
+    private List<Expression> expressionList() throws SyntaxException {
+        List<Expression> expressions = new ArrayList<Expression>();
+        if (isKind(EXPRESSION_FIRST)) {
+            Expression prev = expression();
+            expressions.add(prev);
+            while (isKind(COMMA)) {
+                match(COMMA);
+                Expression curr = expression();
+                expressions.add(curr);
+                if (prev.firstToken.kind != curr.firstToken.kind) {
+                    throw new SyntaxException(curr.firstToken, prev.firstToken.kind);
+                }
+                prev = curr;
+            }
+        }
+        return expressions;
     }
 
     //<NumberExpressions> -> <NumberExpression>
@@ -383,7 +411,15 @@ public class Parser {
             case IDENTIFIER:
                 Token identToken = t;
                 match(IDENTIFIER);
-                e = new IdentExpression(first, identToken);
+                switch (t.kind) {
+                    case LEFT_SQUARE:
+                        consume();
+                        e = new ListElemExpression(first, identToken, expression());
+                        match(RIGHT_SQUARE);
+                        break;
+                    default:
+                        e = new IdentExpression(first, identToken);
+                }
                 break;
             case INT_LIT:
                 e = new IntLitExpression(t, t.getIntVal());
@@ -415,6 +451,11 @@ public class Parser {
                 op = t;
                 consume();
                 e = new UnaryExpression(first, op, factor());
+                break;
+            case LEFT_SQUARE:
+                consume();
+                e = new ListExpression(first, expressionList());
+                match(RIGHT_SQUARE);
                 break;
             default:
                 throw new SyntaxException(t, EXPRESSION_FIRST);

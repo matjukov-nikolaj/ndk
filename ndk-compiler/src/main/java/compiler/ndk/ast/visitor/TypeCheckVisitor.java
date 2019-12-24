@@ -1,5 +1,7 @@
 package compiler.ndk.ast.visitor;
 
+import compiler.ndk.ast.lValues.ExpressionLValue;
+import compiler.ndk.ast.types.ListType;
 import compiler.ndk.lexer.TokenStream.Kind;
 import compiler.ndk.codebuilder.TypeConstants;
 import compiler.ndk.ast.blockElems.BlockElem;
@@ -47,6 +49,14 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		String exprType = (String) assignmentStatement.expression.visit(this, arg);
 		if (lvType.equals(intType) || lvType.equals(stringType) || lvType.equals(booleanType)) {
 			check(lvType.equals(exprType), "uncompatible assignment type", assignmentStatement);
+		} else if (lvType.substring(0, lvType.indexOf("<")).equals("Ljava/util/List")) {
+			if (exprType.substring(0, lvType.indexOf("<")).equals("Ljava/util/List")) {
+				check(exprType.equals(lvType), "uncompatible assignment type", assignmentStatement);
+			} else if (!exprType.equals(emptyList)) {
+				String elementType = lvType.substring(lvType.indexOf("<") + 1, lvType.lastIndexOf(">"));
+				String listType = "Ljava/util/ArrayList<" + elementType + ">;";
+				check(exprType.equals(listType), "uncompatible assignment type", assignmentStatement);
+			}
 		} else {
 			throw new UnsupportedOperationException("Unsuppported type");
 		}		
@@ -260,5 +270,73 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		check(condType.equals(booleanType), "uncompatible If condition in while statement", whileStatement);
 		whileStatement.block.visit(this, arg);
 		return null;
+	}
+
+	@Override
+	public Object visitExpressionLValue(ExpressionLValue expressionLValue,
+										Object arg) throws Exception {
+		String ident = expressionLValue.identToken.getText();
+		Declaration dec = symbolTable.lookup(ident);
+		check(dec != null, "redeclare ExpressionLValue", expressionLValue);
+		if (!(dec instanceof VarDec)) {
+			throw new TypeCheckException(ident + " is not defined as a variable", expressionLValue);
+		} else {
+			String varType = (String) ((VarDec)dec).type.visit(this, arg);
+			if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
+				String exprType = (String) expressionLValue.expression.visit(this, arg);
+				check(exprType.equals(intType), "List subscript must be int", expressionLValue);
+				String elementType = varType.substring(varType.indexOf("<") + 1, varType.lastIndexOf(">"));
+				expressionLValue.setType(elementType);
+				return elementType;
+			} else {
+				throw new UnsupportedOperationException("map not yet implemented");
+			}
+		}
+	}
+
+	@Override
+	public Object visitListType(ListType listType, Object arg) throws Exception {
+		listType.type.visit(this, arg);
+		return listType.getJVMType();
+	}
+
+	@Override
+	public Object visitListElemExpression(
+			ListElemExpression listOrMapElemExpression, Object arg)
+			throws Exception {
+		String ident = listOrMapElemExpression.identToken.getText();
+		Declaration dec = symbolTable.lookup(ident);
+		check(dec != null, "undeclare MapElemExpression", listOrMapElemExpression);
+		if (!(dec instanceof VarDec)) {
+			throw new TypeCheckException(ident + " is not defined as a variable", listOrMapElemExpression);
+		}
+		String varType = (String) ((VarDec)dec).type.visit(this, arg);
+		if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
+			String lomrExprType = (String) listOrMapElemExpression.expression.visit(this, arg);
+			check(lomrExprType.equals(intType), "List subscript must be int", listOrMapElemExpression);
+			String elementType = varType.substring(varType.indexOf("<") + 1, varType.lastIndexOf(">"));
+			listOrMapElemExpression.setType(elementType);
+			return elementType;
+		} else {
+			throw new UnsupportedOperationException("not yet implemented");
+		}
+	}
+
+	@Override
+	public Object visitListExpression(ListExpression listExpression, Object arg)
+			throws Exception {
+		if (listExpression.expressionList.isEmpty()) {
+			listExpression.setType(emptyList);
+			return emptyList;
+		}
+		String oldListType = (String) listExpression.expressionList.get(0).visit(this, arg);
+		for(Expression expr : listExpression.expressionList) {
+			String listType = (String) expr.visit(this, arg);
+			check(oldListType.equals(listType),	"uncompatible list type", listExpression);
+			oldListType = listType;
+		}
+		String listType = "Ljava/util/ArrayList<" + oldListType + ">;";
+		listExpression.setType(listType);
+		return listType;
 	}
 }

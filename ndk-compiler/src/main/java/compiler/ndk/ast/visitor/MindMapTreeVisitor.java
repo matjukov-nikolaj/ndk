@@ -4,9 +4,11 @@ import compiler.ndk.ast.blockElems.BlockElem;
 import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.*;
 import compiler.ndk.ast.blocks.Block;
+import compiler.ndk.ast.lValues.ExpressionLValue;
 import compiler.ndk.ast.lValues.IdentLValue;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.blockElems.statements.*;
+import compiler.ndk.ast.types.ListType;
 import compiler.ndk.ast.types.SimpleType;
 import compiler.ndk.mindMapTree.Node;
 import compiler.ndk.mindMapTree.Tree;
@@ -186,4 +188,43 @@ public class MindMapTreeVisitor implements ASTVisitor {
 		return null;
 	}
 
+	@Override
+	public Object visitExpressionLValue(ExpressionLValue expressionLValue,
+										Object arg) throws Exception {
+		Node node = (Node) arg;
+		Node newNode = new Node("ExpressionLValue: " + expressionLValue.identToken.getText());
+		node.appendChild(newNode);
+		expressionLValue.expression.visit(this, newNode);
+		return null;
+	}
+
+	@Override
+	public Object visitListType(ListType listType, Object arg) throws Exception {
+		Node node = (Node) arg;
+		Node newNode = new Node("ListType: " + listType.type.toString());
+		node.appendChild(newNode);
+		listType.type.visit(this, newNode);
+		return null;
+	}
+
+	@Override
+	public Object visitListElemExpression(ListElemExpression listElemExpression, Object arg) throws Exception {
+		Node node = (Node) arg;
+		Node newNode = new Node("ListElemExpression: " + listElemExpression.identToken.getText());
+		node.appendChild(newNode);
+		listElemExpression.expression.visit(this, newNode);
+		return null;
+	}
+
+	@Override
+	public Object visitListExpression(ListExpression listExpression, Object arg)
+			throws Exception {
+		Node node = (Node) arg;
+		Node newNode = new Node("ListExpression: " + listExpression.expressionList.toString());
+		node.appendChild(newNode);
+		for (Expression e : listExpression.expressionList) {
+			e.visit(this, newNode);
+		}
+		return null;
+	}
 }

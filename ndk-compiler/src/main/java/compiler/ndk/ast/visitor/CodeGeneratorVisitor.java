@@ -2,6 +2,8 @@ package compiler.ndk.ast.visitor;
 
 import static compiler.ndk.lexer.TokenStream.Kind.*;
 
+import compiler.ndk.ast.lValues.ExpressionLValue;
+import compiler.ndk.ast.types.ListType;
 import compiler.ndk.lexer.TokenStream.Kind;
 import compiler.ndk.codebuilder.TypeConstants;
 import compiler.ndk.ast.blockElems.BlockElem;
@@ -30,6 +32,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             this.mv = mv;
         }
         MethodVisitor mv;
+        String listName;
         Label start;
         Label end;
     }
@@ -43,8 +46,34 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         slot++;
         if (varType.equals(intType) || varType.equals(stringType) || varType.equals(booleanType)) {
             mv.visitLocalVariable(varName, varType, null, ((InheritedAttributes) arg).start, ((InheritedAttributes) arg).end, varDec.getSlot());
+        } else if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
+            String listType = null;
+            if (varType == emptyList) {
+                listType = "Ljava/util/List;";
+            } else {
+                listType = getElementType(varType);
+            }
+            {
+                mv.visitLocalVariable(varName, listType, null, ((InheritedAttributes) arg).start, ((InheritedAttributes) arg).end, varDec.getSlot());
+                mv.visitEnd();
+            }
         }
         return null;
+    }
+
+    private String getElementType(String elementType) {
+        if (elementType.equals(intType)) {
+            return "Ljava/lang/Integer;";
+        } else if (elementType.equals(booleanType)) {
+            return "Ljava/lang/Boolean;";
+        } else if (elementType.equals(stringType)) {
+            return "Ljava/lang/String;";
+        } else if (elementType.substring(0, elementType.indexOf("<")).equals("Ljava/util/List")){
+            String innerType = elementType.substring(elementType.indexOf("<") + 1, elementType.lastIndexOf(">"));
+            return "Ljava/util/List<" + getElementType(innerType) + ">;";
+        } else {
+            throw new UnsupportedOperationException("code generation not yet implemented");
+        }
     }
 
     @Override
@@ -68,6 +97,21 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         if (varType.equals(stringType)) {
             if (assignmentStatement.lvalue instanceof IdentLValue) {
                 mv.visitVarInsn(ASTORE, ((IdentLValue) assignmentStatement.lvalue).dec.getSlot());
+            }
+        }
+        if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(NEW, "java/util/ArrayList");
+            mv.visitInsn(DUP);
+            mv.visitMethodInsn(INVOKESPECIAL, "java/util/ArrayList", "<init>", "()V", false);
+            mv.visitFieldInsn(PUTFIELD, className, varName, "Ljava/util/List;");
+            ((InheritedAttributes) arg).listName = varName;
+            if (assignmentStatement.expression instanceof ListElemExpression) {
+                mv.visitVarInsn(ALOAD, 0);
+                assignmentStatement.expression.visit(this, arg);
+                mv.visitFieldInsn(PUTFIELD, className, varName, "Ljava/util/List;");
+            } else {
+                assignmentStatement.expression.visit(this, arg);
             }
         }
         return null;
@@ -408,6 +452,10 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             mv.visitVarInsn(ALOAD, identExpression.dec.getSlot());
         }
 
+        if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
+            mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/List;");
+        }
+
         return null;
     }
 
@@ -430,4 +478,75 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         return null;
     }
 
+    @Override
+    public Object visitExpressionLValue(ExpressionLValue expressionLValue,
+                                        Object arg) throws Exception {
+        MethodVisitor mv = ((InheritedAttributes) arg).mv;
+        String varName = expressionLValue.identToken.getText();
+        mv.visitVarInsn(ALOAD, 0);
+        mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/List;");
+        expressionLValue.expression.visit(this, arg);
+
+        return null;
+    }
+
+    @Override
+    public Object visitListType(ListType listType, Object arg) throws Exception {
+        return listType.getJVMType();
+    }
+
+    @Override
+    public Object visitListElemExpression(
+            ListElemExpression listOrMapElemExpression, Object arg)
+            throws Exception {
+        MethodVisitor mv = ((InheritedAttributes) arg).mv;
+        String varName = listOrMapElemExpression.identToken.getText();
+        mv.visitVarInsn(ALOAD, 0);
+        mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/List;");
+        listOrMapElemExpression.expression.visit(this, arg);
+        String elementType = listOrMapElemExpression.getType();
+        mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "get", "(I)Ljava/lang/Object;", true);
+        if (elementType.equals(intType)) {
+            mv.visitTypeInsn(CHECKCAST, "java/lang/Integer");
+            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Integer", "intValue", "()I", false);
+        } else if (elementType.equals(booleanType))	{
+            mv.visitTypeInsn(CHECKCAST, "java/lang/Boolean");
+            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Boolean", "booleanValue", "()Z", false);
+        } else if (elementType.equals(stringType)) {
+            mv.visitTypeInsn(CHECKCAST, "java/lang/String");
+            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/String", "toString", "()Ljava/lang/String;", false);
+        } else if (elementType.substring(0, elementType.indexOf("<")).equals("Ljava/util/List")) {
+            mv.visitTypeInsn(CHECKCAST, "java/util/List");
+        }
+        return null;
+    }
+
+    @Override
+    public Object visitListExpression(ListExpression listExpression, Object arg)
+            throws Exception {
+        MethodVisitor mv = ((InheritedAttributes) arg).mv;
+        String listName = ((InheritedAttributes) arg).listName;
+        String elementType = null;
+        if (!listExpression.expressionList.isEmpty()) {
+            String listType = listExpression.getType();
+            elementType = listType.substring(listType.indexOf("<") + 1, listType.indexOf(">"));
+        }
+        for (Expression e : listExpression.expressionList) {
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitFieldInsn(GETFIELD, className, listName, "Ljava/util/List;");
+            e.visit(this, arg);
+            if (elementType.equals(intType)) {
+                mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
+            } else if (elementType.equals(booleanType))	{
+                mv.visitMethodInsn(INVOKESTATIC, "java/lang/Boolean", "valueOf", "(Z)Ljava/lang/Boolean;", false);
+            } else if (elementType.equals(stringType)) {
+                // nothing to do
+            } else if (elementType.substring(0, elementType.indexOf("<")).equals("Ljava/util/List")) {
+//				mv.visitVarInsn(ALOAD, 1);
+            }
+            mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "add", "(Ljava/lang/Object;)Z", true);
+            mv.visitInsn(POP);
+        }
+        return null;
+    }
 }

@@ -112,6 +112,12 @@ public class Lexer {
                         case '}':
                             t = stream.new Token(RIGHT_BRACE, begOffset, index, line);
                             break;
+                        case '[':
+                            t= stream.new Token(LEFT_SQUARE, begOffset, index, line);
+                            break;
+                        case ']':
+                            t= stream.new Token(RIGHT_SQUARE, begOffset, index, line);
+                            break;
                         case ':':
                             t = stream.new Token(COLON, begOffset, index, line);
                             break;
