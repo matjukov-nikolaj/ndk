@@ -4,5 +4,4 @@ public interface TypeConstants {
     String booleanType = "Z";
     String intType = "I";
     String stringType = "Ljava/lang/String;";
-    String emptyList = "Ljava/util/ArrayList;";
 }

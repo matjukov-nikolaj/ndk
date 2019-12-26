@@ -1,11 +1,23 @@
 class A {
-    var a: int;
-    var l: [int];
-    l = [1, 2, 3, 4, 5];
-    a = 1;
-    print (l[1]);
-    /*while (a < 3) {
-        print (a < l[0]);
-        a = a + 1;
-    };*/
+    var a: boolean;
+    var b: boolean;
+    a = true;
+    b = false;
+    var z: boolean;
+    z = ! (!a | b) | a & ! b;
+    var k: boolean;
+    k = ! !a | b | a & ! b;
+    print(k);
+    print(z);
+
+
+    var c: int;
+    c = 5;
+    while(c != 0) {
+        c = c - 1;
+        print(c);
+    };
+
+
+
 }

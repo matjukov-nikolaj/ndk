@@ -70,8 +70,6 @@ public class TokenStream {
 		RIGHT_BRACKET, // )
 		LEFT_BRACE, // {
 		RIGHT_BRACE, // }
-        LEFT_SQUARE, // [
-        RIGHT_SQUARE, // ]
 		COLON, // :
 		ASSIGN, // =
 		OR, // |
