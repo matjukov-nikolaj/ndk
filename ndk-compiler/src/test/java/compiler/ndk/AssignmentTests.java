@@ -5,7 +5,7 @@ import static org.junit.Assert.fail;
 
 import java.io.PrintWriter;
 
-import compiler.ndk.ast.visitor.CodeGeneratorVisitor;
+import compiler.ndk.ast.visitor.CodeGeneratorVisitor2;
 import compiler.ndk.codebuilder.CodeBuilder;
 import compiler.ndk.lexer.Lexer;
 import compiler.ndk.lexer.TokenStream;
@@ -80,7 +80,7 @@ public class AssignmentTests {
     }
 
     private byte[] generateByteCode(ASTNode ast) throws Exception {
-        CodeGeneratorVisitor v = new CodeGeneratorVisitor();
+        CodeGeneratorVisitor2 v = new CodeGeneratorVisitor2();
         byte[] bytecode = (byte[]) ast.visit(v, null);
         dumpBytecode(bytecode);
         return bytecode;

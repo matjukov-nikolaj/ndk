@@ -1,11 +1,10 @@
-class A {
+class BubbleSort {
     var a: int;
-    var l: [int];
-    l = [1, 2, 3, 4, 5];
-    a = 1;
-    print (l[1]);
-    /*while (a < 3) {
-        print (a < l[0]);
-        a = a + 1;
-    };*/
+    var b: int;
+    a = 3;
+    b = 5;
+	while (a < 3)
+	{
+
+	};
 }

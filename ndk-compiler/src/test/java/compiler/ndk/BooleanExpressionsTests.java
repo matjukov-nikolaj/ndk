@@ -1,9 +1,8 @@
 package compiler.ndk;
 
-import static org.junit.Assert.*;
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.visitor.ASTNode;
-import compiler.ndk.ast.visitor.CodeGeneratorVisitor;
+import compiler.ndk.ast.visitor.CodeGeneratorVisitor2;
 import compiler.ndk.ast.visitor.TypeCheckVisitor;
 import compiler.ndk.ast.visitor.TypeCheckVisitor.TypeCheckException;
 import compiler.ndk.codebuilder.CodeBuilder;
@@ -18,7 +17,6 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 import java.io.PrintWriter;
 
-import static compiler.ndk.lexer.TokenStream.Kind.ASSIGN;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
@@ -81,7 +79,7 @@ public class BooleanExpressionsTests {
     }
 
     private byte[] generateByteCode(ASTNode ast) throws Exception {
-        CodeGeneratorVisitor v = new CodeGeneratorVisitor();
+        CodeGeneratorVisitor2 v = new CodeGeneratorVisitor2();
         byte[] bytecode = (byte[]) ast.visit(v, null);
         dumpBytecode(bytecode);
         return bytecode;

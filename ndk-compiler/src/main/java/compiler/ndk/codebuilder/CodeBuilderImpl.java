@@ -8,11 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import com.google.gson.Gson;
-import compiler.ndk.ast.visitor.ASTNode;
-import compiler.ndk.ast.visitor.CodeGeneratorVisitor;
+import compiler.ndk.ast.visitor.*;
 import compiler.ndk.ast.programs.Program;
-import compiler.ndk.ast.visitor.MindMapTreeVisitor;
-import compiler.ndk.ast.visitor.TypeCheckVisitor;
 import compiler.ndk.lexer.Lexer;
 import compiler.ndk.lexer.TokenStream;
 import compiler.ndk.mindMapTree.Tree;
@@ -52,21 +49,21 @@ public class CodeBuilderImpl {
         Parser parser = new Parser(stream);
         System.out.println();
         ASTNode ast = parser.parse();
-//        MindMapTreeVisitor v = new MindMapTreeVisitor();
+        MindMapTreeVisitor v = new MindMapTreeVisitor();
         try {
-//            ast.visit(v, null);
-//            Tree tree = v.getTree();
+            ast.visit(v, null);
+            Tree tree = v.getTree();
             Gson gson = new Gson();
             Path currentRelativePath = Paths.get("");
             String s = currentRelativePath.toAbsolutePath().toString();
             File file = new File(s + "\\prog.json");
-//            String jsonInString = gson.toJson(tree);
-//            try (
-//            FileWriter fw = new FileWriter(s + "\\prog.json");) {
-//                fw.write(jsonInString);
-//            } catch (Exception e) {
-//                System.out.println(e.getMessage());
-//            }
+            String jsonInString = gson.toJson(tree);
+            try (
+            FileWriter fw = new FileWriter(s + "\\prog.json");) {
+                fw.write(jsonInString);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -1,5 +1,5 @@
 package compiler.ndk.codebuilder;
 
-public interface CodeBuilder {
+public interface CodeBuilder{
 	void main();
 }

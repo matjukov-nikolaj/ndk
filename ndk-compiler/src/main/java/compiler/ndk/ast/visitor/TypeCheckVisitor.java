@@ -287,6 +287,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 				check(exprType.equals(intType), "List subscript must be int", expressionLValue);
 				String elementType = varType.substring(varType.indexOf("<") + 1, varType.lastIndexOf(">"));
 				expressionLValue.setType(elementType);
+                expressionLValue.dec = (VarDec)dec;
 				return elementType;
 			} else {
 				throw new UnsupportedOperationException("map not yet implemented");
@@ -302,20 +303,21 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 
 	@Override
 	public Object visitListElemExpression(
-			ListElemExpression listOrMapElemExpression, Object arg)
+			ListElemExpression listElemExpression, Object arg)
 			throws Exception {
-		String ident = listOrMapElemExpression.identToken.getText();
+		String ident = listElemExpression.identToken.getText();
 		Declaration dec = symbolTable.lookup(ident);
-		check(dec != null, "undeclare MapElemExpression", listOrMapElemExpression);
+		check(dec != null, "undeclare MapElemExpression", listElemExpression);
 		if (!(dec instanceof VarDec)) {
-			throw new TypeCheckException(ident + " is not defined as a variable", listOrMapElemExpression);
+			throw new TypeCheckException(ident + " is not defined as a variable", listElemExpression);
 		}
 		String varType = (String) ((VarDec)dec).type.visit(this, arg);
 		if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
-			String lomrExprType = (String) listOrMapElemExpression.expression.visit(this, arg);
-			check(lomrExprType.equals(intType), "List subscript must be int", listOrMapElemExpression);
+			String lomrExprType = (String) listElemExpression.expression.visit(this, arg);
+			check(lomrExprType.equals(intType), "List subscript must be int", listElemExpression);
 			String elementType = varType.substring(varType.indexOf("<") + 1, varType.lastIndexOf(">"));
-			listOrMapElemExpression.setType(elementType);
+            listElemExpression.setType(elementType);
+			listElemExpression.dec = (VarDec)dec;
 			return elementType;
 		} else {
 			throw new UnsupportedOperationException("not yet implemented");

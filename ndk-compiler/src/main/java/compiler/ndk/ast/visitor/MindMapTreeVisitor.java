@@ -201,7 +201,8 @@ public class MindMapTreeVisitor implements ASTVisitor {
 	@Override
 	public Object visitListType(ListType listType, Object arg) throws Exception {
 		Node node = (Node) arg;
-		Node newNode = new Node("ListType: " + listType.type.toString());
+		System.out.println(listType.type);
+		Node newNode = new Node("ListType");
 		node.appendChild(newNode);
 		listType.type.visit(this, newNode);
 		return null;

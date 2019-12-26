@@ -1,5 +1,6 @@
 package compiler.ndk.ast.lValues;
 
+import compiler.ndk.ast.blockElems.declarations.VarDec;
 import compiler.ndk.ast.expressions.Expression;
 import compiler.ndk.ast.visitor.ASTVisitor;
 import compiler.ndk.lexer.TokenStream;
@@ -7,6 +8,7 @@ import compiler.ndk.lexer.TokenStream;
 public class ExpressionLValue extends LValue {
     public TokenStream.Token identToken;
     public Expression expression;
+    public VarDec dec;
 
     public ExpressionLValue(TokenStream.Token firstToken, TokenStream.Token identToken,
                             Expression expression) {
