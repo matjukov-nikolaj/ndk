@@ -88,7 +88,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
                 } else if(varType.equals(stringType)) {
                     // nothing to do
                 }
-                mv.visitMethodInsn(INVOKEINTERFACE, "java/util/ArrayList", "add", "(ILjava/lang/Object;)V", true);
+                mv.visitMethodInsn(INVOKEINTERFACE, "java/util/ArrayList", "set", "(ILjava/lang/Object;)V", true);
             } else if (assignmentStatement.lvalue instanceof IdentLValue){
                 if (varType.equals(intType)) {
                     if (assignmentStatement.lvalue instanceof IdentLValue) {
@@ -124,41 +124,6 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
                 assignmentStatement.expression.visit(this, arg);
             }
         }
-
-//
-//        if (varType.equals(intType)) {
-//            if (assignmentStatement.lvalue instanceof IdentLValue) {
-//                assignmentStatement.expression.visit(this, arg);
-//                mv.visitVarInsn(ISTORE, ((IdentLValue) assignmentStatement.lvalue).dec.getSlot());
-//            }
-//        }
-//        if (varType.equals(booleanType)) {
-//            if (assignmentStatement.lvalue instanceof IdentLValue) {
-//                assignmentStatement.expression.visit(this, arg);
-//                mv.visitVarInsn(ISTORE, ((IdentLValue) assignmentStatement.lvalue).dec.getSlot());
-//            }
-//        }
-//        if (varType.equals(stringType)) {
-//            if (assignmentStatement.lvalue instanceof IdentLValue) {
-//                assignmentStatement.expression.visit(this, arg);
-//                mv.visitVarInsn(ASTORE, ((IdentLValue) assignmentStatement.lvalue).dec.getSlot());
-//            }
-//        }
-//        if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
-//            mv.visitVarInsn(ALOAD, 0);
-//            mv.visitTypeInsn(NEW, "java/util/ArrayList");
-//            mv.visitInsn(DUP);
-//            mv.visitMethodInsn(INVOKESPECIAL, "java/util/ArrayList", "<init>", "()V", false);
-//            mv.visitFieldInsn(PUTFIELD, className, varName, "Ljava/util/List;");
-//            ((InheritedAttributes) arg).listName = varName;
-//            if(assignmentStatement.expression instanceof ListElemExpression) {
-//                mv.visitVarInsn(ALOAD, 0);
-//                assignmentStatement.expression.visit(this, arg);
-//                mv.visitFieldInsn(PUTFIELD, className, varName, "Ljava/util/List;");
-//            } else {
-//                assignmentStatement.expression.visit(this, arg);
-//            }
-//        }
         return null;
     }
 
@@ -490,21 +455,20 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         String varType = identExpression.getType();
         MethodVisitor mv = ((InheritedAttributes) arg).mv;
 //        mv.visitVarInsn(ALOAD, 0);
-        if (varType.equals(intType)) {
-            mv.visitVarInsn(ILOAD, identExpression.dec.getSlot());
-        }
-        if (varType.equals(booleanType)) {
-            mv.visitVarInsn(ILOAD, identExpression.dec.getSlot());
-        }
-        if (varType.equals(stringType)) {
-            mv.visitVarInsn(ALOAD, identExpression.dec.getSlot());
+        if (varType.equals(intType) || varType.equals(booleanType) || varType.equals(stringType)) {
+            if (varType.equals(intType)) {
+                mv.visitVarInsn(ILOAD, identExpression.dec.getSlot());
+            }
+            if (varType.equals(booleanType)) {
+                mv.visitVarInsn(ILOAD, identExpression.dec.getSlot());
+            }
+            if (varType.equals(stringType)) {
+                mv.visitVarInsn(ALOAD, identExpression.dec.getSlot());
+            }
+        } else if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/ArrayList")) {
+            mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/ArrayList;");
         }
 
-        if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/ArrayList")) {
-            mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/ArrayList;");
-//            mv.visitVarInsn(ALOAD, (identExpression.dec.getSlot()));
-//            mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/ArrayList;");
-        }
 
         return null;
     }
@@ -534,7 +498,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
         MethodVisitor mv = ((InheritedAttributes) arg).mv;
         String varName = expressionLValue.identToken.getText();
         mv.visitVarInsn(ALOAD, 0);
-        mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/List;");
+        mv.visitFieldInsn(GETFIELD, className, varName, "Ljava/util/ArrayList;");
         expressionLValue.expression.visit(this, arg);
 
         return null;
@@ -594,7 +558,7 @@ public class CodeGeneratorVisitor implements ASTVisitor, Opcodes, TypeConstants 
             } else if (elementType.substring(0, elementType.indexOf("<")).equals("Ljava/util/ArrayList")) {
 //				mv.visitVarInsn(ALOAD, 1);
             }
-            mv.visitMethodInsn(INVOKEINTERFACE, "java/util/ArrayList", "set", "(Ljava/lang/Object;)Z", true);
+            mv.visitMethodInsn(INVOKEINTERFACE, "java/util/ArrayList", "add", "(Ljava/lang/Object;)Z", true);
             mv.visitInsn(POP);
         }
         return null;

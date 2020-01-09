@@ -1,10 +1,33 @@
 class BubbleSort {
-    var a: int;
-    var b: int;
-    a = 3;
-    b = 5;
-	while (a < 3)
-	{
+    var first: [string];
+    var second: [string];
+    first = ["о", "н", "е", "с", "т", "с", "е","н", "1"];
+    second = ["", "", "", "", "", "", "","", ""];
+    var size: int;
+    size = 9;
+    var i: int;
+    i = size;
+    var j: int;
+    j = 0;
+    while(i != 0) {
+        second[j] = first[i - 1];
+        j = j + 1;
+        i = i - 1;
+    };
 
-	};
+    var isEquals: boolean;
+    isEquals = true;
+    i = 0;
+    while(i < size) {
+        if (second[i] != first[i]) {
+            isEquals = false;
+        };
+        i = i + 1;
+    };
+    if (isEquals) {
+        print("Одинаковые!");
+    } else {
+        print("Нет");
+    };
+
 }

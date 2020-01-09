@@ -16,10 +16,10 @@ public class ListType extends Type {
     @Override
     public String getJVMType() {
         String elementType = type.getJVMType();
-        return "Ljava/util/List<"+elementType+">;";
+        return "Ljava/util/ArrayList<"+elementType+">;";
     }
 
     public static String prefix(){
-        return "Ljava/util/List";
+        return "Ljava/util/ArrayList";
     }
 }

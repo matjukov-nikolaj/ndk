@@ -2,7 +2,7 @@ package compiler.ndk;
 
 import compiler.ndk.ast.programs.Program;
 import compiler.ndk.ast.visitor.ASTNode;
-import compiler.ndk.ast.visitor.CodeGeneratorVisitor2;
+import compiler.ndk.ast.visitor.CodeGeneratorVisitor;
 import compiler.ndk.ast.visitor.TypeCheckVisitor;
 import compiler.ndk.ast.visitor.TypeCheckVisitor.TypeCheckException;
 import compiler.ndk.codebuilder.CodeBuilder;
@@ -79,7 +79,7 @@ public class BooleanExpressionsTests {
     }
 
     private byte[] generateByteCode(ASTNode ast) throws Exception {
-        CodeGeneratorVisitor2 v = new CodeGeneratorVisitor2();
+        CodeGeneratorVisitor v = new CodeGeneratorVisitor();
         byte[] bytecode = (byte[]) ast.visit(v, null);
         dumpBytecode(bytecode);
         return bytecode;

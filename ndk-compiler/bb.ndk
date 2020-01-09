@@ -1,0 +1,43 @@
+class BubbleSort {
+	var arr: [int];
+	var isNotSorted: boolean;
+	isNotSorted = true;
+	arr = [6, 0, 3, 1, 2];
+	var sizeArr: int;
+	sizeArr = 5;
+	var j: int;
+	j = 0;
+	print("Начальный список:");
+	while(j < sizeArr) {
+	    print(arr[j]);
+	    j = j + 1;
+	};
+	while (isNotSorted)
+	{
+		isNotSorted = false;
+		var i: int;
+		i = 1;
+		while (i < sizeArr)
+		{
+			var prevNumber: int;
+			var currNumber: int;
+			prevNumber = arr[i - 1];
+			currNumber = arr[i];
+			if (prevNumber > currNumber)
+			{
+				var temp: int;
+				temp = arr[i];
+				arr[i] = arr[i - 1];
+				arr[i - 1] = temp;
+				isNotSorted = true;
+			};
+			i = i + 1;
+		};
+	};
+	print("Результат:");
+    j = 0;
+    while(j < sizeArr) {
+        print(arr[j]);
+        j = j + 1;
+    };
+}

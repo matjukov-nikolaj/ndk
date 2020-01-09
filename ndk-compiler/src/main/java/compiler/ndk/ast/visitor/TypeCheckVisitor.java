@@ -49,8 +49,8 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 		String exprType = (String) assignmentStatement.expression.visit(this, arg);
 		if (lvType.equals(intType) || lvType.equals(stringType) || lvType.equals(booleanType)) {
 			check(lvType.equals(exprType), "uncompatible assignment type", assignmentStatement);
-		} else if (lvType.substring(0, lvType.indexOf("<")).equals("Ljava/util/List")) {
-			if (exprType.substring(0, lvType.indexOf("<")).equals("Ljava/util/List")) {
+		} else if (lvType.substring(0, lvType.indexOf("<")).equals("Ljava/util/ArrayList")) {
+			if (exprType.substring(0, lvType.indexOf("<")).equals("Ljava/util/ArrayList")) {
 				check(exprType.equals(lvType), "uncompatible assignment type", assignmentStatement);
 			} else if (!exprType.equals(emptyList)) {
 				String elementType = lvType.substring(lvType.indexOf("<") + 1, lvType.lastIndexOf(">"));
@@ -282,7 +282,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			throw new TypeCheckException(ident + " is not defined as a variable", expressionLValue);
 		} else {
 			String varType = (String) ((VarDec)dec).type.visit(this, arg);
-			if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
+			if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/ArrayList")) {
 				String exprType = (String) expressionLValue.expression.visit(this, arg);
 				check(exprType.equals(intType), "List subscript must be int", expressionLValue);
 				String elementType = varType.substring(varType.indexOf("<") + 1, varType.lastIndexOf(">"));
@@ -312,7 +312,7 @@ public class TypeCheckVisitor implements ASTVisitor, TypeConstants {
 			throw new TypeCheckException(ident + " is not defined as a variable", listElemExpression);
 		}
 		String varType = (String) ((VarDec)dec).type.visit(this, arg);
-		if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/List")) {
+		if (varType.substring(0, varType.indexOf("<")).equals("Ljava/util/ArrayList")) {
 			String lomrExprType = (String) listElemExpression.expression.visit(this, arg);
 			check(lomrExprType.equals(intType), "List subscript must be int", listElemExpression);
 			String elementType = varType.substring(varType.indexOf("<") + 1, varType.lastIndexOf(">"));

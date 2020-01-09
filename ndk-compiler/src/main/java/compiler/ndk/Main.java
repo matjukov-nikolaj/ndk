@@ -6,8 +6,6 @@ import compiler.ndk.codebuilder.CodeBuilderImpl;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
@@ -17,8 +15,10 @@ public class Main {
         File file = new File(s + "\\prog.ndk");
         CodeBuilder codeBuilder = CodeBuilderImpl.newInstance(file);
         if (codeBuilder != null) {
-            codeBuilder.main();
+//            codeBuilder.main();
         }
+        BubbleSort bubbleSort = new BubbleSort();
+        bubbleSort.main();
 
     }
 
